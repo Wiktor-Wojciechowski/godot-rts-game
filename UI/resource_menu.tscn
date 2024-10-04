@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://b10u13jt02rgb"]
+
+[ext_resource type="Script" path="res://UI/resource_menu.gd" id="1_2kir2"]
+
+[node name="ResourceMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 1
+script = ExtResource("1_2kir2")
+
+[node name="WoodLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 27.0
+offset_right = 61.0
+offset_bottom = 50.0
+
+[node name="StoneLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 157.0
+offset_top = 27.0
+offset_right = 197.0
+offset_bottom = 50.0
+
+[node name="FoodLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 290.0
+offset_top = 27.0
+offset_right = 330.0
+offset_bottom = 50.0
+
+[node name="GoldLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 418.0
+offset_top = 27.0
+offset_right = 458.0
+offset_bottom = 50.0

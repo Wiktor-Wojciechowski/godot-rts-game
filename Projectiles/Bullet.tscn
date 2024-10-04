@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://cd8q63hmkhsc6"]
+
+[ext_resource type="Script" path="res://Projectiles/bullet.gd" id="1_ae4oy"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_ea6t3"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ljuqm"]
+radius = 0.3
+
+[node name="Bullet" type="CharacterBody3D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_ae4oy")
+lifetime = 2.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.42, 0, 0, 0)
+mesh = SubResource("SphereMesh_ea6t3")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 14
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_ljuqm")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://6vftfv5fa38s"]
+
+[ext_resource type="Script" path="res://LevelTools/unit_navigator.gd" id="1_yoqri"]
+
+[node name="UnitNavigator" type="Node3D"]
+script = ExtResource("1_yoqri")

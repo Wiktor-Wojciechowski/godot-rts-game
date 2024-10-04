@@ -1,0 +1,54 @@
+[gd_scene load_steps=2 format=3 uid="uid://cf0m7jmb6c2i7"]
+
+[ext_resource type="Script" path="res://UI/building_menu.gd" id="1_rds1m"]
+
+[node name="BuildingMenu" type="Control" node_paths=PackedStringArray("building_buttons")]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+mouse_filter = 1
+script = ExtResource("1_rds1m")
+building_buttons = [NodePath("BuildButton"), NodePath("BuildButton2"), NodePath("BuildButton3"), NodePath("BuildButton4"), NodePath("BuildButton 5")]
+
+[node name="BuildButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 32.0
+offset_top = -176.0
+offset_right = 160.0
+offset_bottom = -120.0
+text = "Lumber Mill"
+
+[node name="BuildButton2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 176.0
+offset_top = -176.0
+offset_right = 304.0
+offset_bottom = -120.0
+text = "Stone Quarry"
+
+[node name="BuildButton3" type="Button" parent="."]
+layout_mode = 0
+offset_left = 176.0
+offset_top = -96.0
+offset_right = 304.0
+offset_bottom = -48.0
+text = "Farm"
+
+[node name="BuildButton4" type="Button" parent="."]
+layout_mode = 0
+offset_left = 320.0
+offset_top = -176.0
+offset_right = 448.0
+offset_bottom = -120.0
+text = "Gold Mine"
+
+[node name="BuildButton 5" type="Button" parent="."]
+layout_mode = 0
+offset_left = 32.0
+offset_top = -96.0
+offset_right = 160.0
+offset_bottom = -48.0
+mouse_filter = 1
+text = "Sentry"

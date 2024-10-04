@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://cf2jktu1qw66f"]
+
+[node name="SubMenu" type="Control"]
+z_index = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+z_index = 1
+layout_mode = 0
+offset_left = 416.0
+offset_top = 448.0
+offset_right = 864.0
+offset_bottom = 576.0
+
+[node name="Button" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 16.0
+offset_right = 104.0
+offset_bottom = 56.0
+text = "Unit"

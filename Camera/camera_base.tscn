@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://drl54m7bsipnb"]
+
+[ext_resource type="Script" path="res://Camera/camera_base.gd" id="1_wqx4t"]
+
+[node name="camera_base" type="Node3D"]
+script = ExtResource("1_wqx4t")
+
+[node name="camera_socket" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 6, 0)
+
+[node name="Camera3D" type="Camera3D" parent="camera_socket"]

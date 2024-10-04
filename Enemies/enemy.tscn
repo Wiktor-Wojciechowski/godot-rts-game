@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://cmthmnm5plomi"]
+
+[ext_resource type="Script" path="res://Enemies/enemy.gd" id="1_24m20"]
+[ext_resource type="Script" path="res://Components/health_component.gd" id="1_iltdi"]
+[ext_resource type="PackedScene" uid="uid://x10cogs6d5ud" path="res://Components/health_bar.tscn" id="2_1jf8o"]
+[ext_resource type="PackedScene" uid="uid://dddblpsohwys0" path="res://Components/attack_component.tscn" id="2_4v74i"]
+[ext_resource type="PackedScene" uid="uid://c15ykdiutqykk" path="res://Components/movement_component.tscn" id="2_17itj"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_420b2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4q3fn"]
+
+[node name="Enemy" type="CharacterBody3D" groups=["enemies"]]
+collision_layer = 8
+collision_mask = 6
+script = ExtResource("1_24m20")
+
+[node name="MovementComponent" parent="." instance=ExtResource("2_17itj")]
+speed = 5
+
+[node name="AttackComponent" parent="." instance=ExtResource("2_4v74i")]
+attack_damage = 1
+can_attack_while_moving = true
+
+[node name="AttackRange" parent="AttackComponent" index="0"]
+collision_mask = 6
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_420b2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_4q3fn")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("1_iltdi")
+max_health = 2000
+
+[node name="HealthBar" parent="." node_paths=PackedStringArray("healthcomponent") instance=ExtResource("2_1jf8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+healthcomponent = NodePath("../HealthComponent")
+
+[editable path="AttackComponent"]

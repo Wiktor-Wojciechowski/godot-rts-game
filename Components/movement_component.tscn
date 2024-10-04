@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://c15ykdiutqykk"]
+
+[ext_resource type="Script" path="res://Components/movement_component.gd" id="1_u3q1t"]
+
+[node name="MovementComponent" type="Node3D"]
+script = ExtResource("1_u3q1t")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+target_desired_distance = 1.1
+path_height_offset = 1.0
+avoidance_enabled = true

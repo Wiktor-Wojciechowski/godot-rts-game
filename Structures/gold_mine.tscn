@@ -1,0 +1,46 @@
+[gd_scene load_steps=9 format=3 uid="uid://baf5bl7w8u7hi"]
+
+[ext_resource type="Script" path="res://Structures/gold_mine.gd" id="1_thk8o"]
+[ext_resource type="PackedScene" uid="uid://x10cogs6d5ud" path="res://Components/health_bar.tscn" id="2_eyvu1"]
+[ext_resource type="PackedScene" uid="uid://du0opqlxswb3l" path="res://Components/health_component.tscn" id="3_rb0vl"]
+[ext_resource type="Script" path="res://Components/selection.gd" id="4_fb07f"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yg7bc"]
+albedo_color = Color(0.304702, 0.685887, 0.324038, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_d7lni"]
+material = SubResource("StandardMaterial3D_yg7bc")
+size = Vector3(1, 3, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s8lh4"]
+size = Vector3(1, 3, 1)
+
+[sub_resource type="TorusMesh" id="TorusMesh_cew5e"]
+inner_radius = 0.9
+outer_radius = 1.1
+
+[node name="GoldMine" type="StaticBody3D"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_thk8o")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.51, 0)
+mesh = SubResource("BoxMesh_d7lni")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.51, 0)
+shape = SubResource("BoxShape3D_s8lh4")
+
+[node name="HealthBar" parent="." node_paths=PackedStringArray("healthcomponent") instance=ExtResource("2_eyvu1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+healthcomponent = NodePath("../HealthComponent")
+
+[node name="HealthComponent" parent="." instance=ExtResource("3_rb0vl")]
+
+[node name="Selection" type="Node3D" parent="."]
+script = ExtResource("4_fb07f")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Selection"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+mesh = SubResource("TorusMesh_cew5e")

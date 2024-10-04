@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dajrpt5sfcpi6"]
+
+[ext_resource type="Script" path="res://LevelTools/unit_selector.gd" id="1_77kvo"]
+[ext_resource type="Script" path="res://LevelTools/control.gd" id="2_4m2n7"]
+
+[node name="UnitSelector" type="Node3D"]
+script = ExtResource("1_77kvo")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_4m2n7")

@@ -1,0 +1,61 @@
+[gd_scene load_steps=11 format=3 uid="uid://dsjd6d5ootf2m"]
+
+[ext_resource type="Script" path="res://Structures/stone_quarry.gd" id="1_s756d"]
+[ext_resource type="PackedScene" uid="uid://du0opqlxswb3l" path="res://Components/health_component.tscn" id="2_hjhcy"]
+[ext_resource type="PackedScene" uid="uid://x10cogs6d5ud" path="res://Components/health_bar.tscn" id="3_felje"]
+[ext_resource type="Script" path="res://Components/selection.gd" id="4_vwug6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tg516"]
+albedo_color = Color(0.0889694, 0.451191, 0.885981, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gnkia"]
+material = SubResource("StandardMaterial3D_tg516")
+size = Vector3(5, 1, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7b33g"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_yk56c"]
+material = SubResource("StandardMaterial3D_7b33g")
+size = Vector3(3, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5i0ai"]
+size = Vector3(5, 1.5, 3.5)
+
+[sub_resource type="TorusMesh" id="TorusMesh_i5614"]
+inner_radius = 3.4
+outer_radius = 3.6
+
+[node name="StoneQuarry" type="StaticBody3D"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_s756d")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.74459, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_gnkia")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 0)
+mesh = SubResource("BoxMesh_yk56c")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0)
+mesh = SubResource("BoxMesh_yk56c")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+shape = SubResource("BoxShape3D_5i0ai")
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_hjhcy")]
+max_health = 500
+
+[node name="HealthBar" parent="." node_paths=PackedStringArray("healthcomponent") instance=ExtResource("3_felje")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+healthcomponent = NodePath("../HealthComponent")
+
+[node name="Selection" type="Node3D" parent="."]
+script = ExtResource("4_vwug6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Selection"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+mesh = SubResource("TorusMesh_i5614")

@@ -1,0 +1,47 @@
+[gd_scene load_steps=9 format=3 uid="uid://sua3dxpdapto"]
+
+[ext_resource type="Script" path="res://Structures/farm.gd" id="1_fckei"]
+[ext_resource type="PackedScene" uid="uid://du0opqlxswb3l" path="res://Components/health_component.tscn" id="2_v15mj"]
+[ext_resource type="PackedScene" uid="uid://x10cogs6d5ud" path="res://Components/health_bar.tscn" id="3_o3h2l"]
+[ext_resource type="Script" path="res://Components/selection.gd" id="4_lj2p6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tg516"]
+albedo_color = Color(0.792157, 0.478431, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gnkia"]
+material = SubResource("StandardMaterial3D_tg516")
+size = Vector3(5, 1, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5i0ai"]
+size = Vector3(5, 1.5, 3.5)
+
+[sub_resource type="TorusMesh" id="TorusMesh_u8j6w"]
+inner_radius = 3.5
+outer_radius = 3.7
+
+[node name="Farm" type="StaticBody3D"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_fckei")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.74459, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_gnkia")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+shape = SubResource("BoxShape3D_5i0ai")
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_v15mj")]
+max_health = 10000
+
+[node name="HealthBar" parent="." node_paths=PackedStringArray("healthcomponent") instance=ExtResource("3_o3h2l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+healthcomponent = NodePath("../HealthComponent")
+
+[node name="Selection" type="Node3D" parent="."]
+script = ExtResource("4_lj2p6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Selection"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+mesh = SubResource("TorusMesh_u8j6w")

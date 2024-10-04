@@ -1,0 +1,10 @@
+[gd_scene load_steps=5 format=3 uid="uid://1ylbrb3ekhw7"]
+
+[ext_resource type="Script" path="res://LevelTools/building_placer.gd" id="1_m8ec5"]
+[ext_resource type="PackedScene" uid="uid://wr5eh3cwk62k" path="res://Structures/lumber_mill.tscn" id="2_fglgu"]
+[ext_resource type="PackedScene" uid="uid://dsjd6d5ootf2m" path="res://Structures/stone_quarry.tscn" id="3_tcukj"]
+[ext_resource type="PackedScene" uid="uid://baf5bl7w8u7hi" path="res://Structures/gold_mine.tscn" id="4_410kt"]
+
+[node name="BuildingPlacer" type="Node3D"]
+script = ExtResource("1_m8ec5")
+buildings = Array[PackedScene]([ExtResource("2_fglgu"), ExtResource("3_tcukj"), ExtResource("4_410kt")])
