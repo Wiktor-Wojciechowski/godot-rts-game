@@ -2,11 +2,14 @@
 extends Node3D
 
 @export var camera: Camera3D
-
 @export var unit_group: Array = []
+@export var ui: Control
+
 @onready var selection_rect_control := $Control  # Reference to the Control node for drawing
 
 @onready var building_placer = get_parent().get_node("BuildingPlacer")
+
+var can_select = true
 
 var selection_start: Vector2
 var selection_end: Vector2
@@ -17,6 +20,8 @@ var selected_building: Building = null
 
 var single_click_threshold := 5  # Threshold to distinguish click vs drag
 var is_single_click: bool = false
+
+var sub_menu = null
 
 func _ready() -> void:
 	# Ensure the Control node is set to ignore input for this to work
@@ -31,29 +36,30 @@ func _physics_process(_delta):
 		pass
 
 func _input(event: InputEvent) -> void:
-	if not building_placer.placing:
-		if event is InputEventMouseButton:
-			if event.button_index == MOUSE_BUTTON_LEFT:
-				if event.pressed:
-					selection_start = get_viewport().get_mouse_position()
-					selection_end = selection_start
-					is_selecting = true
-					is_single_click = true  # Assume it's a single click initially
-					selection_rect_control.start_selection(selection_start)
-				else:
-					if is_selecting:
-						# Check if the mouse was dragged far enough to be considered a rectangle selection
-						if selection_start.distance_to(selection_end) > single_click_threshold:
-							select_units_in_rectangle()
-						else:
-							select_single_unit()  # Handle single unit selection
-						is_selecting = false
-						selection_rect_control.end_selection()
+	if can_select:
+		if not building_placer.placing:
+			if event is InputEventMouseButton:
+				if event.button_index == MOUSE_BUTTON_LEFT:
+					if event.pressed:
+						selection_start = get_viewport().get_mouse_position()
+						selection_end = selection_start
+						is_selecting = true
+						is_single_click = true  # Assume it's a single click initially
+						selection_rect_control.start_selection(selection_start)
+					else:
+						if is_selecting:
+							# Check if the mouse was dragged far enough to be considered a rectangle selection
+							if selection_start.distance_to(selection_end) > single_click_threshold:
+								select_units_in_rectangle()
+							else:
+								select_single_unit()  # Handle single unit selection
+							is_selecting = false
+							selection_rect_control.end_selection()
 
-		elif event is InputEventMouseMotion and is_selecting:
-			selection_end = get_viewport().get_mouse_position()
-			selection_rect_control.update_selection(selection_end)
-			is_single_click = false  # If the mouse is moving, it's not a single click anymore
+			elif event is InputEventMouseMotion and is_selecting:
+				selection_end = get_viewport().get_mouse_position()
+				selection_rect_control.update_selection(selection_end)
+				is_single_click = false  # If the mouse is moving, it's not a single click anymore
 
 func select_units_in_rectangle() -> void:
 	# Deselect all units initially
@@ -64,9 +70,10 @@ func select_units_in_rectangle() -> void:
 	var screen_rect = Rect2(selection_start, selection_end - selection_start).abs()
 
 	for unit in unit_group:
-		var screen_pos = viewport.get_camera_3d().unproject_position(unit.global_position)
-		if screen_rect.has_point(screen_pos):
-			select_unit(unit)
+		if is_instance_valid(unit):
+			var screen_pos = viewport.get_camera_3d().unproject_position(unit.global_position)
+			if screen_rect.has_point(screen_pos):
+				select_unit(unit)
 
 func select_single_unit() -> void:
 	# Perform raycast to find unit under the mouse cursor
@@ -120,12 +127,23 @@ func deselect_all_units() -> void:
 func select_building(building):
 	selected_building = building
 	if selected_building.menu:
-		selected_building.menu.show()
+		sub_menu = selected_building.menu.instantiate()
+		ui.add_child(sub_menu)
+		print(ui.get_node("BarracksMenu"))
 	building.selection.select()
 	
 func deselect_building():
 	if selected_building:
 		if selected_building.menu:
-			selected_building.menu.hide()
+			ui.remove_child(sub_menu)
+			sub_menu.queue_free()
 		selected_building.selection.deselect()
 		selected_building = null
+
+func _on_ui_mouse_entered() -> void:
+	print('a')
+	can_select = false
+
+func _on_ui_mouse_exited() -> void:
+	print('e')
+	can_select = true

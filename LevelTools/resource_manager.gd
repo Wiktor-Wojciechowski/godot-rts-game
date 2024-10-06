@@ -7,7 +7,7 @@ extends Node
 @export var gold: int = 0
 
 # Signal to update the UI when resources change
-signal resources_updated()
+signal resources_updated
 
 # Add resources based on type
 func add_resource(resource_type: String, amount: int) -> void:

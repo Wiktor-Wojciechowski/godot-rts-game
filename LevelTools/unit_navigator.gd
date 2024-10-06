@@ -200,12 +200,16 @@ func calculate_box_positions(target_position: Vector3):
 	var row_length = ceil(sqrt(num_units)) # Number of units per row
 	var column_length = ceil(num_units / row_length) # Number of units per column
 
+	# Recalculate to balance rows and columns
+	if row_length * (column_length - 1) >= num_units:
+		column_length -= 1
+
 	# Calculate the starting point to center the formation around the target position
 	var half_width = (row_length - 1) * unit_size / 2
 	var half_height = (column_length - 1) * unit_size / 2
 
 	for i in range(num_units):
-		var row = i / row_length
+		var row = i / int(row_length)
 		var col = i % int(row_length)
 
 		var position_x = target_position.x - half_width + col * unit_size

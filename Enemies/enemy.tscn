@@ -20,7 +20,6 @@ speed = 5
 
 [node name="AttackComponent" parent="." instance=ExtResource("2_4v74i")]
 attack_damage = 1
-can_attack_while_moving = true
 
 [node name="AttackRange" parent="AttackComponent" index="0"]
 collision_mask = 6
@@ -35,7 +34,7 @@ shape = SubResource("BoxShape3D_4q3fn")
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("1_iltdi")
-max_health = 2000
+max_health = 200
 
 [node name="HealthBar" parent="." node_paths=PackedStringArray("healthcomponent") instance=ExtResource("2_1jf8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)

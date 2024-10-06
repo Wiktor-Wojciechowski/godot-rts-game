@@ -1,23 +1,28 @@
-[gd_scene load_steps=24 format=3 uid="uid://cpfjrb5kb522m"]
+[gd_scene load_steps=29 format=3 uid="uid://cpfjrb5kb522m"]
 
 [ext_resource type="PackedScene" uid="uid://b10u13jt02rgb" path="res://UI/resource_menu.tscn" id="1_i0ka2"]
 [ext_resource type="Texture2D" uid="uid://4rhknkiec0mx" path="res://Assets/Textures/rocky_terrain_02_diff_4k.jpg" id="1_i7mjr"]
+[ext_resource type="PackedScene" uid="uid://ct8jhcy5gigkv" path="res://LevelTools/game_manager.tscn" id="1_m3myb"]
 [ext_resource type="PackedScene" uid="uid://b65st7dliy0ls" path="res://Structures/enemy_spawner.tscn" id="1_n5hro"]
 [ext_resource type="PackedScene" uid="uid://bloymlrlcsvpm" path="res://Structures/sentry.tscn" id="1_pnc6p"]
 [ext_resource type="PackedScene" uid="uid://cf0m7jmb6c2i7" path="res://UI/building_menu.tscn" id="2_h3d2a"]
 [ext_resource type="Script" path="res://Camera/camera_base.gd" id="3_av6xu"]
-[ext_resource type="PackedScene" uid="uid://cmx525e68klb4" path="res://Structures/barracks.tscn" id="3_ttter"]
 [ext_resource type="PackedScene" uid="uid://1ylbrb3ekhw7" path="res://LevelTools/building_placer.tscn" id="3_y2stf"]
 [ext_resource type="PackedScene" uid="uid://bkulfn8fo0c47" path="res://Units/unit.tscn" id="4_bxbvq"]
 [ext_resource type="PackedScene" uid="uid://6vftfv5fa38s" path="res://LevelTools/unit_navigator.tscn" id="5_cdxmi"]
 [ext_resource type="PackedScene" uid="uid://dajrpt5sfcpi6" path="res://LevelTools/unit_selector.tscn" id="5_uwunu"]
 [ext_resource type="PackedScene" uid="uid://wr5eh3cwk62k" path="res://Structures/lumber_mill.tscn" id="5_vda2q"]
 [ext_resource type="PackedScene" uid="uid://dsjd6d5ootf2m" path="res://Structures/stone_quarry.tscn" id="6_tfr6s"]
+[ext_resource type="Script" path="res://UI/ui.gd" id="7_220hx"]
 [ext_resource type="PackedScene" uid="uid://baf5bl7w8u7hi" path="res://Structures/gold_mine.tscn" id="7_re1cj"]
 [ext_resource type="PackedScene" uid="uid://sua3dxpdapto" path="res://Structures/farm.tscn" id="8_0dwld"]
 [ext_resource type="PackedScene" uid="uid://cmthmnm5plomi" path="res://Enemies/enemy.tscn" id="8_4qxdn"]
 [ext_resource type="Script" path="res://Missions/label.gd" id="9_hr0co"]
+[ext_resource type="PackedScene" uid="uid://cmx525e68klb4" path="res://Structures/barracks.tscn" id="10_4v3gb"]
 [ext_resource type="PackedScene" uid="uid://d0bgsfrstf7a" path="res://Units/archer.tscn" id="18_ftak6"]
+[ext_resource type="PackedScene" uid="uid://w1bfn33te562" path="res://LevelTools/resource_manager.tscn" id="18_wi327"]
+[ext_resource type="PackedScene" uid="uid://bujdhl6sr27mh" path="res://Units/soldier.tscn" id="20_bpjsi"]
+[ext_resource type="PackedScene" uid="uid://dj26ojxyv2idv" path="res://Units/wizard.tscn" id="22_j51b6"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_h2kvd"]
 geometry_parsed_geometry_type = 1
@@ -45,6 +50,8 @@ ssao_enabled = true
 
 [node name="TestMission" type="Node3D"]
 
+[node name="GameManager" parent="." instance=ExtResource("1_m3myb")]
+
 [node name="EnemySpawner" parent="." instance=ExtResource("1_n5hro")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 0)
 enemy = ExtResource("8_4qxdn")
@@ -71,8 +78,8 @@ shape = SubResource("BoxShape3D_3guve")
 
 [node name="Structures" type="Node3D" parent="NavigationRegion3D"]
 
-[node name="Barracks" parent="NavigationRegion3D/Structures" instance=ExtResource("3_ttter")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.87223, 0.00245801, 0)
+[node name="Barracks" parent="NavigationRegion3D/Structures" instance=ExtResource("10_4v3gb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.0425, 0.5, 18.6576)
 
 [node name="camera_base" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
@@ -96,28 +103,38 @@ shadow_opacity = 0.65
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
+script = ExtResource("7_220hx")
 
-[node name="ResourceMenu" parent="UI" instance=ExtResource("1_i0ka2")]
+[node name="ResourceMenu" parent="UI" node_paths=PackedStringArray("resource_manager") instance=ExtResource("1_i0ka2")]
+offset_left = -576.0
+offset_top = -324.0
+offset_right = -576.0
+offset_bottom = -324.0
+resource_manager = NodePath("../../ResourceManager")
 
 [node name="BuildingMenu" parent="UI" node_paths=PackedStringArray("building_placer", "building_buttons") instance=ExtResource("2_h3d2a")]
 layout_mode = 1
-offset_left = 2.0
-offset_top = 487.0
-offset_right = -671.0
-offset_bottom = 6.0
+offset_left = -574.0
+offset_top = 161.0
+offset_right = -574.0
+offset_bottom = 161.0
 building_placer = NodePath("../../BuildingPlacer")
 building_buttons = []
 
 [node name="FPS" type="Label" parent="UI"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = -576.0
+offset_top = -324.0
+offset_right = -536.0
+offset_bottom = -301.0
+text = "FPS:"
 script = ExtResource("9_hr0co")
 
 [node name="BuildingPlacer" parent="." node_paths=PackedStringArray("camera", "nav_region") instance=ExtResource("3_y2stf")]
@@ -125,45 +142,459 @@ buildings = Array[PackedScene]([ExtResource("5_vda2q"), ExtResource("6_tfr6s"), 
 camera = NodePath("../camera_base/camera_socket/Camera3D")
 nav_region = NodePath("../NavigationRegion3D")
 
-[node name="UnitSelector" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("5_uwunu")]
+[node name="UnitSelector" parent="." node_paths=PackedStringArray("camera", "ui") instance=ExtResource("5_uwunu")]
 camera = NodePath("../camera_base/camera_socket/Camera3D")
+ui = NodePath("../UI")
 
 [node name="UnitNavigator" parent="." node_paths=PackedStringArray("camera", "target") instance=ExtResource("5_cdxmi")]
 camera = NodePath("../camera_base/camera_socket/Camera3D")
 target = NodePath("../Target")
 
+[node name="ResourceManager" parent="." instance=ExtResource("18_wi327")]
+
 [node name="Units" type="Node3D" parent="."]
 
-[node name="unit" parent="Units" instance=ExtResource("4_bxbvq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.0392, -0.0166988, -24.9715)
-
-[node name="unit2" parent="Units" instance=ExtResource("4_bxbvq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.0392, -0.0166988, -24.9715)
-
-[node name="unit3" parent="Units" instance=ExtResource("4_bxbvq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.0392, -0.0166988, -24.9715)
-
-[node name="unit4" parent="Units" instance=ExtResource("4_bxbvq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.0392, -0.0166988, -24.9715)
-
-[node name="unit5" parent="Units" instance=ExtResource("4_bxbvq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.0392, -0.0166988, -24.9715)
-
 [node name="Archer" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.8583, 0, -7.79264)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.8583, 0, -17.7926)
 
 [node name="Archer2" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.8583, 0, -7.79264)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.8583, 0, -17.7926)
 
 [node name="Archer3" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.8583, 0, -7.79264)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.8583, 0, -17.7926)
+
+[node name="Archer4" parent="Units" instance=ExtResource("18_ftak6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.8583, 0, -17.7926)
+
+[node name="Archer5" parent="Units" instance=ExtResource("18_ftak6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.8583, 0, -15.7926)
+
+[node name="Archer6" parent="Units" instance=ExtResource("18_ftak6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.8583, 0, -15.7926)
+
+[node name="Archer7" parent="Units" instance=ExtResource("18_ftak6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.8583, 0, -15.7926)
+
+[node name="Archer8" parent="Units" instance=ExtResource("18_ftak6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.8583, 0, -15.7926)
+
+[node name="Archer9" parent="Units" instance=ExtResource("18_ftak6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.8583, 0, -13.7926)
+
+[node name="Archer10" parent="Units" instance=ExtResource("18_ftak6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.8583, 0, -13.7926)
+
+[node name="Archer11" parent="Units" instance=ExtResource("18_ftak6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.8583, 0, -13.7926)
+
+[node name="Archer12" parent="Units" instance=ExtResource("18_ftak6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.8583, 0, -13.7926)
+
+[node name="Archer13" parent="Units" instance=ExtResource("18_ftak6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.8583, 0, -11.7926)
+
+[node name="Archer14" parent="Units" instance=ExtResource("18_ftak6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.8583, 0, -11.7926)
+
+[node name="Archer15" parent="Units" instance=ExtResource("18_ftak6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.8583, 0, -11.7926)
+
+[node name="Archer16" parent="Units" instance=ExtResource("18_ftak6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.8583, 0, -11.7926)
+
+[node name="Soldier" parent="Units" instance=ExtResource("20_bpjsi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 0, -13)
+
+[node name="Wizard" parent="Units" instance=ExtResource("22_j51b6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, -21)
+
+[node name="Wizard2" parent="Units" instance=ExtResource("22_j51b6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, -21)
+
+[node name="Wizard3" parent="Units" instance=ExtResource("22_j51b6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, -18)
+
+[node name="Wizard4" parent="Units" instance=ExtResource("22_j51b6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, -18)
+
+[node name="Archer17" parent="Units" instance=ExtResource("18_ftak6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8583, 0, -17.7926)
+
+[node name="Archer18" parent="Units" instance=ExtResource("18_ftak6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8583, 0, -17.7926)
+
+[node name="Archer19" parent="Units" instance=ExtResource("18_ftak6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.8583, 0, -17.7926)
+
+[node name="Archer20" parent="Units" instance=ExtResource("18_ftak6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.8583, 0, -17.7926)
+
+[node name="Archer21" parent="Units" instance=ExtResource("18_ftak6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8583, 0, -15.7926)
+
+[node name="Archer22" parent="Units" instance=ExtResource("18_ftak6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8583, 0, -15.7926)
+
+[node name="Archer23" parent="Units" instance=ExtResource("18_ftak6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.8583, 0, -15.7926)
+
+[node name="Archer24" parent="Units" instance=ExtResource("18_ftak6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.8583, 0, -15.7926)
+
+[node name="Archer25" parent="Units" instance=ExtResource("18_ftak6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8583, 0, -13.7926)
+
+[node name="Archer26" parent="Units" instance=ExtResource("18_ftak6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8583, 0, -13.7926)
+
+[node name="Archer27" parent="Units" instance=ExtResource("18_ftak6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.8583, 0, -13.7926)
+
+[node name="Archer28" parent="Units" instance=ExtResource("18_ftak6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.8583, 0, -13.7926)
+
+[node name="Archer29" parent="Units" instance=ExtResource("18_ftak6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8583, 0, -11.7926)
+
+[node name="Archer30" parent="Units" instance=ExtResource("18_ftak6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8583, 0, -11.7926)
+
+[node name="Archer31" parent="Units" instance=ExtResource("18_ftak6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.8583, 0, -11.7926)
+
+[node name="Archer32" parent="Units" instance=ExtResource("18_ftak6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.8583, 0, -11.7926)
+
+[node name="Wizard5" parent="Units" instance=ExtResource("22_j51b6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -21)
+
+[node name="Wizard6" parent="Units" instance=ExtResource("22_j51b6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -21)
+
+[node name="Wizard7" parent="Units" instance=ExtResource("22_j51b6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -18)
+
+[node name="Wizard8" parent="Units" instance=ExtResource("22_j51b6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -18)
+
+[node name="Archer33" parent="Units" instance=ExtResource("18_ftak6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.8583, 0, 5.20736)
+
+[node name="Archer34" parent="Units" instance=ExtResource("18_ftak6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.8583, 0, 5.20736)
+
+[node name="Archer35" parent="Units" instance=ExtResource("18_ftak6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.8583, 0, 5.20736)
+
+[node name="Archer36" parent="Units" instance=ExtResource("18_ftak6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.8583, 0, 5.20736)
+
+[node name="Archer37" parent="Units" instance=ExtResource("18_ftak6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.8583, 0, 7.20736)
+
+[node name="Archer38" parent="Units" instance=ExtResource("18_ftak6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.8583, 0, 7.20736)
+
+[node name="Archer39" parent="Units" instance=ExtResource("18_ftak6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.8583, 0, 7.20736)
+
+[node name="Archer40" parent="Units" instance=ExtResource("18_ftak6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.8583, 0, 7.20736)
+
+[node name="Archer41" parent="Units" instance=ExtResource("18_ftak6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.8583, 0, 9.20736)
+
+[node name="Archer42" parent="Units" instance=ExtResource("18_ftak6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.8583, 0, 9.20736)
+
+[node name="Archer43" parent="Units" instance=ExtResource("18_ftak6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.8583, 0, 9.20736)
+
+[node name="Archer44" parent="Units" instance=ExtResource("18_ftak6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.8583, 0, 9.20736)
+
+[node name="Archer45" parent="Units" instance=ExtResource("18_ftak6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.8583, 0, 11.2074)
+
+[node name="Archer46" parent="Units" instance=ExtResource("18_ftak6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.8583, 0, 11.2074)
+
+[node name="Archer47" parent="Units" instance=ExtResource("18_ftak6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.8583, 0, 11.2074)
+
+[node name="Archer48" parent="Units" instance=ExtResource("18_ftak6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.8583, 0, 11.2074)
+
+[node name="Soldier2" parent="Units" instance=ExtResource("20_bpjsi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 0, 10)
+
+[node name="Wizard9" parent="Units" instance=ExtResource("22_j51b6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 2)
+
+[node name="Wizard10" parent="Units" instance=ExtResource("22_j51b6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, 2)
+
+[node name="Wizard11" parent="Units" instance=ExtResource("22_j51b6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, 5)
+
+[node name="Wizard12" parent="Units" instance=ExtResource("22_j51b6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 5)
+
+[node name="Archer49" parent="Units" instance=ExtResource("18_ftak6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8583, 0, 5.20736)
+
+[node name="Archer50" parent="Units" instance=ExtResource("18_ftak6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8583, 0, 5.20736)
+
+[node name="Archer51" parent="Units" instance=ExtResource("18_ftak6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.8583, 0, 5.20736)
+
+[node name="Archer52" parent="Units" instance=ExtResource("18_ftak6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.8583, 0, 5.20736)
+
+[node name="Archer53" parent="Units" instance=ExtResource("18_ftak6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8583, 0, 7.20736)
+
+[node name="Archer54" parent="Units" instance=ExtResource("18_ftak6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8583, 0, 7.20736)
+
+[node name="Archer55" parent="Units" instance=ExtResource("18_ftak6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.8583, 0, 7.20736)
+
+[node name="Archer56" parent="Units" instance=ExtResource("18_ftak6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.8583, 0, 7.20736)
+
+[node name="Archer57" parent="Units" instance=ExtResource("18_ftak6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8583, 0, 9.20736)
+
+[node name="Archer58" parent="Units" instance=ExtResource("18_ftak6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8583, 0, 9.20736)
+
+[node name="Archer59" parent="Units" instance=ExtResource("18_ftak6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.8583, 0, 9.20736)
+
+[node name="Archer60" parent="Units" instance=ExtResource("18_ftak6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.8583, 0, 9.20736)
+
+[node name="Archer61" parent="Units" instance=ExtResource("18_ftak6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8583, 0, 11.2074)
+
+[node name="Archer62" parent="Units" instance=ExtResource("18_ftak6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8583, 0, 11.2074)
+
+[node name="Archer63" parent="Units" instance=ExtResource("18_ftak6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.8583, 0, 11.2074)
+
+[node name="Archer64" parent="Units" instance=ExtResource("18_ftak6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.8583, 0, 11.2074)
+
+[node name="Wizard13" parent="Units" instance=ExtResource("22_j51b6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 2)
+
+[node name="Wizard14" parent="Units" instance=ExtResource("22_j51b6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+
+[node name="Wizard15" parent="Units" instance=ExtResource("22_j51b6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 5)
+
+[node name="Wizard16" parent="Units" instance=ExtResource("22_j51b6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 5)
 
 [node name="Target" type="Marker3D" parent="."]
 
 [node name="Enemies" type="Node3D" parent="."]
 
-[node name="Enemy35" parent="Enemies" instance=ExtResource("8_4qxdn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.4046, 0, -10.5544)
-
 [node name="Enemy36" parent="Enemies" instance=ExtResource("8_4qxdn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.4046, 0, -8.5544)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.4046, 0, 12.4456)
+
+[node name="Enemy37" parent="Enemies" instance=ExtResource("8_4qxdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.4046, 0, -20.5544)
+
+[node name="Enemy38" parent="Enemies" instance=ExtResource("8_4qxdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.4046, 0, -20.5544)
+
+[node name="Enemy39" parent="Enemies" instance=ExtResource("8_4qxdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.4046, 0, -18.5544)
+
+[node name="Enemy40" parent="Enemies" instance=ExtResource("8_4qxdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.4046, 0, -18.5544)
+
+[node name="Enemy41" parent="Enemies" instance=ExtResource("8_4qxdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.4046, 0, -20.5544)
+
+[node name="Enemy42" parent="Enemies" instance=ExtResource("8_4qxdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.4046, 0, -20.5544)
+
+[node name="Enemy43" parent="Enemies" instance=ExtResource("8_4qxdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.4046, 0, -18.5544)
+
+[node name="Enemy44" parent="Enemies" instance=ExtResource("8_4qxdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.4046, 0, -18.5544)
+
+[node name="Enemy45" parent="Enemies" instance=ExtResource("8_4qxdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.4046, 0, -20.5544)
+
+[node name="Enemy46" parent="Enemies" instance=ExtResource("8_4qxdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.4046, 0, -20.5544)
+
+[node name="Enemy47" parent="Enemies" instance=ExtResource("8_4qxdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.4046, 0, -18.5544)
+
+[node name="Enemy48" parent="Enemies" instance=ExtResource("8_4qxdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.4046, 0, -18.5544)
+
+[node name="Enemy49" parent="Enemies" instance=ExtResource("8_4qxdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.4046, 0, -20.5544)
+
+[node name="Enemy50" parent="Enemies" instance=ExtResource("8_4qxdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.4046, 0, -20.5544)
+
+[node name="Enemy51" parent="Enemies" instance=ExtResource("8_4qxdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.4046, 0, -18.5544)
+
+[node name="Enemy52" parent="Enemies" instance=ExtResource("8_4qxdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.4046, 0, -23.5544)
+
+[node name="Enemy53" parent="Enemies" instance=ExtResource("8_4qxdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.4046, 0, -25.5544)
+
+[node name="Enemy54" parent="Enemies" instance=ExtResource("8_4qxdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.4046, 0, -25.5544)
+
+[node name="Enemy55" parent="Enemies" instance=ExtResource("8_4qxdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.4046, 0, -23.5544)
+
+[node name="Enemy56" parent="Enemies" instance=ExtResource("8_4qxdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.4046, 0, -23.5544)
+
+[node name="Enemy57" parent="Enemies" instance=ExtResource("8_4qxdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.4046, 0, -25.5544)
+
+[node name="Enemy58" parent="Enemies" instance=ExtResource("8_4qxdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.4046, 0, -25.5544)
+
+[node name="Enemy59" parent="Enemies" instance=ExtResource("8_4qxdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.4046, 0, -23.5544)
+
+[node name="Enemy60" parent="Enemies" instance=ExtResource("8_4qxdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.4046, 0, -23.5544)
+
+[node name="Enemy61" parent="Enemies" instance=ExtResource("8_4qxdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.4046, 0, -25.5544)
+
+[node name="Enemy62" parent="Enemies" instance=ExtResource("8_4qxdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.4046, 0, -25.5544)
+
+[node name="Enemy63" parent="Enemies" instance=ExtResource("8_4qxdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.4046, 0, -23.5544)
+
+[node name="Enemy64" parent="Enemies" instance=ExtResource("8_4qxdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.4046, 0, -23.5544)
+
+[node name="Enemy65" parent="Enemies" instance=ExtResource("8_4qxdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.4046, 0, -25.5544)
+
+[node name="Enemy66" parent="Enemies" instance=ExtResource("8_4qxdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.4046, 0, -25.5544)
+
+[node name="Enemy67" parent="Enemies" instance=ExtResource("8_4qxdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.4046, 0, -23.5544)
+
+[node name="Enemy68" parent="Enemies" instance=ExtResource("8_4qxdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.4046, 0, -28.5544)
+
+[node name="Enemy69" parent="Enemies" instance=ExtResource("8_4qxdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.4046, 0, -30.5544)
+
+[node name="Enemy70" parent="Enemies" instance=ExtResource("8_4qxdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.4046, 0, -30.5544)
+
+[node name="Enemy71" parent="Enemies" instance=ExtResource("8_4qxdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.4046, 0, -28.5544)
+
+[node name="Enemy72" parent="Enemies" instance=ExtResource("8_4qxdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.4046, 0, -28.5544)
+
+[node name="Enemy73" parent="Enemies" instance=ExtResource("8_4qxdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.4046, 0, -30.5544)
+
+[node name="Enemy74" parent="Enemies" instance=ExtResource("8_4qxdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.4046, 0, -30.5544)
+
+[node name="Enemy75" parent="Enemies" instance=ExtResource("8_4qxdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.4046, 0, -28.5544)
+
+[node name="Enemy76" parent="Enemies" instance=ExtResource("8_4qxdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.4046, 0, -28.5544)
+
+[node name="Enemy77" parent="Enemies" instance=ExtResource("8_4qxdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.4046, 0, -30.5544)
+
+[node name="Enemy78" parent="Enemies" instance=ExtResource("8_4qxdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.4046, 0, -30.5544)
+
+[node name="Enemy79" parent="Enemies" instance=ExtResource("8_4qxdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.4046, 0, -28.5544)
+
+[node name="Enemy80" parent="Enemies" instance=ExtResource("8_4qxdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.4046, 0, -28.5544)
+
+[node name="Enemy81" parent="Enemies" instance=ExtResource("8_4qxdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.4046, 0, -30.5544)
+
+[node name="Enemy82" parent="Enemies" instance=ExtResource("8_4qxdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.4046, 0, -30.5544)
+
+[node name="Enemy83" parent="Enemies" instance=ExtResource("8_4qxdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.4046, 0, -28.5544)
+
+[node name="Enemy84" parent="Enemies" instance=ExtResource("8_4qxdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.4046, 0, -33.5544)
+
+[node name="Enemy85" parent="Enemies" instance=ExtResource("8_4qxdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.4046, 0, -35.5544)
+
+[node name="Enemy86" parent="Enemies" instance=ExtResource("8_4qxdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.4046, 0, -35.5544)
+
+[node name="Enemy87" parent="Enemies" instance=ExtResource("8_4qxdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.4046, 0, -33.5544)
+
+[node name="Enemy88" parent="Enemies" instance=ExtResource("8_4qxdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.4046, 0, -33.5544)
+
+[node name="Enemy89" parent="Enemies" instance=ExtResource("8_4qxdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.4046, 0, -35.5544)
+
+[node name="Enemy90" parent="Enemies" instance=ExtResource("8_4qxdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.4046, 0, -35.5544)
+
+[node name="Enemy91" parent="Enemies" instance=ExtResource("8_4qxdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.4046, 0, -33.5544)
+
+[node name="Enemy92" parent="Enemies" instance=ExtResource("8_4qxdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.4046, 0, -33.5544)
+
+[node name="Enemy93" parent="Enemies" instance=ExtResource("8_4qxdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.4046, 0, -35.5544)
+
+[node name="Enemy94" parent="Enemies" instance=ExtResource("8_4qxdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.4046, 0, -35.5544)
+
+[node name="Enemy95" parent="Enemies" instance=ExtResource("8_4qxdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.4046, 0, -33.5544)
+
+[node name="Enemy96" parent="Enemies" instance=ExtResource("8_4qxdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.4046, 0, -33.5544)
+
+[node name="Enemy97" parent="Enemies" instance=ExtResource("8_4qxdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.4046, 0, -35.5544)
+
+[node name="Enemy98" parent="Enemies" instance=ExtResource("8_4qxdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.4046, 0, -35.5544)
+
+[node name="Enemy99" parent="Enemies" instance=ExtResource("8_4qxdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.4046, 0, -33.5544)
+
+[connection signal="mouse_entered" from="UI" to="UnitSelector" method="_on_ui_mouse_entered"]
+[connection signal="mouse_exited" from="UI" to="UnitSelector" method="_on_ui_mouse_exited"]

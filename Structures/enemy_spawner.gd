@@ -14,7 +14,8 @@ func _process(delta: float) -> void:
 
 
 func _on_timer_timeout() -> void:
-	var enemy_instance = enemy.instantiate()
-	
-	get_tree().current_scene.get_node(group).add_child(enemy_instance)
-	enemy_instance.global_position = global_position
+	if get_parent().get_node("GameManager").number_of_enemies < 0:
+		var enemy_instance = enemy.instantiate()
+		
+		get_tree().current_scene.get_node(group).add_child(enemy_instance)
+		enemy_instance.global_position = global_position

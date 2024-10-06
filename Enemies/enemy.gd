@@ -7,14 +7,16 @@ class_name Enemy
 @onready var health_bar = $HealthBar
 @onready var health_component = $HealthComponent  
 
+@export var can_attack_while_moving = true
+
 var enemies_in_range = []
 
 var player_buildings = []
 var closest_building = null
 
-var team = 2
+var current_target = null
 
-var speed = 1
+var team = 2
 
 func _ready() -> void:
 	#movement_component.move_to(Vector3(-200,0,0))
@@ -27,17 +29,33 @@ func _process(delta: float) -> void:
 func enemy_behavior():
 	enemies_in_range = attack_component.target_nodes
 	
-	# Move to the closest enemy if one is in range
 	if not enemies_in_range.is_empty():
 		var closest_enemy = attack_component._find_closest_enemy()
 		if closest_enemy:
-			attack_component.target = closest_enemy
-			movement_component.follow_target(closest_enemy)
-			return
-	
-	# Otherwise, move to the closest building
-	if not closest_building:
-		closest_building = attack_component._find_closest_building()
+			current_target = closest_enemy
 	else:
-		attack_component.target = closest_building
-		movement_component.follow_target(closest_building)
+		if not closest_building:
+			closest_building = attack_component._find_closest_building()
+		else:
+			current_target = closest_building
+			
+	if current_target:
+		if not is_instance_valid(current_target) or current_target.team == team:
+			current_target = null
+			return
+		
+		movement_component.follow_target(current_target)
+		# Check if in range and attack conditions are met
+		if can_attack_target(current_target):
+			attack(current_target)
+
+func can_attack_target(target) -> bool:
+	if global_position.distance_to(target.global_position) > attack_component.attack_range:
+		return false
+	
+	# Ensure attack timer and other conditions are met
+	return attack_component.can_attack and not (movement_component.moving and can_attack_while_moving)
+
+func attack(target):
+	attack_component._rotate_to_target(target)
+	attack_component._shoot(target)

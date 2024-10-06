@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://ct8jhcy5gigkv"]
+
+[ext_resource type="Script" path="res://LevelTools/game_manager.gd" id="1_yij7s"]
+
+[node name="GameManager" type="Node3D"]
+script = ExtResource("1_yij7s")
+
+[node name="Label1" type="Label" parent="."]
+offset_top = 73.0
+offset_right = 40.0
+offset_bottom = 96.0
+
+[node name="Label2" type="Label" parent="."]
+offset_top = 125.0
+offset_right = 40.0
+offset_bottom = 148.0

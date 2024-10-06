@@ -5,9 +5,14 @@ extends Control
 func _ready() -> void:
 	pass # Replace with function body.
 
-func _gui_input(event: InputEvent) -> void:
-	print(event)
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+
+func _on_mouse_entered() -> void:
+	print('mouse entered')
+
+
+func _on_mouse_exited() -> void:
+	print('mouse exited')
