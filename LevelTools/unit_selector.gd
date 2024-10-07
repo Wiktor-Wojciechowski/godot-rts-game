@@ -2,12 +2,14 @@
 extends Node3D
 
 @export var camera: Camera3D
-@export var unit_group: Array = []
 @export var ui: Control
+@export var producible_units: Array[PackedScene]
 
 @onready var selection_rect_control := $Control  # Reference to the Control node for drawing
 
 @onready var building_placer = get_parent().get_node("BuildingPlacer")
+
+var unit_group: Array = []
 
 var can_select = true
 
@@ -129,7 +131,6 @@ func select_building(building):
 	if selected_building.menu:
 		sub_menu = selected_building.menu.instantiate()
 		ui.add_child(sub_menu)
-		print(ui.get_node("BarracksMenu"))
 	building.selection.select()
 	
 func deselect_building():
@@ -141,9 +142,15 @@ func deselect_building():
 		selected_building = null
 
 func _on_ui_mouse_entered() -> void:
-	print('a')
 	can_select = false
 
 func _on_ui_mouse_exited() -> void:
-	print('e')
 	can_select = true
+
+func on_produce_unit(index):
+	print("Producing unit: ", index)
+	var unit = producible_units[index].instantiate()
+	var units = get_tree().current_scene.find_child("Units")
+	units.add_child(unit)
+	unit.global_position = selected_building.spawn_point.global_position
+	

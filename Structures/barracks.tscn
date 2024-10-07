@@ -38,3 +38,18 @@ mesh = SubResource("TorusMesh_k77x6")
 
 [node name="ProductionQueue" type="Node" parent="."]
 script = ExtResource("3_0hq6x")
+
+[node name="QueueDisplay" type="Label" parent="ProductionQueue"]
+offset_left = 24.0
+offset_top = 286.0
+offset_right = 64.0
+offset_bottom = 309.0
+
+[node name="ProductionProgressBar" type="ProgressBar" parent="ProductionQueue"]
+offset_left = 7.0
+offset_top = 291.0
+offset_right = 114.0
+offset_bottom = 318.0
+
+[node name="SpawnPoint" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -3)

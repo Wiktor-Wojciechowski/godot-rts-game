@@ -145,6 +145,7 @@ nav_region = NodePath("../NavigationRegion3D")
 [node name="UnitSelector" parent="." node_paths=PackedStringArray("camera", "ui") instance=ExtResource("5_uwunu")]
 camera = NodePath("../camera_base/camera_socket/Camera3D")
 ui = NodePath("../UI")
+producible_units = [ExtResource("18_ftak6"), ExtResource("20_bpjsi")]
 
 [node name="UnitNavigator" parent="." node_paths=PackedStringArray("camera", "target") instance=ExtResource("5_cdxmi")]
 camera = NodePath("../camera_base/camera_socket/Camera3D")

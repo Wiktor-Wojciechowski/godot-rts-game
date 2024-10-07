@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://c4bm44jtlde3s"]
+[gd_scene load_steps=2 format=3 uid="uid://c4bm44jtlde3s"]
+
+[ext_resource type="Script" path="res://UI/barracks_menu.gd" id="1_ck0pr"]
 
 [node name="BarracksMenu" type="Control"]
 layout_mode = 3
@@ -10,6 +12,7 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+script = ExtResource("1_ck0pr")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
@@ -19,11 +22,20 @@ offset_right = 240.0
 offset_bottom = 252.0
 mouse_filter = 1
 
-[node name="Button" type="Button" parent="."]
+[node name="Unit0" type="Button" parent="."]
 layout_mode = 0
 offset_left = -216.0
 offset_top = 84.0
 offset_right = -161.0
+offset_bottom = 115.0
+mouse_filter = 1
+text = "Unit 1"
+
+[node name="Unit1" type="Button" parent="."]
+layout_mode = 0
+offset_left = -136.0
+offset_top = 84.0
+offset_right = -81.0
 offset_bottom = 115.0
 mouse_filter = 1
 text = "Unit 1"
