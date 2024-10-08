@@ -1,13 +1,10 @@
-[gd_resource type="Resource" script_class="UnitData" load_steps=3 format=3 uid="uid://btd85uvvcrrje"]
+[gd_resource type="Resource" script_class="UnitData" load_steps=2 format=3 uid="uid://btd85uvvcrrje"]
 
 [ext_resource type="Script" path="res://Resources/UnitData.gd" id="1_i4rw8"]
-[ext_resource type="PackedScene" uid="uid://d0bgsfrstf7a" path="res://Units/archer.tscn" id="2_u6f0t"]
 
 [resource]
 script = ExtResource("1_i4rw8")
-unit_name = "archer"
-unit_scene = ExtResource("2_u6f0t")
+unit_name = "Archer"
 production_time = 1.0
-health = 20
-attack = 10
-description = ""
+health = 40
+attack = 15

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="UnitData" load_steps=2 format=3 uid="uid://rw6h6s6dana"]
+
+[ext_resource type="Script" path="res://Resources/UnitData.gd" id="1_unuo4"]
+
+[resource]
+script = ExtResource("1_unuo4")
+unit_name = "Zweihander"
+production_time = 5.0
+health = 100
+attack = 20

@@ -3,11 +3,11 @@ extends Node3D
 
 @export var camera: Camera3D
 @export var ui: Control
-@export var producible_units: Array[PackedScene]
 
 @onready var selection_rect_control := $Control  # Reference to the Control node for drawing
 
 @onready var building_placer = get_parent().get_node("BuildingPlacer")
+@onready var unit_resources = get_parent().get_node("UnitResources").unit_resources
 
 var unit_group: Array = []
 
@@ -28,6 +28,7 @@ var sub_menu = null
 func _ready() -> void:
 	# Ensure the Control node is set to ignore input for this to work
 	selection_rect_control.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	print(unit_resources)
 
 func _physics_process(_delta):
 	unit_group = get_tree().get_nodes_in_group("units")
@@ -148,9 +149,6 @@ func _on_ui_mouse_exited() -> void:
 	can_select = true
 
 func on_produce_unit(index):
-	print("Producing unit: ", index)
-	var unit = producible_units[index].instantiate()
-	var units = get_tree().current_scene.find_child("Units")
-	units.add_child(unit)
-	unit.global_position = selected_building.spawn_point.global_position
+	var unit_resource = unit_resources[index]
+	selected_building.production_queue.add_unit_to_queue(index, unit_resource.unit_name, unit_resource.production_time)
 	

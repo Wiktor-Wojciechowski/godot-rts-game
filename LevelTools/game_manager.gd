@@ -9,6 +9,13 @@ var enemies_node
 @onready var unit_number_label = $Label1
 @onready var enemy_number_label = $Label2
 
+var producible_units: Array[PackedScene] = [
+	preload("res://Units/archer.tscn"),
+	preload("res://Units/soldier.tscn"),
+	preload("res://Units/wizard.tscn"),
+	preload("res://Units/zweihander.tscn")
+]
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	units_node = get_tree().current_scene.find_child("Units")

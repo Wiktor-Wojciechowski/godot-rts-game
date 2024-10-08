@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cpfjrb5kb522m"]
+[gd_scene load_steps=35 format=3 uid="uid://cpfjrb5kb522m"]
 
 [ext_resource type="PackedScene" uid="uid://b10u13jt02rgb" path="res://UI/resource_menu.tscn" id="1_i0ka2"]
 [ext_resource type="Texture2D" uid="uid://4rhknkiec0mx" path="res://Assets/Textures/rocky_terrain_02_diff_4k.jpg" id="1_i7mjr"]
@@ -23,6 +23,12 @@
 [ext_resource type="PackedScene" uid="uid://w1bfn33te562" path="res://LevelTools/resource_manager.tscn" id="18_wi327"]
 [ext_resource type="PackedScene" uid="uid://bujdhl6sr27mh" path="res://Units/soldier.tscn" id="20_bpjsi"]
 [ext_resource type="PackedScene" uid="uid://dj26ojxyv2idv" path="res://Units/wizard.tscn" id="22_j51b6"]
+[ext_resource type="Script" path="res://Missions/unit_resources.gd" id="24_ebi8i"]
+[ext_resource type="Resource" uid="uid://dotdo7scnbdll" path="res://Resources/Soldier.tres" id="24_g8l7q"]
+[ext_resource type="Script" path="res://Resources/UnitData.gd" id="25_adem5"]
+[ext_resource type="Resource" uid="uid://btd85uvvcrrje" path="res://Resources/Archer.tres" id="25_e1vwh"]
+[ext_resource type="Resource" uid="uid://bkbsg1aihau1e" path="res://Resources/Wizard.tres" id="25_i5ovl"]
+[ext_resource type="Resource" uid="uid://rw6h6s6dana" path="res://Resources/Zweihander.tres" id="26_3scay"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_h2kvd"]
 geometry_parsed_geometry_type = 1
@@ -145,11 +151,14 @@ nav_region = NodePath("../NavigationRegion3D")
 [node name="UnitSelector" parent="." node_paths=PackedStringArray("camera", "ui") instance=ExtResource("5_uwunu")]
 camera = NodePath("../camera_base/camera_socket/Camera3D")
 ui = NodePath("../UI")
-producible_units = [ExtResource("18_ftak6"), ExtResource("20_bpjsi")]
 
 [node name="UnitNavigator" parent="." node_paths=PackedStringArray("camera", "target") instance=ExtResource("5_cdxmi")]
 camera = NodePath("../camera_base/camera_socket/Camera3D")
 target = NodePath("../Target")
+
+[node name="UnitResources" type="Node3D" parent="."]
+script = ExtResource("24_ebi8i")
+unit_resources = Array[ExtResource("25_adem5")]([ExtResource("25_e1vwh"), ExtResource("24_g8l7q"), ExtResource("25_i5ovl"), ExtResource("26_3scay")])
 
 [node name="ResourceManager" parent="." instance=ExtResource("18_wi327")]
 
