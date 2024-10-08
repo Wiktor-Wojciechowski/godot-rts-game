@@ -1,6 +1,9 @@
 extends Control
 
 @onready var unit_selector = get_tree().current_scene.find_child("UnitSelector")
+@onready var unit_resources: Array[UnitData] = get_tree().current_scene.find_child("UnitResources").unit_resources
+@onready var resource_manager = get_tree().current_scene.find_child("ResourceManager")
+
 var unit_buttons = []
 
 func _ready():
@@ -11,7 +14,29 @@ func _ready():
 	
 	for i in range(unit_buttons.size()):
 		unit_buttons[i].connect("pressed", Callable(self, "_on_unit_button_pressed").bind(i))
+		
+	resource_manager.resources_updated.connect(on_resources_updated)
+	check_buttons_available()
 
 # Method that gets called when a building button is pressed
 func _on_unit_button_pressed(index: int):
+	var unit = unit_resources[index]
+	resource_manager.substract_resources(unit["production_cost"])
 	unit_selector.on_produce_unit(index)
+
+func on_resources_updated():
+	check_buttons_available()
+
+func can_produce_unit(cost: Dictionary, resources: Dictionary) -> bool:
+	for resource in cost.keys():
+		# If the resource is missing or the available amount is less than the cost
+		if resources.get(resource, 0) < cost[resource]:
+			return false  # Not enough resources to produce the unit
+	return true  # All required resources are available
+	
+func check_buttons_available():
+	for i in unit_buttons.size():
+		if can_produce_unit(unit_resources[i].production_cost, resource_manager.resources):
+			unit_buttons[i].disabled = false
+		else:
+			unit_buttons[i].disabled = true

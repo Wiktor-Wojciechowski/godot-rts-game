@@ -150,5 +150,9 @@ func _on_ui_mouse_exited() -> void:
 
 func on_produce_unit(index):
 	var unit_resource = unit_resources[index]
-	selected_building.production_queue.add_unit_to_queue(index, unit_resource.unit_name, unit_resource.production_time)
+	selected_building.production_queue.add_unit_to_queue(
+		index, 
+		unit_resource.unit_name, 
+		unit_resource.production_time,
+		)
 	

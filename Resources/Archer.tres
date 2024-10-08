@@ -8,3 +8,6 @@ unit_name = "Archer"
 production_time = 1.0
 health = 40
 attack = 15
+production_cost = {
+"wood": 20
+}

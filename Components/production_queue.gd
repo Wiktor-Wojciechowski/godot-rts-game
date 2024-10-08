@@ -6,6 +6,9 @@ var current_unit = null
 var production_timer: Timer
 var producible_units: Array[PackedScene]
 
+@onready var units = get_tree().current_scene.find_child("Units")
+@onready var resource_manager = get_tree().current_scene.find_child("ResourceManager")
+
 # UI nodes for displaying queue and production progress
 @onready var queue_display: Label = $QueueDisplay
 @onready var production_progress_bar: ProgressBar = $ProductionProgressBar
@@ -25,7 +28,7 @@ func add_unit_to_queue(index:int, unit_name: String, unit_production_time: float
 	var unit = {
 		"index": index,
 		"name": unit_name,
-		"production_time": unit_production_time
+		"production_time": unit_production_time,
 	}
 	unit_queue.append(unit)
 	
@@ -41,6 +44,7 @@ func start_production() -> void:
 	if unit_queue.size() > 0:
 		current_unit = unit_queue[0]
 		print(current_unit["index"])
+
 		production_timer.wait_time = current_unit["production_time"]
 		production_timer.start()
 		production_progress_bar.max_value = current_unit["production_time"]
@@ -61,7 +65,7 @@ func _on_production_complete() -> void:
 	if unit_queue.size() > 0:
 		unit_queue.pop_front() # Remove the completed unit
 		var completed_unit = producible_units[current_unit["index"]].instantiate()
-		var units = get_tree().current_scene.find_child("Units")
+		
 		units.add_child(completed_unit)
 		completed_unit.global_position = get_parent().spawn_point.global_position
 		current_unit = null
