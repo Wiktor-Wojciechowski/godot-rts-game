@@ -84,8 +84,14 @@ shape = SubResource("BoxShape3D_3guve")
 
 [node name="Structures" type="Node3D" parent="NavigationRegion3D"]
 
-[node name="Barracks" parent="NavigationRegion3D/Structures" instance=ExtResource("10_4v3gb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.0425, 0.5, 18.6576)
+[node name="GoldMine" parent="NavigationRegion3D/Structures" instance=ExtResource("7_re1cj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81.5078, 0, -68.7697)
+
+[node name="GoldMine3" parent="NavigationRegion3D/Structures" instance=ExtResource("7_re1cj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.5078, 0, -68.7697)
+
+[node name="GoldMine5" parent="NavigationRegion3D/Structures" instance=ExtResource("7_re1cj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77.5078, 0, -68.7697)
 
 [node name="camera_base" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
@@ -118,21 +124,25 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("7_220hx")
 
+[node name="BuildingMenu" parent="UI" node_paths=PackedStringArray("building_placer") instance=ExtResource("2_h3d2a")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_right = 0.0
+offset_left = -572.0
+offset_top = 160.0
+offset_right = -572.0
+offset_bottom = 160.0
+grow_horizontal = 1
+grow_vertical = 0
+building_placer = NodePath("../../BuildingPlacer")
+
 [node name="ResourceMenu" parent="UI" node_paths=PackedStringArray("resource_manager") instance=ExtResource("1_i0ka2")]
 offset_left = -576.0
 offset_top = -324.0
 offset_right = -576.0
 offset_bottom = -324.0
 resource_manager = NodePath("../../ResourceManager")
-
-[node name="BuildingMenu" parent="UI" node_paths=PackedStringArray("building_placer", "building_buttons") instance=ExtResource("2_h3d2a")]
-layout_mode = 1
-offset_left = -574.0
-offset_top = 161.0
-offset_right = -574.0
-offset_bottom = 161.0
-building_placer = NodePath("../../BuildingPlacer")
-building_buttons = []
 
 [node name="FPS" type="Label" parent="UI"]
 layout_mode = 0
@@ -144,7 +154,7 @@ text = "FPS:"
 script = ExtResource("9_hr0co")
 
 [node name="BuildingPlacer" parent="." node_paths=PackedStringArray("camera", "nav_region") instance=ExtResource("3_y2stf")]
-buildings = Array[PackedScene]([ExtResource("5_vda2q"), ExtResource("6_tfr6s"), ExtResource("8_0dwld"), ExtResource("7_re1cj"), ExtResource("1_pnc6p")])
+buildings = Array[PackedScene]([ExtResource("5_vda2q"), ExtResource("6_tfr6s"), ExtResource("8_0dwld"), ExtResource("7_re1cj"), ExtResource("1_pnc6p"), ExtResource("10_4v3gb")])
 camera = NodePath("../camera_base/camera_socket/Camera3D")
 nav_region = NodePath("../NavigationRegion3D")
 

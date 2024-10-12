@@ -43,7 +43,6 @@ func add_unit_to_queue(index:int, unit_name: String, unit_production_time: float
 func start_production() -> void:
 	if unit_queue.size() > 0:
 		current_unit = unit_queue[0]
-		print(current_unit["index"])
 
 		production_timer.wait_time = current_unit["production_time"]
 		production_timer.start()
@@ -79,9 +78,6 @@ func _on_production_complete() -> void:
 			start_production()
 	
 	update_queue_display()
-	print("production complete")
-
-
 
 # Function to update the queue display in the UI
 func update_queue_display() -> void:

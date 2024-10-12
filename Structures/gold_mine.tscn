@@ -37,6 +37,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
 healthcomponent = NodePath("../HealthComponent")
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_rb0vl")]
+max_health = 100
 
 [node name="Selection" type="Node3D" parent="."]
 script = ExtResource("4_fb07f")

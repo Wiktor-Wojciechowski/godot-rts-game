@@ -6,6 +6,8 @@ class_name HealthComponent
 
 var health = null
 
+var is_dead = false #necessary to avoid triggering die() multiple times
+
 signal health_changed
 signal death
 
@@ -21,9 +23,13 @@ func _process(_delta: float) -> void:
 func take_damage(damage):
 	health -= damage
 	health_changed.emit()
-	if health <= 0:
+	if health <= 0 and not is_dead:
+		is_dead = true
 		die()
 		
 func die():
+	if get_parent() is Building:
+		get_parent().on_building_destroyed
+	
 	death.emit()
 	get_parent().queue_free()

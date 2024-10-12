@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://UI/building_menu.gd" id="1_rds1m"]
 
-[node name="BuildingMenu" type="Control" node_paths=PackedStringArray("building_buttons")]
+[node name="BuildingMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,7 +13,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_rds1m")
-building_buttons = [null, null, null, null, NodePath("0")]
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
@@ -66,3 +65,13 @@ offset_right = 432.0
 offset_bottom = 136.0
 mouse_filter = 1
 text = "Sentry"
+
+[node name="5" type="Button" parent="."]
+layout_mode = 0
+offset_left = 304.0
+offset_top = 32.0
+offset_right = 432.0
+offset_bottom = 80.0
+mouse_filter = 1
+text = "Barracks
+"

@@ -28,7 +28,6 @@ var sub_menu = null
 func _ready() -> void:
 	# Ensure the Control node is set to ignore input for this to work
 	selection_rect_control.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	print(unit_resources)
 
 func _physics_process(_delta):
 	unit_group = get_tree().get_nodes_in_group("units")
@@ -110,22 +109,23 @@ func select_single_unit() -> void:
 
 func select_unit(unit: CharacterBody3D) -> void:
 	# Custom logic for selecting a unit, e.g., changing its material, outline, etc.
-	unit.selection.select()  # Assumes your unit script has a select() method
-	unit.add_to_group("selected_units")
+	if is_instance_valid(unit):
+		unit.selection.select()  # Assumes your unit script has a select() method
+		unit.add_to_group("selected_units")
 	#selected_units.append(unit)
 
 func deselect_unit(unit: CharacterBody3D) -> void:
 	# Custom logic for deselecting a unit
-	unit.selection.deselect()  # Assumes your unit script has a deselect() method
-	unit.remove_from_group("selected_units")
+	if is_instance_valid(unit):
+		unit.selection.deselect()  # Assumes your unit script has a deselect() method
+		unit.remove_from_group("selected_units")
 	#selected_units.erase(unit)
 
 func deselect_all_units() -> void:
 	# Deselect all currently selected units
 	for unit in selected_units:
-		unit.selection.deselect()  # Assumes your unit script has a deselect() method
-		unit.remove_from_group("selected_units")
-	#selected_units.clear()
+		if is_instance_valid(unit):
+			deselect_unit(unit)
 
 func select_building(building):
 	selected_building = building
@@ -135,7 +135,7 @@ func select_building(building):
 	building.selection.select()
 	
 func deselect_building():
-	if selected_building:
+	if selected_building and is_instance_valid(selected_building):
 		if selected_building.menu:
 			ui.remove_child(sub_menu)
 			sub_menu.queue_free()

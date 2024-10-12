@@ -5,8 +5,10 @@ extends Building
 
 var producible_units: Array[PackedScene]
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	super._ready()
 	menu = preload("res://UI/barracks_menu.tscn")
 	producible_units = get_tree().current_scene.find_child("GameManager").producible_units
 	production_queue.producible_units = producible_units

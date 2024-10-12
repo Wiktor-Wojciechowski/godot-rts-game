@@ -5,14 +5,15 @@ class_name Building
 @export var team = 1
 
 @onready var selection = $Selection
+@onready var health_component = $HealthComponent
 
 var menu = null
 
+signal building_destroyed
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	health_component.death.connect(on_building_destroyed)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func on_building_destroyed():
+	building_destroyed.emit()

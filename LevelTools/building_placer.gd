@@ -16,6 +16,8 @@ var placing = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	structures = get_tree().current_scene.find_child("Structures")
+	for building in structures.get_children():
+		building.building_destroyed.connect(on_building_destroyed)
 	nav_region.bake_navigation_mesh()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -174,6 +176,7 @@ func place_building():
 	var building_instance = buildings[current_building_index].instantiate()
 	
 	structures.add_child(building_instance)
+	building_instance.building_destroyed.connect(on_building_destroyed)
 	
 	var mesh = building_instance.get_node("MeshInstance3D")
 	var material = mesh.get_active_material(0)
@@ -189,4 +192,9 @@ func place_building():
 	
 	placing = false
 	
-	nav_region.bake_navigation_mesh()
+	if not nav_region.is_baking():
+		nav_region.bake_navigation_mesh()
+
+func on_building_destroyed():
+	if not nav_region.is_baking():
+		nav_region.bake_navigation_mesh()

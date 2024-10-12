@@ -11,6 +11,7 @@ var resource_manager
 var resource_timer: Timer
 
 func _ready() -> void:
+	super._ready()
 	resource_manager = get_tree().current_scene.find_child("ResourceManager")
 	# Create a Timer node if not already present in the scene
 	resource_timer = Timer.new()

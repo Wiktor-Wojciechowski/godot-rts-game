@@ -1,7 +1,7 @@
 extends Control
 
 @export var building_placer: Node3D
-@export var building_buttons: Array[Button]  # Assign building buttons in the editor
+var building_buttons: Array[Button]  # Assign building buttons in the editor
 
 func _ready():
 	# Connect each button's signal dynamically, using Callable to pass the index
