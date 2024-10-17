@@ -64,6 +64,7 @@ func _shoot(current_target):
 
 	# Set the bullet's direction
 	bullet_instance.set_direction(bullet_direction)
+	bullet_instance.look_at(current_target.global_position)
 	
 	attack_timer = attack_cooldown
 

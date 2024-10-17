@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://coxg58ejh2vj5"]
+
+[ext_resource type="Script" path="res://Projectiles/arrow.gd" id="1_htima"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aa3td"]
+albedo_color = Color(0.62, 0.337073, 0.1612, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_hbq74"]
+material = SubResource("StandardMaterial3D_aa3td")
+top_radius = 0.1
+bottom_radius = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_udsgu"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_yijca"]
+material = SubResource("StandardMaterial3D_udsgu")
+top_radius = 0.1
+bottom_radius = 0.2
+height = 0.5
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_1yscu"]
+height = 1.0
+radius = 0.15
+
+[node name="Arrow" type="CharacterBody3D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_htima")
+arrow_speed = 50.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, -1.74846e-08, -0.42, 0, 0.4, -1.83588e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_hbq74")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.4, 3.49691e-08, -1.60498e-15, 0, -1.74846e-08, -0.42, -3.49691e-08, -0.4, 1.83588e-08, 0, 0, -0.5)
+mesh = SubResource("CylinderMesh_yijca")
+skeleton = NodePath("../MeshInstance3D")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 14
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_1yscu")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
