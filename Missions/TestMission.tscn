@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://cpfjrb5kb522m"]
+[gd_scene load_steps=35 format=3 uid="uid://cpfjrb5kb522m"]
 
 [ext_resource type="PackedScene" uid="uid://b10u13jt02rgb" path="res://UI/resource_menu.tscn" id="1_i0ka2"]
 [ext_resource type="Texture2D" uid="uid://4rhknkiec0mx" path="res://Assets/Textures/rocky_terrain_02_diff_4k.jpg" id="1_i7mjr"]
@@ -29,10 +29,6 @@
 [ext_resource type="Resource" uid="uid://btd85uvvcrrje" path="res://Resources/Archer.tres" id="25_e1vwh"]
 [ext_resource type="Resource" uid="uid://bkbsg1aihau1e" path="res://Resources/Wizard.tres" id="25_i5ovl"]
 [ext_resource type="Resource" uid="uid://rw6h6s6dana" path="res://Resources/Zweihander.tres" id="26_3scay"]
-[ext_resource type="PackedScene" uid="uid://cay5vligoi0rt" path="res://Enemies/skeleton_minion.tscn" id="30_5lwmv"]
-[ext_resource type="PackedScene" uid="uid://gjty2bfn3vys" path="res://Enemies/skeleton_rogue.tscn" id="31_eao42"]
-[ext_resource type="PackedScene" uid="uid://031h6ol66737" path="res://Enemies/skeleton_warrior.tscn" id="32_cta1p"]
-[ext_resource type="PackedScene" uid="uid://lbpnbu4l4ifb" path="res://Enemies/skeleton_wizard.tscn" id="33_mx2ki"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_h2kvd"]
 geometry_parsed_geometry_type = 1
@@ -619,18 +615,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.4046, 0, -35.5544)
 
 [node name="Enemy99" parent="Enemies" instance=ExtResource("8_4qxdn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.4046, 0, -33.5544)
-
-[node name="SkeletonRogue" parent="." instance=ExtResource("31_eao42")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.0685, 0, -58.3792)
-
-[node name="SkeletonWarrior" parent="." instance=ExtResource("32_cta1p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83.0529, 0, -58.5296)
-
-[node name="SkeletonWizard" parent="." instance=ExtResource("33_mx2ki")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.8281, 0, -58.7695)
-
-[node name="SkeletonMinion" parent="." instance=ExtResource("30_5lwmv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75.4259, 0, -57.3432)
 
 [connection signal="mouse_entered" from="UI" to="UnitSelector" method="_on_ui_mouse_entered"]
 [connection signal="mouse_exited" from="UI" to="UnitSelector" method="_on_ui_mouse_exited"]

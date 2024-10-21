@@ -1,7 +1,5 @@
 extends CharacterBody3D  # or RigidBody3D if you use physics-based bullets
 
-class_name Bullet
-
 @export var speed: float = 50.0
 @export var lifetime: float = 3.0
 @export var damage: int = 10  # Bullet damage
@@ -23,7 +21,6 @@ func _ready():
 # Function to set the bullet's movement direction
 func set_direction(dir: Vector3):
 	direction = dir.normalized()
-
 
 # Move the bullet forward
 func _physics_process(_delta: float):
