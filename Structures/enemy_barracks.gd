@@ -23,9 +23,9 @@ func _process(delta: float) -> void:
 
 func _on_spawn_rate_timeout() -> void:
 	var enemy = created_enemy.instantiate()
-	
+	enemy.position = Vector3(0, -10000, 0)
 	level_enemies.add_child(enemy)
-
+	
 	var mob_spawn_location = get_node("SpawnPath/SpawnLocation")
 	mob_spawn_location.progress_ratio = randf()
 	enemy.global_position = mob_spawn_location.global_position

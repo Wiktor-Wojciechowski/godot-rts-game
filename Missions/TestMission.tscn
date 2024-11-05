@@ -212,9 +212,15 @@ unit_resources = Array[ExtResource("25_adem5")]([ExtResource("25_e1vwh"), ExtRes
 
 [node name="BuildingResources" type="Node3D" parent="."]
 script = ExtResource("32_dnqkt")
-building_resources = Array[ExtResource("33_kbarw")]([ExtResource("37_vsc4m"), ExtResource("34_6acv7"), ExtResource("35_mihj4"), ExtResource("36_tam7k"), ExtResource("38_qefd2"), ExtResource("39_2shro")])
+building_resources = Array[ExtResource("33_kbarw")]([ExtResource("37_vsc4m"), ExtResource("39_2shro"), ExtResource("34_6acv7"), ExtResource("36_tam7k"), ExtResource("38_qefd2"), ExtResource("35_mihj4")])
 
 [node name="ResourceManager" parent="." instance=ExtResource("18_wi327")]
+resources = {
+"food": 100,
+"gold": 100,
+"stone": 100,
+"wood": 100
+}
 
 [node name="Units" type="Node3D" parent="."]
 

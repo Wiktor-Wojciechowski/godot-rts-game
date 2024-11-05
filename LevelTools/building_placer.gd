@@ -4,6 +4,9 @@ extends Node3D
 @export var camera: Camera3D
 @export var nav_region: NavigationRegion3D
 
+@onready var building_resources = get_parent().get_node("BuildingResources").building_resources
+@onready var resource_manager = get_parent().get_node("ResourceManager")
+
 var structures: Node3D
 
 var current_building_index = -1
@@ -12,6 +15,8 @@ var current_building_ghost: Node3D
 var base_building_color: Color 
 
 var placing = false
+
+signal building_placed
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -26,15 +31,7 @@ func _process(_delta: float) -> void:
 		pass
 	else:
 		update_building_ghost_positon()
-#
-#func _unhandled_input(event: InputEvent) -> void:
-	#if event is InputEventMouseButton:
-		#if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			#if placing:	
-				#place_building()
-		#if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
-			#cancel_placement()
-			
+
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
@@ -46,17 +43,14 @@ func _input(event: InputEvent) -> void:
 func on_building_selected(index: int) -> void:
 	# Begin placing the building
 	placing = true
-	
 	# If a ghost building already exists, free it
 	if current_building_ghost:
 		current_building_ghost.queue_free()
 	
 	# Set the selected building index
 	current_building_index = index
-	
 	# Instantiate a new ghost building
 	current_building_ghost = buildings[current_building_index].instantiate()
-	
 	#Disable the ghost process
 	current_building_ghost.process_mode = Node.PROCESS_MODE_DISABLED
 	
@@ -66,24 +60,13 @@ func on_building_selected(index: int) -> void:
 		if child is MeshInstance3D:
 			var mesh_instance = child
 			var material = mesh_instance.get_active_material(0)
-		
 			if material:
-				
 				base_building_color = material.albedo_color
-				
 				var new_material = material.duplicate()
 				new_material.albedo_color.a = 0.5  
 				new_material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
 				new_material.blend_mode = BaseMaterial3D.BLEND_MODE_MIX
-
 				mesh_instance.set_surface_override_material(0, new_material)
-	
-	#var mesh_instance = current_building_ghost.get_node("MeshInstance3D")
-	#if mesh_instance and mesh_instance is MeshInstance3D:
-		# Get the active material
-
-
-	# Add the ghost building to the scene
 	
 	add_child(current_building_ghost)
 	#Put the building below the ground so it doesn't appear in the middle of the map
@@ -175,7 +158,11 @@ func is_placement_valid():
 func place_building():
 	if not is_placement_valid():
 		return
-
+	
+	#Take resources
+	var building_cost = building_resources[current_building_index].production_cost
+	resource_manager.substract_resources(building_cost)
+	
 	var building_instance = buildings[current_building_index].instantiate()
 	
 	structures.add_child(building_instance)
@@ -187,7 +174,6 @@ func place_building():
 	
 	building_instance.global_transform.origin = current_building_ghost.global_transform.origin
 	
-
 	# Free the ghost building
 	current_building_ghost.queue_free()
 	current_building_ghost = null

@@ -20,10 +20,10 @@ func _ready():
 # Method that gets called when a building button is pressed
 func _on_building_button_pressed(index: int):
 	building_placer.on_building_selected(index)
-	
+	var building = building_resources[index]
+
 func on_resources_updated():
 	check_buttons_available()
-
 
 func check_buttons_available():
 	for i in building_buttons.size():
