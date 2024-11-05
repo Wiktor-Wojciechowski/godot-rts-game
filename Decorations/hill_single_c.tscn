@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://ktreoafdiyn3"]
+
+[ext_resource type="PackedScene" uid="uid://4tnkh0feo0mm" path="res://Assets/DecorationModels/hill_single_C.fbx" id="1_txpg5"]
+
+[node name="hill_single_C" instance=ExtResource("1_txpg5")]

@@ -9,7 +9,7 @@ extends Node3D
 @onready var attack_range_component = $AttackRange
 @onready var bullet_spawner = $BulletSpawner
 
-@export var bullet_scene: PackedScene = preload("res://Projectiles/Bullet.tscn")
+@export var bullet_scene: PackedScene = preload("res://Projectiles/bullet.tscn")
 
 @onready var attacker = get_parent()
 @onready var structures = get_tree().current_scene.find_child("Structures")
@@ -64,6 +64,7 @@ func _shoot(current_target):
 
 	# Set the bullet's direction
 	bullet_instance.set_direction(bullet_direction)
+	bullet_instance.look_at(current_target.global_position)
 	
 	attack_timer = attack_cooldown
 

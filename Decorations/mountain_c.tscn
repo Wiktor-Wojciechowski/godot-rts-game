@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://clvs7sk5umxre"]
+
+[ext_resource type="PackedScene" uid="uid://4k7c7afugnof" path="res://Assets/DecorationModels/mountain_C.fbx" id="1_28o5j"]
+
+[node name="mountain_C" instance=ExtResource("1_28o5j")]

@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dyvdoxlrbxkf8"]
+
+[ext_resource type="PackedScene" uid="uid://dgwdayws7824k" path="res://Assets/DecorationModels/trees_A_cut.fbx" id="1_fox5d"]
+
+[node name="trees_A_cut" instance=ExtResource("1_fox5d")]

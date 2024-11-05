@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://dl2r80c463aul"]
+
+[ext_resource type="Script" path="res://Structures/enemy_barracks.gd" id="1_dlpip"]
+[ext_resource type="PackedScene" uid="uid://cyybrg631gniq" path="res://Components/selection.tscn" id="2_rl74u"]
+[ext_resource type="PackedScene" uid="uid://x10cogs6d5ud" path="res://Components/health_bar.tscn" id="3_pmfme"]
+[ext_resource type="PackedScene" uid="uid://du0opqlxswb3l" path="res://Components/health_component.tscn" id="4_5b40f"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_xqjr4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g8kaq"]
+
+[sub_resource type="Curve3D" id="Curve3D_m5ps4"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -3.02987, 0.00121403, 3.02892, 0, 0, 0, 0, 0, 0, -3.00429, 0.00204897, -3.02805, 0, 0, 0, 0, 0, 0, 3.03298, 0.00116491, -3.02948, 0, 0, 0, 0, 0, 0, 2.98176, -0.00161886, 2.9947, 0, 0, 0, 0, 0, 0, -3.01109, 0.00121403, 3.02412),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[node name="EnemyBarracks" type="StaticBody3D"]
+script = ExtResource("1_dlpip")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_xqjr4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_g8kaq")
+
+[node name="SpawnPoint" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="SpawnPath" type="Path3D" parent="."]
+curve = SubResource("Curve3D_m5ps4")
+
+[node name="SpawnLocation" type="PathFollow3D" parent="SpawnPath"]
+transform = Transform3D(0.999974, -5.82195e-07, -0.0042235, -2.84212e-14, 0.999999, -0.000137846, 0.00422343, 0.000137845, 0.99999, -3.02987, 0.00121403, 3.02892)
+
+[node name="SpawnRate" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="Selection" parent="." instance=ExtResource("2_rl74u")]
+
+[node name="HealthBar" parent="." instance=ExtResource("3_pmfme")]
+
+[node name="HealthComponent" parent="." instance=ExtResource("4_5b40f")]
+
+[connection signal="timeout" from="SpawnRate" to="." method="_on_spawn_rate_timeout"]

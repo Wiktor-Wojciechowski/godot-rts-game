@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="BuildingData" load_steps=2 format=3 uid="uid://c65x048huemuv"]
+
+[ext_resource type="Script" path="res://Resources/Buildings/BuildingData.gd" id="1_hc31m"]
+
+[resource]
+script = ExtResource("1_hc31m")
+building_name = "Farm"
+health = 0
+production_cost = {
+"wood": 20
+}

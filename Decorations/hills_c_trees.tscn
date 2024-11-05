@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbrd4trn48343"]
+
+[ext_resource type="PackedScene" uid="uid://cwbf1m5r3an35" path="res://Assets/DecorationModels/hills_C_trees.fbx" id="1_y2jgt"]
+
+[node name="hills_C_trees" instance=ExtResource("1_y2jgt")]

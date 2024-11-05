@@ -6,6 +6,7 @@ class_name Enemy
 @onready var attack_component = $AttackComponent
 @onready var health_bar = $HealthBar
 @onready var health_component = $HealthComponent  
+@onready var animation_player = find_child("AnimationPlayer")
 
 @export var can_attack_while_moving = true
 

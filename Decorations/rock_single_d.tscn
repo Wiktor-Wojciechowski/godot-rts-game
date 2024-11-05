@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpkblchqqdfw3"]
+
+[ext_resource type="PackedScene" uid="uid://c7ju1mdqx8jo8" path="res://Assets/DecorationModels/rock_single_D.fbx" id="1_idnfx"]
+
+[node name="rock_single_D" instance=ExtResource("1_idnfx")]

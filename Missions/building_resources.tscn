@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4lv36o4hgne7"]
+
+[ext_resource type="Script" path="res://Missions/building_resources.gd" id="1_wc3ip"]
+
+[node name="BuildingResources" type="Node3D"]
+script = ExtResource("1_wc3ip")
+building_resources = null

@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgcoxiyqky1vf"]
+
+[ext_resource type="PackedScene" uid="uid://dcypvawrwh02r" path="res://Assets/DecorationModels/tree_single_B_cut.fbx" id="1_qidhc"]
+
+[node name="tree_single_B_cut" instance=ExtResource("1_qidhc")]

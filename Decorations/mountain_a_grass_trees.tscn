@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://x77i2v754vgi"]
+
+[ext_resource type="PackedScene" uid="uid://bh3gpkycxw1wf" path="res://Assets/DecorationModels/mountain_A_grass_trees.fbx" id="1_iadge"]
+
+[node name="mountain_A_grass_trees" instance=ExtResource("1_iadge")]

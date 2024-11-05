@@ -94,6 +94,7 @@ reset_camera_rotation={
 3d_physics/layer_2="Units"
 3d_physics/layer_3="Structures"
 3d_physics/layer_4="Enemies"
+3d_physics/layer_5="Decorations"
 
 [navigation]
 

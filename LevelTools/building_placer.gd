@@ -61,25 +61,27 @@ func on_building_selected(index: int) -> void:
 	current_building_ghost.process_mode = Node.PROCESS_MODE_DISABLED
 	
 	# Get the MeshInstance3D node from the ghost building
-	var mesh_instance = current_building_ghost.get_node("MeshInstance3D")
-	if mesh_instance and mesh_instance is MeshInstance3D:
-		# Get the active material
-		var material = mesh_instance.get_active_material(0)
+	var ghost_children = current_building_ghost.get_children()
+	for child in ghost_children:
+		if child is MeshInstance3D:
+			var mesh_instance = child
+			var material = mesh_instance.get_active_material(0)
 		
-		if material:
-			
-			base_building_color = material.albedo_color
-			
-			# Duplicate the material to avoid modifying the original one
-			var new_material = material.duplicate()
-			# Set the transparency in the albedo color for the ghost
-			new_material.albedo_color.a = 0.5  # Set alpha to 50%
-			# Ensure transparency is enabled in the new material
-			new_material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA  # Use Alpha transparency
-			# Set the blend mode to Mix for transparency to work correctly
-			new_material.blend_mode = BaseMaterial3D.BLEND_MODE_MIX
-			# Apply the new material to the mesh instance
-			mesh_instance.set_surface_override_material(0, new_material)
+			if material:
+				
+				base_building_color = material.albedo_color
+				
+				var new_material = material.duplicate()
+				new_material.albedo_color.a = 0.5  
+				new_material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+				new_material.blend_mode = BaseMaterial3D.BLEND_MODE_MIX
+
+				mesh_instance.set_surface_override_material(0, new_material)
+	
+	#var mesh_instance = current_building_ghost.get_node("MeshInstance3D")
+	#if mesh_instance and mesh_instance is MeshInstance3D:
+		# Get the active material
+
 
 	# Add the ghost building to the scene
 	
@@ -88,14 +90,15 @@ func on_building_selected(index: int) -> void:
 	current_building_ghost.global_position -= Vector3(0, 100, 0)
 
 func update_building_ghost_positon():
-	var mesh = current_building_ghost.get_node("MeshInstance3D")
+	var mesh = current_building_ghost.get_node("WrongPlacementIndicator")
 	var material = mesh.get_active_material(0)
 	if not is_placement_valid():
-		
+		mesh.show()
 		material.albedo_color = Color(1,0,0, 1)	
 		
 	else:
 		material.albedo_color = base_building_color
+		mesh.hide()
 	
 	var mouse_pos = get_viewport().get_mouse_position()
 	var ray_length = 10000
