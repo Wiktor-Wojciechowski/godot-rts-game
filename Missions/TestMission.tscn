@@ -67,11 +67,11 @@ size = Vector3(200, 1, 200)
 
 [sub_resource type="Environment" id="Environment_icxno"]
 background_mode = 2
+ambient_light_source = 1
 ambient_light_color = Color(0.60662, 0.26091, 0, 1)
 ambient_light_sky_contribution = 0.95
 ambient_light_energy = 5.15
-ssr_enabled = true
-ssao_enabled = true
+reflected_light_source = 1
 
 [node name="TestMission" type="Node3D"]
 
@@ -150,7 +150,6 @@ environment = SubResource("Environment_icxno")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 45, 0)
-shadow_enabled = true
 shadow_opacity = 0.65
 
 [node name="UI" type="Control" parent="."]

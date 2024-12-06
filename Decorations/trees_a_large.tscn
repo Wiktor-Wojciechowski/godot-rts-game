@@ -1,11 +1,10 @@
 [gd_scene load_steps=6 format=4 uid="uid://da2vg2u2bkway"]
 
-[ext_resource type="Texture2D" uid="uid://b046737g4fxq4" path="res://Assets/DecorationModels/hexagons_medieval.png" id="1_qew2s"]
+[ext_resource type="Texture2D" uid="uid://43ueiae487s" path="res://Assets/DecorationModels/hexagons_medieval.png" id="1_qew2s"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3ayfi"]
 resource_name = "hexagons_medieval"
 vertex_color_use_as_albedo = true
-albedo_color = Color(1, 1, 1, 1)
 albedo_texture = ExtResource("1_qew2s")
 emission_enabled = true
 

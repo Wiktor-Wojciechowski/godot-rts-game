@@ -9,6 +9,14 @@ var enemies_node
 @onready var unit_number_label = $Label1
 @onready var enemy_number_label = $Label2
 
+var level_objectives = [
+	{
+		'name': 'Kill 5 enemies',
+		'type': 'defeat_enemies',
+		'target': 5
+	}
+]
+
 var producible_units: Array[PackedScene] = [
 	preload("res://Units/archer.tscn"),
 	preload("res://Units/soldier.tscn"),
@@ -28,3 +36,4 @@ func _process(delta: float) -> void:
 	unit_number_label.text = str("Units: ",number_of_units)
 	number_of_enemies = enemies_node.get_children().size()
 	enemy_number_label.text = str("Enemies: ",number_of_enemies)
+	

@@ -1,6 +1,8 @@
 # Sentry.gd
 extends Building
 
+class_name Sentry
+
 @export var detection_range: float = 20.0
 @export var rotation_speed: float = 1.5
 @export var shooting_interval: float = 1.0

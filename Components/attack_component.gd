@@ -1,5 +1,7 @@
 extends Node3D
 
+class_name AttackComponent
+
 # Attack properties
 @export var attack_damage: int = 20
 @export var detection_range: float = 25.0

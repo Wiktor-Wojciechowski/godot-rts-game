@@ -1,5 +1,7 @@
 extends Node3D
 
+class_name MovementComponent
+
 @export var speed = 10
 @onready var nav_agent = get_node("NavigationAgent3D")
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=4 uid="uid://skvy3yewt4xh"]
 
-[ext_resource type="Texture2D" uid="uid://b046737g4fxq4" path="res://Assets/DecorationModels/hexagons_medieval.png" id="1_v8wkh"]
+[ext_resource type="Texture2D" uid="uid://43ueiae487s" path="res://Assets/DecorationModels/hexagons_medieval.png" id="1_v8wkh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qhq4o"]
 resource_name = "hexagons_medieval"
