@@ -1,5 +1,7 @@
 extends Node3D
 
+class_name GameManager
+
 var number_of_units = 0
 var number_of_enemies = 0
 
@@ -24,7 +26,7 @@ var fake_objectives = [
 	}
 ]
 
-@export var level_objectives = fake_objectives
+@export var level_objectives: Array[Resource] = []
 
 var producible_units: Array[PackedScene] = [
 	preload("res://Units/archer.tscn"),
@@ -33,10 +35,16 @@ var producible_units: Array[PackedScene] = [
 	preload("res://Units/zweihander.tscn")
 ]
 
+signal all_objectives_completed
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	for objective in level_objectives:
+		objective.set_game_manager(self)
+	
 	units_node = get_tree().current_scene.find_child("Units")
 	enemies_node = get_tree().current_scene.find_child("Enemies")
+	
 	print(enemies_node.get_children())
 	_process_existing_enemies()
 	
@@ -49,17 +57,22 @@ func _process(delta: float) -> void:
 	number_of_enemies = enemies_node.get_children().size()
 	enemy_number_label.text = str("Enemies: ",number_of_enemies)
 	
-func check_objectives() -> void:
-	for obj in level_objectives:
-		if not obj["completed"]:
-			if obj["type"] == "build_structure" and has_built_structure(obj["target"]):
-				obj["completed"] = true
-			elif obj["type"] == "defeat_enemies" and enemies_defeated >= obj["target"]:
-				obj["completed"] = true
 
-			if obj["completed"]:
-				print("Objective completed: ", obj["name"])
-				on_objective_completed(obj)
+func check_all_objectives():
+	for objective in level_objectives:
+		if not objective.check_completion():
+			print("Objective not yet completed: ", objective.name)
+			return
+			
+	# If all objectives are complete
+	emit_signal("all_objectives_completed")
+	print("All objectives completed!")
+	#show_completion_message()
+
+func update_objectives_progress() -> void:
+	for objective in level_objectives:
+		if objective.can_track_progress():
+			objective.update_progress()  # Let the objective update itself
 
 func _process_existing_enemies() -> void:
 	#var enemies = get_tree().get_nodes_in_group("enemies")
@@ -97,19 +110,21 @@ func _on_enemy_death(enemy: Enemy) -> void:
 	number_of_enemies -= 1
 	enemies_defeated += 1
 	print(enemies_defeated)
-	check_objectives()
+	#check_objectives()
+	update_objectives_progress()
+	check_all_objectives()
 	
 func _on_unit_death(unit: Unit):
 	print("Unit lost: ", unit.name)
 	number_of_units -= 1
 	units_lost += 1
 	print('Units lost: '+units_lost)
-	check_objectives()
+	#check_objectives()
 	
 func _on_enemy_building_destroyed(building):
 	print('Building destroyed')
 	destroyed_enemy_buildings +=1
-	check_objectives()
+	#check_objectives()
 	
 func has_built_structure(structure_name: String) -> bool:
 	return structure_name in built_structures
@@ -122,4 +137,4 @@ func add_built_structure(structure_name: String) -> void:
 	if structure_name not in built_structures:
 		built_structures.append(structure_name)
 		print("Structure built: ", structure_name)
-		check_objectives()
+		#check_objectives()

@@ -2,15 +2,23 @@ extends Resource
 
 class_name Objective
 
-@export var objective_name: String = "Objective"
-@export var description: String = "Objective description"
-@export var is_completed:bool = false
+@export var name: String  # Name of the objective
+@export var description: String  # Description of the objective (optional)
 
-var game_manager
+var game_manager: GameManager = null  # Reference to the GameManager
 
+# Sets the game manager reference
+func set_game_manager(manager: Node) -> void:
+	game_manager = manager
+
+# Override in subclasses to define completion logic
 func check_completion() -> bool:
-	#completion logic
-	return is_completed
+	return false
 
-func complete() -> void:
-	is_completed = true
+# Indicates if the objective can track progress (optional)
+func can_track_progress() -> bool:
+	return false
+
+# Override to define progress-tracking logic
+func update_progress() -> void:
+	pass

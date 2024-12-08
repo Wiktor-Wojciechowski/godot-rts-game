@@ -1,7 +1,8 @@
-[gd_scene load_steps=58 format=3 uid="uid://bijuusfv0anrl"]
+[gd_scene load_steps=59 format=3 uid="uid://bijuusfv0anrl"]
 
 [ext_resource type="PackedScene" uid="uid://ct8jhcy5gigkv" path="res://LevelTools/game_manager.tscn" id="1_f8tmj"]
 [ext_resource type="PackedScene" uid="uid://b65st7dliy0ls" path="res://Structures/enemy_spawner.tscn" id="2_ddmev"]
+[ext_resource type="Resource" uid="uid://cpuyy058awng2" path="res://Resources/Campaign/Level1/Objectives/defeat_enemies_objective.tres" id="2_k4ped"]
 [ext_resource type="PackedScene" uid="uid://cmthmnm5plomi" path="res://Enemies/enemy.tscn" id="3_ca6v3"]
 [ext_resource type="PackedScene" uid="uid://bkulfn8fo0c47" path="res://Units/unit.tscn" id="4_x1rx2"]
 [ext_resource type="Texture2D" uid="uid://4rhknkiec0mx" path="res://Assets/Textures/rocky_terrain_02_diff_4k.jpg" id="5_1ic2d"]
@@ -93,6 +94,7 @@ reflected_light_source = 1
 [node name="Mission1" type="Node3D"]
 
 [node name="GameManager" parent="." instance=ExtResource("1_f8tmj")]
+level_objectives = [ExtResource("2_k4ped")]
 
 [node name="EnemySpawner" parent="." instance=ExtResource("2_ddmev")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.3027, 0, 0)
