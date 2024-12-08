@@ -31,5 +31,5 @@ func die():
 	if get_parent() is Building:
 		get_parent().on_building_destroyed
 	
-	death.emit()
+	death.emit(get_parent())
 	get_parent().queue_free()
