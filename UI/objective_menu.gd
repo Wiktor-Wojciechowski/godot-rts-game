@@ -18,11 +18,11 @@ func _on_close_button_pressed() -> void:
 func add_objective(objective) -> void:
 	var objective_panel = preload("res://UI/objective_panel.tscn").instantiate()
 	objective_panel.set_objective(objective)
-	$ObjectiveContainer.add_child(objective_panel)
+	$ObjectiveContainer/ScrollContainer/VBoxContainer.add_child(objective_panel)
 
 # Clears all objectives from the menu
 func clear_objectives() -> void:
-	var a = $ObjectiveContainer.get_children()
-	print(a)
-	for child in a:
+	var objs = $ObjectiveContainer/ScrollContainer/VBoxContainer.get_children()
+	print(objs)
+	for child in objs:
 		child.queue_free()

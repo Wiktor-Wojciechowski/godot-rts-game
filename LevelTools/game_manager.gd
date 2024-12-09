@@ -65,7 +65,7 @@ func _process(delta: float) -> void:
 	enemy_number_label.text = str("Enemies: ",number_of_enemies)
 	
 
-func check_all_objectives():
+func check_objectives():
 	for objective in level_objectives:
 		if not objective.completed:
 			if objective.check_completion():
@@ -114,16 +114,12 @@ func _on_enemy_death(enemy: Enemy) -> void:
 	#print("Enemy defeated: ", enemy.name)
 	number_of_enemies -= 1
 	enemies_defeated += 1
-	
-	check_all_objectives()
-	#update_objectives_menu()
+	check_objectives()
 	
 func _on_unit_death(unit: Unit):
-	print("Unit lost: ", unit.name)
 	number_of_units -= 1
 	units_lost += 1
-	print('Units lost: '+units_lost)
-	#check_objectives()
+	check_objectives()
 	
 func _on_enemy_building_destroyed(building):
 	print('Building destroyed')

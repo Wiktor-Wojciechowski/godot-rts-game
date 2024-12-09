@@ -1,10 +1,11 @@
-[gd_scene load_steps=61 format=3 uid="uid://bijuusfv0anrl"]
+[gd_scene load_steps=62 format=3 uid="uid://bijuusfv0anrl"]
 
 [ext_resource type="PackedScene" uid="uid://ct8jhcy5gigkv" path="res://LevelTools/game_manager.tscn" id="1_f8tmj"]
 [ext_resource type="PackedScene" uid="uid://b65st7dliy0ls" path="res://Structures/enemy_spawner.tscn" id="2_ddmev"]
 [ext_resource type="Resource" uid="uid://cpuyy058awng2" path="res://Resources/Campaign/Level1/Objectives/defeat_enemies_objective.tres" id="2_k4ped"]
 [ext_resource type="Script" path="res://Resources/Campaign/Objectives/objective.gd" id="2_x72dh"]
 [ext_resource type="PackedScene" uid="uid://cmthmnm5plomi" path="res://Enemies/enemy.tscn" id="3_ca6v3"]
+[ext_resource type="Resource" uid="uid://5s86brd0hfs3" path="res://Resources/Campaign/Level1/Objectives/defeat_enemies_objective1.tres" id="4_nvhcw"]
 [ext_resource type="PackedScene" uid="uid://bkulfn8fo0c47" path="res://Units/unit.tscn" id="4_x1rx2"]
 [ext_resource type="Texture2D" uid="uid://4rhknkiec0mx" path="res://Assets/Textures/rocky_terrain_02_diff_4k.jpg" id="5_1ic2d"]
 [ext_resource type="PackedScene" uid="uid://d3sq3lepemaua" path="res://Decorations/hills_b.tscn" id="6_55evp"]
@@ -96,7 +97,7 @@ reflected_light_source = 1
 [node name="Mission1" type="Node3D"]
 
 [node name="GameManager" parent="." instance=ExtResource("1_f8tmj")]
-level_objectives = Array[ExtResource("2_x72dh")]([ExtResource("2_k4ped")])
+level_objectives = Array[ExtResource("2_x72dh")]([ExtResource("2_k4ped"), ExtResource("4_nvhcw"), ExtResource("4_nvhcw"), ExtResource("4_nvhcw"), ExtResource("4_nvhcw")])
 
 [node name="EnemySpawner" parent="." instance=ExtResource("2_ddmev")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.3027, 0, 0)
@@ -708,15 +709,10 @@ script = ExtResource("18_sdgbm")
 
 [node name="ObjectiveMenu" parent="UI" instance=ExtResource("20_yuqki")]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -574.0
-offset_top = -310.0
-offset_right = -574.0
-offset_bottom = -310.0
+offset_left = 257.0
+offset_top = -288.0
+offset_right = 257.0
+offset_bottom = -288.0
 
 [node name="BuildingPlacer" parent="." node_paths=PackedStringArray("camera", "nav_region") instance=ExtResource("19_xsfxi")]
 buildings = Array[PackedScene]([ExtResource("20_i4xbu"), ExtResource("21_e8ew7"), ExtResource("22_ei3am"), ExtResource("23_7flt1"), ExtResource("24_4usnd"), ExtResource("25_j1uqa")])

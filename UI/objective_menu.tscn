@@ -1,37 +1,67 @@
-[gd_scene load_steps=2 format=3 uid="uid://cl5oqbks0vl5u"]
+[gd_scene load_steps=3 format=3 uid="uid://cl5oqbks0vl5u"]
 
 [ext_resource type="Script" path="res://UI/objective_menu.gd" id="1_hbb4u"]
+[ext_resource type="PackedScene" uid="uid://eavyhq4xtcu6" path="res://UI/objective_panel.tscn" id="2_gi76u"]
 
 [node name="ObjectiveMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 830.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
 script = ExtResource("1_hbb4u")
 
 [node name="CloseButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 1008.0
-offset_top = 244.0
-offset_right = 1143.0
-offset_bottom = 278.0
-text = "Hide Objectives"
+offset_left = 146.0
+offset_top = 16.0
+offset_right = 290.0
+offset_bottom = 50.0
+mouse_filter = 1
+text = "Toggle Objectives"
 
 [node name="ObjectiveContainer" type="Panel" parent="."]
-layout_mode = 0
-offset_left = 961.0
-offset_top = 75.0
-offset_right = 1147.0
-offset_bottom = 233.0
-
-[node name="ScrollContainer" type="ScrollContainer" parent="ObjectiveContainer"]
+clip_contents = true
 layout_mode = 0
 offset_left = 8.0
-offset_top = 4.0
-offset_right = 180.0
-offset_bottom = 154.0
+offset_top = 66.0
+offset_right = 294.0
+offset_bottom = 400.0
+mouse_filter = 1
+mouse_force_pass_scroll_events = false
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ObjectiveContainer"]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ObjectiveContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ObjectivePanel" parent="ObjectiveContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_gi76u")]
+layout_mode = 2
+
+[node name="ObjectivePanel2" parent="ObjectiveContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_gi76u")]
+layout_mode = 2
+
+[node name="ObjectivePanel3" parent="ObjectiveContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_gi76u")]
+layout_mode = 2
+
+[node name="ObjectivePanel4" parent="ObjectiveContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_gi76u")]
+layout_mode = 2
+
+[node name="ObjectivePanel5" parent="ObjectiveContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_gi76u")]
+layout_mode = 2
+
+[node name="ObjectivePanel6" parent="ObjectiveContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_gi76u")]
 layout_mode = 2
