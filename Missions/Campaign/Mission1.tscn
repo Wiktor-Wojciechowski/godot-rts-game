@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://bijuusfv0anrl"]
+[gd_scene load_steps=63 format=3 uid="uid://bijuusfv0anrl"]
 
 [ext_resource type="PackedScene" uid="uid://ct8jhcy5gigkv" path="res://LevelTools/game_manager.tscn" id="1_f8tmj"]
 [ext_resource type="PackedScene" uid="uid://b65st7dliy0ls" path="res://Structures/enemy_spawner.tscn" id="2_ddmev"]
@@ -26,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://cl5oqbks0vl5u" path="res://UI/objective_menu.tscn" id="20_yuqki"]
 [ext_resource type="PackedScene" uid="uid://dsjd6d5ootf2m" path="res://Structures/stone_quarry.tscn" id="21_e8ew7"]
 [ext_resource type="PackedScene" uid="uid://sua3dxpdapto" path="res://Structures/farm.tscn" id="22_ei3am"]
+[ext_resource type="PackedScene" uid="uid://c60lsqoqtqf6w" path="res://UI/level_complete_screen.tscn" id="23_3a6pf"]
 [ext_resource type="PackedScene" uid="uid://baf5bl7w8u7hi" path="res://Structures/gold_mine.tscn" id="23_7flt1"]
 [ext_resource type="PackedScene" uid="uid://bloymlrlcsvpm" path="res://Structures/sentry.tscn" id="24_4usnd"]
 [ext_resource type="PackedScene" uid="uid://cmx525e68klb4" path="res://Structures/barracks.tscn" id="25_j1uqa"]
@@ -97,7 +98,7 @@ reflected_light_source = 1
 [node name="Mission1" type="Node3D"]
 
 [node name="GameManager" parent="." instance=ExtResource("1_f8tmj")]
-level_objectives = Array[ExtResource("2_x72dh")]([ExtResource("2_k4ped"), ExtResource("4_nvhcw"), ExtResource("4_nvhcw"), ExtResource("4_nvhcw"), ExtResource("4_nvhcw")])
+level_objectives = Array[ExtResource("2_x72dh")]([ExtResource("2_k4ped"), ExtResource("4_nvhcw")])
 
 [node name="EnemySpawner" parent="." instance=ExtResource("2_ddmev")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.3027, 0, 0)
@@ -713,6 +714,10 @@ offset_left = 257.0
 offset_top = -288.0
 offset_right = 257.0
 offset_bottom = -288.0
+
+[node name="LevelCompleteScreen" parent="UI" instance=ExtResource("23_3a6pf")]
+visible = false
+layout_mode = 1
 
 [node name="BuildingPlacer" parent="." node_paths=PackedStringArray("camera", "nav_region") instance=ExtResource("19_xsfxi")]
 buildings = Array[PackedScene]([ExtResource("20_i4xbu"), ExtResource("21_e8ew7"), ExtResource("22_ei3am"), ExtResource("23_7flt1"), ExtResource("24_4usnd"), ExtResource("25_j1uqa")])

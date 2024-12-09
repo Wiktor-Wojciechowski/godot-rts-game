@@ -77,6 +77,7 @@ func check_objectives():
 	if objectives_completed == level_objectives.size():
 		emit_signal("all_objectives_completed")
 		print("All objectives completed!")
+		get_parent().get_node("UI").get_node("LevelCompleteScreen").show()
 		#show_completion_message()
 
 func _process_existing_enemies() -> void:
