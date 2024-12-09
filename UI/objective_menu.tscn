@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://cl5oqbks0vl5u"]
+
+[ext_resource type="Script" path="res://UI/objective_menu.gd" id="1_hbb4u"]
+
+[node name="ObjectiveMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hbb4u")
+
+[node name="CloseButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1008.0
+offset_top = 244.0
+offset_right = 1143.0
+offset_bottom = 278.0
+text = "Hide Objectives"
+
+[node name="ObjectiveContainer" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 961.0
+offset_top = 75.0
+offset_right = 1147.0
+offset_bottom = 233.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ObjectiveContainer"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 4.0
+offset_right = 180.0
+offset_bottom = 154.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ObjectiveContainer/ScrollContainer"]
+layout_mode = 2

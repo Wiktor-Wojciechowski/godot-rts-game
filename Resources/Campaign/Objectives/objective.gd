@@ -2,8 +2,9 @@ extends Resource
 
 class_name Objective
 
-@export var name: String  # Name of the objective
-@export var description: String  # Description of the objective (optional)
+@export var objective_name: String = "Objective"
+@export var description: String  = "Objective description"
+@export var completed: bool = false
 
 var game_manager: GameManager = null  # Reference to the GameManager
 

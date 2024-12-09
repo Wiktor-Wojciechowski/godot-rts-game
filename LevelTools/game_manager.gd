@@ -26,7 +26,9 @@ var fake_objectives = [
 	}
 ]
 
-@export var level_objectives: Array[Resource] = []
+@export var level_objectives: Array[Objective] = []
+
+var objectives_completed = 0
 
 var producible_units: Array[PackedScene] = [
 	preload("res://Units/archer.tscn"),
@@ -35,12 +37,17 @@ var producible_units: Array[PackedScene] = [
 	preload("res://Units/zweihander.tscn")
 ]
 
+@onready var objective_menu = get_parent().get_node("UI").get_node("ObjectiveMenu")
+
 signal all_objectives_completed
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	for objective in level_objectives:
+		print(objective.objective_name)
 		objective.set_game_manager(self)
+		#add a label
+	update_objectives_menu()
 	
 	units_node = get_tree().current_scene.find_child("Units")
 	enemies_node = get_tree().current_scene.find_child("Enemies")
@@ -60,19 +67,17 @@ func _process(delta: float) -> void:
 
 func check_all_objectives():
 	for objective in level_objectives:
-		if not objective.check_completion():
-			print("Objective not yet completed: ", objective.name)
-			return
+		if not objective.completed:
+			if objective.check_completion():
+				print('Objective ', objective.objective_name,' completed')
+				objectives_completed += 1
+			#print("Objective not yet completed: ", objective.objective_name)
 			
-	# If all objectives are complete
-	emit_signal("all_objectives_completed")
-	print("All objectives completed!")
-	#show_completion_message()
-
-func update_objectives_progress() -> void:
-	for objective in level_objectives:
-		if objective.can_track_progress():
-			objective.update_progress()  # Let the objective update itself
+	update_objectives_menu()
+	if objectives_completed == level_objectives.size():
+		emit_signal("all_objectives_completed")
+		print("All objectives completed!")
+		#show_completion_message()
 
 func _process_existing_enemies() -> void:
 	#var enemies = get_tree().get_nodes_in_group("enemies")
@@ -106,13 +111,12 @@ func _on_node_added(node: Node) -> void:
 	
 
 func _on_enemy_death(enemy: Enemy) -> void:
-	print("Enemy defeated: ", enemy.name)
+	#print("Enemy defeated: ", enemy.name)
 	number_of_enemies -= 1
 	enemies_defeated += 1
-	print(enemies_defeated)
-	#check_objectives()
-	update_objectives_progress()
+	
 	check_all_objectives()
+	#update_objectives_menu()
 	
 func _on_unit_death(unit: Unit):
 	print("Unit lost: ", unit.name)
@@ -129,12 +133,13 @@ func _on_enemy_building_destroyed(building):
 func has_built_structure(structure_name: String) -> bool:
 	return structure_name in built_structures
 	
-func on_objective_completed(objective: Dictionary) -> void:
-	# Handle rewards, progression, or UI updates
-	print("Objective finalized: ", objective["name"])
-
 func add_built_structure(structure_name: String) -> void:
 	if structure_name not in built_structures:
 		built_structures.append(structure_name)
 		print("Structure built: ", structure_name)
 		#check_objectives()
+		
+func update_objectives_menu() -> void:
+	objective_menu.clear_objectives()
+	for objective in level_objectives:
+		objective_menu.add_objective(objective)
