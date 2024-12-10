@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://c60lsqoqtqf6w"]
+[gd_scene load_steps=2 format=3 uid="uid://c60lsqoqtqf6w"]
+
+[ext_resource type="Script" path="res://UI/level_complete_screen.gd" id="1_u13c0"]
 
 [node name="LevelCompleteScreen" type="Control"]
 layout_mode = 3
@@ -9,6 +11,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_u13c0")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
@@ -51,7 +54,7 @@ text = "Level Complete!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="Panel"]
+[node name="ExitToMainMenuButton" type="Button" parent="Panel"]
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 1
 anchors_preset = 2
@@ -65,7 +68,7 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 30
 text = "Exit to Main Menu"
 
-[node name="Button2" type="Button" parent="Panel"]
+[node name="NextLevelButton" type="Button" parent="Panel"]
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 1
 anchors_preset = 3

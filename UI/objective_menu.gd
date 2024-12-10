@@ -23,6 +23,5 @@ func add_objective(objective) -> void:
 # Clears all objectives from the menu
 func clear_objectives() -> void:
 	var objs = $ObjectiveContainer/ScrollContainer/VBoxContainer.get_children()
-	print(objs)
 	for child in objs:
 		child.queue_free()
