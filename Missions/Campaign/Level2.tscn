@@ -2,8 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ct8jhcy5gigkv" path="res://LevelTools/game_manager.tscn" id="1_u66bg"]
 [ext_resource type="Script" path="res://Resources/Campaign/Objectives/objective.gd" id="2_mpkrd"]
-[ext_resource type="Resource" uid="uid://cpuyy058awng2" path="res://Resources/Campaign/Level1/Objectives/defeat_enemies_objective.tres" id="3_qtv1n"]
-[ext_resource type="Resource" uid="uid://5s86brd0hfs3" path="res://Resources/Campaign/Level1/Objectives/defeat_enemies_objective1.tres" id="4_jwwb8"]
+[ext_resource type="Resource" uid="uid://b58egvf4p8p1y" path="res://Resources/Campaign/Level2/Objectives/defeat_enemies_objective2.tres" id="3_hwx1e"]
 [ext_resource type="PackedScene" uid="uid://b65st7dliy0ls" path="res://Structures/enemy_spawner.tscn" id="5_i8jwe"]
 [ext_resource type="PackedScene" uid="uid://cmthmnm5plomi" path="res://Enemies/enemy.tscn" id="6_4i338"]
 [ext_resource type="PackedScene" uid="uid://bkulfn8fo0c47" path="res://Units/unit.tscn" id="7_k8ko2"]
@@ -47,6 +46,7 @@
 [ext_resource type="Resource" uid="uid://c65x048huemuv" path="res://Resources/Buildings/Sentry.tres" id="45_qot8k"]
 [ext_resource type="Resource" uid="uid://c2w1qy7j2d5vd" path="res://Resources/Buildings/Barracks.tres" id="46_7e3mo"]
 [ext_resource type="PackedScene" uid="uid://w1bfn33te562" path="res://LevelTools/resource_manager.tscn" id="47_5vo7l"]
+[ext_resource type="PackedScene" uid="uid://d0bgsfrstf7a" path="res://Units/archer.tscn" id="48_3rcm6"]
 [ext_resource type="PackedScene" uid="uid://dj26ojxyv2idv" path="res://Units/wizard.tscn" id="50_jriqa"]
 [ext_resource type="PackedScene" uid="uid://gjty2bfn3vys" path="res://Enemies/skeleton_rogue.tscn" id="51_34ifq"]
 [ext_resource type="PackedScene" uid="uid://031h6ol66737" path="res://Enemies/skeleton_warrior.tscn" id="52_l2vkj"]
@@ -93,10 +93,10 @@ ambient_light_sky_contribution = 0.95
 ambient_light_energy = 5.15
 reflected_light_source = 1
 
-[node name="Level1" type="Node3D"]
+[node name="Level2" type="Node3D"]
 
 [node name="GameManager" parent="." instance=ExtResource("1_u66bg")]
-level_objectives = Array[ExtResource("2_mpkrd")]([ExtResource("3_qtv1n"), ExtResource("4_jwwb8")])
+level_objectives = Array[ExtResource("2_mpkrd")]([ExtResource("3_hwx1e")])
 
 [node name="EnemySpawner" parent="." instance=ExtResource("5_i8jwe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.3027, 0, 0)
@@ -760,21 +760,39 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 5)
 [node name="Wizard16" parent="Units" instance=ExtResource("50_jriqa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 5)
 
+[node name="Archer4" parent="Units" instance=ExtResource("48_3rcm6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.23556, 0, -8.04759)
+
+[node name="Archer5" parent="Units" instance=ExtResource("48_3rcm6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.23556, 0, -6.04759)
+
+[node name="Archer6" parent="Units" instance=ExtResource("48_3rcm6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.235558, 0, -6.04759)
+
+[node name="Archer7" parent="Units" instance=ExtResource("48_3rcm6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.76444, 0, -6.04759)
+
+[node name="Archer8" parent="Units" instance=ExtResource("48_3rcm6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.23556, 0, -6.04759)
+
+[node name="Archer9" parent="Units" instance=ExtResource("48_3rcm6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.23556, 0, -4.04759)
+
 [node name="Target" type="Marker3D" parent="."]
 
 [node name="Enemies" type="Node3D" parent="."]
 
 [node name="SkeletonRogue" parent="Enemies" instance=ExtResource("51_34ifq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.3712, 0, -1.3792)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1529, 0, -1.3792)
 
 [node name="SkeletonWarrior" parent="Enemies" instance=ExtResource("52_l2vkj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.3556, 0, -1.5296)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8315, 0, -1.5296)
 
 [node name="SkeletonWizard" parent="Enemies" instance=ExtResource("53_ridac")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.1308, 0, -1.7695)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.6067, 0, -1.7695)
 
 [node name="SkeletonMinion" parent="Enemies" instance=ExtResource("54_csdkv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.7286, 0, -0.343201)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.7955, 0, -0.343201)
 
 [connection signal="mouse_entered" from="UI" to="UnitSelector" method="_on_ui_mouse_entered"]
 [connection signal="mouse_exited" from="UI" to="UnitSelector" method="_on_ui_mouse_exited"]

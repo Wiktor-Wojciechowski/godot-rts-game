@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="DefeatEnemiesObjective" load_steps=2 format=3 uid="uid://b58egvf4p8p1y"]
+
+[ext_resource type="Script" path="res://Resources/Campaign/Objectives/defeat_enemies_objective.gd" id="1_2ti23"]
+
+[resource]
+script = ExtResource("1_2ti23")
+total_enemies_to_defeat = 2
+objective_name = "Defeat 2 Enemies"
+description = ""
+completed = false
