@@ -1,5 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://d1uif02tuvhoh"]
+[gd_scene load_steps=3 format=3 uid="uid://d1uif02tuvhoh"]
 
 [ext_resource type="PackedScene" uid="uid://ccirfl01xsy3n" path="res://Assets/DecorationModels/mountain_A.fbx" id="1_yl172"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_wi2bm"]
+size = Vector3(8, 6, 8)
+
 [node name="mountain_A" instance=ExtResource("1_yl172")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+shape = SubResource("BoxShape3D_wi2bm")
