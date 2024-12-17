@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://c82xax31p4gao"]
+[gd_scene load_steps=62 format=3 uid="uid://c82xax31p4gao"]
 
 [ext_resource type="PackedScene" uid="uid://ct8jhcy5gigkv" path="res://LevelTools/game_manager.tscn" id="1_u66bg"]
 [ext_resource type="Script" path="res://Resources/Campaign/Objectives/objective.gd" id="2_mpkrd"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://b10u13jt02rgb" path="res://UI/resource_menu.tscn" id="20_7n583"]
 [ext_resource type="Script" path="res://Missions/label.gd" id="21_3lkvk"]
 [ext_resource type="PackedScene" uid="uid://cl5oqbks0vl5u" path="res://UI/objective_menu.tscn" id="22_6ehmh"]
+[ext_resource type="PackedScene" uid="uid://cq5cy87nbcsva" path="res://UI/pause_menu.tscn" id="23_6tqhn"]
 [ext_resource type="PackedScene" uid="uid://c60lsqoqtqf6w" path="res://UI/level_complete_screen.tscn" id="23_x6j5n"]
 [ext_resource type="PackedScene" uid="uid://1ylbrb3ekhw7" path="res://LevelTools/building_placer.tscn" id="24_7thtw"]
 [ext_resource type="PackedScene" uid="uid://wr5eh3cwk62k" path="res://Structures/lumber_mill.tscn" id="25_0w1ms"]
@@ -714,6 +715,10 @@ offset_right = 257.0
 offset_bottom = -288.0
 
 [node name="LevelCompleteScreen" parent="UI" instance=ExtResource("23_x6j5n")]
+visible = false
+layout_mode = 1
+
+[node name="PauseMenu" parent="UI" instance=ExtResource("23_6tqhn")]
 visible = false
 layout_mode = 1
 

@@ -15,5 +15,5 @@ signal building_destroyed
 func _ready() -> void:
 	health_component.death.connect(on_building_destroyed)
 
-func on_building_destroyed():
+func on_building_destroyed(building):
 	building_destroyed.emit()

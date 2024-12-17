@@ -8,7 +8,7 @@ var unit_buttons = []
 
 func _ready():
 	# Connect each button's signal dynamically, using Callable to pass the index
-	for child in get_children():
+	for child in $UnitButtons.get_children():
 		if child is Button:
 			unit_buttons.append(child)
 	

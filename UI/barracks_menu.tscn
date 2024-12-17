@@ -22,20 +22,40 @@ offset_right = 240.0
 offset_bottom = 252.0
 mouse_filter = 1
 
-[node name="Unit0" type="Button" parent="."]
-layout_mode = 0
-offset_left = -216.0
-offset_top = 84.0
-offset_right = -161.0
-offset_bottom = 115.0
+[node name="UnitButtons" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -165.0
+offset_top = 119.0
+offset_right = 167.0
+offset_bottom = 199.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Unit0" type="Button" parent="UnitButtons"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
 mouse_filter = 1
 text = "Unit 1"
 
-[node name="Unit1" type="Button" parent="."]
-layout_mode = 0
-offset_left = -136.0
-offset_top = 84.0
-offset_right = -81.0
-offset_bottom = 115.0
+[node name="Unit1" type="Button" parent="UnitButtons"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
 mouse_filter = 1
-text = "Unit 1"
+text = "Unit 2"
+
+[node name="Unit2" type="Button" parent="UnitButtons"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+mouse_filter = 1
+text = "Unit 3"
+
+[node name="Unit3" type="Button" parent="UnitButtons"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+mouse_filter = 1
+text = "Unit 4"

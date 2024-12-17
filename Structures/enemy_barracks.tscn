@@ -34,7 +34,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 curve = SubResource("Curve3D_m5ps4")
 
 [node name="SpawnLocation" type="PathFollow3D" parent="SpawnPath"]
-transform = Transform3D(0.999974, -5.82195e-07, -0.0042235, -2.84212e-14, 0.999999, -0.000137846, 0.00422343, 0.000137845, 0.99999, -3.02987, 0.00121403, 3.02892)
+transform = Transform3D(0.999974, -5.82151e-07, -0.00422318, 0, 0.999999, -0.000137846, 0.00422311, 0.000137845, 0.99999, -3.02987, 0.00121403, 3.02892)
 
 [node name="SpawnRate" type="Timer" parent="."]
 wait_time = 0.5

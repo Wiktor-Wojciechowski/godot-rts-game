@@ -10,8 +10,8 @@ var producible_units: Array[PackedScene]
 @onready var resource_manager = get_tree().current_scene.find_child("ResourceManager")
 
 # UI nodes for displaying queue and production progress
-@onready var queue_display: Label = $QueueDisplay
-@onready var production_progress_bar: ProgressBar = $ProductionProgressBar
+@onready var queue_display: Label = $BackgroundPanel/ScrollContainer/QueueDisplay
+@onready var production_progress_bar: ProgressBar = $BackgroundPanel/ProductionProgressBar
 
 func _ready():
 	# Create the timer, no need to set wait time immediately

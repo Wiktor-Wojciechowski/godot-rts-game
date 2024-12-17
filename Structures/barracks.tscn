@@ -47,22 +47,36 @@ mesh = SubResource("BoxMesh_k5jg3")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_pm17h")
 
-[node name="ProductionQueue" type="Node" parent="."]
+[node name="ProductionQueue" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("3_0hq6x")
 
-[node name="QueueDisplay" type="Label" parent="ProductionQueue"]
-offset_left = 24.0
-offset_top = 286.0
-offset_right = 64.0
-offset_bottom = 309.0
+[node name="BackgroundPanel" type="Panel" parent="ProductionQueue"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 277.0
+offset_right = 208.0
+offset_bottom = 521.0
+
+[node name="ProductionProgressBar" type="ProgressBar" parent="ProductionQueue/BackgroundPanel"]
+visible = false
+offset_left = -5.0
+offset_top = 14.0
+offset_right = 102.0
+offset_bottom = 41.0
 metadata/_edit_use_anchors_ = true
 
-[node name="ProductionProgressBar" type="ProgressBar" parent="ProductionQueue"]
-offset_left = 7.0
-offset_top = 291.0
-offset_right = 114.0
-offset_bottom = 318.0
-metadata/_edit_use_anchors_ = true
+[node name="ScrollContainer" type="ScrollContainer" parent="ProductionQueue/BackgroundPanel"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 9.0
+offset_right = 189.0
+offset_bottom = 238.0
+
+[node name="QueueDisplay" type="Label" parent="ProductionQueue/BackgroundPanel/ScrollContainer"]
+layout_mode = 2
+text = "Production queue:"
 
 [node name="SpawnPoint" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
