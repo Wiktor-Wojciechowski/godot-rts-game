@@ -39,7 +39,11 @@ var producible_units: Array[PackedScene] = [
 
 @onready var objective_menu = get_parent().get_node("UI").get_node("ObjectiveMenu")
 
+var is_level_failed = false
+
 signal all_objectives_completed
+
+signal level_failed
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -55,6 +59,12 @@ func _ready() -> void:
 	
 	get_tree().node_added.connect(_on_node_added)
 	
+	level_failed.connect(on_level_failed)
+	
+	var hq = get_parent().find_child("PlayerHeadQuarters")
+	if hq:
+		hq.building_destroyed.connect(on_hq_destroyed)
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	number_of_units = units_node.get_children().size()
@@ -64,6 +74,9 @@ func _process(delta: float) -> void:
 	
 
 func check_objectives():
+	if is_level_failed:
+		return
+		
 	for objective in level_objectives:
 		if not objective.completed:
 			if objective.check_completion():
@@ -104,7 +117,7 @@ func _on_node_added(node: Node) -> void:
 	if node is Building:
 		if node.team == 2:
 			_connect_enemy_building(node)
-	
+			
 
 func _on_enemy_death(enemy: Enemy) -> void:
 	number_of_enemies -= 1
@@ -133,3 +146,11 @@ func update_objectives_menu() -> void:
 	objective_menu.clear_objectives()
 	for objective in level_objectives:
 		objective_menu.add_objective(objective)
+
+func on_hq_destroyed():
+	level_failed.emit()
+	
+func on_level_failed():
+	is_level_failed = true
+	get_parent().get_node("UI").get_node("LevelFailedScreen").show()
+	print('level failed')

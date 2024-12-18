@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=4 uid="uid://dsjd6d5ootf2m"]
+[gd_scene load_steps=15 format=4 uid="uid://dsjd6d5ootf2m"]
 
 [ext_resource type="Script" path="res://Structures/stone_quarry.gd" id="1_s756d"]
-[ext_resource type="Texture2D" uid="uid://dglqwfskpp8hr" path="res://Assets/BuildingModels/hexagons_medieval.png" id="2_gvawm"]
+[ext_resource type="Resource" uid="uid://f075cutgkwc2" path="res://Resources/Buildings/StoneQuarry.tres" id="2_eobxu"]
+[ext_resource type="Texture2D" uid="uid://cmc7y1vq0h2lf" path="res://Assets/BuildingModels/hexagons_medieval.png" id="2_gvawm"]
 [ext_resource type="PackedScene" uid="uid://du0opqlxswb3l" path="res://Components/health_component.tscn" id="2_hjhcy"]
 [ext_resource type="PackedScene" uid="uid://ct6t50e5f0ujo" path="res://Assets/BuildingModels/resource_stone.fbx" id="3_2iqxr"]
 [ext_resource type="PackedScene" uid="uid://x10cogs6d5ud" path="res://Components/health_bar.tscn" id="3_felje"]
@@ -62,6 +63,7 @@ size = Vector2(6, 10)
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("1_s756d")
+building_resource = ExtResource("2_eobxu")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(300, 0, 0, 0, -1.31134e-05, 300, 0, -300, -1.31134e-05, 0, 0, -0.3)

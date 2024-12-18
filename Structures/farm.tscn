@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://sua3dxpdapto"]
+[gd_scene load_steps=12 format=3 uid="uid://sua3dxpdapto"]
 
 [ext_resource type="Script" path="res://Structures/farm.gd" id="1_fckei"]
+[ext_resource type="Resource" uid="uid://n5hva5rnvwjy" path="res://Resources/Buildings/Farm.tres" id="2_hormv"]
 [ext_resource type="PackedScene" uid="uid://du0opqlxswb3l" path="res://Components/health_component.tscn" id="2_v15mj"]
 [ext_resource type="PackedScene" uid="uid://x10cogs6d5ud" path="res://Components/health_bar.tscn" id="3_o3h2l"]
 [ext_resource type="Script" path="res://Components/selection.gd" id="4_lj2p6"]
@@ -29,6 +30,7 @@ size = Vector2(5.1, 3.6)
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("1_fckei")
+building_resource = ExtResource("2_hormv")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.74459, 0, 0.5, 0)

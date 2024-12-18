@@ -7,6 +7,7 @@ signal menu_closed  # Signal emitted when the menu is closed
 
 # Called when the menu is ready
 func _ready():
+	$ObjectiveContainer.hide()
 	close_button.pressed.connect(_on_close_button_pressed)
 
 # Handles closing the menu

@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://r1rqop10uwa8"
-path="res://.godot/imported/resource_lumber.fbx-67f62f294095aa8a3410e24c8d5c7584.scn"
+path="res://.godot/imported/resource_wood.fbx-9a9cf32dbf80f43250694584302f909d.scn"
 
 [deps]
 
-source_file="res://Assets/BuildingModels/resource_lumber.fbx"
-dest_files=["res://.godot/imported/resource_lumber.fbx-67f62f294095aa8a3410e24c8d5c7584.scn"]
+source_file="res://Assets/BuildingModels/resource_wood.fbx"
+dest_files=["res://.godot/imported/resource_wood.fbx-9a9cf32dbf80f43250694584302f909d.scn"]
 
 [params]
 

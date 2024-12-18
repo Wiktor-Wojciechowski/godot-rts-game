@@ -1,6 +1,7 @@
-[gd_scene load_steps=17 format=4 uid="uid://wr5eh3cwk62k"]
+[gd_scene load_steps=18 format=4 uid="uid://wr5eh3cwk62k"]
 
 [ext_resource type="Script" path="res://Structures/lumber_mill.gd" id="1_gysje"]
+[ext_resource type="Resource" uid="uid://rm5qley6cfui" path="res://Resources/Buildings/LumberMill.tres" id="2_4cl1q"]
 [ext_resource type="PackedScene" uid="uid://du0opqlxswb3l" path="res://Components/health_component.tscn" id="2_xtneo"]
 [ext_resource type="PackedScene" uid="uid://x10cogs6d5ud" path="res://Components/health_bar.tscn" id="3_rreer"]
 [ext_resource type="Script" path="res://Components/selection.gd" id="5_nmbgg"]
@@ -206,6 +207,7 @@ collision_layer = 4
 collision_mask = 4
 script = ExtResource("1_gysje")
 resource_type = "wood"
+building_resource = ExtResource("2_4cl1q")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 1.6, 0)

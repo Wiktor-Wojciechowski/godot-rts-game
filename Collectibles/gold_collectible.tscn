@@ -1,11 +1,13 @@
-[gd_scene load_steps=6 format=4 uid="uid://dh5b4phkpb47f"]
+[gd_scene load_steps=9 format=4 uid="uid://nvfer57ex412"]
 
-[ext_resource type="Texture2D" uid="uid://cmc7y1vq0h2lf" path="res://Assets/BuildingModels/hexagons_medieval.png" id="1_huaav"]
+[ext_resource type="Script" path="res://Collectibles/collectible.gd" id="1_prt07"]
+[ext_resource type="Texture2D" uid="uid://cmc7y1vq0h2lf" path="res://Assets/BuildingModels/hexagons_medieval.png" id="2_603op"]
+[ext_resource type="Resource" uid="uid://v5a8g7yb7l4b" path="res://Resources/Collectibles/gold_collectible.tres" id="2_d5mnf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fysl8"]
 resource_name = "hexagons_medieval"
 vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("1_huaav")
+albedo_texture = ExtResource("2_603op")
 emission_enabled = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_vby1q"]
@@ -45,8 +47,25 @@ shadow_mesh = SubResource("ArrayMesh_vby1q")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qe2wv"]
 albedo_color = Color(1, 0.7095, 0.17, 1)
 
-[node name="resource_gold" type="MeshInstance3D"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_vdg0d"]
+radius = 0.005
+
+[node name="GoldCollectible" type="StaticBody3D"]
+collision_layer = 32
+collision_mask = 2
+script = ExtResource("1_prt07")
+collectible_resource = ExtResource("2_d5mnf")
+
+[node name="resource_gold" type="MeshInstance3D" parent="."]
 transform = Transform3D(300, 0, 0, 0, -1.31134e-05, 300, 0, -300, -1.31134e-05, 0, 0, 0)
 mesh = SubResource("ArrayMesh_ihbw7")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_qe2wv")
+
+[node name="PickupRange" type="Area3D" parent="."]
+transform = Transform3D(300, 0, 0, 0, -1.31134e-05, 300, 0, -300, -1.31134e-05, 0, 0, 0)
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PickupRange"]
+shape = SubResource("SphereShape3D_vdg0d")

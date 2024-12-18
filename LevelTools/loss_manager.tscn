@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dg7tm58g2y4mw"]
+
+[ext_resource type="Script" path="res://LevelTools/loss_manager.gd" id="1_kiqom"]
+
+[node name="LossManager" type="Node3D"]
+script = ExtResource("1_kiqom")

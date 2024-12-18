@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="CollectibleData" load_steps=2 format=3 uid="uid://ccqgxaalj6m6a"]
+
+[ext_resource type="Script" path="res://Resources/Collectibles/CollectibleData.gd" id="1_xe6fn"]
+
+[resource]
+script = ExtResource("1_xe6fn")
+collectible_name = "Wood"
+collected_amount = 50

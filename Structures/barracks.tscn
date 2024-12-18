@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://cmx525e68klb4"]
+[gd_scene load_steps=13 format=3 uid="uid://cmx525e68klb4"]
 
 [ext_resource type="Script" path="res://Structures/barracks.gd" id="1_s1t6i"]
+[ext_resource type="Resource" uid="uid://c2w1qy7j2d5vd" path="res://Resources/Buildings/Barracks.tres" id="2_ud52l"]
 [ext_resource type="Script" path="res://Components/production_queue.gd" id="3_0hq6x"]
 [ext_resource type="Script" path="res://Components/selection.gd" id="3_wa1dr"]
 [ext_resource type="PackedScene" uid="uid://du0opqlxswb3l" path="res://Components/health_component.tscn" id="4_ph1me"]
@@ -29,6 +30,7 @@ outer_radius = 3.7
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("1_s1t6i")
+building_resource = ExtResource("2_ud52l")
 
 [node name="WrongPlacementIndicator" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)

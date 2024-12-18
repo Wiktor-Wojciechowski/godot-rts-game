@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="CollectibleData" load_steps=2 format=3 uid="uid://t53algk6vykv"]
+
+[ext_resource type="Script" path="res://Resources/Collectibles/CollectibleData.gd" id="1_j5hpr"]
+
+[resource]
+script = ExtResource("1_j5hpr")
+collectible_name = "Food"
+collected_amount = 50

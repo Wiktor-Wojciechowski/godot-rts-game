@@ -1,5 +1,7 @@
 extends Node
 
+class_name ResourceManager
+
 # Define the resources in a dictionary
 @export var resources: Dictionary = {
 	"wood": 0,
@@ -13,6 +15,7 @@ signal resources_updated
 
 # Add or subtract a resource based on type
 func add_resource(resource_type: String, amount: int) -> void:
+	resource_type = resource_type.to_lower()
 	if resources.has(resource_type):
 		resources[resource_type] += amount
 		emit_signal("resources_updated")
