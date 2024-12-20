@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_02y5e")
-total_enemies_to_defeat = 1
-objective_name = "Defeat 1 Enemies"
+total_enemies_to_defeat = 50
+objective_name = "Defeat All Enemies"
 description = ""
 completed = false

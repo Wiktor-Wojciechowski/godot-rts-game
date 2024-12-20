@@ -7,4 +7,5 @@ class_name UnitData
 @export var production_time: float
 @export var health: int
 @export var attack: int
+@export var movement_speed: float
 @export var production_cost: Dictionary

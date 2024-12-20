@@ -8,3 +8,5 @@ unit_name = "Zweihander"
 production_time = 5.0
 health = 100
 attack = 20
+movement_speed = 4.0
+production_cost = {}

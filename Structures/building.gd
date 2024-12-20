@@ -18,8 +18,10 @@ signal building_destroyed
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	health_component.death.connect(on_building_destroyed)
-	
 	building_name = building_resource.building_name
+	
+	if team==1:
+		$OmniLight3D.show()
 
 func on_building_destroyed(building):
 	building_destroyed.emit()

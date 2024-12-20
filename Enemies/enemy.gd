@@ -14,10 +14,14 @@ var enemies_in_range = []
 
 var player_buildings = []
 var closest_building = null
+@export var seeks_out_buildings = false
 
 var current_target = null
 
 var team = 2
+
+enum Command { NONE, HOLD_POSITION, MOVE_TO_POSITION, ATTACK_TARGET }
+var current_command = Command.NONE
 
 func _ready() -> void:
 	#movement_component.move_to(Vector3(-200,0,0))
@@ -35,7 +39,7 @@ func enemy_behavior():
 		if closest_enemy:
 			current_target = closest_enemy
 	else:
-		if not closest_building:
+		if not closest_building and seeks_out_buildings:
 			closest_building = attack_component._find_closest_building()
 		else:
 			current_target = closest_building

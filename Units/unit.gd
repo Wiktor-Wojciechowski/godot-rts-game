@@ -10,12 +10,16 @@ class_name Unit
 
 @export var can_attack_while_moving = false
 
+@export var unit_resource: UnitData = null
+
 var team = 1
 
 var current_target = null
 
 func _ready() -> void:
-	pass
+	if unit_resource:
+		attack_component.attack_damage = unit_resource.attack
+		movement_component.speed = unit_resource.movement_speed
 
 func _process(delta):
 	unit_behavior()

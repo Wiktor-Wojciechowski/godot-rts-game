@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://nvfer57ex412"]
+[gd_scene load_steps=10 format=4 uid="uid://nvfer57ex412"]
 
 [ext_resource type="Script" path="res://Collectibles/collectible.gd" id="1_prt07"]
 [ext_resource type="Texture2D" uid="uid://cmc7y1vq0h2lf" path="res://Assets/BuildingModels/hexagons_medieval.png" id="2_603op"]
@@ -50,6 +50,8 @@ albedo_color = Color(1, 0.7095, 0.17, 1)
 [sub_resource type="SphereShape3D" id="SphereShape3D_vdg0d"]
 radius = 0.005
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_3vq20"]
+
 [node name="GoldCollectible" type="StaticBody3D"]
 collision_layer = 32
 collision_mask = 2
@@ -69,3 +71,7 @@ collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PickupRange"]
 shape = SubResource("SphereShape3D_vdg0d")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+visible = false
+shape = SubResource("SphereShape3D_3vq20")

@@ -43,10 +43,13 @@ var current_population = 0
 @onready var objective_menu = get_parent().get_node("UI").get_node("ObjectiveMenu")
 
 var is_level_failed = false
+@export var can_lose_when_population_0 = false
 
 signal all_objectives_completed
 
 signal level_failed
+
+signal population_changed
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -61,15 +64,13 @@ func _ready() -> void:
 		increase_current_population(1)
 	
 	enemies_node = get_tree().current_scene.find_child("Enemies")
-	for enemy in enemies_node.get_children():
-		enemy.get_node("HealthComponent").death.connect(_on_unit_death)
-
 	
 	_process_existing_enemies()
 	
 	get_tree().node_added.connect(_on_node_added)
 	
 	level_failed.connect(on_level_failed)
+	population_changed.connect(on_population_changed)
 	
 	var hq = get_parent().find_child("PlayerHeadQuarters")
 	if hq:
@@ -169,8 +170,15 @@ func on_level_failed():
 func increase_current_population(amount):
 	current_population += amount
 	get_parent().get_node("UI").get_node("PopulationLabel").text = "Population: %s/%s" % [str(current_population), str(max_population)]
+	emit_signal("population_changed")
 
 func decrease_current_population(amount):
-	print('pop ',current_population)
 	current_population -= amount
 	get_parent().get_node("UI").get_node("PopulationLabel").text = "Population: %s/%s" % [str(current_population), str(max_population)]
+	emit_signal("population_changed")
+
+func on_population_changed():
+	print('pop changed')
+	if current_population <= 0 and can_lose_when_population_0:
+		print('all pop lost')
+		level_failed.emit()

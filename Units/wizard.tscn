@@ -1,7 +1,8 @@
-[gd_scene load_steps=28 format=4 uid="uid://dj26ojxyv2idv"]
+[gd_scene load_steps=29 format=4 uid="uid://dj26ojxyv2idv"]
 
 [ext_resource type="Script" path="res://Units/wizard.gd" id="1_tai12"]
 [ext_resource type="PackedScene" uid="uid://cyybrg631gniq" path="res://Components/selection.tscn" id="2_a78fj"]
+[ext_resource type="Resource" uid="uid://bkbsg1aihau1e" path="res://Resources/Units/Wizard.tres" id="2_s1fyu"]
 [ext_resource type="PackedScene" uid="uid://x10cogs6d5ud" path="res://Components/health_bar.tscn" id="3_dq5ad"]
 [ext_resource type="PackedScene" uid="uid://du0opqlxswb3l" path="res://Components/health_component.tscn" id="4_8ckva"]
 [ext_resource type="Script" path="res://Components/attack_component.gd" id="5_1mbeo"]
@@ -496,6 +497,7 @@ radius = 6.0
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_tai12")
+unit_resource = ExtResource("2_s1fyu")
 
 [node name="RedTeam_Wizard_Armature" type="Node3D" parent="."]
 transform = Transform3D(-100, 8.74228e-06, 1.04216e-12, 0, -1.19209e-05, 100, 8.74228e-06, 100, 1.19209e-05, -0.0333957, 0.688584, 0.0220694)
@@ -719,6 +721,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, -1)
 [node name="MovementComponent" parent="." instance=ExtResource("6_yj1ec")]
 speed = 7
 stop_distance = 10.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2, 0)
+light_energy = 2.0
+omni_range = 8.0
 
 [connection signal="body_entered" from="AttackComponent/AttackRange" to="AttackComponent" method="_on_attack_range_body_entered"]
 [connection signal="body_exited" from="AttackComponent/AttackRange" to="AttackComponent" method="_on_attack_range_body_exited"]

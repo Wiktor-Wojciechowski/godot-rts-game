@@ -7,4 +7,6 @@ script = ExtResource("1_113xa")
 unit_name = "Wizard"
 production_time = 6.0
 health = 30
-attack = 30
+attack = 60
+movement_speed = 4.0
+production_cost = {}

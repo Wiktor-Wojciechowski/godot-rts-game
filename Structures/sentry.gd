@@ -20,6 +20,7 @@ var timer: Timer
 var head: StaticBody3D
 
 func _ready():
+	super._ready()
 	#Set area3d collision radius to detection range
 	area = $Area3D 
 	var area_col = area.get_node("CollisionShape3D")
@@ -32,6 +33,7 @@ func _ready():
 	
 	area.body_entered.connect(_on_body_entered)
 	area.body_exited.connect(_on_body_exited)
+	
 
 # Function called when an enemy enters the detection area
 func _on_body_entered(body: Node) -> void:
@@ -118,6 +120,7 @@ func _shoot():
 
 	# Set the bullet's direction
 	bullet_instance.set_direction(bullet_direction)
+	bullet_instance.look_at(current_target.position)
 
 	# Start the timer for the next shot
 	timer.start()
