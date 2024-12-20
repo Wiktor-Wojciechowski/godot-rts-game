@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://bijuusfv0anrl"]
+[gd_scene load_steps=69 format=3 uid="uid://bijuusfv0anrl"]
 
 [ext_resource type="PackedScene" uid="uid://ct8jhcy5gigkv" path="res://LevelTools/game_manager.tscn" id="1_qnc7g"]
 [ext_resource type="Script" path="res://Resources/Campaign/Objectives/objective.gd" id="2_3lc2v"]
@@ -16,7 +16,6 @@
 [ext_resource type="PackedScene" uid="uid://68ue10cffaua" path="res://Decorations/trees_b_large.tscn" id="14_m8xiq"]
 [ext_resource type="PackedScene" uid="uid://ci8a4isd6wg2o" path="res://Decorations/rock_single_e.tscn" id="15_oppyv"]
 [ext_resource type="PackedScene" uid="uid://d1uif02tuvhoh" path="res://Decorations/mountain_a.tscn" id="16_pb78t"]
-[ext_resource type="PackedScene" uid="uid://bywn6s5aqo81n" path="res://Structures/player_headquarters.tscn" id="17_je4bu"]
 [ext_resource type="Script" path="res://Camera/camera_base.gd" id="17_kc8ti"]
 [ext_resource type="Script" path="res://UI/ui.gd" id="18_bn320"]
 [ext_resource type="PackedScene" uid="uid://cf0m7jmb6c2i7" path="res://UI/building_menu.tscn" id="19_20vo2"]
@@ -133,9 +132,6 @@ mesh = SubResource("BoxMesh_ftsxb")
 shape = SubResource("BoxShape3D_5gxvn")
 
 [node name="Structures" type="Node3D" parent="NavigationRegion3D"]
-
-[node name="PlayerHeadQuarters" parent="NavigationRegion3D/Structures" instance=ExtResource("17_je4bu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.91489, 0.500002, 11.0015)
 
 [node name="Decorations" type="Node3D" parent="NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
@@ -778,6 +774,13 @@ layout_mode = 1
 [node name="LevelFailedScreen" parent="UI" instance=ExtResource("26_pslox")]
 visible = false
 layout_mode = 1
+
+[node name="PopulationLabel" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = -575.0
+offset_top = -262.0
+offset_right = -535.0
+offset_bottom = -239.0
 
 [node name="BuildingPlacer" parent="." node_paths=PackedStringArray("camera", "nav_region") instance=ExtResource("24_50qe6")]
 buildings = Array[PackedScene]([ExtResource("25_n1mh3"), ExtResource("26_gb0gp"), ExtResource("27_tr4r0"), ExtResource("28_go38i"), ExtResource("29_1vh34"), ExtResource("30_jntdt")])

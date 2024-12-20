@@ -37,6 +37,9 @@ var producible_units: Array[PackedScene] = [
 	preload("res://Units/zweihander.tscn")
 ]
 
+@export var max_population = 10
+var current_population = 0
+
 @onready var objective_menu = get_parent().get_node("UI").get_node("ObjectiveMenu")
 
 var is_level_failed = false
@@ -53,7 +56,14 @@ func _ready() -> void:
 	update_objectives_menu()
 	
 	units_node = get_tree().current_scene.find_child("Units")
+	for unit in units_node.get_children():
+		unit.get_node("HealthComponent").death.connect(_on_unit_death)
+		increase_current_population(1)
+	
 	enemies_node = get_tree().current_scene.find_child("Enemies")
+	for enemy in enemies_node.get_children():
+		enemy.get_node("HealthComponent").death.connect(_on_unit_death)
+
 	
 	_process_existing_enemies()
 	
@@ -127,6 +137,7 @@ func _on_enemy_death(enemy: Enemy) -> void:
 func _on_unit_death(unit: Unit):
 	number_of_units -= 1
 	units_lost += 1
+	decrease_current_population(1)
 	check_objectives()
 	
 func _on_enemy_building_destroyed(building):
@@ -154,3 +165,12 @@ func on_level_failed():
 	is_level_failed = true
 	get_parent().get_node("UI").get_node("LevelFailedScreen").show()
 	print('level failed')
+	
+func increase_current_population(amount):
+	current_population += amount
+	get_parent().get_node("UI").get_node("PopulationLabel").text = "Population: %s/%s" % [str(current_population), str(max_population)]
+
+func decrease_current_population(amount):
+	print('pop ',current_population)
+	current_population -= amount
+	get_parent().get_node("UI").get_node("PopulationLabel").text = "Population: %s/%s" % [str(current_population), str(max_population)]
