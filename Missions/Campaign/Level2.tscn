@@ -1,8 +1,6 @@
-[gd_scene load_steps=62 format=3 uid="uid://c82xax31p4gao"]
+[gd_scene load_steps=60 format=3 uid="uid://c82xax31p4gao"]
 
 [ext_resource type="PackedScene" uid="uid://ct8jhcy5gigkv" path="res://LevelTools/game_manager.tscn" id="1_u66bg"]
-[ext_resource type="Script" path="res://Resources/Campaign/Objectives/objective.gd" id="2_mpkrd"]
-[ext_resource type="Resource" uid="uid://b58egvf4p8p1y" path="res://Resources/Campaign/Level2/Objectives/defeat_enemies_objective2.tres" id="3_hwx1e"]
 [ext_resource type="PackedScene" uid="uid://b65st7dliy0ls" path="res://Structures/enemy_spawner.tscn" id="5_i8jwe"]
 [ext_resource type="PackedScene" uid="uid://cmthmnm5plomi" path="res://Enemies/enemy.tscn" id="6_4i338"]
 [ext_resource type="PackedScene" uid="uid://bkulfn8fo0c47" path="res://Units/unit.tscn" id="7_k8ko2"]
@@ -97,7 +95,6 @@ reflected_light_source = 1
 [node name="Level2" type="Node3D"]
 
 [node name="GameManager" parent="." instance=ExtResource("1_u66bg")]
-level_objectives = Array[ExtResource("2_mpkrd")]([ExtResource("3_hwx1e")])
 
 [node name="EnemySpawner" parent="." instance=ExtResource("5_i8jwe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.3027, 0, 0)

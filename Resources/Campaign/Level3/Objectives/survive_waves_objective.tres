@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SurviveWavesObjective" load_steps=2 format=3 uid="uid://0lh0nxbeqpsw"]
+
+[ext_resource type="Script" path="res://Resources/Campaign/Objectives/survive_x_waves_objective.gd" id="1_tykxo"]
+
+[resource]
+script = ExtResource("1_tykxo")
+objective_name = "Objective"
+description = "Objective description"
+completed = false

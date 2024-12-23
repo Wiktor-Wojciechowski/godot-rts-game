@@ -3,7 +3,10 @@ extends Node
 var available_levels: Array = [
 	"res://Missions/MainMenu.tscn",
 	"res://Missions/Campaign/Level1.tscn",
-	"res://Missions/Campaign/Level2.tscn"
+	"res://Missions/Campaign/Level2.tscn",
+	"res://Missions/Campaign/Level3.tscn",
+	"res://Missions/Campaign/Level4.tscn",
+	"res://Missions/Campaign/Level5.tscn",
 ]
 
 var current_level_index = 0
@@ -14,7 +17,6 @@ func _ready() -> void:
 	var trimmed_string = my_string.substr(5, my_string.length() - 5)
 	var result = int(trimmed_string)
 	current_level_index = result
-	print(result)  # Output: 6789
 
 func load_level(level_index: int):
 	get_tree().change_scene_to_file(available_levels[level_index])

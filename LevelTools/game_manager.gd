@@ -15,6 +15,10 @@ var enemies_defeated = 0
 var units_lost = 0
 var destroyed_enemy_buildings = 0
 
+var special_enemies_defeated = 0
+var waves_survived = 0
+var enemy_hqs_destroyed = 0
+
 var built_structures = []
 
 var fake_objectives = [
@@ -46,10 +50,11 @@ var is_level_failed = false
 @export var can_lose_when_population_0 = false
 
 signal all_objectives_completed
-
 signal level_failed
-
 signal population_changed
+signal enemy_hq_destroyed
+signal special_enemy_defeated
+signal wave_survived
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
