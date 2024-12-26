@@ -16,19 +16,11 @@ var units_lost = 0
 var destroyed_enemy_buildings = 0
 
 var special_enemies_defeated = 0
-var waves_survived = 0
+var waves_completed = 0
+var current_wave_killcount = 0
 var enemy_hqs_destroyed = 0
 
 var built_structures = []
-
-var fake_objectives = [
-	{
-		'name': 'Kill 2 enemies',
-		'type': 'defeat_enemies',
-		'target': 2,
-		'completed': false,
-	}
-]
 
 @export var level_objectives: Array[Objective] = []
 
@@ -48,13 +40,15 @@ var current_population = 0
 
 var is_level_failed = false
 @export var can_lose_when_population_0 = false
+@export var has_to_complete_waves = false
+@export var can_lose_when_hq_destroyed = false
 
 signal all_objectives_completed
 signal level_failed
 signal population_changed
 signal enemy_hq_destroyed
 signal special_enemy_defeated
-signal wave_survived
+signal wave_completed
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -80,6 +74,8 @@ func _ready() -> void:
 	var hq = get_parent().find_child("PlayerHeadQuarters")
 	if hq:
 		hq.building_destroyed.connect(on_hq_destroyed)
+		
+	wave_completed.connect(on_wave_completed)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -138,6 +134,11 @@ func _on_node_added(node: Node) -> void:
 func _on_enemy_death(enemy: Enemy) -> void:
 	number_of_enemies -= 1
 	enemies_defeated += 1
+	
+	if has_to_complete_waves:
+		current_wave_killcount += 1
+		print('gm killcount ',current_wave_killcount)
+	
 	check_objectives()
 	
 func _on_unit_death(unit: Unit):
@@ -165,7 +166,8 @@ func update_objectives_menu() -> void:
 		objective_menu.add_objective(objective)
 
 func on_hq_destroyed():
-	level_failed.emit()
+	if can_lose_when_hq_destroyed:
+		level_failed.emit()
 	
 func on_level_failed():
 	is_level_failed = true
@@ -183,7 +185,14 @@ func decrease_current_population(amount):
 	emit_signal("population_changed")
 
 func on_population_changed():
-	print('pop changed')
 	if current_population <= 0 and can_lose_when_population_0:
-		print('all pop lost')
 		level_failed.emit()
+
+func on_wave_completed():
+	print("wave complete")
+	current_wave_killcount = 0
+	waves_completed += 1
+
+func add_new_objective(objective: Objective):
+	level_objectives.append(objective)
+	update_objectives_menu()

@@ -30,6 +30,7 @@ var spawn_points = []
 var enemy_size = 1.2
 
 signal wave_spawned
+signal all_waves_completed
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -46,10 +47,17 @@ func _ready() -> void:
 func on_wave_timer_timeout():
 	spawn_wave(waves[next_wave_index])
 	
-func spawn_wave(wave):
+func spawn_wave(wave):	
 	var total_enemies_in_wave = 0
 	for enemies in wave.enemies:
 		total_enemies_in_wave += enemies.count
+	
+	var new_objective = SurviveWaveObjective.new()
+	new_objective.game_manager = get_tree().current_scene.find_child("GameManager")
+	new_objective.enemies_to_defeat = total_enemies_in_wave
+	new_objective.objective_name = "Survive Wave " + str(next_wave_index)
+	new_objective.description = "Defeat " + str(total_enemies_in_wave) + " Enemies"
+	game_manager.add_new_objective(new_objective)
 	
 	# Generate enough spawn points for all enemies in this wave
 	calculate_box_positions(spawn_centers[next_wave_index].position, total_enemies_in_wave)
@@ -71,6 +79,7 @@ func on_wave_spawned():
 		$WaveTimer.wait_time = waves[next_wave_index].spawn_timer
 	else:
 		$WaveTimer.stop()
+		all_waves_completed.emit()
 
 func spawn_enemies(enemies):
 	for i in enemies.count:
@@ -79,6 +88,7 @@ func spawn_enemies(enemies):
 func spawn_enemy(enemy_type, pos):
 	var enemies_node = get_tree().current_scene.find_child("Enemies")
 	var enemy = available_enemies[enemy_type].instantiate()
+	enemy.seeks_out_buildings = true
 	enemies_node.add_child(enemy)
 	enemy.position = pos
 

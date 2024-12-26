@@ -18,6 +18,8 @@ signal building_destroyed
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	health_component.death.connect(on_building_destroyed)
+	health_component.max_health = building_resource.health
+	health_component.health = building_resource.health
 	building_name = building_resource.building_name
 	
 	if team==1:

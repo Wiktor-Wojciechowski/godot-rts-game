@@ -56,6 +56,7 @@
 [ext_resource type="PackedScene" uid="uid://njiefdys0bu4" path="res://Collectibles/food_collectible.tscn" id="55_nd5mm"]
 [ext_resource type="Script" path="res://Missions/wave_spawner.gd" id="56_0bwk8"]
 [ext_resource type="PackedScene" uid="uid://rfhcl2tll6gu" path="res://Collectibles/wood_collectible.tscn" id="56_0tih0"]
+[ext_resource type="PackedScene" uid="uid://bywn6s5aqo81n" path="res://Structures/player_headquarters.tscn" id="57_kioqd"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_eqeoe"]
 geometry_parsed_geometry_type = 1
@@ -96,12 +97,11 @@ ambient_light_sky_contribution = 0.95
 ambient_light_energy = 5.15
 reflected_light_source = 1
 
-[sub_resource type="BoxMesh" id="BoxMesh_2fhwe"]
-
-[node name="Level1" type="Node3D"]
+[node name="Level3" type="Node3D"]
 
 [node name="GameManager" parent="." instance=ExtResource("1_1gara")]
-can_lose_when_population_0 = true
+has_to_complete_waves = true
+can_lose_when_hq_destroyed = true
 
 [node name="EnemySpawner" parent="." instance=ExtResource("3_bxxaf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.3027, 0, 0)
@@ -1030,15 +1030,19 @@ script = ExtResource("56_0bwk8")
 [node name="SpawnCenters" type="Node3D" parent="WaveSpawner"]
 
 [node name="SpawnCenter1" type="Marker3D" parent="WaveSpawner/SpawnCenters"]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="WaveSpawner/SpawnCenters/SpawnCenter1"]
-mesh = SubResource("BoxMesh_2fhwe")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57, 0, -54)
 
 [node name="SpawnCenter2" type="Marker3D" parent="WaveSpawner/SpawnCenters"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -1)
 
 [node name="SpawnCenter3" type="Marker3D" parent="WaveSpawner/SpawnCenters"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63, 0, 78)
 
 [node name="SpawnCenter4" type="Marker3D" parent="WaveSpawner/SpawnCenters"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76, 0, 61)
+
+[node name="PlayerHeadQuarters" parent="." instance=ExtResource("57_kioqd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0174761, 0.486813, 0.26984)
 
 [connection signal="mouse_entered" from="UI" to="UnitSelector" method="_on_ui_mouse_entered"]
 [connection signal="mouse_exited" from="UI" to="UnitSelector" method="_on_ui_mouse_exited"]
