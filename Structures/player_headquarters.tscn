@@ -88,4 +88,5 @@ mesh = SubResource("TorusMesh_vn0gm")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 12.4, 0)
+visible = false
 omni_attenuation = -0.5

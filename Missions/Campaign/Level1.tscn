@@ -124,9 +124,6 @@ mesh = SubResource("BoxMesh_ftsxb")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Ground"]
 shape = SubResource("BoxShape3D_5gxvn")
 
-[node name="Sentry" parent="NavigationRegion3D/Ground" instance=ExtResource("29_1vh34")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 41.2067, 0.5, 8.8354)
-
 [node name="Structures" type="Node3D" parent="NavigationRegion3D"]
 
 [node name="Barracks" parent="NavigationRegion3D/Structures" instance=ExtResource("30_jntdt")]

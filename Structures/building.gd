@@ -22,8 +22,6 @@ func _ready() -> void:
 	health_component.health = building_resource.health
 	building_name = building_resource.building_name
 	
-	if team==1:
-		$OmniLight3D.show()
 
 func on_building_destroyed(building):
 	building_destroyed.emit()

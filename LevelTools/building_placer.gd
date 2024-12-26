@@ -166,6 +166,12 @@ func place_building():
 	var building_instance = buildings[current_building_index].instantiate()
 	
 	structures.add_child(building_instance)
+	
+	if building_instance.team == 1:
+		if building_instance.has_node("OmniLight3D"):
+			print('has omni')
+			building_instance.get_node("OmniLight3D").show()
+			
 	building_instance.building_destroyed.connect(on_building_destroyed)
 	
 	var mesh = building_instance.get_node("MeshInstance3D")
@@ -178,7 +184,7 @@ func place_building():
 	current_building_ghost.queue_free()
 	current_building_ghost = null
 	current_building_index = -1
-	
+			
 	placing = false
 	
 	if not nav_region.is_baking():
