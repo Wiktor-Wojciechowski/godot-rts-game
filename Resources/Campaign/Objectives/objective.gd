@@ -5,6 +5,7 @@ class_name Objective
 @export var objective_name: String = "Objective"
 @export var description: String  = "Objective description"
 @export var completed: bool = false
+var progress: float
 
 var game_manager: GameManager = null  # Reference to the GameManager
 

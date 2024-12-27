@@ -7,6 +7,9 @@ class_name DefeatEnemiesObjective
 # Check if the objective is completed
 func check_completion() -> bool:
 	if game_manager:
+		progress = (float(game_manager.enemies_defeated) / total_enemies_to_defeat) * 100
+		print(game_manager.enemies_defeated, ' / ', total_enemies_to_defeat)
+		print("progresik", progress)
 		if game_manager.enemies_defeated >= total_enemies_to_defeat:
 			completed = true
 			return true

@@ -1,6 +1,6 @@
 extends Objective
 
-class_name DefeatEnemiesObjective
+class_name DefeatSpecialEnemiesObjective
 
 @export var total__special_enemies_to_defeat: int = 0
 

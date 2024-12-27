@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ceaf25tbab6wn"]
+
+[ext_resource type="Script" path="res://Components/special_enemy_component.gd" id="1_xvswp"]
+
+[node name="SpecialEnemyComponent" type="Node3D"]
+script = ExtResource("1_xvswp")

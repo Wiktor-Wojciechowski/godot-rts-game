@@ -137,7 +137,9 @@ func _on_enemy_death(enemy: Enemy) -> void:
 	
 	if has_to_complete_waves:
 		current_wave_killcount += 1
-		print('gm killcount ',current_wave_killcount)
+	
+	if enemy.has_node("SpecialEnemyComponent"):
+		special_enemies_defeated += 1
 	
 	check_objectives()
 	
