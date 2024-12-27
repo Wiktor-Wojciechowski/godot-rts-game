@@ -3,6 +3,7 @@ extends Control
 @onready var unit_selector = get_tree().current_scene.find_child("UnitSelector")
 @onready var unit_resources: Array[UnitData] = get_tree().current_scene.find_child("UnitResources").unit_resources
 @onready var resource_manager = get_tree().current_scene.find_child("ResourceManager")
+@onready var game_manager = get_tree().current_scene.find_child("GameManager")
 
 var unit_buttons = []
 
@@ -16,6 +17,7 @@ func _ready():
 		unit_buttons[i].connect("pressed", Callable(self, "_on_unit_button_pressed").bind(i))
 		
 	resource_manager.resources_updated.connect(on_resources_updated)
+	game_manager.population_changed.connect(on_population_changed)
 	check_buttons_available()
 
 # Method that gets called when a building button is pressed
@@ -28,6 +30,12 @@ func on_resources_updated():
 	check_buttons_available()
 
 func can_produce_unit(cost: Dictionary, resources: Dictionary) -> bool:
+	var queue_population = 0
+	if unit_selector.selected_building is Barracks:
+		queue_population = unit_selector.selected_building.production_queue.unit_queue.size()
+	
+	if game_manager.current_population + queue_population >= game_manager.max_population:
+		return false
 	for resource in cost.keys():
 		# If the resource is missing or the available amount is less than the cost
 		if resources.get(resource, 0) < cost[resource]:
@@ -40,3 +48,6 @@ func check_buttons_available():
 			unit_buttons[i].disabled = false
 		else:
 			unit_buttons[i].disabled = true
+
+func on_population_changed():
+	check_buttons_available()

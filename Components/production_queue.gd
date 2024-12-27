@@ -8,6 +8,7 @@ var producible_units: Array[PackedScene]
 
 @onready var units = get_tree().current_scene.find_child("Units")
 @onready var resource_manager = get_tree().current_scene.find_child("ResourceManager")
+@onready var game_manager = get_tree().current_scene.find_child("GameManager")
 
 # UI nodes for displaying queue and production progress
 @onready var queue_display: Label = $BackgroundPanel/ScrollContainer/QueueDisplay
@@ -19,6 +20,7 @@ func _ready():
 	production_timer.one_shot = true
 	production_timer.connect("timeout", Callable(self, "_on_production_complete"))
 	add_child(production_timer)
+	game_manager.population_changed.connect(on_population_changed)
 	
 	# Initial UI update
 	update_queue_display()
@@ -68,6 +70,8 @@ func _on_production_complete() -> void:
 		units.add_child(completed_unit)
 		completed_unit.global_position = get_parent().spawn_point.global_position
 		current_unit = null
+		
+		game_manager.increase_current_population(1)
 
 		# Stop updating the progress bar
 		production_progress_bar.value = 0
@@ -90,3 +94,10 @@ func update_queue_display() -> void:
 		queue_text += "\nProducing: " + current_unit["name"]
 	
 	queue_display.text = queue_text
+
+func on_population_changed():
+	if game_manager.current_population >= game_manager.max_population:
+		production_timer.paused = true
+	else:
+		production_timer.paused = false
+		

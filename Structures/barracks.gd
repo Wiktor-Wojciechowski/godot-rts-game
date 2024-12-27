@@ -1,5 +1,7 @@
 extends Building
 
+class_name Barracks
+
 @onready var spawn_point = $SpawnPoint
 @onready var production_queue = $ProductionQueue
 

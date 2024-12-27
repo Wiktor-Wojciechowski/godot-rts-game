@@ -43,6 +43,8 @@ var is_level_failed = false
 @export var has_to_complete_waves = false
 @export var can_lose_when_hq_destroyed = false
 
+var level_complete = false
+
 signal all_objectives_completed
 signal level_failed
 signal population_changed
@@ -97,6 +99,7 @@ func check_objectives():
 	update_objectives_menu()
 	if objectives_completed == level_objectives.size():
 		emit_signal("all_objectives_completed")
+		level_complete = true
 		get_parent().get_node("UI").get_node("LevelCompleteScreen").show()
 		#show_completion_message()
 
@@ -172,9 +175,10 @@ func on_hq_destroyed():
 		level_failed.emit()
 	
 func on_level_failed():
-	is_level_failed = true
-	get_parent().get_node("UI").get_node("LevelFailedScreen").show()
-	print('level failed')
+	if not level_complete:
+		is_level_failed = true
+		get_parent().get_node("UI").get_node("LevelFailedScreen").show()
+		print('level failed')
 	
 func increase_current_population(amount):
 	current_population += amount
