@@ -124,7 +124,7 @@ func is_placement_valid():
 	collision_params.transform = building_transform
 	collision_params.collide_with_bodies = true
 	collision_params.collide_with_areas = true
-	collision_params.collision_mask = 15 #1 + 2 + 3 + 4
+	collision_params.collision_mask = 31 #1 + 2 + 3 + 4 + 7
 	# Check if the building is colliding with other objects
 	var collision = space_state.intersect_shape(collision_params)
 

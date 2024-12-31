@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://o0mhgf0ea1ip"]
+
+[node name="NoBuildZone" type="StaticBody3D"]
+collision_layer = 16
+collision_mask = 4

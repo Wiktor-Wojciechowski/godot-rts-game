@@ -106,6 +106,7 @@ toggle_pause_menu={
 3d_physics/layer_4="Enemies"
 3d_physics/layer_5="Decorations"
 3d_physics/layer_6="Collectibles"
+3d_physics/layer_7="Layer 7"
 
 [navigation]
 
