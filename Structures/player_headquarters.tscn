@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=4 uid="uid://bywn6s5aqo81n"]
+[gd_scene load_steps=12 format=4 uid="uid://bywn6s5aqo81n"]
 
 [ext_resource type="Script" path="res://Structures/player_headquarters.gd" id="1_ptpmm"]
 [ext_resource type="Texture2D" uid="uid://cmc7y1vq0h2lf" path="res://Assets/BuildingModels/hexagons_medieval.png" id="1_wt4cy"]
 [ext_resource type="Resource" uid="uid://6cpkl3cymhn1" path="res://Resources/Buildings/PlayerHeadQuarters.tres" id="2_p3khh"]
 [ext_resource type="Script" path="res://Components/health_component.gd" id="3_l8s6n"]
+[ext_resource type="PackedScene" uid="uid://x10cogs6d5ud" path="res://Components/health_bar.tscn" id="4_iy17v"]
 [ext_resource type="Script" path="res://Components/selection.gd" id="6_s24p3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_082df"]
@@ -73,6 +74,10 @@ shape = SubResource("BoxShape3D_xdglq")
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("3_l8s6n")
 max_health = 1
+
+[node name="HealthBar" parent="." node_paths=PackedStringArray("healthcomponent") instance=ExtResource("4_iy17v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.6, 0)
+healthcomponent = NodePath("../HealthComponent")
 
 [node name="Selection" type="Node3D" parent="."]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)

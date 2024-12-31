@@ -19,6 +19,8 @@ func _process(_delta: float) -> void:
 	pass
 
 func set_value():
+	max_value = healthcomponent.max_health
+	pb.max_value = max_value
 	value = healthcomponent.health
 	pb.value = value
 	if value == max_value:

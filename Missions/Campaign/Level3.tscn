@@ -64,7 +64,7 @@ size = Vector3(200, 1, 200)
 size = Vector3(200, 1, 200)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hiask"]
-size = Vector3(40, 1, 40)
+size = Vector3(200.089, 1, 61.1782)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ic2q"]
 
@@ -117,10 +117,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0175142, 0.499993, 0.24773)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 
 [node name="NoBuildZone" parent="NavigationRegion3D/Decorations" instance=ExtResource("2_tdkap")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8147e-05, 0.51318, 15.9779)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80, 0.51318, 46.9779)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Decorations/NoBuildZone"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80.0444, 0, 24.4109)
+shape = SubResource("BoxShape3D_hiask")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="NavigationRegion3D/Decorations/NoBuildZone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80.0444, 0, -116.589)
+shape = SubResource("BoxShape3D_hiask")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="NavigationRegion3D/Decorations/NoBuildZone"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10.0444, 0, -47.5891)
+shape = SubResource("BoxShape3D_hiask")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="NavigationRegion3D/Decorations/NoBuildZone"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 148.044, 0, -47.5891)
 shape = SubResource("BoxShape3D_hiask")
 
 [node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="NavigationRegion3D/Decorations"]
@@ -131,13 +143,13 @@ multimesh = SubResource("MultiMesh_fwggm")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.9619, 0.5, -44.7308)
 
 [node name="trees_A_large5" parent="NavigationRegion3D/Decorations" instance=ExtResource("13_yemlu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.69651, 0.5, -37.1653)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.30349, 0.5, -51.1653)
 
 [node name="trees_A_large6" parent="NavigationRegion3D/Decorations" instance=ExtResource("13_yemlu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1641, 0.5, -37.1653)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1641, 0.5, -51.1653)
 
 [node name="trees_A_large7" parent="NavigationRegion3D/Decorations" instance=ExtResource("13_yemlu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.89859, 0.5, -46.1661)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.10141, 0.5, -60.1661)
 
 [node name="trees_A_large14" parent="NavigationRegion3D/Decorations" instance=ExtResource("13_yemlu")]
 transform = Transform3D(0.999137, 0.0415443, 0, -0.0415443, 0.999137, 0, 0, 0, 1, 17.6965, 0.5, -61.1653)
@@ -578,7 +590,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.567, 0.5, -78.024)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71.3843, 0.5, -58.7064)
 
 [node name="mountain_A5" parent="NavigationRegion3D/Decorations" instance=ExtResource("16_ayni5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.86484, 0.5, -12.8205)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.86484, 0.5, -23.8205)
 
 [node name="mountain_A6" parent="NavigationRegion3D/Decorations" instance=ExtResource("16_ayni5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.7097, 0.5, -82.629)
@@ -644,10 +656,10 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -51.6124, 0.499992, -99.7609)
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -30.6124, 0.499992, -99.7609)
 
 [node name="mountain_A16" parent="NavigationRegion3D/Decorations" instance=ExtResource("16_ayni5")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -9.6124, 0.499992, -24.7609)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -9.6124, 0.499992, -35.7609)
 
 [node name="mountain_A17" parent="NavigationRegion3D/Decorations" instance=ExtResource("16_ayni5")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 11.3876, 0.499992, -24.7609)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 11.3876, 0.499992, -35.7609)
 
 [node name="mountain_A18" parent="NavigationRegion3D/Decorations" instance=ExtResource("16_ayni5")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 32.3876, 0.499992, -99.7609)
@@ -877,7 +889,7 @@ script = ExtResource("56_0bwk8")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57, 0, -54)
 
 [node name="SpawnCenter2" type="Marker3D" parent="WaveSpawner/SpawnCenters"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81, 0, -36)
 
 [node name="SpawnCenter3" type="Marker3D" parent="WaveSpawner/SpawnCenters"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63, 0, 78)
