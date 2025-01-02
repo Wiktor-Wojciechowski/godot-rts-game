@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ct8jhcy5gigkv" path="res://LevelTools/game_manager.tscn" id="1_qnc7g"]
 [ext_resource type="Script" path="res://Resources/Campaign/Objectives/objective.gd" id="2_jjc5a"]
-[ext_resource type="Resource" uid="uid://mdh34eihs2qb" path="res://Resources/Campaign/Level1/Objectives/defeat_40_enemies.tres" id="3_xbomk"]
+[ext_resource type="Resource" uid="uid://mdh34eihs2qb" path="res://Resources/Campaign/Level1/Objectives/defeat_all_enemies.tres" id="3_xbomk"]
 [ext_resource type="PackedScene" uid="uid://b65st7dliy0ls" path="res://Structures/enemy_spawner.tscn" id="5_anioq"]
 [ext_resource type="PackedScene" uid="uid://cmthmnm5plomi" path="res://Enemies/enemy.tscn" id="6_rpgt2"]
 [ext_resource type="PackedScene" uid="uid://bkulfn8fo0c47" path="res://Units/unit.tscn" id="7_1gn31"]
@@ -332,17 +332,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -66.5149, 0.5, 98.3545)
 [node name="trees_B_large108" parent="NavigationRegion3D/Decorations" instance=ExtResource("14_m8xiq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85.2441, 0.5, 98.2805)
 
-[node name="trees_B_large109" parent="NavigationRegion3D/Decorations" instance=ExtResource("14_m8xiq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -111.195, 0.5, 98.5625)
-
 [node name="trees_B_large110" parent="NavigationRegion3D/Decorations" instance=ExtResource("14_m8xiq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -93.5149, 0.5, 98.3545)
 
 [node name="trees_B_large111" parent="NavigationRegion3D/Decorations" instance=ExtResource("14_m8xiq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -101.515, 0.5, 98.3545)
-
-[node name="trees_B_large112" parent="NavigationRegion3D/Decorations" instance=ExtResource("14_m8xiq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -120.244, 0.5, 98.2805)
 
 [node name="trees_B_large113" parent="NavigationRegion3D/Decorations" instance=ExtResource("14_m8xiq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.8052, 0.5, 98.5625)
@@ -370,12 +364,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.7559, 0.5, 98.2805)
 
 [node name="trees_B_large121" parent="NavigationRegion3D/Decorations" instance=ExtResource("14_m8xiq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.8052, 0.5, 98.5625)
-
-[node name="trees_B_large122" parent="NavigationRegion3D/Decorations" instance=ExtResource("14_m8xiq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 116.485, 0.5, 98.3545)
-
-[node name="trees_B_large123" parent="NavigationRegion3D/Decorations" instance=ExtResource("14_m8xiq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 108.485, 0.5, 98.3545)
 
 [node name="trees_B_large124" parent="NavigationRegion3D/Decorations" instance=ExtResource("14_m8xiq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 89.7559, 0.5, 98.2805)

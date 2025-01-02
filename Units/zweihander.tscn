@@ -951,7 +951,7 @@ _data = {
 radius = 6.0
 
 [node name="Zweihander" type="CharacterBody3D" groups=["units"]]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 0, 0, 0)
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_aa5aj")
@@ -1219,6 +1219,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, -1)
 [node name="MovementComponent" parent="." instance=ExtResource("6_psujr")]
 speed = 5
 stop_distance = 1.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+omni_range = 6.0
+omni_attenuation = -0.2
 
 [connection signal="body_entered" from="AttackComponent/AttackRange" to="AttackComponent" method="_on_attack_range_body_entered"]
 [connection signal="body_exited" from="AttackComponent/AttackRange" to="AttackComponent" method="_on_attack_range_body_exited"]

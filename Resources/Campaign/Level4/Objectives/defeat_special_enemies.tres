@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="DefeatSpecialEnemiesObjective" load_steps=2 format=3 uid="uid://bpy8va1n2ccip"]
+
+[ext_resource type="Script" path="res://Resources/Campaign/Objectives/defeat_special_enemies_objective.gd" id="1_h5qcx"]
+
+[resource]
+script = ExtResource("1_h5qcx")
+total_special_enemies_to_defeat = 4
+objective_name = "Defeat 4 special enemies"
+description = ""
+completed = false

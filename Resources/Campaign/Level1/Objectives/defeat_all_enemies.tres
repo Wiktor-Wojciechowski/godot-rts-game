@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="DefeatEnemiesObjective" load_steps=2 format=3 uid="uid://mdh34eihs2qb"]
 
-[ext_resource type="Script" path="res://Resources/Campaign/Objectives/defeat_enemies_objective.gd" id="1_5av3n"]
+[ext_resource type="Script" path="res://Resources/Campaign/Objectives/defeat_enemies_objective.gd" id="1_87a38"]
 
 [resource]
-script = ExtResource("1_5av3n")
+script = ExtResource("1_87a38")
 total_enemies_to_defeat = 40
-objective_name = "Defeat 40 Enemies"
+objective_name = "Defeat All Enemies"
 description = ""
 completed = false

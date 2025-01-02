@@ -9,6 +9,7 @@ class_name Sentry
 @export var bullet_scene: PackedScene
 @export var bullet_damage:int = 10
 @export var angle_margin: float = 0.1  # Margin for rotation precision
+@export var target_group: String
 
 var current_target: Node3D = null
 var can_shoot: bool = true
@@ -21,6 +22,9 @@ var head: StaticBody3D
 
 func _ready():
 	super._ready()
+	match team:
+		1: target_group = "enemies"
+		2: target_group = "units"
 	#Set area3d collision radius to detection range
 	area = $Area3D 
 	var area_col = area.get_node("CollisionShape3D")
@@ -37,7 +41,7 @@ func _ready():
 
 # Function called when an enemy enters the detection area
 func _on_body_entered(body: Node) -> void:
-	if body.is_in_group("enemies"):
+	if body.is_in_group(target_group):
 		# Add the enemy to the list of enemies in range
 		enemies_in_range.append(body)
 
@@ -47,7 +51,7 @@ func _on_body_entered(body: Node) -> void:
 
 # Function called when an enemy exits the detection area
 func _on_body_exited(body: Node) -> void:
-	if body.is_in_group("enemies"):
+	if body.is_in_group(target_group):
 		# Remove the enemy from the list of enemies in range
 		enemies_in_range.erase(body)
 

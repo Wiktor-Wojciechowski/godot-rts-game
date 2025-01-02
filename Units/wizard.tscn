@@ -724,8 +724,8 @@ stop_distance = 10.0
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2, 0)
-light_energy = 2.0
 omni_range = 8.0
+omni_attenuation = -0.2
 
 [connection signal="body_entered" from="AttackComponent/AttackRange" to="AttackComponent" method="_on_attack_range_body_entered"]
 [connection signal="body_exited" from="AttackComponent/AttackRange" to="AttackComponent" method="_on_attack_range_body_exited"]

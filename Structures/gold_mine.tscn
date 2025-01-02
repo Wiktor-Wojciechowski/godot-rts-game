@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=4 uid="uid://baf5bl7w8u7hi"]
+[gd_scene load_steps=17 format=4 uid="uid://baf5bl7w8u7hi"]
 
 [ext_resource type="Script" path="res://Structures/gold_mine.gd" id="1_thk8o"]
 [ext_resource type="PackedScene" uid="uid://x10cogs6d5ud" path="res://Components/health_bar.tscn" id="2_eyvu1"]
-[ext_resource type="Texture2D" uid="uid://dglqwfskpp8hr" path="res://Assets/BuildingModels/hexagons_medieval.png" id="2_i1h4s"]
+[ext_resource type="Texture2D" uid="uid://cmc7y1vq0h2lf" path="res://Assets/BuildingModels/hexagons_medieval.png" id="2_i1h4s"]
+[ext_resource type="Resource" uid="uid://cxmyt0uo23qmk" path="res://Resources/Buildings/GoldMine.tres" id="2_ucx0t"]
 [ext_resource type="PackedScene" uid="uid://dh5b4phkpb47f" path="res://Decorations/resource_gold.tscn" id="3_4nmuy"]
 [ext_resource type="PackedScene" uid="uid://du0opqlxswb3l" path="res://Components/health_component.tscn" id="3_rb0vl"]
 [ext_resource type="Script" path="res://Components/selection.gd" id="4_fb07f"]
@@ -69,6 +70,7 @@ size = Vector2(6, 9)
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("1_thk8o")
+building_resource = ExtResource("2_ucx0t")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(300, 0, 0, 0, -1.31134e-05, 300, 0, -300, -1.31134e-05, 0, 0.00999999, -0.3)

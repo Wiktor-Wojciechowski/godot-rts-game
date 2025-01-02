@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://c82xax31p4gao"]
+[gd_scene load_steps=53 format=3 uid="uid://c82xax31p4gao"]
 
 [ext_resource type="PackedScene" uid="uid://ct8jhcy5gigkv" path="res://LevelTools/game_manager.tscn" id="1_u66bg"]
 [ext_resource type="PackedScene" uid="uid://b65st7dliy0ls" path="res://Structures/enemy_spawner.tscn" id="5_i8jwe"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://4rhknkiec0mx" path="res://Assets/Textures/rocky_terrain_02_diff_4k.jpg" id="8_pqycf"]
 [ext_resource type="PackedScene" uid="uid://bywn6s5aqo81n" path="res://Structures/player_headquarters.tscn" id="10_m4gxm"]
 [ext_resource type="PackedScene" uid="uid://5os01u24ao6g" path="res://Decorations/mountain_b.tscn" id="11_0keyt"]
+[ext_resource type="PackedScene" uid="uid://gjty2bfn3vys" path="res://Enemies/skeleton_rogue.tscn" id="12_frukr"]
 [ext_resource type="PackedScene" uid="uid://da2vg2u2bkway" path="res://Decorations/trees_a_large.tscn" id="13_wbct2"]
 [ext_resource type="PackedScene" uid="uid://68ue10cffaua" path="res://Decorations/trees_b_large.tscn" id="14_eec18"]
 [ext_resource type="PackedScene" uid="uid://ci8a4isd6wg2o" path="res://Decorations/rock_single_e.tscn" id="15_4ccam"]
@@ -38,6 +39,7 @@
 [ext_resource type="Resource" uid="uid://rm5qley6cfui" path="res://Resources/Buildings/LumberMill.tres" id="41_dm4wc"]
 [ext_resource type="Resource" uid="uid://f075cutgkwc2" path="res://Resources/Buildings/StoneQuarry.tres" id="42_80quy"]
 [ext_resource type="Resource" uid="uid://n5hva5rnvwjy" path="res://Resources/Buildings/Farm.tres" id="43_qbcor"]
+[ext_resource type="PackedScene" uid="uid://dmqveg7rme2ja" path="res://Structures/enemy_headquarters.tscn" id="44_tjgh8"]
 [ext_resource type="Resource" uid="uid://cxmyt0uo23qmk" path="res://Resources/Buildings/GoldMine.tres" id="44_wwya1"]
 [ext_resource type="Resource" uid="uid://c65x048huemuv" path="res://Resources/Buildings/Sentry.tres" id="45_qot8k"]
 [ext_resource type="Resource" uid="uid://c2w1qy7j2d5vd" path="res://Resources/Buildings/Barracks.tres" id="46_7e3mo"]
@@ -572,13 +574,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -78.0193, 0.5, 59.2849)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -96.7485, 0.5, 57.2109)
 
 [node name="rock_single_E" parent="NavigationRegion3D/Decorations" instance=ExtResource("15_4ccam")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.6604, 0.5, -69.8314)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.6604, 0.5, -61.8314)
 
 [node name="mountain_A" parent="NavigationRegion3D/Decorations" instance=ExtResource("16_0jhj2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77.5932, 0.5, 14.5638)
 
 [node name="mountain_A2" parent="NavigationRegion3D/Decorations" instance=ExtResource("16_0jhj2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.6381, 0.500008, -76.7939)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.6381, 0.500008, -89.7939)
 
 [node name="mountain_A3" parent="NavigationRegion3D/Decorations" instance=ExtResource("16_0jhj2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.433, 0.5, -2.024)
@@ -639,6 +641,12 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 96.3876, 0.499992, -36.8558)
 
 [node name="PlayerHeadQuarters" parent="NavigationRegion3D/Decorations" instance=ExtResource("10_m4gxm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.8986, 1, 67.1385)
+
+[node name="Sentry" parent="NavigationRegion3D/Decorations" instance=ExtResource("29_5qm7p")]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 5.43128, 1, 13.2324)
+
+[node name="SkeletonRogue" parent="NavigationRegion3D/Decorations" instance=ExtResource("12_frukr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.82023, 1, 18.4653)
 
 [node name="camera_base" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
@@ -749,6 +757,9 @@ resources = {
 [node name="Target" type="Marker3D" parent="."]
 
 [node name="Enemies" type="Node3D" parent="."]
+
+[node name="EnemyHeadQuarters" parent="." instance=ExtResource("44_tjgh8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.5889, 0.500008, -77.3309)
 
 [connection signal="mouse_entered" from="UI" to="UnitSelector" method="_on_ui_mouse_entered"]
 [connection signal="mouse_exited" from="UI" to="UnitSelector" method="_on_ui_mouse_exited"]
