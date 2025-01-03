@@ -190,6 +190,6 @@ func place_building():
 	if not nav_region.is_baking():
 		nav_region.bake_navigation_mesh()
 
-func on_building_destroyed():
+func on_building_destroyed(building):
 	if not nav_region.is_baking():
 		nav_region.bake_navigation_mesh()

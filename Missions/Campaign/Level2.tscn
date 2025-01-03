@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://c82xax31p4gao"]
+[gd_scene load_steps=54 format=3 uid="uid://c82xax31p4gao"]
 
 [ext_resource type="PackedScene" uid="uid://ct8jhcy5gigkv" path="res://LevelTools/game_manager.tscn" id="1_u66bg"]
 [ext_resource type="PackedScene" uid="uid://b65st7dliy0ls" path="res://Structures/enemy_spawner.tscn" id="5_i8jwe"]
@@ -41,6 +41,7 @@
 [ext_resource type="Resource" uid="uid://n5hva5rnvwjy" path="res://Resources/Buildings/Farm.tres" id="43_qbcor"]
 [ext_resource type="PackedScene" uid="uid://dmqveg7rme2ja" path="res://Structures/enemy_headquarters.tscn" id="44_tjgh8"]
 [ext_resource type="Resource" uid="uid://cxmyt0uo23qmk" path="res://Resources/Buildings/GoldMine.tres" id="44_wwya1"]
+[ext_resource type="PackedScene" uid="uid://dj26ojxyv2idv" path="res://Units/wizard.tscn" id="45_f7f5k"]
 [ext_resource type="Resource" uid="uid://c65x048huemuv" path="res://Resources/Buildings/Sentry.tres" id="45_qot8k"]
 [ext_resource type="Resource" uid="uid://c2w1qy7j2d5vd" path="res://Resources/Buildings/Barracks.tres" id="46_7e3mo"]
 [ext_resource type="PackedScene" uid="uid://w1bfn33te562" path="res://LevelTools/resource_manager.tscn" id="47_5vo7l"]
@@ -106,6 +107,9 @@ mesh = SubResource("BoxMesh_ftsxb")
 shape = SubResource("BoxShape3D_5gxvn")
 
 [node name="Structures" type="Node3D" parent="NavigationRegion3D"]
+
+[node name="EnemyHeadQuarters" parent="NavigationRegion3D/Structures" instance=ExtResource("44_tjgh8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.5889, 7.62939e-06, -77.3309)
 
 [node name="Decorations" type="Node3D" parent="NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
@@ -758,8 +762,56 @@ resources = {
 
 [node name="Enemies" type="Node3D" parent="."]
 
-[node name="EnemyHeadQuarters" parent="." instance=ExtResource("44_tjgh8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.5889, 0.500008, -77.3309)
+[node name="SkeletonRogue" parent="." instance=ExtResource("12_frukr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.5823, 0.500002, -71.6967)
+
+[node name="Wizard" parent="." instance=ExtResource("45_f7f5k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53.5937, 0.5, -73.0001)
+
+[node name="Wizard2" parent="." instance=ExtResource("45_f7f5k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53.5937, 0.5, -75.0001)
+
+[node name="Wizard3" parent="." instance=ExtResource("45_f7f5k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.5937, 0.5, -73.0001)
+
+[node name="Wizard4" parent="." instance=ExtResource("45_f7f5k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.5937, 0.5, -75.0001)
+
+[node name="Wizard5" parent="." instance=ExtResource("45_f7f5k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.5937, 0.5, -69.0001)
+
+[node name="Wizard6" parent="." instance=ExtResource("45_f7f5k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.5937, 0.5, -71.0001)
+
+[node name="Wizard7" parent="." instance=ExtResource("45_f7f5k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53.5937, 0.5, -69.0001)
+
+[node name="Wizard8" parent="." instance=ExtResource("45_f7f5k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53.5937, 0.5, -71.0001)
+
+[node name="Wizard9" parent="." instance=ExtResource("45_f7f5k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.5937, 0.5, -69.0001)
+
+[node name="Wizard10" parent="." instance=ExtResource("45_f7f5k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.5937, 0.5, -71.0001)
+
+[node name="Wizard11" parent="." instance=ExtResource("45_f7f5k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.5937, 0.5, -69.0001)
+
+[node name="Wizard12" parent="." instance=ExtResource("45_f7f5k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.5937, 0.5, -71.0001)
+
+[node name="Wizard13" parent="." instance=ExtResource("45_f7f5k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.5937, 0.5, -69.0001)
+
+[node name="Wizard14" parent="." instance=ExtResource("45_f7f5k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.5937, 0.5, -71.0001)
+
+[node name="Wizard15" parent="." instance=ExtResource("45_f7f5k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.5937, 0.5, -65.0001)
+
+[node name="Wizard16" parent="." instance=ExtResource("45_f7f5k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.5937, 0.5, -67.0001)
 
 [connection signal="mouse_entered" from="UI" to="UnitSelector" method="_on_ui_mouse_entered"]
 [connection signal="mouse_exited" from="UI" to="UnitSelector" method="_on_ui_mouse_exited"]

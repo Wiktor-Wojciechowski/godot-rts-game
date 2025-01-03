@@ -7,5 +7,6 @@ script = ExtResource("1_pt77n")
 building_name = "Barracks"
 health = 150
 production_cost = {
-"wood": 2
+"stone": 200,
+"wood": 100
 }

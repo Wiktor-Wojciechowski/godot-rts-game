@@ -59,11 +59,10 @@ collision_mask = 4
 script = ExtResource("1_ptpmm")
 building_resource = ExtResource("2_p3khh")
 
-[node name="building_castle_red" type="Node3D" parent="."]
+[node name="Model" type="Node3D" parent="."]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
-visible = false
 
-[node name="building_castle_red" type="MeshInstance3D" parent="building_castle_red"]
+[node name="building_castle_red" type="MeshInstance3D" parent="Model"]
 transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, 0, 0, 0)
 mesh = SubResource("ArrayMesh_ktkru")
 skeleton = NodePath("")

@@ -1,11 +1,12 @@
 extends Building
 
-class_name PlayerHeadQuarters
+class_name HeadQuarters
 
 var current_model: Node3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$Model.hide()
 	super._ready()
 	match team:
 		1: current_model  = preload("res://Assets/BuildingModels/building_castle_red.fbx").instantiate()
