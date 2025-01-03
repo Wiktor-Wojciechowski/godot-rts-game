@@ -107,12 +107,9 @@ mesh = SubResource("PlaneMesh_r3l52")
 
 [node name="resource_gold" parent="." instance=ExtResource("3_4nmuy")]
 transform = Transform3D(300, 0, 0, 0, -1.31134e-05, 300, 0, -300, -1.31134e-05, 0, 0, 5)
-surface_material_override/0 = null
 
 [node name="resource_gold2" parent="." instance=ExtResource("3_4nmuy")]
 transform = Transform3D(300, 0, 0, 0, -1.31134e-05, 300, 0, -300, -1.31134e-05, 2, 0, 3)
-surface_material_override/0 = null
 
 [node name="resource_gold3" parent="." instance=ExtResource("3_4nmuy")]
 transform = Transform3D(300, 0, 0, 0, -1.31134e-05, 300, 0, -300, -1.31134e-05, -2, 0, 3)
-surface_material_override/0 = null

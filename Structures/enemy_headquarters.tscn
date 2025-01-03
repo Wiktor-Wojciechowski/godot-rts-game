@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=4 uid="uid://dmqveg7rme2ja"]
 
 [ext_resource type="Script" path="res://Structures/enemy_headquarters.gd" id="1_o1e07"]
-[ext_resource type="Resource" uid="uid://6cpkl3cymhn1" path="res://Resources/Buildings/PlayerHeadQuarters.tres" id="2_w5sj3"]
+[ext_resource type="Resource" uid="uid://bkhg240hn2fnn" path="res://Resources/Buildings/EnemyHeadQuarters.tres" id="2_rmfob"]
 [ext_resource type="Texture2D" uid="uid://cmc7y1vq0h2lf" path="res://Assets/BuildingModels/hexagons_medieval.png" id="3_v37ix"]
 [ext_resource type="Script" path="res://Components/health_component.gd" id="4_kc27v"]
 [ext_resource type="PackedScene" uid="uid://x10cogs6d5ud" path="res://Components/health_bar.tscn" id="5_5p56k"]
@@ -10,7 +10,6 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_er04g"]
 resource_name = "hexagons_medieval"
 vertex_color_use_as_albedo = true
-albedo_color = Color(1, 1, 1, 1)
 albedo_texture = ExtResource("3_v37ix")
 emission_enabled = true
 
@@ -57,7 +56,7 @@ outer_radius = 1.4
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("1_o1e07")
-building_resource = ExtResource("2_w5sj3")
+building_resource = ExtResource("2_rmfob")
 team = 2
 
 [node name="building_castle_blue" type="Node3D" parent="."]

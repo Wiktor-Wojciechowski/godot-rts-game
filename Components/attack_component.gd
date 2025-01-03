@@ -69,11 +69,19 @@ func _shoot(current_target):
 	bullet_instance.look_at(current_target.global_position)
 	
 	attack_timer = attack_cooldown
+	
+	var attack_sound: AudioStreamPlayer3D = get_parent().get_node_or_null("attack_sound")
+	if attack_sound:
+		attack_sound.play()
 
 func _melee_attack(current_target):
 	can_attack = false
 	current_target.health_component.take_damage(attack_damage)
 	attack_timer = attack_cooldown
+	
+	var attack_sound: AudioStreamPlayer3D = get_parent().get_node_or_null("attack_sound")
+	if attack_sound:
+		attack_sound.play()
 
 func _find_closest_enemy() -> Node3D:
 	var closest_enemy = null

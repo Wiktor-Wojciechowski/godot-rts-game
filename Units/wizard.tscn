@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://dj26ojxyv2idv"]
+[gd_scene load_steps=30 format=4 uid="uid://dj26ojxyv2idv"]
 
 [ext_resource type="Script" path="res://Units/wizard.gd" id="1_tai12"]
 [ext_resource type="PackedScene" uid="uid://cyybrg631gniq" path="res://Components/selection.tscn" id="2_a78fj"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://du0opqlxswb3l" path="res://Components/health_component.tscn" id="4_8ckva"]
 [ext_resource type="Script" path="res://Components/attack_component.gd" id="5_1mbeo"]
 [ext_resource type="PackedScene" uid="uid://c15ykdiutqykk" path="res://Components/movement_component.tscn" id="6_yj1ec"]
+[ext_resource type="AudioStream" uid="uid://ck6dq5tl4oqk0" path="res://Assets/Audio/SFX/wizard_attack.mp3" id="8_so4y5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ir62r"]
 resource_name = "RedTeam_Wizard_Armor_DarkBrown"
@@ -726,6 +727,10 @@ stop_distance = 10.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2, 0)
 omni_range = 8.0
 omni_attenuation = -0.2
+
+[node name="attack_sound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("8_so4y5")
+volume_db = -20.0
 
 [connection signal="body_entered" from="AttackComponent/AttackRange" to="AttackComponent" method="_on_attack_range_body_entered"]
 [connection signal="body_exited" from="AttackComponent/AttackRange" to="AttackComponent" method="_on_attack_range_body_exited"]

@@ -23,7 +23,9 @@ var head: StaticBody3D
 func _ready():
 	super._ready()
 	match team:
-		1: target_group = "enemies"
+		1: 
+			target_group = "enemies"
+			
 		2: target_group = "units"
 	#Set area3d collision radius to detection range
 	area = $Area3D 
@@ -41,6 +43,7 @@ func _ready():
 
 # Function called when an enemy enters the detection area
 func _on_body_entered(body: Node) -> void:
+	print(body)
 	if body.is_in_group(target_group):
 		# Add the enemy to the list of enemies in range
 		enemies_in_range.append(body)

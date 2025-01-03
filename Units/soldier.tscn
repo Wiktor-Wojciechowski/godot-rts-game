@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=4 uid="uid://bujdhl6sr27mh"]
+[gd_scene load_steps=47 format=4 uid="uid://bujdhl6sr27mh"]
 
 [ext_resource type="Script" path="res://Units/soldier.gd" id="1_feelv"]
 [ext_resource type="PackedScene" uid="uid://cyybrg631gniq" path="res://Components/selection.tscn" id="2_5gajm"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://du0opqlxswb3l" path="res://Components/health_component.tscn" id="4_p85fp"]
 [ext_resource type="Script" path="res://Components/attack_component.gd" id="5_xyayr"]
 [ext_resource type="PackedScene" uid="uid://c15ykdiutqykk" path="res://Components/movement_component.tscn" id="6_0clh3"]
+[ext_resource type="AudioStream" uid="uid://lkfw2y5rjc78" path="res://Assets/Audio/SFX/soldier_attack.mp3" id="7_o0wxm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8mxr1"]
 resource_name = "RedTeam_SwordsMen_Armor_Gray"
@@ -1722,6 +1723,9 @@ stop_distance = 2.0
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="attack_sound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("7_o0wxm")
 
 [connection signal="body_entered" from="AttackComponent/AttackRange" to="AttackComponent" method="_on_attack_range_body_entered"]
 [connection signal="body_exited" from="AttackComponent/AttackRange" to="AttackComponent" method="_on_attack_range_body_exited"]

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="BuildingData" load_steps=2 format=3 uid="uid://bkhg240hn2fnn"]
+
+[ext_resource type="Script" path="res://Resources/Buildings/BuildingData.gd" id="1_ir5at"]
+
+[resource]
+script = ExtResource("1_ir5at")
+building_name = "PlayerHeadQuarters"
+health = 1500
+production_cost = {
+"wood": 2
+}
