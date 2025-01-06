@@ -6,6 +6,8 @@ class_name Building
 
 @export var team = 1
 
+@export var size = 2
+
 @onready var selection = $Selection
 @onready var health_component = $HealthComponent
 

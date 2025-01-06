@@ -30,7 +30,7 @@ func right_click():
 	var collision = space.intersect_ray(ray_query)
 	
 	if(not collision.is_empty()):
-		if collision.collider is Enemy:
+		if collision.collider.is_in_group("enemies"):
 			issue_attack_order(collision.collider)
 			return
 		else:

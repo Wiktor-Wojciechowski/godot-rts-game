@@ -52,12 +52,13 @@ size = Vector3(2.5, 2, 2.5)
 inner_radius = 1.5
 outer_radius = 1.4
 
-[node name="EnemyHeadQuarters" type="StaticBody3D"]
+[node name="EnemyHeadQuarters" type="StaticBody3D" groups=["enemies"]]
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("1_o1e07")
 building_resource = ExtResource("2_rmfob")
 team = 2
+size = 5
 
 [node name="building_castle_blue" type="Node3D" parent="."]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)

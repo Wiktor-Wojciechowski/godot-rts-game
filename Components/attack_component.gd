@@ -27,6 +27,10 @@ var attack_timer: float = 0.0
 func _ready() -> void:
 	attack_range_component.get_node("CollisionShape3D").shape.radius = detection_range
 	attack_range_component.show()
+	
+	print(get_parent())
+	print("attack range: ", attack_range)
+	print("detection range: ", detection_range)
 
 func _process(delta: float) -> void:
 	# Update the attack cooldown timer

@@ -1,0 +1,71 @@
+[gd_scene load_steps=8 format=3 uid="uid://blua4eqh863s7"]
+
+[ext_resource type="Script" path="res://UI/ui.gd" id="1_12aex"]
+[ext_resource type="PackedScene" uid="uid://cf0m7jmb6c2i7" path="res://UI/building_menu.tscn" id="2_axoy2"]
+[ext_resource type="PackedScene" uid="uid://b10u13jt02rgb" path="res://UI/resource_menu.tscn" id="3_jw866"]
+[ext_resource type="Script" path="res://Missions/label.gd" id="4_o4c36"]
+[ext_resource type="PackedScene" uid="uid://cl5oqbks0vl5u" path="res://UI/objective_menu.tscn" id="5_7vlk5"]
+[ext_resource type="PackedScene" uid="uid://c60lsqoqtqf6w" path="res://UI/level_complete_screen.tscn" id="6_ol2rw"]
+[ext_resource type="PackedScene" uid="uid://cq5cy87nbcsva" path="res://UI/pause_menu.tscn" id="7_0y26u"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_12aex")
+
+[node name="BuildingMenu" parent="." node_paths=PackedStringArray("building_placer") instance=ExtResource("2_axoy2")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_right = 0.0
+offset_left = -572.0
+offset_top = 160.0
+offset_right = -572.0
+offset_bottom = 160.0
+grow_horizontal = 1
+grow_vertical = 0
+building_placer = NodePath("")
+
+[node name="ResourceMenu" parent="." node_paths=PackedStringArray("resource_manager") instance=ExtResource("3_jw866")]
+offset_left = -576.0
+offset_top = -324.0
+offset_right = -576.0
+offset_bottom = -324.0
+resource_manager = NodePath("")
+
+[node name="FPS" type="Label" parent="."]
+layout_mode = 0
+offset_left = -576.0
+offset_top = -324.0
+offset_right = -536.0
+offset_bottom = -301.0
+text = "FPS:"
+script = ExtResource("4_o4c36")
+
+[node name="PopulationLabel" type="Label" parent="."]
+offset_left = -1151.0
+offset_top = -586.0
+offset_right = -1111.0
+offset_bottom = -563.0
+
+[node name="ObjectiveMenu" parent="." instance=ExtResource("5_7vlk5")]
+layout_mode = 1
+offset_left = 257.0
+offset_top = -288.0
+offset_right = 257.0
+offset_bottom = -288.0
+
+[node name="LevelCompleteScreen" parent="." instance=ExtResource("6_ol2rw")]
+visible = false
+layout_mode = 1
+
+[node name="PauseMenu" parent="." instance=ExtResource("7_0y26u")]
+process_mode = 3
+visible = false
+layout_mode = 1

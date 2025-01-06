@@ -58,6 +58,7 @@ collision_layer = 4
 collision_mask = 4
 script = ExtResource("1_ptpmm")
 building_resource = ExtResource("2_p3khh")
+size = 10
 
 [node name="Model" type="Node3D" parent="."]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)

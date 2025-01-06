@@ -16,6 +16,8 @@ var team = 1
 
 var current_target = null
 
+@export var size = 2
+
 func _ready() -> void:
 	if unit_resource:
 		attack_component.attack_damage = unit_resource.attack
@@ -27,7 +29,7 @@ func _process(delta):
 # Determines if the unit can attack the target
 func can_attack_target(target) -> bool:
 	# Check if the target is in range and we can attack
-	if global_position.distance_to(target.global_position) > attack_component.attack_range:
+	if global_position.distance_to(target.global_position) > attack_component.attack_range + target.size:
 		return false
 	
 	# Ensure attack timer and other conditions are met

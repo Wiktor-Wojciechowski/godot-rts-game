@@ -49,6 +49,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="ObjectivePanel" parent="ObjectiveContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_gi76u")]
+custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
 
 [node name="ObjectivePanel2" parent="ObjectiveContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_gi76u")]
