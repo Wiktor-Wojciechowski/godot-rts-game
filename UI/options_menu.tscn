@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dnsnlumcy7yvd"]
+[gd_scene load_steps=4 format=3 uid="uid://dnsnlumcy7yvd"]
 
 [ext_resource type="Script" path="res://UI/options_menu.gd" id="1_4o2vv"]
+[ext_resource type="PackedScene" uid="uid://dbh0m3abts8oo" path="res://UI/volume_slider.tscn" id="2_slasw"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_32wpl"]
 content_margin_right = 100.0
@@ -60,11 +61,22 @@ columns = 2
 [node name="AudioVolumeLabel" type="Label" parent="Panel/GridContainer"]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_32wpl")
-text = "Audio Volume"
+text = "Sound Effects Volume"
 
-[node name="HSlider" type="HSlider" parent="Panel/GridContainer"]
-custom_minimum_size = Vector2(200, 0)
+[node name="SFX" parent="Panel/GridContainer" instance=ExtResource("2_slasw")]
 layout_mode = 2
+value = 0.5
+bus_name = "SFX"
+
+[node name="AudioVolumeLabel2" type="Label" parent="Panel/GridContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_32wpl")
+text = "Music Volume"
+
+[node name="Music" parent="Panel/GridContainer" instance=ExtResource("2_slasw")]
+layout_mode = 2
+value = 0.5
+bus_name = "Music"
 
 [node name="DisplayModeLabel" type="Label" parent="Panel/GridContainer"]
 layout_mode = 2
