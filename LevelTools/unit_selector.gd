@@ -143,7 +143,8 @@ func deselect_building():
 		selected_building = null
 
 func _on_ui_mouse_entered() -> void:
-	can_select = false
+	if not is_selecting:
+		can_select = false
 
 func _on_ui_mouse_exited() -> void:
 	can_select = true

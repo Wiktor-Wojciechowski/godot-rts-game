@@ -753,6 +753,7 @@ visible = false
 layout_mode = 1
 
 [node name="PauseMenu" parent="UI" instance=ExtResource("23_6tqhn")]
+process_mode = 3
 visible = false
 layout_mode = 1
 
