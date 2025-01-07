@@ -1,7 +1,8 @@
-[gd_scene load_steps=47 format=4 uid="uid://bujdhl6sr27mh"]
+[gd_scene load_steps=48 format=4 uid="uid://bujdhl6sr27mh"]
 
 [ext_resource type="Script" path="res://Units/soldier.gd" id="1_feelv"]
 [ext_resource type="PackedScene" uid="uid://cyybrg631gniq" path="res://Components/selection.tscn" id="2_5gajm"]
+[ext_resource type="Resource" uid="uid://dotdo7scnbdll" path="res://Resources/Units/Soldier.tres" id="2_74xgx"]
 [ext_resource type="PackedScene" uid="uid://x10cogs6d5ud" path="res://Components/health_bar.tscn" id="3_o6emo"]
 [ext_resource type="PackedScene" uid="uid://du0opqlxswb3l" path="res://Components/health_component.tscn" id="4_p85fp"]
 [ext_resource type="Script" path="res://Components/attack_component.gd" id="5_xyayr"]
@@ -1439,6 +1440,8 @@ radius = 6.0
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_feelv")
+unit_resource = ExtResource("2_74xgx")
+size = 1
 
 [node name="RedTeam_SwordsMen_Armature" type="Node3D" parent="."]
 transform = Transform3D(-100, 1.14441e-05, 1.81899e-12, 0, -1.19209e-05, 100, 7.62939e-06, 100, 1.19209e-05, -0.0333957, 0.688584, 0.0220694)

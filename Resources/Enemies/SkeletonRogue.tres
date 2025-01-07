@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3 uid="uid://cf5e5ds4bu8bd"]
+
+[ext_resource type="Script" path="res://Resources/Enemies/EnemyData.gd" id="1_k2k7p"]
+
+[resource]
+script = ExtResource("1_k2k7p")
+enemy_name = "Skeleton Minion"
+health = 30
+attack_damage = 8.0
+attack_speed = 0.8
+attack_range = 6.0
+movement_speed = 5.0

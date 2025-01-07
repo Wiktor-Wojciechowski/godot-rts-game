@@ -11,7 +11,7 @@ var moving: bool = false
 @export var stop_distance = 5.0
 
 func _ready() -> void:
-	pass # Replace with function body.
+	pass
 
 func _process(_delta: float) -> void:
 	if moving:
@@ -26,7 +26,6 @@ func _process(_delta: float) -> void:
 			moving = false
 
 func move_to(new_position: Vector3):
-	print("moving to ", new_position)
 	target_position = new_position
 	nav_agent.target_position = target_position + Vector3(0, 1, 0)
 	
@@ -37,21 +36,17 @@ func move_to(new_position: Vector3):
 	moving = true
 	
 func stop():
-	# Stop the NavigationAgent and reset the velocity
-	nav_agent.set_target_position(global_position)  # Stop navigation by setting current position as target
-	get_parent().velocity = Vector3.ZERO  # Reset velocity to zero
+	nav_agent.set_target_position(global_position)
+	get_parent().velocity = Vector3.ZERO
 	moving = false
 
 func follow_target(target):
-	print("following ", target)
 	if is_instance_valid(target):
 		var distance_to_target = global_position.distance_to(target.global_position)
 		
-		# Move towards the closest enemy if farther than stop_distance
-		print(stop_distance + target.size)
 		if distance_to_target > stop_distance + target.size:
 			move_to(target.global_position)
 		else:
-			stop()  # Assume stop() halts the movement
+			stop()
 	else:
 		stop()

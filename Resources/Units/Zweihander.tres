@@ -7,6 +7,11 @@ script = ExtResource("1_unuo4")
 unit_name = "Zweihander"
 production_time = 5.0
 health = 100
-attack = 20
+attack_damage = 16.0
+attack_speed = 2.0
+attack_range = 2.0
 movement_speed = 4.0
-production_cost = {}
+production_cost = {
+"food": 70,
+"gold": 50
+}

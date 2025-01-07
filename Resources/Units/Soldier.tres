@@ -7,6 +7,11 @@ script = ExtResource("1_jh7v7")
 unit_name = "Soldier"
 production_time = 2.0
 health = 40
-attack = 20
+attack_damage = 12.0
+attack_speed = 1.5
+attack_range = 1.5
 movement_speed = 5.0
-production_cost = {}
+production_cost = {
+"food": 30,
+"gold": 20
+}

@@ -499,6 +499,7 @@ collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_tai12")
 unit_resource = ExtResource("2_s1fyu")
+size = 1
 
 [node name="RedTeam_Wizard_Armature" type="Node3D" parent="."]
 transform = Transform3D(-100, 8.74228e-06, 1.04216e-12, 0, -1.19209e-05, 100, 8.74228e-06, 100, 1.19209e-05, -0.0333957, 0.688584, 0.0220694)

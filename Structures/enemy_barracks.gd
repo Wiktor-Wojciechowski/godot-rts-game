@@ -1,10 +1,12 @@
 extends Building
 
 @export var created_enemy:PackedScene
+@export var spawn_interval: int
+
 var enemy_limit = 50
 var enemy_groups = []
 var enemy_group = []
-var group_size = 1
+var group_size = 3
 var max_groups = 3
 
 @onready var game_manager
@@ -13,7 +15,7 @@ var max_groups = 3
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	spawn_rate.wait_time = spawn_interval
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -33,6 +35,10 @@ func _on_spawn_rate_timeout() -> void:
 # Add enemy to the current group
 	enemy_group.append(enemy)
 	if enemy_group.size() == group_size:
+		for e in enemy_group:
+			if is_instance_valid(e):
+				e.seeks_out_buildings = true
+				print(e.seeks_out_buildings)
 		enemy_groups.append(enemy_group.duplicate())  # Use duplicate() to make a copy
 		enemy_group.clear()
 		if enemy_groups.size() == max_groups:

@@ -20,22 +20,24 @@ var current_target = null
 
 func _ready() -> void:
 	if unit_resource:
-		attack_component.attack_damage = unit_resource.attack
+		attack_component.attack_damage = unit_resource.attack_damage
+		attack_component.attack_cooldown = unit_resource.attack_speed
+		attack_component.attack_range = unit_resource.attack_range
 		movement_component.speed = unit_resource.movement_speed
+		movement_component.stop_distance = unit_resource.attack_range - 0.5
+		health_component.max_health = unit_resource.health
+		health_component.health = unit_resource.health
+		
 
 func _process(delta):
 	unit_behavior()
 
-# Determines if the unit can attack the target
 func can_attack_target(target) -> bool:
-	# Check if the target is in range and we can attack
 	if global_position.distance_to(target.global_position) > attack_component.attack_range + target.size:
 		return false
 	
-	# Ensure attack timer and other conditions are met
 	return attack_component.can_attack and not (movement_component.moving and not can_attack_while_moving)
 
-# Perform the attack on the current target
 func attack(target):
 	attack_component._rotate_to_target(target)
 	attack_component._shoot(target)
@@ -50,6 +52,6 @@ func unit_behavior():
 			return
 		
 		movement_component.follow_target(current_target)
-		# Check if in range and attack conditions are met
 		if can_attack_target(current_target):
+			print(can_attack_target(current_target))
 			attack(current_target)

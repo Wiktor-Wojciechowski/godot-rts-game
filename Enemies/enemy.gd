@@ -2,6 +2,8 @@ extends CharacterBody3D
 
 class_name Enemy
 
+@export var enemy_resource: EnemyData
+
 @onready var movement_component = $MovementComponent
 @onready var attack_component = $AttackComponent
 @onready var health_bar = $HealthBar
@@ -26,8 +28,14 @@ enum Command { NONE, HOLD_POSITION, MOVE_TO_POSITION, ATTACK_TARGET }
 var current_command = Command.NONE
 
 func _ready() -> void:
-	#movement_component.move_to(Vector3(-200,0,0))
-	pass
+	if enemy_resource:
+		attack_component.attack_damage = enemy_resource.attack_damage
+		attack_component.attack_cooldown = enemy_resource.attack_speed
+		attack_component.attack_range = enemy_resource.attack_range
+		movement_component.speed = enemy_resource.movement_speed
+		movement_component.stop_distance = enemy_resource.attack_range - 0.5
+		health_component.max_health = enemy_resource.health
+		health_component.health = enemy_resource.health
 	
 func _process(delta: float) -> void:
 	enemy_behavior()

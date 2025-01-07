@@ -84,7 +84,6 @@ func calculate_target_positions(target_position: Vector3):
 		var new_position = target_position + offset
 		destination_positions.append(new_position)
 		
-	print(destination_positions)
 	
 func calculate_spread_out_positions(target_position: Vector3):
 	destination_positions.clear()

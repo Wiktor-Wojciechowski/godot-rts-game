@@ -7,5 +7,5 @@ script = ExtResource("1_2f2qb")
 building_name = "Farm"
 health = 0
 production_cost = {
-"wood": 20
+"wood": 60
 }
