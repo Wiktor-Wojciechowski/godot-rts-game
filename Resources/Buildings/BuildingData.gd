@@ -6,3 +6,4 @@ class_name BuildingData
 @export var building_name: String
 @export var health: int
 @export var production_cost: Dictionary
+@export var size: int

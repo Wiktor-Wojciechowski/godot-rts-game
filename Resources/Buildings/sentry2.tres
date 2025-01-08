@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="SentryData" load_steps=2 format=3 uid="uid://dkqhc8a0b8m3f"]
+
+[ext_resource type="Script" path="res://Resources/Buildings/SentryData.gd" id="1_2h5nm"]
+
+[resource]
+script = ExtResource("1_2h5nm")
+detection_range = 25.0
+building_name = "Sentry"
+health = 250
+production_cost = {
+"gold": 150,
+"stone": 50,
+"wood": 100
+}
+size = 4

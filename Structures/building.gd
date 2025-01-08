@@ -24,7 +24,11 @@ func _ready() -> void:
 	health_component.max_health = building_resource.health
 	health_component.health = building_resource.health
 	building_name = building_resource.building_name
+	size = building_resource.size
 	
+	var omnilight = get_node_or_null("OmniLight3D")
+	if omnilight:
+		omnilight.show()
 
 func on_building_destroyed(building):
 	building_destroyed.emit(self)

@@ -4,8 +4,9 @@
 
 [resource]
 script = ExtResource("1_blj75")
-building_name = "Farm"
-health = 0
+building_name = "Lumber Mill"
+health = 100
 production_cost = {
 "wood": 25
 }
+size = 4

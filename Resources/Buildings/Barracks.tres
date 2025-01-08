@@ -10,3 +10,4 @@ production_cost = {
 "stone": 200,
 "wood": 100
 }
+size = 4

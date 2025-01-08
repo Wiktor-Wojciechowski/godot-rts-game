@@ -1,11 +1,10 @@
-[gd_scene load_steps=67 format=3 uid="uid://c82xax31p4gao"]
+[gd_scene load_steps=60 format=3 uid="uid://c82xax31p4gao"]
 
 [ext_resource type="PackedScene" uid="uid://ct8jhcy5gigkv" path="res://LevelTools/game_manager.tscn" id="1_u66bg"]
 [ext_resource type="Script" path="res://Resources/Campaign/Objectives/objective.gd" id="2_vo71y"]
 [ext_resource type="Resource" uid="uid://bo5a3pb8l2t5a" path="res://Resources/Campaign/Level2/Objectives/do_not_lose_units_objective.tres" id="3_7ev64"]
 [ext_resource type="Resource" uid="uid://crhjk8ka3xqe5" path="res://Resources/Campaign/Level2/Objectives/destroy_enemy_hq_objective.tres" id="3_78gu0"]
 [ext_resource type="PackedScene" uid="uid://b65st7dliy0ls" path="res://Structures/enemy_spawner.tscn" id="5_i8jwe"]
-[ext_resource type="PackedScene" uid="uid://d0bgsfrstf7a" path="res://Units/archer.tscn" id="5_vu8bq"]
 [ext_resource type="PackedScene" uid="uid://cmthmnm5plomi" path="res://Enemies/enemy.tscn" id="6_4i338"]
 [ext_resource type="Texture2D" uid="uid://4rhknkiec0mx" path="res://Assets/Textures/rocky_terrain_02_diff_4k.jpg" id="8_pqycf"]
 [ext_resource type="PackedScene" uid="uid://bywn6s5aqo81n" path="res://Structures/player_headquarters.tscn" id="10_m4gxm"]
@@ -50,13 +49,7 @@
 [ext_resource type="PackedScene" uid="uid://w1bfn33te562" path="res://LevelTools/resource_manager.tscn" id="47_5vo7l"]
 [ext_resource type="PackedScene" uid="uid://cg8oqstlgnx08" path="res://Structures/enemy_sentry.tscn" id="47_r1vm8"]
 [ext_resource type="PackedScene" uid="uid://dl2r80c463aul" path="res://Structures/enemy_barracks.tscn" id="49_usu1i"]
-[ext_resource type="PackedScene" uid="uid://bujdhl6sr27mh" path="res://Units/soldier.tscn" id="50_jmyh3"]
 [ext_resource type="PackedScene" uid="uid://cay5vligoi0rt" path="res://Enemies/skeleton_minion.tscn" id="50_md50w"]
-[ext_resource type="PackedScene" uid="uid://031h6ol66737" path="res://Enemies/skeleton_warrior.tscn" id="52_30rcl"]
-[ext_resource type="PackedScene" uid="uid://gjty2bfn3vys" path="res://Enemies/skeleton_rogue.tscn" id="53_qtr8t"]
-[ext_resource type="PackedScene" uid="uid://lbpnbu4l4ifb" path="res://Enemies/skeleton_wizard.tscn" id="54_7i58p"]
-[ext_resource type="PackedScene" uid="uid://dj26ojxyv2idv" path="res://Units/wizard.tscn" id="55_vkmxd"]
-[ext_resource type="PackedScene" uid="uid://q6s0s63o63mo" path="res://Units/zweihander.tscn" id="56_mnxig"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_eqeoe"]
 geometry_parsed_geometry_type = 1
@@ -747,7 +740,7 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 96.3876, 0.499992, -36.8558)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.8986, 0.5, 67.1385)
 
 [node name="camera_base" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, -1, -57)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68, -1, 82)
 script = ExtResource("17_8etvm")
 camera_move_speed = 60.0
 min_camera_bounds = Vector3(-100, 0, -100)
@@ -871,32 +864,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80.0225, 0.5, -69.0953)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.6783, 0, -1.78229)
 shape = SubResource("BoxShape3D_2jbht")
 
-[node name="Soldier" parent="." instance=ExtResource("50_jmyh3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63.2594, 1, -56.743)
-
-[node name="SkeletonMinion" parent="." instance=ExtResource("50_md50w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.316, 0.5, 12.4599)
-
-[node name="SkeletonWarrior" parent="." instance=ExtResource("52_30rcl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.248, 0.499999, 12.1081)
-
-[node name="SkeletonRogue" parent="." instance=ExtResource("53_qtr8t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.5504, 0.5, 12.0731)
-
-[node name="SkeletonWizard" parent="." instance=ExtResource("54_7i58p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.3385, 0.5, 12.5582)
-
-[node name="Wizard" parent="." instance=ExtResource("55_vkmxd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.4086, 0.5, 19.5024)
-
-[node name="Zweihander" parent="." instance=ExtResource("56_mnxig")]
-transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 32.7642, 0.5, 19.7987)
-
-[node name="Archer" parent="." instance=ExtResource("5_vu8bq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.0928, 0.5, 19.7882)
-
-[node name="Soldier2" parent="." instance=ExtResource("50_jmyh3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.5445, 0.5, 19.7237)
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.1, 10.6, -73)
+light_energy = 5.202
+omni_range = 9.0
 
 [connection signal="mouse_entered" from="UI" to="UnitSelector" method="_on_ui_mouse_entered"]
 [connection signal="mouse_exited" from="UI" to="UnitSelector" method="_on_ui_mouse_exited"]

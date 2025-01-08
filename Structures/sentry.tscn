@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Structures/sentry.gd" id="1_duikx"]
 [ext_resource type="PackedScene" uid="uid://coxg58ejh2vj5" path="res://Projectiles/arrow.tscn" id="2_fxpku"]
 [ext_resource type="PackedScene" uid="uid://du0opqlxswb3l" path="res://Components/health_component.tscn" id="3_arf4k"]
-[ext_resource type="Resource" uid="uid://c65x048huemuv" path="res://Resources/Buildings/Sentry.tres" id="3_vx6rw"]
+[ext_resource type="Resource" uid="uid://dkqhc8a0b8m3f" path="res://Resources/Buildings/sentry2.tres" id="3_or2mq"]
 [ext_resource type="PackedScene" uid="uid://x10cogs6d5ud" path="res://Components/health_bar.tscn" id="4_qm2n2"]
 [ext_resource type="Script" path="res://Components/selection.gd" id="5_duo8a"]
 [ext_resource type="Texture2D" uid="uid://cmc7y1vq0h2lf" path="res://Assets/BuildingModels/hexagons_medieval.png" id="5_t4jpu"]
@@ -213,7 +213,7 @@ detection_range = 6.0
 rotation_speed = 20.0
 bullet_scene = ExtResource("2_fxpku")
 bullet_damage = 15
-building_resource = ExtResource("3_vx6rw")
+building_resource = ExtResource("3_or2mq")
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_arf4k")]
 max_health = 500

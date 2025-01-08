@@ -8,5 +8,5 @@ enemy_name = "Skeleton Minion"
 health = 20
 attack_damage = 5.0
 attack_speed = 1.2
-attack_range = 1.0
+attack_range = 1.5
 movement_speed = 6.0

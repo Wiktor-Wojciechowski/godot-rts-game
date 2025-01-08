@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_hc31m")
-building_name = "Farm"
+building_name = "Sentry"
 health = 250
 production_cost = {
 "gold": 150,

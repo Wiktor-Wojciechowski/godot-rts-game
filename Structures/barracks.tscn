@@ -64,6 +64,7 @@ collision_layer = 4
 collision_mask = 4
 script = ExtResource("1_s1t6i")
 building_resource = ExtResource("2_ud52l")
+size = 4
 
 [node name="WrongPlacementIndicator" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
