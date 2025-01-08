@@ -1,7 +1,8 @@
-[gd_scene load_steps=65 format=3 uid="uid://bijuusfv0anrl"]
+[gd_scene load_steps=66 format=3 uid="uid://bijuusfv0anrl"]
 
 [ext_resource type="PackedScene" uid="uid://ct8jhcy5gigkv" path="res://LevelTools/game_manager.tscn" id="1_qnc7g"]
 [ext_resource type="Script" path="res://Resources/Campaign/Objectives/objective.gd" id="2_jjc5a"]
+[ext_resource type="Resource" uid="uid://bo5a3pb8l2t5a" path="res://Resources/Campaign/Level1/Objectives/do_not_lose_units_objective.tres" id="3_g8v7b"]
 [ext_resource type="Resource" uid="uid://mdh34eihs2qb" path="res://Resources/Campaign/Level1/Objectives/defeat_all_enemies.tres" id="3_xbomk"]
 [ext_resource type="PackedScene" uid="uid://b65st7dliy0ls" path="res://Structures/enemy_spawner.tscn" id="5_anioq"]
 [ext_resource type="PackedScene" uid="uid://cmthmnm5plomi" path="res://Enemies/enemy.tscn" id="6_rpgt2"]
@@ -99,7 +100,8 @@ reflected_light_source = 1
 [node name="Level1" type="Node3D"]
 
 [node name="GameManager" parent="." instance=ExtResource("1_qnc7g")]
-level_objectives = Array[ExtResource("2_jjc5a")]([ExtResource("3_xbomk")])
+level_objectives = Array[ExtResource("2_jjc5a")]([ExtResource("3_g8v7b"), ExtResource("3_xbomk")])
+max_population = 50
 can_lose_when_population_0 = true
 
 [node name="EnemySpawner" parent="." instance=ExtResource("5_anioq")]
@@ -681,6 +683,45 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.7485, 0.5, 41.2109)
 [node name="rock_single_E" parent="NavigationRegion3D/Decorations" instance=ExtResource("15_oppyv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.6604, 0.5, -69.8314)
 
+[node name="rock_single_E2" parent="NavigationRegion3D/Decorations" instance=ExtResource("15_oppyv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.6604, 0.5, -11.8314)
+
+[node name="rock_single_E3" parent="NavigationRegion3D/Decorations" instance=ExtResource("15_oppyv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.3396, 0.5, -11.8314)
+
+[node name="rock_single_E14" parent="NavigationRegion3D/Decorations" instance=ExtResource("15_oppyv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.3396, 0.5, -21.8314)
+
+[node name="rock_single_E4" parent="NavigationRegion3D/Decorations" instance=ExtResource("15_oppyv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.3396, 0.5, 43.1686)
+
+[node name="rock_single_E5" parent="NavigationRegion3D/Decorations" instance=ExtResource("15_oppyv")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 86.3396, 0.5, 43.1686)
+
+[node name="rock_single_E6" parent="NavigationRegion3D/Decorations" instance=ExtResource("15_oppyv")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 86.3396, 0.5, 74.1686)
+
+[node name="rock_single_E7" parent="NavigationRegion3D/Decorations" instance=ExtResource("15_oppyv")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -39.6604, 0.5, 74.1686)
+
+[node name="rock_single_E8" parent="NavigationRegion3D/Decorations" instance=ExtResource("15_oppyv")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -39.6604, 0.5, 18.1686)
+
+[node name="rock_single_E9" parent="NavigationRegion3D/Decorations" instance=ExtResource("15_oppyv")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -39.6604, 0.5, -22.8314)
+
+[node name="rock_single_E10" parent="NavigationRegion3D/Decorations" instance=ExtResource("15_oppyv")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -87.6604, 0.5, -3.8314)
+
+[node name="rock_single_E11" parent="NavigationRegion3D/Decorations" instance=ExtResource("15_oppyv")]
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -71.6604, 0.5, 49.1686)
+
+[node name="rock_single_E12" parent="NavigationRegion3D/Decorations" instance=ExtResource("15_oppyv")]
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -71.6604, 0.5, 81.1686)
+
+[node name="rock_single_E13" parent="NavigationRegion3D/Decorations" instance=ExtResource("15_oppyv")]
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 41.3396, 0.5, -53.8314)
+
 [node name="mountain_A" parent="NavigationRegion3D/Decorations" instance=ExtResource("16_pb78t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -86.5932, 0.5, -57.4362)
 
@@ -903,28 +944,28 @@ resources = {
 [node name="Units" type="Node3D" parent="."]
 
 [node name="Archer" parent="Units" instance=ExtResource("51_2q6u6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.0067, 0.48682, 28.5097)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.05539, 0.48682, 29.1089)
 
 [node name="Archer2" parent="Units" instance=ExtResource("51_2q6u6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.0067, 0.48682, 30.5097)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.05539, 0.48682, 29.1089)
 
 [node name="Archer3" parent="Units" instance=ExtResource("51_2q6u6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.0067, 0.48682, 26.5097)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.05539, 0.48682, 31.1089)
 
 [node name="Archer4" parent="Units" instance=ExtResource("51_2q6u6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.0067, 0.48682, 26.5097)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.05539, 0.48682, 31.1089)
 
 [node name="Archer5" parent="Units" instance=ExtResource("51_2q6u6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.0067, 0.48682, 28.5097)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.05539, 0.48682, 33.1089)
 
 [node name="Archer6" parent="Units" instance=ExtResource("51_2q6u6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.0067, 0.48682, 30.5097)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.05539, 0.48682, 33.1089)
 
 [node name="Archer7" parent="Units" instance=ExtResource("51_2q6u6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.0067, 0.48682, 32.5097)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.05539, 0.48682, 35.1089)
 
 [node name="Archer8" parent="Units" instance=ExtResource("51_2q6u6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.0067, 0.48682, 32.5097)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.05539, 0.48682, 35.1089)
 
 [node name="Target" type="Marker3D" parent="."]
 

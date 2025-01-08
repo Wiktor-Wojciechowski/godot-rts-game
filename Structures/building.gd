@@ -28,7 +28,7 @@ func _ready() -> void:
 	
 	var omnilight = get_node_or_null("OmniLight3D")
 	if omnilight:
-		omnilight.show()
+		omnilight.hide()
 
 func on_building_destroyed(building):
 	building_destroyed.emit(self)

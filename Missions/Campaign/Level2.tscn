@@ -1,11 +1,8 @@
-[gd_scene load_steps=60 format=3 uid="uid://c82xax31p4gao"]
+[gd_scene load_steps=57 format=3 uid="uid://c82xax31p4gao"]
 
 [ext_resource type="PackedScene" uid="uid://ct8jhcy5gigkv" path="res://LevelTools/game_manager.tscn" id="1_u66bg"]
 [ext_resource type="Script" path="res://Resources/Campaign/Objectives/objective.gd" id="2_vo71y"]
-[ext_resource type="Resource" uid="uid://bo5a3pb8l2t5a" path="res://Resources/Campaign/Level2/Objectives/do_not_lose_units_objective.tres" id="3_7ev64"]
 [ext_resource type="Resource" uid="uid://crhjk8ka3xqe5" path="res://Resources/Campaign/Level2/Objectives/destroy_enemy_hq_objective.tres" id="3_78gu0"]
-[ext_resource type="PackedScene" uid="uid://b65st7dliy0ls" path="res://Structures/enemy_spawner.tscn" id="5_i8jwe"]
-[ext_resource type="PackedScene" uid="uid://cmthmnm5plomi" path="res://Enemies/enemy.tscn" id="6_4i338"]
 [ext_resource type="Texture2D" uid="uid://4rhknkiec0mx" path="res://Assets/Textures/rocky_terrain_02_diff_4k.jpg" id="8_pqycf"]
 [ext_resource type="PackedScene" uid="uid://bywn6s5aqo81n" path="res://Structures/player_headquarters.tscn" id="10_m4gxm"]
 [ext_resource type="PackedScene" uid="uid://5os01u24ao6g" path="res://Decorations/mountain_b.tscn" id="11_0keyt"]
@@ -95,12 +92,9 @@ size = Vector3(92.8292, 1, 58.4354)
 [node name="Level2" type="Node3D"]
 
 [node name="GameManager" parent="." instance=ExtResource("1_u66bg")]
-level_objectives = Array[ExtResource("2_vo71y")]([ExtResource("3_7ev64"), ExtResource("3_78gu0")])
-
-[node name="EnemySpawner" parent="." instance=ExtResource("5_i8jwe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.3027, 0, 63)
-enemy = ExtResource("6_4i338")
-group = "Enemies"
+level_objectives = Array[ExtResource("2_vo71y")]([ExtResource("3_78gu0")])
+max_population = 50
+can_lose_when_hq_destroyed = true
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_eqeoe")
@@ -823,6 +817,9 @@ offset_right = -480.0
 offset_bottom = -242.0
 text = "Population: "
 
+[node name="StoneQuarry" parent="UI" instance=ExtResource("26_3woat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.2595, 0, 86.8092)
+
 [node name="BuildingPlacer" parent="." node_paths=PackedStringArray("camera", "nav_region") instance=ExtResource("24_7thtw")]
 buildings = Array[PackedScene]([ExtResource("25_0w1ms"), ExtResource("26_3woat"), ExtResource("27_ipixl"), ExtResource("28_qxkqd"), ExtResource("29_5qm7p"), ExtResource("30_nqfyh")])
 camera = NodePath("../camera_base/camera_socket/Camera3D")
@@ -867,6 +864,7 @@ shape = SubResource("BoxShape3D_2jbht")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.1, 10.6, -73)
+visible = false
 light_energy = 5.202
 omni_range = 9.0
 

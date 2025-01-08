@@ -28,6 +28,7 @@ func _ready() -> void:
 		health_component.max_health = unit_resource.health
 		health_component.health = unit_resource.health
 		
+		
 
 func _process(delta):
 	unit_behavior()

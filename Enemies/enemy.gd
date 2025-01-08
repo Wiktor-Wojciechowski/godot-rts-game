@@ -36,6 +36,7 @@ func _ready() -> void:
 		movement_component.stop_distance = enemy_resource.attack_range - 0.5
 		health_component.max_health = enemy_resource.health
 		health_component.health = enemy_resource.health
+	print("enemy init", name, ' ', health_component.max_health)
 	
 func _process(delta: float) -> void:
 	enemy_behavior()

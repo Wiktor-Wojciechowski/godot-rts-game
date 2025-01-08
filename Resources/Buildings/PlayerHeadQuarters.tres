@@ -9,3 +9,4 @@ health = 1000
 production_cost = {
 "wood": 2
 }
+size = 6
