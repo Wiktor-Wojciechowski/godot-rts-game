@@ -1,45 +1,48 @@
 extends Building
 
-@export var created_enemy:PackedScene
+@export var created_enemy: PackedScene
 @export var spawn_interval: int
 
 var enemy_limit = 50
-var enemy_groups = []
-var enemy_group = []
-var group_size = 3
-var max_groups = 3
+@export var group_size = 5
+var spawn_radius: float = 5.0  # The radius at which enemies will spawn
 
-@onready var game_manager
+@onready var game_manager = get_tree().current_scene.get_node("GameManager")
 @onready var level_enemies = get_tree().current_scene.find_child("Enemies")
-@onready var spawn_rate = $SpawnRate
+var spawn_timer: Timer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	spawn_rate.wait_time = spawn_interval
-
+	spawn_timer = $SpawnTimer
+	print(spawn_timer)
+	spawn_timer.wait_time = spawn_interval
+	print(spawn_timer.wait_time)
+	spawn_timer.start()
+	print(spawn_timer.is_stopped())
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
+func _on_spawn_timer_timeout() -> void:
+	if game_manager.number_of_enemies < 80:
+		spawn_enemies(created_enemy)
 
-func _on_spawn_rate_timeout() -> void:
-	var enemy = created_enemy.instantiate()
-	enemy.position = Vector3(0, -10000, 0)
-	level_enemies.add_child(enemy)
+func spawn_enemies(enemies):
+	for i in range(group_size):
+		spawn_enemy(enemies)
+
+func spawn_enemy(enemy_type):
+	var enemies_node = get_tree().current_scene.find_child("Enemies")
+	var enemy = enemy_type.instantiate()
+	enemy.seeks_out_buildings = true
+	enemies_node.add_child(enemy)
+	# Generate random angle between 0 and 360 degrees (converted to radians)
+	var random_angle = randf_range(0, 2 * PI)
 	
-	var mob_spawn_location = get_node("SpawnPath/SpawnLocation")
-	mob_spawn_location.progress_ratio = randf()
-	enemy.global_position = mob_spawn_location.global_position
+	var random_x = cos(random_angle) * spawn_radius
+	var random_z = sin(random_angle) * spawn_radius
 	
-# Add enemy to the current group
-	enemy_group.append(enemy)
-	if enemy_group.size() == group_size:
-		for e in enemy_group:
-			if is_instance_valid(e):
-				e.seeks_out_buildings = true
-				print(e.seeks_out_buildings)
-		enemy_groups.append(enemy_group.duplicate())  # Use duplicate() to make a copy
-		enemy_group.clear()
-		if enemy_groups.size() == max_groups:
-			spawn_rate.paused = true
+	var spawn_position = position + Vector3(random_x, 0, random_z)
+
+	enemy.position = spawn_position

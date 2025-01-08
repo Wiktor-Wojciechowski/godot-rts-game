@@ -159,7 +159,6 @@ func _on_unit_death(unit: Unit):
 	check_objectives()
 	
 func _on_enemy_building_destroyed(building):
-	print(building)
 	destroyed_enemy_buildings +=1
 	check_objectives()
 	

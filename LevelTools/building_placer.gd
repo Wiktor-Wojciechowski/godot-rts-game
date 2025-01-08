@@ -169,7 +169,6 @@ func place_building():
 	
 	if building_instance.team == 1:
 		if building_instance.has_node("OmniLight3D"):
-			print('has omni')
 			building_instance.get_node("OmniLight3D").show()
 			
 	building_instance.building_destroyed.connect(on_building_destroyed)

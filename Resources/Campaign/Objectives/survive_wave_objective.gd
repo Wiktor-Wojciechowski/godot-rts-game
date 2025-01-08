@@ -7,7 +7,6 @@ class_name SurviveWaveObjective
 func check_completion():
 	
 	if game_manager:
-		print(game_manager.current_wave_killcount)
 		if game_manager.current_wave_killcount >= enemies_to_defeat:
 			game_manager.wave_completed.emit()
 			

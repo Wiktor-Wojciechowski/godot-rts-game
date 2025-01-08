@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="BuildingData" load_steps=2 format=3 uid="uid://cmvprvg7pl0fh"]
+
+[ext_resource type="Script" path="res://Resources/Buildings/BuildingData.gd" id="1_ajym8"]
+
+[resource]
+script = ExtResource("1_ajym8")
+building_name = "Enemy Barracks"
+health = 250
+production_cost = {}
+size = 4

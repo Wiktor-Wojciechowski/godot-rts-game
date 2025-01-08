@@ -13,6 +13,3 @@ func on_enemy_ready():
 	enemy.get_node("HealthComponent").max_health *= 5
 	enemy.get_node("HealthComponent").health *= 5
 	enemy.get_node("MovementComponent").speed *= 0.75
-	print(enemy)
-	print(enemy.get_node("HealthComponent").max_health)
-	print(enemy.get_node("HealthComponent").health)

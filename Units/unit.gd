@@ -54,5 +54,4 @@ func unit_behavior():
 		
 		movement_component.follow_target(current_target)
 		if can_attack_target(current_target):
-			print(can_attack_target(current_target))
 			attack(current_target)

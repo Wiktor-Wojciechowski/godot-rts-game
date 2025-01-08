@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_m6xlr")
 objective_name = "Destroy the Enemy HQ"
-description = "Objective description"
+description = ""
 completed = false
