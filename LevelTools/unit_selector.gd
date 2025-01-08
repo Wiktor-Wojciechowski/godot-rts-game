@@ -7,7 +7,6 @@ extends Node3D
 @onready var selection_rect_control := $Control  # Reference to the Control node for drawing
 
 @onready var building_placer = get_parent().get_node("BuildingPlacer")
-@onready var unit_resources = get_parent().get_node("UnitResources").unit_resources
 
 var unit_group: Array = []
 
@@ -149,11 +148,5 @@ func _on_ui_mouse_entered() -> void:
 func _on_ui_mouse_exited() -> void:
 	can_select = true
 
-func on_produce_unit(index):
-	var unit_resource = unit_resources[index]
-	selected_building.production_queue.add_unit_to_queue(
-		index, 
-		unit_resource.unit_name, 
-		unit_resource.production_time,
-	)
+
 	

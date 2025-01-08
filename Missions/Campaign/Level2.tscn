@@ -799,13 +799,6 @@ offset_bottom = -301.0
 text = "FPS:"
 script = ExtResource("21_3lkvk")
 
-[node name="PopulationLabel" type="Label" parent="UI"]
-layout_mode = 0
-offset_left = -1151.0
-offset_top = -586.0
-offset_right = -1111.0
-offset_bottom = -563.0
-
 [node name="ObjectiveMenu" parent="UI" instance=ExtResource("22_6ehmh")]
 layout_mode = 1
 offset_left = 257.0
@@ -821,6 +814,14 @@ layout_mode = 1
 process_mode = 3
 visible = false
 layout_mode = 1
+
+[node name="PopulationLabel" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = -573.0
+offset_top = -265.0
+offset_right = -480.0
+offset_bottom = -242.0
+text = "Population: "
 
 [node name="BuildingPlacer" parent="." node_paths=PackedStringArray("camera", "nav_region") instance=ExtResource("24_7thtw")]
 buildings = Array[PackedScene]([ExtResource("25_0w1ms"), ExtResource("26_3woat"), ExtResource("27_ipixl"), ExtResource("28_qxkqd"), ExtResource("29_5qm7p"), ExtResource("30_nqfyh")])

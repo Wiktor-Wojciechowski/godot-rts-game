@@ -24,7 +24,7 @@ func _ready():
 func _on_unit_button_pressed(index: int):
 	var unit = unit_resources[index]
 	resource_manager.substract_resources(unit["production_cost"])
-	unit_selector.on_produce_unit(index)
+	produce_unit(index)
 
 func on_resources_updated():
 	check_buttons_available()
@@ -51,3 +51,12 @@ func check_buttons_available():
 
 func on_population_changed():
 	check_buttons_available()
+	
+func produce_unit(index):
+	var selected_building = unit_selector.selected_building
+	var unit_resource = unit_resources[index]
+	selected_building.production_queue.add_unit_to_queue(
+		index, 
+		unit_resource.unit_name, 
+		unit_resource.production_time,
+	)
