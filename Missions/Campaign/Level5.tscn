@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://ct8jhcy5gigkv" path="res://LevelTools/game_manager.tscn" id="1_30foc"]
 [ext_resource type="Script" path="res://Resources/Campaign/Objectives/objective.gd" id="2_fwybb"]
 [ext_resource type="PackedScene" uid="uid://b65st7dliy0ls" path="res://Structures/enemy_spawner.tscn" id="3_3vh4x"]
-[ext_resource type="Resource" uid="uid://05ob33t1bvv" path="res://Resources/Campaign/Level5/Objectives/destroy_enemy_hq_objective.tres" id="3_se7ib"]
+[ext_resource type="Resource" uid="uid://dgl3yjxjcm2mj" path="res://Resources/Campaign/Level5/Objectives/destroy_enemy_hq.tres" id="3_m7nwk"]
 [ext_resource type="PackedScene" uid="uid://cmthmnm5plomi" path="res://Enemies/enemy.tscn" id="4_24q7g"]
 [ext_resource type="PackedScene" uid="uid://o0mhgf0ea1ip" path="res://Structures/no_build_zone.tscn" id="6_605p0"]
 [ext_resource type="Texture2D" uid="uid://4rhknkiec0mx" path="res://Assets/Textures/rocky_terrain_02_diff_4k.jpg" id="6_ybcht"]
@@ -105,7 +105,7 @@ reflected_light_source = 1
 [node name="Level5" type="Node3D"]
 
 [node name="GameManager" parent="." instance=ExtResource("1_30foc")]
-level_objectives = Array[ExtResource("2_fwybb")]([ExtResource("3_se7ib")])
+level_objectives = Array[ExtResource("2_fwybb")]([ExtResource("3_m7nwk")])
 max_population = 50
 can_lose_when_hq_destroyed = true
 
@@ -186,6 +186,12 @@ created_enemy = ExtResource("50_anxw0")
 
 [node name="PlayerHeadQuarters" parent="NavigationRegion3D/Structures" instance=ExtResource("55_1ujfl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.243187, 0.48682, 74.8592)
+
+[node name="Sentry" parent="NavigationRegion3D/Structures" instance=ExtResource("7_ml7ka")]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, -2.60291, 0.5, 60.5846)
+
+[node name="Sentry2" parent="NavigationRegion3D/Structures" instance=ExtResource("7_ml7ka")]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 3.39709, 0.5, 60.5846)
 
 [node name="Decorations" type="Node3D" parent="NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
@@ -1000,10 +1006,10 @@ building_resources = Array[ExtResource("40_m04gg")]([ExtResource("41_yxes7"), Ex
 
 [node name="ResourceManager" parent="." instance=ExtResource("47_8xwbg")]
 resources = {
-"food": 100,
-"gold": 100,
-"stone": 100,
-"wood": 100
+"food": 500,
+"gold": 500,
+"stone": 500,
+"wood": 500
 }
 
 [node name="Units" type="Node3D" parent="."]
@@ -1173,6 +1179,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.7286, 0, -34.3432)
 
 [node name="SkeletonMinion30" parent="Enemies" instance=ExtResource("53_xqvhh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.7286, 0, -34.3432)
+
+[node name="SkeletonMinion37" parent="Enemies" instance=ExtResource("53_xqvhh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.106021, 0.48682, 57.3021)
 
 [node name="Collectibles" type="Node3D" parent="."]
 

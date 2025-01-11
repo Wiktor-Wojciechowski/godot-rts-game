@@ -75,13 +75,13 @@ func _ready() -> void:
 	
 	var hq = get_parent().find_child("PlayerHeadQuarters")
 	if hq:
-		if not hq.building_destroyed.is_connected(on_hq_destroyed):
-			hq.building_destroyed.connect(on_hq_destroyed)
+		if not hq.building_destroyed.is_connected(on_player_hq_destroyed):
+			hq.building_destroyed.connect(on_player_hq_destroyed)
 		
 	var enemy_hq = get_parent().find_child("EnemyHeadQuarters")
 	if enemy_hq:
-		if not enemy_hq.building_destroyed.is_connected(on_hq_destroyed):
-			enemy_hq.building_destroyed.connect(on_hq_destroyed)
+		if not enemy_hq.building_destroyed.is_connected(on_enemy_hq_destroyed):
+			enemy_hq.building_destroyed.connect(on_enemy_hq_destroyed)
 		
 	wave_completed.connect(on_wave_completed)
 	
@@ -175,13 +175,14 @@ func update_objectives_menu() -> void:
 	objective_menu.clear_objectives()
 	for objective in level_objectives:
 		objective_menu.add_objective(objective)
-
-func on_hq_destroyed(hq):
-	if hq.team == 1:
-		if can_lose_when_hq_destroyed:
-			level_failed.emit()
-	elif hq.team == 2:
-		enemy_hqs_destroyed += 1
+	
+func on_player_hq_destroyed():
+	if can_lose_when_hq_destroyed:
+		level_failed.emit()
+		
+func on_enemy_hq_destroyed():
+	print("enemy hq destroyed")
+	enemy_hqs_destroyed += 1
 	check_objectives()
 	
 func on_level_failed():

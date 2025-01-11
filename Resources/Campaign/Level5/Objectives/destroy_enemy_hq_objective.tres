@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="DestroyEnemyHQObjective" load_steps=2 format=3 uid="uid://05ob33t1bvv"]
-
-[ext_resource type="Script" path="res://Resources/Campaign/Objectives/destroy_enemy_hq_objective.gd" id="1_m6xlr"]
-
-[resource]
-script = ExtResource("1_m6xlr")
-objective_name = "Destroy the Enemy HQ"
-description = ""
-completed = false

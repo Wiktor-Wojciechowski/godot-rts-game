@@ -5,7 +5,7 @@ extends Building
 
 var enemy_limit = 50
 @export var group_size = 5
-var spawn_radius: float = 5.0  # The radius at which enemies will spawn
+var spawn_radius: float = 6.0  # The radius at which enemies will spawn
 
 @onready var game_manager = get_tree().current_scene.get_node("GameManager")
 @onready var level_enemies = get_tree().current_scene.find_child("Enemies")
@@ -14,11 +14,8 @@ var spawn_timer: Timer
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	spawn_timer = $SpawnTimer
-	print(spawn_timer)
 	spawn_timer.wait_time = spawn_interval
-	print(spawn_timer.wait_time)
 	spawn_timer.start()
-	print(spawn_timer.is_stopped())
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

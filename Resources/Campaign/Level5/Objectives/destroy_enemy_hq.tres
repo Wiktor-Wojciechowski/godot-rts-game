@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="DestroyEnemyHQObjective" load_steps=2 format=3 uid="uid://dgl3yjxjcm2mj"]
+
+[ext_resource type="Script" path="res://Resources/Campaign/Objectives/destroy_enemy_hq_objective.gd" id="1_h1ndf"]
+
+[resource]
+script = ExtResource("1_h1ndf")
+number_of_hqs_to_destroy = 1
+objective_name = "Destroy the Enemy HQ"
+description = ""
+completed = false

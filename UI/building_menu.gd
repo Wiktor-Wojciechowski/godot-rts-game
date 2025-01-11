@@ -12,6 +12,11 @@ func _ready():
 			building_buttons.append(child)
 	
 	for i in range(building_buttons.size()):
+		building_buttons[i].text = building_resources[i].building_name
+		var bc = find_child("BuildingCost")
+		if bc:
+			bc.text = str(building_resources[i].production_cost)
+			print(bc.text)
 		building_buttons[i].connect("pressed", Callable(self, "_on_building_button_pressed").bind(i))
 		
 	resource_manager.resources_updated.connect(on_resources_updated)

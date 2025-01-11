@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_tykxo")
-objective_name = "Objective"
-description = "Objective description"
+waves_to_survive = 1
+objective_name = "Survive 3 Enemy Waves"
+description = "You must kill every enemy"
 completed = false

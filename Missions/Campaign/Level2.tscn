@@ -1,11 +1,10 @@
-[gd_scene load_steps=57 format=3 uid="uid://c82xax31p4gao"]
+[gd_scene load_steps=56 format=3 uid="uid://c82xax31p4gao"]
 
 [ext_resource type="PackedScene" uid="uid://ct8jhcy5gigkv" path="res://LevelTools/game_manager.tscn" id="1_u66bg"]
 [ext_resource type="Script" path="res://Resources/Campaign/Objectives/objective.gd" id="2_vo71y"]
-[ext_resource type="Resource" uid="uid://crhjk8ka3xqe5" path="res://Resources/Campaign/Level2/Objectives/destroy_enemy_hq_objective.tres" id="3_78gu0"]
+[ext_resource type="Resource" uid="uid://b807tacdf3oia" path="res://Resources/Campaign/Level2/Objectives/destroy_enemy_hq.tres" id="3_y6km5"]
 [ext_resource type="Texture2D" uid="uid://4rhknkiec0mx" path="res://Assets/Textures/rocky_terrain_02_diff_4k.jpg" id="8_pqycf"]
 [ext_resource type="PackedScene" uid="uid://bywn6s5aqo81n" path="res://Structures/player_headquarters.tscn" id="10_m4gxm"]
-[ext_resource type="PackedScene" uid="uid://5os01u24ao6g" path="res://Decorations/mountain_b.tscn" id="11_0keyt"]
 [ext_resource type="PackedScene" uid="uid://da2vg2u2bkway" path="res://Decorations/trees_a_large.tscn" id="13_wbct2"]
 [ext_resource type="PackedScene" uid="uid://68ue10cffaua" path="res://Decorations/trees_b_large.tscn" id="14_eec18"]
 [ext_resource type="PackedScene" uid="uid://ci8a4isd6wg2o" path="res://Decorations/rock_single_e.tscn" id="15_4ccam"]
@@ -92,7 +91,7 @@ size = Vector3(92.8292, 1, 58.4354)
 [node name="Level2" type="Node3D"]
 
 [node name="GameManager" parent="." instance=ExtResource("1_u66bg")]
-level_objectives = Array[ExtResource("2_vo71y")]([ExtResource("3_78gu0")])
+level_objectives = Array[ExtResource("2_vo71y")]([ExtResource("3_y6km5")])
 max_population = 50
 can_lose_when_hq_destroyed = true
 
@@ -120,8 +119,7 @@ transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 3.63109, 0, 11.6365)
 [node name="EnemyBarracks" parent="NavigationRegion3D/Structures" instance=ExtResource("49_usu1i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.0516, 0, -64.394)
 created_enemy = ExtResource("50_md50w")
-spawn_interval = 3
-team = 2
+spawn_interval = 12
 
 [node name="EnemySentry2" parent="NavigationRegion3D/Structures" instance=ExtResource("47_r1vm8")]
 transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, -49.6038, 1, -50.166)
@@ -147,11 +145,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.0652, 0, 66.8298)
 [node name="LumberMill" parent="NavigationRegion3D/Structures" instance=ExtResource("25_0w1ms")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.087, 0.2, 82.4463)
 
+[node name="Sentry" parent="NavigationRegion3D/Structures" instance=ExtResource("29_5qm7p")]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 57, 0, 62)
+
 [node name="Decorations" type="Node3D" parent="NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-
-[node name="mountain_B" parent="NavigationRegion3D/Decorations" instance=ExtResource("11_0keyt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.1751, 0, 0)
 
 [node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="NavigationRegion3D/Decorations"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.7615, 0)
@@ -843,10 +841,10 @@ building_resources = Array[ExtResource("40_8bbtn")]([ExtResource("41_dm4wc"), Ex
 
 [node name="ResourceManager" parent="." instance=ExtResource("47_5vo7l")]
 resources = {
-"food": 100,
-"gold": 100,
-"stone": 100,
-"wood": 100
+"food": 600,
+"gold": 600,
+"stone": 600,
+"wood": 600
 }
 
 [node name="Units" type="Node3D" parent="."]
