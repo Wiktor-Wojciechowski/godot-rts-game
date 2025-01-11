@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://bnf7sssd4gpi2"]
+[gd_scene load_steps=54 format=3 uid="uid://bnf7sssd4gpi2"]
 
 [ext_resource type="PackedScene" uid="uid://ct8jhcy5gigkv" path="res://LevelTools/game_manager.tscn" id="1_1gara"]
 [ext_resource type="PackedScene" uid="uid://o0mhgf0ea1ip" path="res://Structures/no_build_zone.tscn" id="2_tdkap"]
@@ -37,6 +37,7 @@
 [ext_resource type="Resource" uid="uid://rm5qley6cfui" path="res://Resources/Buildings/LumberMill.tres" id="41_aukrf"]
 [ext_resource type="Resource" uid="uid://f075cutgkwc2" path="res://Resources/Buildings/StoneQuarry.tres" id="42_6ae10"]
 [ext_resource type="Resource" uid="uid://n5hva5rnvwjy" path="res://Resources/Buildings/Farm.tres" id="43_erebg"]
+[ext_resource type="PackedScene" uid="uid://031h6ol66737" path="res://Enemies/skeleton_warrior.tscn" id="44_ldk7u"]
 [ext_resource type="Resource" uid="uid://cxmyt0uo23qmk" path="res://Resources/Buildings/GoldMine.tres" id="44_u54c3"]
 [ext_resource type="Resource" uid="uid://c65x048huemuv" path="res://Resources/Buildings/Sentry.tres" id="45_cn7s0"]
 [ext_resource type="Resource" uid="uid://c2w1qy7j2d5vd" path="res://Resources/Buildings/Barracks.tres" id="46_2q5j1"]
@@ -847,6 +848,45 @@ resources = {
 [node name="Target" type="Marker3D" parent="."]
 
 [node name="Enemies" type="Node3D" parent="."]
+
+[node name="SkeletonWarrior" parent="Enemies" instance=ExtResource("44_ldk7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.30032, -0.0131798, 1.03128)
+
+[node name="SkeletonWarrior2" parent="Enemies" instance=ExtResource("44_ldk7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.30032, -0.0131798, 3.03128)
+
+[node name="SkeletonWarrior3" parent="Enemies" instance=ExtResource("44_ldk7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.30032, -0.0131798, 5.03128)
+
+[node name="SkeletonWarrior4" parent="Enemies" instance=ExtResource("44_ldk7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.30032, -0.0131798, 7.03128)
+
+[node name="SkeletonWarrior5" parent="Enemies" instance=ExtResource("44_ldk7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.30032, -0.0131798, 7.03128)
+
+[node name="SkeletonWarrior6" parent="Enemies" instance=ExtResource("44_ldk7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.30032, -0.0131798, 7.03128)
+
+[node name="SkeletonWarrior7" parent="Enemies" instance=ExtResource("44_ldk7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.300319, -0.0131798, 7.03128)
+
+[node name="SkeletonWarrior8" parent="Enemies" instance=ExtResource("44_ldk7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.69968, -0.0131798, 7.03128)
+
+[node name="SkeletonWarrior9" parent="Enemies" instance=ExtResource("44_ldk7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.69968, -0.0131798, 7.03128)
+
+[node name="SkeletonWarrior10" parent="Enemies" instance=ExtResource("44_ldk7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.69968, -0.0131798, 7.03128)
+
+[node name="SkeletonWarrior11" parent="Enemies" instance=ExtResource("44_ldk7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.69968, -0.0131798, 5.03128)
+
+[node name="SkeletonWarrior12" parent="Enemies" instance=ExtResource("44_ldk7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.69968, -0.0131798, 3.03128)
+
+[node name="SkeletonWarrior13" parent="Enemies" instance=ExtResource("44_ldk7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.69968, -0.0131798, 1.03128)
 
 [node name="Collectibles" type="Node3D" parent="."]
 

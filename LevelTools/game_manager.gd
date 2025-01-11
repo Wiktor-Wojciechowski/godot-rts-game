@@ -20,8 +20,6 @@ var waves_completed = 0
 var current_wave_killcount = 0
 var enemy_hqs_destroyed = 0
 
-var built_structures = []
-
 @export var level_objectives: Array[Objective] = []
 
 var objectives_completed = 0
@@ -52,7 +50,6 @@ signal enemy_hq_destroyed
 signal special_enemy_defeated
 signal wave_completed
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	for objective in level_objectives:
 		objective.set_game_manager(self)
@@ -85,7 +82,6 @@ func _ready() -> void:
 		
 	wave_completed.connect(on_wave_completed)
 	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	number_of_units = units_node.get_children().size()
 	unit_number_label.text = str("Units: ",number_of_units)
@@ -107,10 +103,8 @@ func check_objectives():
 		emit_signal("all_objectives_completed")
 		level_complete = true
 		get_parent().get_node("UI").get_node("LevelCompleteScreen").show()
-		#show_completion_message()
 
 func _process_existing_enemies() -> void:
-	#var enemies = get_tree().get_nodes_in_group("enemies")
 	for enemy in enemies_node.get_children():
 		_connect_enemy(enemy)
 
@@ -161,27 +155,17 @@ func _on_unit_death(unit: Unit):
 func _on_enemy_building_destroyed(building):
 	destroyed_enemy_buildings +=1
 	check_objectives()
-	
-#func has_built_structure(structure_name: String) -> bool:
-	#return structure_name in built_structures
-	#
-#func add_built_structure(structure_name: String) -> void:
-	#if structure_name not in built_structures:
-		#built_structures.append(structure_name)
-		#print("Structure built: ", structure_name)
-		#check_objectives()
 		
 func update_objectives_menu() -> void:
 	objective_menu.clear_objectives()
 	for objective in level_objectives:
 		objective_menu.add_objective(objective)
 	
-func on_player_hq_destroyed():
+func on_player_hq_destroyed(hq):
 	if can_lose_when_hq_destroyed:
 		level_failed.emit()
 		
-func on_enemy_hq_destroyed():
-	print("enemy hq destroyed")
+func on_enemy_hq_destroyed(hq):
 	enemy_hqs_destroyed += 1
 	check_objectives()
 	
@@ -189,7 +173,6 @@ func on_level_failed():
 	if not level_complete:
 		is_level_failed = true
 		get_parent().get_node("UI").get_node("LevelFailedScreen").show()
-		print('level failed')
 	
 func increase_current_population(amount):
 	current_population += amount
@@ -206,7 +189,6 @@ func on_population_changed():
 		level_failed.emit()
 
 func on_wave_completed():
-	print("wave complete")
 	current_wave_killcount = 0
 	waves_completed += 1
 
