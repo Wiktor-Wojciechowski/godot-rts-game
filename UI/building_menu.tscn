@@ -8,7 +8,7 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 488.0
-offset_right = -696.0
+offset_right = -341.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
@@ -17,68 +17,98 @@ script = ExtResource("1_rds1m")
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
 offset_left = -8.0
-offset_right = 456.0
-offset_bottom = 168.0
+offset_top = 36.0
+offset_right = 811.0
+offset_bottom = 204.0
 mouse_filter = 1
 
 [node name="0" type="Button" parent="."]
 layout_mode = 0
-offset_left = 24.0
-offset_top = 32.0
-offset_right = 152.0
-offset_bottom = 80.0
+offset_left = 4.0
+offset_top = 43.0
+offset_right = 132.0
+offset_bottom = 74.0
 mouse_filter = 1
 text = "1. Lumber Mill"
 
-[node name="BuildingCost" type="Label" parent="0"]
+[node name="BuildingCost" type="RichTextLabel" parent="0"]
 layout_mode = 0
-offset_left = 46.0
-offset_top = 13.0
-offset_right = 86.0
-offset_bottom = 36.0
+offset_top = 33.0
+offset_right = 128.0
+offset_bottom = 151.0
 
 [node name="1" type="Button" parent="."]
 layout_mode = 0
-offset_left = 160.0
-offset_top = 32.0
-offset_right = 289.0
-offset_bottom = 80.0
+offset_left = 138.0
+offset_top = 43.0
+offset_right = 267.0
+offset_bottom = 74.0
 mouse_filter = 1
 text = "2. Stone Quarry"
 
+[node name="BuildingCost" type="RichTextLabel" parent="1"]
+layout_mode = 0
+offset_top = 33.0
+offset_right = 128.0
+offset_bottom = 151.0
+
 [node name="2" type="Button" parent="."]
 layout_mode = 0
-offset_left = 296.0
-offset_top = 32.0
-offset_right = 424.0
-offset_bottom = 80.0
+offset_left = 274.0
+offset_top = 43.0
+offset_right = 402.0
+offset_bottom = 74.0
 mouse_filter = 1
 text = "3. Farm"
 
+[node name="BuildingCost" type="RichTextLabel" parent="2"]
+layout_mode = 0
+offset_top = 33.0
+offset_right = 128.0
+offset_bottom = 151.0
+
 [node name="3" type="Button" parent="."]
 layout_mode = 0
-offset_left = 24.0
-offset_top = 96.0
-offset_right = 152.0
-offset_bottom = 144.0
+offset_left = 407.0
+offset_top = 43.0
+offset_right = 535.0
+offset_bottom = 74.0
 mouse_filter = 1
 text = "4. Gold Mine"
 
+[node name="BuildingCost" type="RichTextLabel" parent="3"]
+layout_mode = 0
+offset_top = 33.0
+offset_right = 128.0
+offset_bottom = 151.0
+
 [node name="4" type="Button" parent="."]
 layout_mode = 0
-offset_left = 160.0
-offset_top = 96.0
-offset_right = 288.0
-offset_bottom = 144.0
+offset_left = 540.0
+offset_top = 42.0
+offset_right = 668.0
+offset_bottom = 73.0
 mouse_filter = 1
 text = "5. Sentry"
 
+[node name="BuildingCost" type="RichTextLabel" parent="4"]
+layout_mode = 0
+offset_top = 33.0
+offset_right = 128.0
+offset_bottom = 151.0
+
 [node name="5" type="Button" parent="."]
 layout_mode = 0
-offset_left = 296.0
-offset_top = 96.0
-offset_right = 424.0
-offset_bottom = 144.0
+offset_left = 675.0
+offset_top = 42.0
+offset_right = 803.0
+offset_bottom = 73.0
 mouse_filter = 1
 text = "6. Barracks
 "
+
+[node name="BuildingCost" type="RichTextLabel" parent="5"]
+layout_mode = 0
+offset_top = 33.0
+offset_right = 128.0
+offset_bottom = 151.0

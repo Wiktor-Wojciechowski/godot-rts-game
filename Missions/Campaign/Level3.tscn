@@ -37,7 +37,7 @@
 [ext_resource type="Resource" uid="uid://rm5qley6cfui" path="res://Resources/Buildings/LumberMill.tres" id="41_aukrf"]
 [ext_resource type="Resource" uid="uid://f075cutgkwc2" path="res://Resources/Buildings/StoneQuarry.tres" id="42_6ae10"]
 [ext_resource type="Resource" uid="uid://n5hva5rnvwjy" path="res://Resources/Buildings/Farm.tres" id="43_erebg"]
-[ext_resource type="PackedScene" uid="uid://031h6ol66737" path="res://Enemies/skeleton_warrior.tscn" id="44_ldk7u"]
+[ext_resource type="PackedScene" uid="uid://nvfer57ex412" path="res://Collectibles/gold_collectible.tscn" id="44_0wsm2"]
 [ext_resource type="Resource" uid="uid://cxmyt0uo23qmk" path="res://Resources/Buildings/GoldMine.tres" id="44_u54c3"]
 [ext_resource type="Resource" uid="uid://c65x048huemuv" path="res://Resources/Buildings/Sentry.tres" id="45_cn7s0"]
 [ext_resource type="Resource" uid="uid://c2w1qy7j2d5vd" path="res://Resources/Buildings/Barracks.tres" id="46_2q5j1"]
@@ -110,7 +110,7 @@ text = "Next Wave: 00:00"
 [node name="SpawnCenters" type="Node3D" parent="WaveSpawner"]
 
 [node name="SpawnCenter1" type="Marker3D" parent="WaveSpawner/SpawnCenters"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76, 0, -76)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 0, -66)
 
 [node name="SpawnCenter2" type="Marker3D" parent="WaveSpawner/SpawnCenters"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81, 0, -68)
@@ -837,10 +837,10 @@ building_resources = Array[ExtResource("40_784yy")]([ExtResource("41_aukrf"), Ex
 
 [node name="ResourceManager" parent="." instance=ExtResource("47_y8iv8")]
 resources = {
-"food": 100,
-"gold": 100,
-"stone": 100,
-"wood": 100
+"food": 200,
+"gold": 200,
+"stone": 200,
+"wood": 200
 }
 
 [node name="Units" type="Node3D" parent="."]
@@ -849,46 +849,79 @@ resources = {
 
 [node name="Enemies" type="Node3D" parent="."]
 
-[node name="SkeletonWarrior" parent="Enemies" instance=ExtResource("44_ldk7u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.30032, -0.0131798, 1.03128)
-
-[node name="SkeletonWarrior2" parent="Enemies" instance=ExtResource("44_ldk7u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.30032, -0.0131798, 3.03128)
-
-[node name="SkeletonWarrior3" parent="Enemies" instance=ExtResource("44_ldk7u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.30032, -0.0131798, 5.03128)
-
-[node name="SkeletonWarrior4" parent="Enemies" instance=ExtResource("44_ldk7u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.30032, -0.0131798, 7.03128)
-
-[node name="SkeletonWarrior5" parent="Enemies" instance=ExtResource("44_ldk7u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.30032, -0.0131798, 7.03128)
-
-[node name="SkeletonWarrior6" parent="Enemies" instance=ExtResource("44_ldk7u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.30032, -0.0131798, 7.03128)
-
-[node name="SkeletonWarrior7" parent="Enemies" instance=ExtResource("44_ldk7u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.300319, -0.0131798, 7.03128)
-
-[node name="SkeletonWarrior8" parent="Enemies" instance=ExtResource("44_ldk7u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.69968, -0.0131798, 7.03128)
-
-[node name="SkeletonWarrior9" parent="Enemies" instance=ExtResource("44_ldk7u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.69968, -0.0131798, 7.03128)
-
-[node name="SkeletonWarrior10" parent="Enemies" instance=ExtResource("44_ldk7u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.69968, -0.0131798, 7.03128)
-
-[node name="SkeletonWarrior11" parent="Enemies" instance=ExtResource("44_ldk7u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.69968, -0.0131798, 5.03128)
-
-[node name="SkeletonWarrior12" parent="Enemies" instance=ExtResource("44_ldk7u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.69968, -0.0131798, 3.03128)
-
-[node name="SkeletonWarrior13" parent="Enemies" instance=ExtResource("44_ldk7u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.69968, -0.0131798, 1.03128)
-
 [node name="Collectibles" type="Node3D" parent="."]
+
+[node name="GoldCollectible" parent="Collectibles" instance=ExtResource("44_0wsm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -79, 0, 77)
+
+[node name="GoldCollectible2" parent="Collectibles" instance=ExtResource("44_0wsm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -79, 0, 80)
+
+[node name="GoldCollectible3" parent="Collectibles" instance=ExtResource("44_0wsm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76, 0, 80)
+
+[node name="GoldCollectible4" parent="Collectibles" instance=ExtResource("44_0wsm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76, 0, 77)
+
+[node name="GoldCollectible5" parent="Collectibles" instance=ExtResource("44_0wsm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73, 0, 77)
+
+[node name="GoldCollectible6" parent="Collectibles" instance=ExtResource("44_0wsm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73, 0, 80)
+
+[node name="GoldCollectible7" parent="Collectibles" instance=ExtResource("44_0wsm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61, 0, 85)
+
+[node name="GoldCollectible8" parent="Collectibles" instance=ExtResource("44_0wsm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61, 0, 88)
+
+[node name="GoldCollectible9" parent="Collectibles" instance=ExtResource("44_0wsm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64, 0, 88)
+
+[node name="GoldCollectible10" parent="Collectibles" instance=ExtResource("44_0wsm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64, 0, 85)
+
+[node name="GoldCollectible11" parent="Collectibles" instance=ExtResource("44_0wsm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67, 0, 85)
+
+[node name="GoldCollectible12" parent="Collectibles" instance=ExtResource("44_0wsm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67, 0, 88)
+
+[node name="GoldCollectible13" parent="Collectibles" instance=ExtResource("44_0wsm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43, 0, -52)
+
+[node name="GoldCollectible14" parent="Collectibles" instance=ExtResource("44_0wsm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43, 0, -49)
+
+[node name="GoldCollectible15" parent="Collectibles" instance=ExtResource("44_0wsm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46, 0, -49)
+
+[node name="GoldCollectible16" parent="Collectibles" instance=ExtResource("44_0wsm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46, 0, -52)
+
+[node name="GoldCollectible17" parent="Collectibles" instance=ExtResource("44_0wsm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49, 0, -52)
+
+[node name="GoldCollectible18" parent="Collectibles" instance=ExtResource("44_0wsm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49, 0, -49)
+
+[node name="GoldCollectible19" parent="Collectibles" instance=ExtResource("44_0wsm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62, 0, -77)
+
+[node name="GoldCollectible20" parent="Collectibles" instance=ExtResource("44_0wsm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62, 0, -74)
+
+[node name="GoldCollectible21" parent="Collectibles" instance=ExtResource("44_0wsm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59, 0, -74)
+
+[node name="GoldCollectible22" parent="Collectibles" instance=ExtResource("44_0wsm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59, 0, -77)
+
+[node name="GoldCollectible23" parent="Collectibles" instance=ExtResource("44_0wsm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56, 0, -77)
+
+[node name="GoldCollectible24" parent="Collectibles" instance=ExtResource("44_0wsm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56, 0, -74)
 
 [connection signal="mouse_entered" from="UI" to="UnitSelector" method="_on_ui_mouse_entered"]
 [connection signal="mouse_exited" from="UI" to="UnitSelector" method="_on_ui_mouse_exited"]

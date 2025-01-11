@@ -191,6 +191,7 @@ func on_population_changed():
 func on_wave_completed():
 	current_wave_killcount = 0
 	waves_completed += 1
+	check_objectives()
 
 func add_new_objective(objective: Objective):
 	level_objectives.append(objective)

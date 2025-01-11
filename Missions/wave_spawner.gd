@@ -2,10 +2,10 @@ extends Node3D
 
 var waves = [
 	{
-		"spawn_timer": 4,
+		"spawn_timer": 60,
 		"enemies": [
-			{"type": "skeleton_minion", "count": 1},
-			{"type": "skeleton_rogue", "count": 1}
+			{"type": "skeleton_minion", "count": 16},
+			{"type": "skeleton_rogue", "count": 10}
 		]
 	},
 		{
