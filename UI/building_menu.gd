@@ -15,7 +15,11 @@ func _ready():
 		building_buttons[i].text = building_resources[i].building_name
 		var bc = building_buttons[i].find_child("BuildingCost")
 		if bc:
-			bc.text = str(building_resources[i].production_cost)
+			var cost_text = ""
+			for key in building_resources[i].production_cost.keys():
+				cost_text += key + ": " + str(building_resources[i].production_cost[key]) + "\n"
+			
+			bc.text = str(cost_text)
 			print(bc.text)
 		building_buttons[i].connect("pressed", Callable(self, "_on_building_button_pressed").bind(i))
 		

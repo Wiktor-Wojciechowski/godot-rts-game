@@ -8,8 +8,8 @@ detection_range = 25.0
 building_name = "Sentry"
 health = 250
 production_cost = {
-"gold": 150,
+"gold": 100,
 "stone": 50,
-"wood": 100
+"wood": 50
 }
 size = 1

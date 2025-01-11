@@ -728,7 +728,7 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 11.3876, 0.499992, -35.7609)
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 34.3876, 0.499992, 23.2391)
 
 [node name="camera_base" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 11)
 script = ExtResource("17_la7a5")
 camera_move_speed = 60.0
 min_camera_bounds = Vector3(-100, 0, -100)
@@ -888,40 +888,40 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67, 0, 85)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67, 0, 88)
 
 [node name="GoldCollectible13" parent="Collectibles" instance=ExtResource("44_0wsm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43, 0, -52)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, -52)
 
 [node name="GoldCollectible14" parent="Collectibles" instance=ExtResource("44_0wsm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43, 0, -49)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, -49)
 
 [node name="GoldCollectible15" parent="Collectibles" instance=ExtResource("44_0wsm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46, 0, -49)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, -49)
 
 [node name="GoldCollectible16" parent="Collectibles" instance=ExtResource("44_0wsm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46, 0, -52)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, -52)
 
 [node name="GoldCollectible17" parent="Collectibles" instance=ExtResource("44_0wsm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49, 0, -52)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -52)
 
 [node name="GoldCollectible18" parent="Collectibles" instance=ExtResource("44_0wsm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49, 0, -49)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -49)
 
-[node name="GoldCollectible19" parent="Collectibles" instance=ExtResource("44_0wsm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62, 0, -77)
+[node name="GoldCollectible25" parent="Collectibles" instance=ExtResource("44_0wsm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -52)
 
-[node name="GoldCollectible20" parent="Collectibles" instance=ExtResource("44_0wsm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62, 0, -74)
+[node name="GoldCollectible26" parent="Collectibles" instance=ExtResource("44_0wsm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -49)
 
-[node name="GoldCollectible21" parent="Collectibles" instance=ExtResource("44_0wsm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59, 0, -74)
+[node name="GoldCollectible27" parent="Collectibles" instance=ExtResource("44_0wsm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, -49)
 
-[node name="GoldCollectible22" parent="Collectibles" instance=ExtResource("44_0wsm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59, 0, -77)
+[node name="GoldCollectible28" parent="Collectibles" instance=ExtResource("44_0wsm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, -52)
 
-[node name="GoldCollectible23" parent="Collectibles" instance=ExtResource("44_0wsm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56, 0, -77)
+[node name="GoldCollectible29" parent="Collectibles" instance=ExtResource("44_0wsm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -52)
 
-[node name="GoldCollectible24" parent="Collectibles" instance=ExtResource("44_0wsm2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56, 0, -74)
+[node name="GoldCollectible30" parent="Collectibles" instance=ExtResource("44_0wsm2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -49)
 
 [connection signal="mouse_entered" from="UI" to="UnitSelector" method="_on_ui_mouse_entered"]
 [connection signal="mouse_exited" from="UI" to="UnitSelector" method="_on_ui_mouse_exited"]
