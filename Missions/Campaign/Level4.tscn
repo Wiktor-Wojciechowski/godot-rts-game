@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://bm8ffkmv8adn7"]
+[gd_scene load_steps=66 format=3 uid="uid://bm8ffkmv8adn7"]
 
 [ext_resource type="PackedScene" uid="uid://ct8jhcy5gigkv" path="res://LevelTools/game_manager.tscn" id="1_0iksh"]
 [ext_resource type="Script" path="res://Resources/Campaign/Objectives/objective.gd" id="2_h6ksq"]
@@ -56,6 +56,7 @@
 [ext_resource type="PackedScene" uid="uid://nvfer57ex412" path="res://Collectibles/gold_collectible.tscn" id="54_x472u"]
 [ext_resource type="PackedScene" uid="uid://njiefdys0bu4" path="res://Collectibles/food_collectible.tscn" id="56_0x5s4"]
 [ext_resource type="PackedScene" uid="uid://rfhcl2tll6gu" path="res://Collectibles/wood_collectible.tscn" id="56_yrr48"]
+[ext_resource type="AudioStream" uid="uid://da4rmw04ej53s" path="res://Assets/Audio/Music/9. Sorrow’s Edge  .ogg" id="57_cu588"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_eqeoe"]
 geometry_parsed_geometry_type = 1
@@ -1439,6 +1440,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71.4232, 0.48682, -3.83108)
 
 [node name="FoodCollectible16" parent="." instance=ExtResource("56_0x5s4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.4232, 0.48682, -3.83108)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("57_cu588")
+autoplay = true
+bus = &"Music"
 
 [connection signal="mouse_entered" from="UI" to="UnitSelector" method="_on_ui_mouse_entered"]
 [connection signal="mouse_exited" from="UI" to="UnitSelector" method="_on_ui_mouse_exited"]

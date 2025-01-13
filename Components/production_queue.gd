@@ -66,7 +66,7 @@ func _on_production_complete() -> void:
 	if unit_queue.size() > 0:
 		unit_queue.pop_front() # Remove the completed unit
 		var completed_unit = producible_units[current_unit["index"]].instantiate()
-		
+		completed_unit.position = Vector3(0,-1000, 0)
 		units.add_child(completed_unit)
 		completed_unit.global_position = get_parent().spawn_point.global_position
 		current_unit = null

@@ -65,9 +65,10 @@ func on_population_changed():
 	
 func produce_unit(index):
 	var selected_building = unit_selector.selected_building
-	var unit_resource = unit_resources[index]
-	selected_building.production_queue.add_unit_to_queue(
-		index, 
-		unit_resource.unit_name, 
-		unit_resource.production_time,
-	)
+	if is_instance_valid(selected_building):
+		var unit_resource = unit_resources[index]
+		selected_building.production_queue.add_unit_to_queue(
+			index, 
+			unit_resource.unit_name, 
+			unit_resource.production_time,
+		)

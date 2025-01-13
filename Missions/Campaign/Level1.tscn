@@ -2,7 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://ct8jhcy5gigkv" path="res://LevelTools/game_manager.tscn" id="1_qnc7g"]
 [ext_resource type="Script" path="res://Resources/Campaign/Objectives/objective.gd" id="2_jjc5a"]
-[ext_resource type="Resource" uid="uid://bo5a3pb8l2t5a" path="res://Resources/Campaign/Level1/Objectives/do_not_lose_units_objective.tres" id="3_g8v7b"]
 [ext_resource type="Resource" uid="uid://mdh34eihs2qb" path="res://Resources/Campaign/Level1/Objectives/defeat_all_enemies.tres" id="3_xbomk"]
 [ext_resource type="PackedScene" uid="uid://b65st7dliy0ls" path="res://Structures/enemy_spawner.tscn" id="5_anioq"]
 [ext_resource type="PackedScene" uid="uid://cmthmnm5plomi" path="res://Enemies/enemy.tscn" id="6_rpgt2"]
@@ -51,6 +50,7 @@
 [ext_resource type="PackedScene" uid="uid://031h6ol66737" path="res://Enemies/skeleton_warrior.tscn" id="52_70psd"]
 [ext_resource type="PackedScene" uid="uid://lbpnbu4l4ifb" path="res://Enemies/skeleton_wizard.tscn" id="53_yms1k"]
 [ext_resource type="PackedScene" uid="uid://cay5vligoi0rt" path="res://Enemies/skeleton_minion.tscn" id="54_a2xdk"]
+[ext_resource type="AudioStream" uid="uid://5kcxmh3dkx1m" path="res://Assets/Audio/Music/3. Darkwood Path.ogg" id="55_dmnqw"]
 [ext_resource type="PackedScene" uid="uid://ceaf25tbab6wn" path="res://Components/special_enemy_component.tscn" id="55_q4at7"]
 [ext_resource type="PackedScene" uid="uid://rfhcl2tll6gu" path="res://Collectibles/wood_collectible.tscn" id="57_u6k41"]
 [ext_resource type="PackedScene" uid="uid://njiefdys0bu4" path="res://Collectibles/food_collectible.tscn" id="58_8l8ym"]
@@ -87,7 +87,7 @@ reflected_light_source = 1
 [node name="Level1" type="Node3D"]
 
 [node name="GameManager" parent="." instance=ExtResource("1_qnc7g")]
-level_objectives = Array[ExtResource("2_jjc5a")]([ExtResource("3_g8v7b"), ExtResource("3_xbomk")])
+level_objectives = Array[ExtResource("2_jjc5a")]([ExtResource("3_xbomk")])
 max_population = 50
 can_lose_when_population_0 = true
 
@@ -896,6 +896,14 @@ layout_mode = 1
 visible = false
 layout_mode = 1
 
+[node name="Label" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 291.0
+offset_top = -307.0
+offset_right = 557.0
+offset_bottom = -276.0
+text = "Do not let your population reach 0"
+
 [node name="BuildingPlacer" parent="." node_paths=PackedStringArray("camera", "nav_region") instance=ExtResource("24_50qe6")]
 buildings = Array[PackedScene]([ExtResource("25_n1mh3"), ExtResource("26_gb0gp"), ExtResource("27_tr4r0"), ExtResource("28_go38i"), ExtResource("29_1vh34"), ExtResource("30_jntdt")])
 camera = NodePath("../camera_base/camera_socket/Camera3D")
@@ -1100,170 +1108,175 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.2714, 0, -33.3432)
 
 [node name="Collectibles" type="Node3D" parent="."]
 
-[node name="GoldCollectible3" parent="." instance=ExtResource("59_75r8b")]
+[node name="GoldCollectible3" parent="Collectibles" instance=ExtResource("59_75r8b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.5903, 0.48682, 73.9211)
 
-[node name="GoldCollectible4" parent="." instance=ExtResource("59_75r8b")]
+[node name="GoldCollectible4" parent="Collectibles" instance=ExtResource("59_75r8b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71.5903, 0.48682, 73.9211)
 
-[node name="GoldCollectible5" parent="." instance=ExtResource("59_75r8b")]
+[node name="GoldCollectible5" parent="Collectibles" instance=ExtResource("59_75r8b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.5903, 0.48682, 71.9211)
 
-[node name="FoodCollectible2" parent="." instance=ExtResource("58_8l8ym")]
+[node name="FoodCollectible2" parent="Collectibles" instance=ExtResource("58_8l8ym")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81.0975, 0.48682, 74.7725)
 
-[node name="FoodCollectible3" parent="." instance=ExtResource("58_8l8ym")]
+[node name="FoodCollectible3" parent="Collectibles" instance=ExtResource("58_8l8ym")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80.555, 1.05739, 77.6674)
 
-[node name="WoodCollectible" parent="." instance=ExtResource("57_u6k41")]
+[node name="WoodCollectible" parent="Collectibles" instance=ExtResource("57_u6k41")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64.1835, 0.48682, 77.4702)
 
-[node name="WoodCollectible2" parent="." instance=ExtResource("57_u6k41")]
+[node name="WoodCollectible2" parent="Collectibles" instance=ExtResource("57_u6k41")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64.0834, 0.48682, 78.5769)
 
-[node name="WoodCollectible3" parent="." instance=ExtResource("57_u6k41")]
+[node name="WoodCollectible3" parent="Collectibles" instance=ExtResource("57_u6k41")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64.1633, 0.48682, 79.8421)
 
-[node name="GoldCollectible6" parent="." instance=ExtResource("59_75r8b")]
+[node name="GoldCollectible6" parent="Collectibles" instance=ExtResource("59_75r8b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 94.404, 0.48682, 51.7614)
 
-[node name="GoldCollectible7" parent="." instance=ExtResource("59_75r8b")]
+[node name="GoldCollectible7" parent="Collectibles" instance=ExtResource("59_75r8b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 94.404, 0.48682, 53.7614)
 
-[node name="GoldCollectible8" parent="." instance=ExtResource("59_75r8b")]
+[node name="GoldCollectible8" parent="Collectibles" instance=ExtResource("59_75r8b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 94.404, 0.48682, 55.7614)
 
-[node name="GoldCollectible9" parent="." instance=ExtResource("59_75r8b")]
+[node name="GoldCollectible9" parent="Collectibles" instance=ExtResource("59_75r8b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 94.404, 0.48682, 57.7614)
 
-[node name="GoldCollectible10" parent="." instance=ExtResource("59_75r8b")]
+[node name="GoldCollectible10" parent="Collectibles" instance=ExtResource("59_75r8b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 96.404, 0.48682, 57.7614)
 
-[node name="GoldCollectible11" parent="." instance=ExtResource("59_75r8b")]
+[node name="GoldCollectible11" parent="Collectibles" instance=ExtResource("59_75r8b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 96.404, 0.48682, 55.7614)
 
-[node name="GoldCollectible14" parent="." instance=ExtResource("59_75r8b")]
+[node name="GoldCollectible14" parent="Collectibles" instance=ExtResource("59_75r8b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.596, 0.48682, -49.2386)
 
-[node name="GoldCollectible15" parent="." instance=ExtResource("59_75r8b")]
+[node name="GoldCollectible15" parent="Collectibles" instance=ExtResource("59_75r8b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.596, 0.48682, -47.2386)
 
-[node name="GoldCollectible16" parent="." instance=ExtResource("59_75r8b")]
+[node name="GoldCollectible16" parent="Collectibles" instance=ExtResource("59_75r8b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.596, 0.48682, -47.2386)
 
-[node name="GoldCollectible17" parent="." instance=ExtResource("59_75r8b")]
+[node name="GoldCollectible17" parent="Collectibles" instance=ExtResource("59_75r8b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.596, 0.48682, -49.2386)
 
-[node name="GoldCollectible12" parent="." instance=ExtResource("59_75r8b")]
+[node name="GoldCollectible12" parent="Collectibles" instance=ExtResource("59_75r8b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 96.404, 0.48682, 53.7614)
 
-[node name="GoldCollectible13" parent="." instance=ExtResource("59_75r8b")]
+[node name="GoldCollectible13" parent="Collectibles" instance=ExtResource("59_75r8b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 96.404, 0.48682, 51.7614)
 
-[node name="WoodCollectible4" parent="." instance=ExtResource("57_u6k41")]
+[node name="WoodCollectible4" parent="Collectibles" instance=ExtResource("57_u6k41")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.8398, 0.48682, 89.9555)
 
-[node name="WoodCollectible5" parent="." instance=ExtResource("57_u6k41")]
+[node name="WoodCollectible5" parent="Collectibles" instance=ExtResource("57_u6k41")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.665, 0.48682, 88.9135)
 
-[node name="WoodCollectible6" parent="." instance=ExtResource("57_u6k41")]
+[node name="WoodCollectible6" parent="Collectibles" instance=ExtResource("57_u6k41")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.2806, 0.48682, 90.054)
 
-[node name="WoodCollectible7" parent="." instance=ExtResource("57_u6k41")]
+[node name="WoodCollectible7" parent="Collectibles" instance=ExtResource("57_u6k41")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.8545, 0.48682, 9.55091)
 
-[node name="WoodCollectible8" parent="." instance=ExtResource("57_u6k41")]
+[node name="WoodCollectible8" parent="Collectibles" instance=ExtResource("57_u6k41")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77.217, 0.48682, 11.3735)
 
-[node name="WoodCollectible9" parent="." instance=ExtResource("57_u6k41")]
+[node name="WoodCollectible9" parent="Collectibles" instance=ExtResource("57_u6k41")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.2041, 0.48682, 11.0962)
 
-[node name="WoodCollectible10" parent="." instance=ExtResource("57_u6k41")]
+[node name="WoodCollectible10" parent="Collectibles" instance=ExtResource("57_u6k41")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.8878, 0.48682, 8.67713)
 
-[node name="FoodCollectible" parent="." instance=ExtResource("58_8l8ym")]
+[node name="FoodCollectible" parent="Collectibles" instance=ExtResource("58_8l8ym")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 89.5574, 0.48682, 19.5727)
 
-[node name="FoodCollectible4" parent="." instance=ExtResource("58_8l8ym")]
+[node name="FoodCollectible4" parent="Collectibles" instance=ExtResource("58_8l8ym")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.7891, 0.61354, 19.8317)
 
-[node name="FoodCollectible5" parent="." instance=ExtResource("58_8l8ym")]
+[node name="FoodCollectible5" parent="Collectibles" instance=ExtResource("58_8l8ym")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90.2969, 0.48682, 23.9636)
 
-[node name="FoodCollectible6" parent="." instance=ExtResource("58_8l8ym")]
+[node name="FoodCollectible6" parent="Collectibles" instance=ExtResource("58_8l8ym")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85.2058, 0.48682, 23.3018)
 
-[node name="FoodCollectible7" parent="." instance=ExtResource("58_8l8ym")]
+[node name="FoodCollectible7" parent="Collectibles" instance=ExtResource("58_8l8ym")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.4426, 0.48682, 19.5727)
 
-[node name="FoodCollectible8" parent="." instance=ExtResource("58_8l8ym")]
+[node name="FoodCollectible8" parent="Collectibles" instance=ExtResource("58_8l8ym")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.2109, 0.61354, 19.8317)
 
-[node name="FoodCollectible9" parent="." instance=ExtResource("58_8l8ym")]
+[node name="FoodCollectible9" parent="Collectibles" instance=ExtResource("58_8l8ym")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.7031, 0.48682, 23.9636)
 
-[node name="FoodCollectible10" parent="." instance=ExtResource("58_8l8ym")]
+[node name="FoodCollectible10" parent="Collectibles" instance=ExtResource("58_8l8ym")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77.7942, 0.48682, 23.3018)
 
-[node name="WoodCollectible11" parent="." instance=ExtResource("57_u6k41")]
+[node name="WoodCollectible11" parent="Collectibles" instance=ExtResource("57_u6k41")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8545, 0.48682, -32.4491)
 
-[node name="WoodCollectible12" parent="." instance=ExtResource("57_u6k41")]
+[node name="WoodCollectible12" parent="Collectibles" instance=ExtResource("57_u6k41")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.217, 0.48682, -30.6265)
 
-[node name="WoodCollectible13" parent="." instance=ExtResource("57_u6k41")]
+[node name="WoodCollectible13" parent="Collectibles" instance=ExtResource("57_u6k41")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.2041, 0.48682, -30.9038)
 
-[node name="WoodCollectible14" parent="." instance=ExtResource("57_u6k41")]
+[node name="WoodCollectible14" parent="Collectibles" instance=ExtResource("57_u6k41")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8878, 0.48682, -33.3229)
 
-[node name="FoodCollectible13" parent="." instance=ExtResource("58_8l8ym")]
+[node name="FoodCollectible13" parent="Collectibles" instance=ExtResource("58_8l8ym")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.4426, 0.48682, -22.4273)
 
-[node name="FoodCollectible14" parent="." instance=ExtResource("58_8l8ym")]
+[node name="FoodCollectible14" parent="Collectibles" instance=ExtResource("58_8l8ym")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.2109, 0.61354, -22.1683)
 
-[node name="FoodCollectible15" parent="." instance=ExtResource("58_8l8ym")]
+[node name="FoodCollectible15" parent="Collectibles" instance=ExtResource("58_8l8ym")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7031, 0.48682, -18.0364)
 
-[node name="FoodCollectible16" parent="." instance=ExtResource("58_8l8ym")]
+[node name="FoodCollectible16" parent="Collectibles" instance=ExtResource("58_8l8ym")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.7942, 0.48682, -18.6982)
 
-[node name="FoodCollectible11" parent="." instance=ExtResource("58_8l8ym")]
+[node name="FoodCollectible11" parent="Collectibles" instance=ExtResource("58_8l8ym")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77.2109, 0.61354, 73.8317)
 
-[node name="FoodCollectible12" parent="." instance=ExtResource("58_8l8ym")]
+[node name="FoodCollectible12" parent="Collectibles" instance=ExtResource("58_8l8ym")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77.7942, 0.48682, 77.3018)
 
-[node name="GoldCollectible18" parent="." instance=ExtResource("59_75r8b")]
+[node name="GoldCollectible18" parent="Collectibles" instance=ExtResource("59_75r8b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.4097, 0.48682, -15.0789)
 
-[node name="GoldCollectible19" parent="." instance=ExtResource("59_75r8b")]
+[node name="GoldCollectible19" parent="Collectibles" instance=ExtResource("59_75r8b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75.4097, 0.48682, -15.0789)
 
-[node name="GoldCollectible20" parent="." instance=ExtResource("59_75r8b")]
+[node name="GoldCollectible20" parent="Collectibles" instance=ExtResource("59_75r8b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74.4097, 0.48682, -17.0789)
 
-[node name="FoodCollectible17" parent="." instance=ExtResource("58_8l8ym")]
+[node name="FoodCollectible17" parent="Collectibles" instance=ExtResource("58_8l8ym")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.9025, 0.48682, -14.2275)
 
-[node name="FoodCollectible18" parent="." instance=ExtResource("58_8l8ym")]
+[node name="FoodCollectible18" parent="Collectibles" instance=ExtResource("58_8l8ym")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.445, 1.05739, -11.3326)
 
-[node name="WoodCollectible15" parent="." instance=ExtResource("57_u6k41")]
+[node name="WoodCollectible15" parent="Collectibles" instance=ExtResource("57_u6k41")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.8165, 0.48682, -11.5298)
 
-[node name="WoodCollectible16" parent="." instance=ExtResource("57_u6k41")]
+[node name="WoodCollectible16" parent="Collectibles" instance=ExtResource("57_u6k41")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.9166, 0.48682, -10.4231)
 
-[node name="WoodCollectible17" parent="." instance=ExtResource("57_u6k41")]
+[node name="WoodCollectible17" parent="Collectibles" instance=ExtResource("57_u6k41")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.8367, 0.48682, -9.1579)
 
-[node name="FoodCollectible19" parent="." instance=ExtResource("58_8l8ym")]
+[node name="FoodCollectible19" parent="Collectibles" instance=ExtResource("58_8l8ym")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69.7891, 0.61354, -15.1683)
 
-[node name="FoodCollectible20" parent="." instance=ExtResource("58_8l8ym")]
+[node name="FoodCollectible20" parent="Collectibles" instance=ExtResource("58_8l8ym")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69.2058, 0.48682, -11.6982)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("55_dmnqw")
+autoplay = true
+bus = &"Music"
 
 [connection signal="mouse_entered" from="UI" to="UnitSelector" method="_on_ui_mouse_entered"]
 [connection signal="mouse_exited" from="UI" to="UnitSelector" method="_on_ui_mouse_exited"]

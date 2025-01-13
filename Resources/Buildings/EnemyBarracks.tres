@@ -7,4 +7,4 @@ script = ExtResource("1_ajym8")
 building_name = "Enemy Barracks"
 health = 250
 production_cost = {}
-size = 4
+size = 5

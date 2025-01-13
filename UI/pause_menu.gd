@@ -11,7 +11,6 @@ func _input(event: InputEvent) -> void:
 			get_tree().paused = true
 			show()
 		else:
-			print('hiding pause')
 			get_tree().paused = false
 			hide()
 			

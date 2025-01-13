@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="Objective" load_steps=2 format=3 uid="uid://bo5a3pb8l2t5a"]
-
-[ext_resource type="Script" path="res://Resources/Campaign/Objectives/objective.gd" id="1_bm2ix"]
-
-[resource]
-script = ExtResource("1_bm2ix")
-objective_name = "Do not let your population reach 0"
-description = ""
-completed = false

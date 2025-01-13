@@ -116,6 +116,7 @@ func _is_fully_rotated() -> bool:
 
 # Shooting function
 func _shoot():
+	$AudioStreamPlayer3D.play()
 	can_shoot = false
 	var bullet_instance = bullet_scene.instantiate()
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://q16ta1vewynd"]
+[gd_scene load_steps=69 format=3 uid="uid://q16ta1vewynd"]
 
 [ext_resource type="PackedScene" uid="uid://ct8jhcy5gigkv" path="res://LevelTools/game_manager.tscn" id="1_30foc"]
 [ext_resource type="Script" path="res://Resources/Campaign/Objectives/objective.gd" id="2_fwybb"]
@@ -57,6 +57,7 @@
 [ext_resource type="PackedScene" uid="uid://bycwgroc6b8x" path="res://Collectibles/stone_collectible.tscn" id="55_77jg4"]
 [ext_resource type="PackedScene" uid="uid://njiefdys0bu4" path="res://Collectibles/food_collectible.tscn" id="55_jm02c"]
 [ext_resource type="PackedScene" uid="uid://rfhcl2tll6gu" path="res://Collectibles/wood_collectible.tscn" id="56_5ovp5"]
+[ext_resource type="AudioStream" uid="uid://cmd30iirepb4c" path="res://Assets/Audio/Music/10. Elven Dawn  .ogg" id="58_c7745"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_eqeoe"]
 geometry_parsed_geometry_type = 1
@@ -1421,6 +1422,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.1842, 0.48682, -4.00432)
 
 [node name="GoldCollectible8" parent="Collectibles" instance=ExtResource("54_3njv7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.1842, 0.48682, -4.00432)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("58_c7745")
+autoplay = true
+bus = &"Music"
 
 [connection signal="mouse_entered" from="UI" to="UnitSelector" method="_on_ui_mouse_entered"]
 [connection signal="mouse_exited" from="UI" to="UnitSelector" method="_on_ui_mouse_exited"]

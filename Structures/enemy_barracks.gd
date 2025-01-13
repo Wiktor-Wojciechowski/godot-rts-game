@@ -33,7 +33,9 @@ func spawn_enemy(enemy_type):
 	var enemies_node = get_tree().current_scene.find_child("Enemies")
 	var enemy = enemy_type.instantiate()
 	enemy.seeks_out_buildings = true
+	enemy.position = Vector3(0,-10000, 0)
 	enemies_node.add_child(enemy)
+	
 	# Generate random angle between 0 and 360 degrees (converted to radians)
 	var random_angle = randf_range(0, 2 * PI)
 	

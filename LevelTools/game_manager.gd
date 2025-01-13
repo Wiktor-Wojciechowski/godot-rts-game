@@ -189,9 +189,7 @@ func on_population_changed():
 		level_failed.emit()
 
 func on_wave_completed():
-	print("on_wave_completed")
 	waves_completed += 1
-	print("waves completed:, ", waves_completed)
 	check_objectives()
 	
 

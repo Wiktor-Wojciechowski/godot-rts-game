@@ -64,9 +64,10 @@ func enemy_behavior():
 			attack(current_target)
 
 func can_attack_target(target) -> bool:
-
-	if global_position.distance_to(target.global_position) > attack_component.attack_range + target.size:
-		return false
+	
+	if target is not Bullet:
+		if global_position.distance_to(target.global_position) > attack_component.attack_range + target.size:
+			return false
 	
 	# Ensure attack timer and other conditions are met
 	return attack_component.can_attack and not (movement_component.moving and can_attack_while_moving)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://c82xax31p4gao"]
+[gd_scene load_steps=57 format=3 uid="uid://c82xax31p4gao"]
 
 [ext_resource type="PackedScene" uid="uid://ct8jhcy5gigkv" path="res://LevelTools/game_manager.tscn" id="1_u66bg"]
 [ext_resource type="Script" path="res://Resources/Campaign/Objectives/objective.gd" id="2_vo71y"]
@@ -43,6 +43,7 @@
 [ext_resource type="Resource" uid="uid://dkqhc8a0b8m3f" path="res://Resources/Buildings/Sentry.tres" id="45_qot8k"]
 [ext_resource type="Resource" uid="uid://c2w1qy7j2d5vd" path="res://Resources/Buildings/Barracks.tres" id="46_7e3mo"]
 [ext_resource type="PackedScene" uid="uid://w1bfn33te562" path="res://LevelTools/resource_manager.tscn" id="47_5vo7l"]
+[ext_resource type="AudioStream" uid="uid://dkjsh2wdhu3lh" path="res://Assets/Audio/Music/2. Winds of Valor.ogg" id="47_a2n5n"]
 [ext_resource type="PackedScene" uid="uid://cg8oqstlgnx08" path="res://Structures/enemy_sentry.tscn" id="47_r1vm8"]
 [ext_resource type="PackedScene" uid="uid://dl2r80c463aul" path="res://Structures/enemy_barracks.tscn" id="49_usu1i"]
 [ext_resource type="PackedScene" uid="uid://cay5vligoi0rt" path="res://Enemies/skeleton_minion.tscn" id="50_md50w"]
@@ -865,6 +866,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.1, 10.6, -73)
 visible = false
 light_energy = 5.202
 omni_range = 9.0
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("47_a2n5n")
+autoplay = true
+bus = &"Music"
 
 [connection signal="mouse_entered" from="UI" to="UnitSelector" method="_on_ui_mouse_entered"]
 [connection signal="mouse_exited" from="UI" to="UnitSelector" method="_on_ui_mouse_exited"]

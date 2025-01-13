@@ -87,8 +87,3 @@ script = ExtResource("6_s24p3")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Selection"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 mesh = SubResource("TorusMesh_vn0gm")
-
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 12.4, 0)
-visible = false
-omni_attenuation = -0.5

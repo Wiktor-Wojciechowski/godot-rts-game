@@ -76,7 +76,8 @@ func _shoot(current_target):
 
 func _melee_attack(current_target):
 	can_attack = false
-	current_target.health_component.take_damage(attack_damage)
+	if current_target.health_component:
+		current_target.health_component.take_damage(attack_damage)
 	attack_timer = attack_cooldown
 	
 	var attack_sound: AudioStreamPlayer3D = get_parent().get_node_or_null("attack_sound")

@@ -9,7 +9,7 @@ extends Node3D
 		]
 	},
 		{
-		"spawn_timer": 120,
+		"spawn_timer": 60,
 		"enemies": [
 			{"type": "skeleton_minion", "count": 10},
 			{"type": "skeleton_rogue", "count": 10},
@@ -17,7 +17,7 @@ extends Node3D
 		]
 	},
 	{
-		"spawn_timer": 180,
+		"spawn_timer": 60,
 		"enemies": [
 			{"type": "skeleton_warrior", "count": 10},
 			{"type": "skeleton_warrior", "count": 10},
