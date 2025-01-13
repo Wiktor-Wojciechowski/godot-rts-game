@@ -7,6 +7,7 @@ script = ExtResource("1_2f2qb")
 building_name = "Gold Mine"
 health = 150
 production_cost = {
-"wood": 60
+"food": 50,
+"wood": 50
 }
 size = 4

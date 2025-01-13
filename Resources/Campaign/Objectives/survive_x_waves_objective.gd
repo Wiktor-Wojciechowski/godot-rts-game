@@ -6,6 +6,8 @@ class_name SurviveWavesObjective
 
 func check_completion():
 	if game_manager:
+		print("survive waves progress: ",progress)
+		progress = (float(game_manager.waves_completed) / float(waves_to_complete)) * 100
 		if game_manager.waves_completed == waves_to_complete:
 			completed = true
 			return true

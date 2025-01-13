@@ -11,7 +11,8 @@ class_name Building
 @onready var selection = $Selection
 @onready var health_component = $HealthComponent
 
-var menu = null
+var menu = preload("res://UI/sub_menu.tscn")
+var sub_menu = null
 
 var building_name = "Building"
 
@@ -26,9 +27,26 @@ func _ready() -> void:
 	building_name = building_resource.building_name
 	size = building_resource.size
 	
-	var omnilight = get_node_or_null("OmniLight3D")
-	if omnilight:
-		omnilight.hide()
+	sub_menu = menu.instantiate()
+	add_child(sub_menu)
+	sub_menu.hide()
+	
+	sub_menu.get_node("Panel/SellButton").pressed.connect(on_sell_button_pressed)
+	
+	if not selection.selected.is_connected(on_selected):
+		selection.selected.connect(on_selected)
+	if not selection.deselected.is_connected(on_deselected):
+		selection.deselected.connect(on_deselected)
 
 func on_building_destroyed(building):
 	building_destroyed.emit(self)
+
+func on_selected():
+	sub_menu.show()
+	
+func on_deselected():
+	sub_menu.hide()
+
+func on_sell_button_pressed():
+	building_destroyed.emit(self)
+	queue_free()

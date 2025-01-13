@@ -7,6 +7,6 @@ script = ExtResource("1_54gl5")
 building_name = "Stone Quarry"
 health = 150
 production_cost = {
-"wood": 60
+"wood": 40
 }
 size = 5

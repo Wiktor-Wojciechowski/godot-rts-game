@@ -40,7 +40,7 @@
 [ext_resource type="PackedScene" uid="uid://dmqveg7rme2ja" path="res://Structures/enemy_headquarters.tscn" id="44_tjgh8"]
 [ext_resource type="Resource" uid="uid://cxmyt0uo23qmk" path="res://Resources/Buildings/GoldMine.tres" id="44_wwya1"]
 [ext_resource type="PackedScene" uid="uid://o0mhgf0ea1ip" path="res://Structures/no_build_zone.tscn" id="45_hcp78"]
-[ext_resource type="Resource" uid="uid://c65x048huemuv" path="res://Resources/Buildings/Sentry.tres" id="45_qot8k"]
+[ext_resource type="Resource" uid="uid://dkqhc8a0b8m3f" path="res://Resources/Buildings/Sentry.tres" id="45_qot8k"]
 [ext_resource type="Resource" uid="uid://c2w1qy7j2d5vd" path="res://Resources/Buildings/Barracks.tres" id="46_7e3mo"]
 [ext_resource type="PackedScene" uid="uid://w1bfn33te562" path="res://LevelTools/resource_manager.tscn" id="47_5vo7l"]
 [ext_resource type="PackedScene" uid="uid://cg8oqstlgnx08" path="res://Structures/enemy_sentry.tscn" id="47_r1vm8"]

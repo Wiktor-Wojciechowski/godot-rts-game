@@ -44,9 +44,10 @@ func follow_target(target):
 	if is_instance_valid(target):
 		var distance_to_target = global_position.distance_to(target.global_position)
 		
-		if distance_to_target > stop_distance + target.size:
-			move_to(target.global_position)
-		else:
-			stop()
+		if target.get("size"):
+			if distance_to_target > stop_distance + target.size:
+				move_to(target.global_position)
+			else:
+				stop()
 	else:
 		stop()

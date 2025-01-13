@@ -5,7 +5,7 @@ class_name ResourceBuilding
 var resource_manager
 
 @export var resource_type: String = ""
-@export var generated_amount: int = 5
+@export var generated_amount: int = 10
 @export var generation_interval: float = 3.0
 
 var resource_timer: Timer

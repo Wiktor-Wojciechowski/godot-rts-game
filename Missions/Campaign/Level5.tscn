@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://q16ta1vewynd"]
+[gd_scene load_steps=68 format=3 uid="uid://q16ta1vewynd"]
 
 [ext_resource type="PackedScene" uid="uid://ct8jhcy5gigkv" path="res://LevelTools/game_manager.tscn" id="1_30foc"]
 [ext_resource type="Script" path="res://Resources/Campaign/Objectives/objective.gd" id="2_fwybb"]
@@ -41,7 +41,7 @@
 [ext_resource type="Resource" uid="uid://f075cutgkwc2" path="res://Resources/Buildings/StoneQuarry.tres" id="42_p721b"]
 [ext_resource type="Resource" uid="uid://n5hva5rnvwjy" path="res://Resources/Buildings/Farm.tres" id="43_xqcsq"]
 [ext_resource type="Resource" uid="uid://cxmyt0uo23qmk" path="res://Resources/Buildings/GoldMine.tres" id="44_rxquj"]
-[ext_resource type="Resource" uid="uid://c65x048huemuv" path="res://Resources/Buildings/Sentry.tres" id="45_eantl"]
+[ext_resource type="Resource" uid="uid://dkqhc8a0b8m3f" path="res://Resources/Buildings/Sentry.tres" id="45_eantl"]
 [ext_resource type="Resource" uid="uid://c2w1qy7j2d5vd" path="res://Resources/Buildings/Barracks.tres" id="46_khckq"]
 [ext_resource type="PackedScene" uid="uid://w1bfn33te562" path="res://LevelTools/resource_manager.tscn" id="47_8xwbg"]
 [ext_resource type="PackedScene" uid="uid://dl2r80c463aul" path="res://Structures/enemy_barracks.tscn" id="49_eb5vi"]
@@ -49,6 +49,7 @@
 [ext_resource type="PackedScene" uid="uid://031h6ol66737" path="res://Enemies/skeleton_warrior.tscn" id="51_hfrxl"]
 [ext_resource type="PackedScene" uid="uid://lbpnbu4l4ifb" path="res://Enemies/skeleton_wizard.tscn" id="52_0hw2s"]
 [ext_resource type="PackedScene" uid="uid://dmqveg7rme2ja" path="res://Structures/enemy_headquarters.tscn" id="53_0sbnn"]
+[ext_resource type="PackedScene" uid="uid://q6s0s63o63mo" path="res://Units/zweihander.tscn" id="53_uewf7"]
 [ext_resource type="PackedScene" uid="uid://cay5vligoi0rt" path="res://Enemies/skeleton_minion.tscn" id="53_xqvhh"]
 [ext_resource type="PackedScene" uid="uid://nvfer57ex412" path="res://Collectibles/gold_collectible.tscn" id="54_3njv7"]
 [ext_resource type="PackedScene" uid="uid://cg8oqstlgnx08" path="res://Structures/enemy_sentry.tscn" id="54_mjc8o"]
@@ -179,10 +180,24 @@ transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, -11.6669, -0.0131798
 [node name="EnemyBarracks" parent="NavigationRegion3D/Structures" instance=ExtResource("49_eb5vi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -30)
 created_enemy = ExtResource("53_xqvhh")
+spawn_interval = 15
+group_size = 6
+
+[node name="EnemyBarracks3" parent="NavigationRegion3D/Structures" instance=ExtResource("49_eb5vi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -54)
+created_enemy = ExtResource("51_hfrxl")
+spawn_interval = 30
+
+[node name="EnemyBarracks4" parent="NavigationRegion3D/Structures" instance=ExtResource("49_eb5vi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, -54)
+created_enemy = ExtResource("52_0hw2s")
+spawn_interval = 30
 
 [node name="EnemyBarracks2" parent="NavigationRegion3D/Structures" instance=ExtResource("49_eb5vi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -30)
 created_enemy = ExtResource("50_anxw0")
+spawn_interval = 15
+group_size = 6
 
 [node name="PlayerHeadQuarters" parent="NavigationRegion3D/Structures" instance=ExtResource("55_1ujfl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.243187, 0.48682, 74.8592)
@@ -913,7 +928,7 @@ fov = 90.0
 environment = SubResource("Environment_icxno")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
-transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 45, 0)
+transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 107, 0)
 shadow_opacity = 0.65
 
 [node name="UI" type="Control" parent="."]
@@ -1013,6 +1028,96 @@ resources = {
 }
 
 [node name="Units" type="Node3D" parent="."]
+
+[node name="Zweihander" parent="Units" instance=ExtResource("53_uewf7")]
+transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 5, 0, -39)
+
+[node name="Zweihander2" parent="Units" instance=ExtResource("53_uewf7")]
+transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 3, 0, -39)
+
+[node name="Zweihander3" parent="Units" instance=ExtResource("53_uewf7")]
+transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 1, 0, -39)
+
+[node name="Zweihander4" parent="Units" instance=ExtResource("53_uewf7")]
+transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 7, 0, -39)
+
+[node name="Zweihander5" parent="Units" instance=ExtResource("53_uewf7")]
+transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 9, 0, -39)
+
+[node name="Zweihander6" parent="Units" instance=ExtResource("53_uewf7")]
+transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 5, 0, -41)
+
+[node name="Zweihander7" parent="Units" instance=ExtResource("53_uewf7")]
+transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 3, 0, -41)
+
+[node name="Zweihander8" parent="Units" instance=ExtResource("53_uewf7")]
+transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 1, 0, -41)
+
+[node name="Zweihander9" parent="Units" instance=ExtResource("53_uewf7")]
+transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 7, 0, -41)
+
+[node name="Zweihander10" parent="Units" instance=ExtResource("53_uewf7")]
+transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 9, 0, -41)
+
+[node name="Zweihander11" parent="Units" instance=ExtResource("53_uewf7")]
+transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 5, 0, -43)
+
+[node name="Zweihander12" parent="Units" instance=ExtResource("53_uewf7")]
+transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 3, 0, -43)
+
+[node name="Zweihander13" parent="Units" instance=ExtResource("53_uewf7")]
+transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 1, 0, -43)
+
+[node name="Zweihander14" parent="Units" instance=ExtResource("53_uewf7")]
+transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 7, 0, -43)
+
+[node name="Zweihander15" parent="Units" instance=ExtResource("53_uewf7")]
+transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 9, 0, -43)
+
+[node name="Zweihander16" parent="Units" instance=ExtResource("53_uewf7")]
+transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 5, 0, -50.4885)
+
+[node name="Zweihander17" parent="Units" instance=ExtResource("53_uewf7")]
+transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 3, 0, -50.4885)
+
+[node name="Zweihander18" parent="Units" instance=ExtResource("53_uewf7")]
+transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 1, 0, -50.4885)
+
+[node name="Zweihander19" parent="Units" instance=ExtResource("53_uewf7")]
+transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 7, 0, -50.4885)
+
+[node name="Zweihander20" parent="Units" instance=ExtResource("53_uewf7")]
+transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 9, 0, -50.4885)
+
+[node name="Zweihander21" parent="Units" instance=ExtResource("53_uewf7")]
+transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 5, 0, -52.4885)
+
+[node name="Zweihander22" parent="Units" instance=ExtResource("53_uewf7")]
+transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 3, 0, -52.4885)
+
+[node name="Zweihander23" parent="Units" instance=ExtResource("53_uewf7")]
+transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 1, 0, -52.4885)
+
+[node name="Zweihander24" parent="Units" instance=ExtResource("53_uewf7")]
+transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 7, 0, -52.4885)
+
+[node name="Zweihander25" parent="Units" instance=ExtResource("53_uewf7")]
+transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 9, 0, -52.4885)
+
+[node name="Zweihander26" parent="Units" instance=ExtResource("53_uewf7")]
+transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 5, 0, -54.4885)
+
+[node name="Zweihander27" parent="Units" instance=ExtResource("53_uewf7")]
+transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 3, 0, -54.4885)
+
+[node name="Zweihander28" parent="Units" instance=ExtResource("53_uewf7")]
+transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 1, 0, -54.4885)
+
+[node name="Zweihander29" parent="Units" instance=ExtResource("53_uewf7")]
+transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 7, 0, -54.4885)
+
+[node name="Zweihander30" parent="Units" instance=ExtResource("53_uewf7")]
+transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 9, 0, -54.4885)
 
 [node name="Target" type="Marker3D" parent="."]
 

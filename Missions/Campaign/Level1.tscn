@@ -43,7 +43,7 @@
 [ext_resource type="Resource" uid="uid://f075cutgkwc2" path="res://Resources/Buildings/StoneQuarry.tres" id="42_dv55a"]
 [ext_resource type="Resource" uid="uid://n5hva5rnvwjy" path="res://Resources/Buildings/Farm.tres" id="43_66vyq"]
 [ext_resource type="Resource" uid="uid://cxmyt0uo23qmk" path="res://Resources/Buildings/GoldMine.tres" id="44_bvap3"]
-[ext_resource type="Resource" uid="uid://c65x048huemuv" path="res://Resources/Buildings/Sentry.tres" id="45_csd4i"]
+[ext_resource type="Resource" uid="uid://dkqhc8a0b8m3f" path="res://Resources/Buildings/Sentry.tres" id="45_csd4i"]
 [ext_resource type="Resource" uid="uid://c2w1qy7j2d5vd" path="res://Resources/Buildings/Barracks.tres" id="46_0aces"]
 [ext_resource type="PackedScene" uid="uid://w1bfn33te562" path="res://LevelTools/resource_manager.tscn" id="47_upqmp"]
 [ext_resource type="PackedScene" uid="uid://d0bgsfrstf7a" path="res://Units/archer.tscn" id="51_2q6u6"]
@@ -693,7 +693,7 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -39.66
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -39.6604, 0.5, -22.8314)
 
 [node name="rock_single_E10" parent="NavigationRegion3D/Decorations" instance=ExtResource("15_oppyv")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -87.6604, 0.5, -3.8314)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -70.6604, 0.5, -3.8314)
 
 [node name="rock_single_E11" parent="NavigationRegion3D/Decorations" instance=ExtResource("15_oppyv")]
 transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -71.6604, 0.5, 49.1686)
@@ -809,7 +809,7 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 96.3876, 0.499992, -99.7609)
 [node name="Node3D" type="Node3D" parent="NavigationRegion3D/Decorations"]
 
 [node name="camera_base" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72, -1, 68)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, -1, 35)
 script = ExtResource("17_kc8ti")
 camera_move_speed = 60.0
 min_camera_bounds = Vector3(-100, 0, -100)
@@ -1142,6 +1142,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 96.404, 0.48682, 57.7614)
 [node name="GoldCollectible11" parent="." instance=ExtResource("59_75r8b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 96.404, 0.48682, 55.7614)
 
+[node name="GoldCollectible14" parent="." instance=ExtResource("59_75r8b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.596, 0.48682, -49.2386)
+
+[node name="GoldCollectible15" parent="." instance=ExtResource("59_75r8b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.596, 0.48682, -47.2386)
+
+[node name="GoldCollectible16" parent="." instance=ExtResource("59_75r8b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.596, 0.48682, -47.2386)
+
+[node name="GoldCollectible17" parent="." instance=ExtResource("59_75r8b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.596, 0.48682, -49.2386)
+
 [node name="GoldCollectible12" parent="." instance=ExtResource("59_75r8b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 96.404, 0.48682, 53.7614)
 
@@ -1158,16 +1170,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.665, 0.48682, 88.9135)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.2806, 0.48682, 90.054)
 
 [node name="WoodCollectible7" parent="." instance=ExtResource("57_u6k41")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -93.8545, 0.48682, 9.55091)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.8545, 0.48682, 9.55091)
 
 [node name="WoodCollectible8" parent="." instance=ExtResource("57_u6k41")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -94.217, 0.48682, 11.3735)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77.217, 0.48682, 11.3735)
 
 [node name="WoodCollectible9" parent="." instance=ExtResource("57_u6k41")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -91.2041, 0.48682, 11.0962)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.2041, 0.48682, 11.0962)
 
 [node name="WoodCollectible10" parent="." instance=ExtResource("57_u6k41")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90.8878, 0.48682, 8.67713)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.8878, 0.48682, 8.67713)
 
 [node name="FoodCollectible" parent="." instance=ExtResource("58_8l8ym")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 89.5574, 0.48682, 19.5727)
@@ -1180,6 +1192,78 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90.2969, 0.48682, 23.9636)
 
 [node name="FoodCollectible6" parent="." instance=ExtResource("58_8l8ym")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85.2058, 0.48682, 23.3018)
+
+[node name="FoodCollectible7" parent="." instance=ExtResource("58_8l8ym")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.4426, 0.48682, 19.5727)
+
+[node name="FoodCollectible8" parent="." instance=ExtResource("58_8l8ym")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.2109, 0.61354, 19.8317)
+
+[node name="FoodCollectible9" parent="." instance=ExtResource("58_8l8ym")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.7031, 0.48682, 23.9636)
+
+[node name="FoodCollectible10" parent="." instance=ExtResource("58_8l8ym")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77.7942, 0.48682, 23.3018)
+
+[node name="WoodCollectible11" parent="." instance=ExtResource("57_u6k41")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8545, 0.48682, -32.4491)
+
+[node name="WoodCollectible12" parent="." instance=ExtResource("57_u6k41")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.217, 0.48682, -30.6265)
+
+[node name="WoodCollectible13" parent="." instance=ExtResource("57_u6k41")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.2041, 0.48682, -30.9038)
+
+[node name="WoodCollectible14" parent="." instance=ExtResource("57_u6k41")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8878, 0.48682, -33.3229)
+
+[node name="FoodCollectible13" parent="." instance=ExtResource("58_8l8ym")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.4426, 0.48682, -22.4273)
+
+[node name="FoodCollectible14" parent="." instance=ExtResource("58_8l8ym")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.2109, 0.61354, -22.1683)
+
+[node name="FoodCollectible15" parent="." instance=ExtResource("58_8l8ym")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7031, 0.48682, -18.0364)
+
+[node name="FoodCollectible16" parent="." instance=ExtResource("58_8l8ym")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.7942, 0.48682, -18.6982)
+
+[node name="FoodCollectible11" parent="." instance=ExtResource("58_8l8ym")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77.2109, 0.61354, 73.8317)
+
+[node name="FoodCollectible12" parent="." instance=ExtResource("58_8l8ym")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77.7942, 0.48682, 77.3018)
+
+[node name="GoldCollectible18" parent="." instance=ExtResource("59_75r8b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.4097, 0.48682, -15.0789)
+
+[node name="GoldCollectible19" parent="." instance=ExtResource("59_75r8b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75.4097, 0.48682, -15.0789)
+
+[node name="GoldCollectible20" parent="." instance=ExtResource("59_75r8b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74.4097, 0.48682, -17.0789)
+
+[node name="FoodCollectible17" parent="." instance=ExtResource("58_8l8ym")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.9025, 0.48682, -14.2275)
+
+[node name="FoodCollectible18" parent="." instance=ExtResource("58_8l8ym")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.445, 1.05739, -11.3326)
+
+[node name="WoodCollectible15" parent="." instance=ExtResource("57_u6k41")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.8165, 0.48682, -11.5298)
+
+[node name="WoodCollectible16" parent="." instance=ExtResource("57_u6k41")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.9166, 0.48682, -10.4231)
+
+[node name="WoodCollectible17" parent="." instance=ExtResource("57_u6k41")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.8367, 0.48682, -9.1579)
+
+[node name="FoodCollectible19" parent="." instance=ExtResource("58_8l8ym")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69.7891, 0.61354, -15.1683)
+
+[node name="FoodCollectible20" parent="." instance=ExtResource("58_8l8ym")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69.2058, 0.48682, -11.6982)
 
 [connection signal="mouse_entered" from="UI" to="UnitSelector" method="_on_ui_mouse_entered"]
 [connection signal="mouse_exited" from="UI" to="UnitSelector" method="_on_ui_mouse_exited"]

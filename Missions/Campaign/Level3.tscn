@@ -39,7 +39,7 @@
 [ext_resource type="Resource" uid="uid://n5hva5rnvwjy" path="res://Resources/Buildings/Farm.tres" id="43_erebg"]
 [ext_resource type="PackedScene" uid="uid://nvfer57ex412" path="res://Collectibles/gold_collectible.tscn" id="44_0wsm2"]
 [ext_resource type="Resource" uid="uid://cxmyt0uo23qmk" path="res://Resources/Buildings/GoldMine.tres" id="44_u54c3"]
-[ext_resource type="Resource" uid="uid://c65x048huemuv" path="res://Resources/Buildings/Sentry.tres" id="45_cn7s0"]
+[ext_resource type="Resource" uid="uid://dkqhc8a0b8m3f" path="res://Resources/Buildings/Sentry.tres" id="45_cn7s0"]
 [ext_resource type="Resource" uid="uid://c2w1qy7j2d5vd" path="res://Resources/Buildings/Barracks.tres" id="46_2q5j1"]
 [ext_resource type="PackedScene" uid="uid://w1bfn33te562" path="res://LevelTools/resource_manager.tscn" id="47_y8iv8"]
 [ext_resource type="Script" path="res://Missions/wave_spawner.gd" id="56_0bwk8"]
@@ -97,6 +97,40 @@ can_lose_when_hq_destroyed = true
 
 [node name="WaveSpawner" type="Node3D" parent="."]
 script = ExtResource("56_0bwk8")
+waves = [{
+"enemies": [{
+"count": 16,
+"type": "skeleton_minion"
+}, {
+"count": 10,
+"type": "skeleton_rogue"
+}],
+"spawn_timer": 5
+}, {
+"enemies": [{
+"count": 10,
+"type": "skeleton_minion"
+}, {
+"count": 10,
+"type": "skeleton_rogue"
+}, {
+"count": 10,
+"type": "skeleton_warrior"
+}],
+"spawn_timer": 120
+}, {
+"enemies": [{
+"count": 10,
+"type": "skeleton_warrior"
+}, {
+"count": 10,
+"type": "skeleton_warrior"
+}, {
+"count": 6,
+"type": "skeleton_wizard"
+}],
+"spawn_timer": 180
+}]
 
 [node name="WaveTimer" type="Timer" parent="WaveSpawner"]
 

@@ -16,6 +16,15 @@ func _ready():
 	for i in range(unit_buttons.size()):
 		unit_buttons[i].connect("pressed", Callable(self, "_on_unit_button_pressed").bind(i))
 		
+		unit_buttons[i].text = unit_resources[i].unit_name
+		var label = unit_buttons[i].find_child("ProductionCost")
+		if label:
+			var cost_text = ""
+			for key in unit_resources[i].production_cost.keys():
+				cost_text += key + ": " + str(unit_resources[i].production_cost[key]) + "\n"
+			
+			label.text = str(cost_text)
+		
 	resource_manager.resources_updated.connect(on_resources_updated)
 	game_manager.population_changed.connect(on_population_changed)
 	check_buttons_available()
@@ -31,6 +40,8 @@ func on_resources_updated():
 
 func can_produce_unit(cost: Dictionary, resources: Dictionary) -> bool:
 	var queue_population = 0
+	if not is_instance_valid(unit_selector.selected_building):
+		return false
 	if unit_selector.selected_building is Barracks:
 		queue_population = unit_selector.selected_building.production_queue.unit_queue.size()
 	

@@ -20,7 +20,6 @@ func _ready():
 				cost_text += key + ": " + str(building_resources[i].production_cost[key]) + "\n"
 			
 			bc.text = str(cost_text)
-			print(bc.text)
 		building_buttons[i].connect("pressed", Callable(self, "_on_building_button_pressed").bind(i))
 		
 	resource_manager.resources_updated.connect(on_resources_updated)

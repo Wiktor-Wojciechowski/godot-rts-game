@@ -29,12 +29,13 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -165.0
-offset_top = 119.0
-offset_right = 167.0
-offset_bottom = 199.0
+offset_left = -222.0
+offset_top = 64.0
+offset_right = 222.0
+offset_bottom = 144.0
 grow_horizontal = 2
 grow_vertical = 0
+alignment = 1
 
 [node name="Unit0" type="Button" parent="UnitButtons"]
 custom_minimum_size = Vector2(80, 80)
@@ -42,11 +43,23 @@ layout_mode = 2
 mouse_filter = 1
 text = "Archer"
 
+[node name="ProductionCost" type="RichTextLabel" parent="UnitButtons/Unit0"]
+layout_mode = 0
+offset_top = 81.0
+offset_right = 80.0
+offset_bottom = 185.0
+
 [node name="Unit1" type="Button" parent="UnitButtons"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 mouse_filter = 1
 text = "Knight"
+
+[node name="ProductionCost" type="RichTextLabel" parent="UnitButtons/Unit1"]
+layout_mode = 0
+offset_top = 81.0
+offset_right = 80.0
+offset_bottom = 185.0
 
 [node name="Unit2" type="Button" parent="UnitButtons"]
 custom_minimum_size = Vector2(80, 80)
@@ -54,8 +67,20 @@ layout_mode = 2
 mouse_filter = 1
 text = "Wizard"
 
+[node name="ProductionCost" type="RichTextLabel" parent="UnitButtons/Unit2"]
+layout_mode = 0
+offset_top = 81.0
+offset_right = 80.0
+offset_bottom = 185.0
+
 [node name="Unit3" type="Button" parent="UnitButtons"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 mouse_filter = 1
 text = "Zweihander"
+
+[node name="ProductionCost" type="RichTextLabel" parent="UnitButtons/Unit3"]
+layout_mode = 0
+offset_top = 81.0
+offset_right = 80.0
+offset_bottom = 185.0

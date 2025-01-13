@@ -30,6 +30,11 @@ func _ready():
 	#Set area3d collision radius to detection range
 	area = $Area3D 
 	var area_col = area.get_node("CollisionShape3D")
+	
+	if building_resource:
+		detection_range = building_resource.detection_range
+		bullet_damage = building_resource.bullet_damage
+	
 	area_col.shape.radius = detection_range
 	
 	timer = $Timer

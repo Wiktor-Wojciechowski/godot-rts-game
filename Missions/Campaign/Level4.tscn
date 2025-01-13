@@ -41,7 +41,7 @@
 [ext_resource type="Resource" uid="uid://f075cutgkwc2" path="res://Resources/Buildings/StoneQuarry.tres" id="42_ddkkc"]
 [ext_resource type="Resource" uid="uid://n5hva5rnvwjy" path="res://Resources/Buildings/Farm.tres" id="43_h84qg"]
 [ext_resource type="Resource" uid="uid://cxmyt0uo23qmk" path="res://Resources/Buildings/GoldMine.tres" id="44_kq0o3"]
-[ext_resource type="Resource" uid="uid://c65x048huemuv" path="res://Resources/Buildings/Sentry.tres" id="45_61des"]
+[ext_resource type="Resource" uid="uid://dkqhc8a0b8m3f" path="res://Resources/Buildings/Sentry.tres" id="45_61des"]
 [ext_resource type="Resource" uid="uid://c2w1qy7j2d5vd" path="res://Resources/Buildings/Barracks.tres" id="46_ld426"]
 [ext_resource type="PackedScene" uid="uid://bujdhl6sr27mh" path="res://Units/soldier.tscn" id="46_lps0x"]
 [ext_resource type="PackedScene" uid="uid://w1bfn33te562" path="res://LevelTools/resource_manager.tscn" id="47_1nbl3"]
@@ -1145,6 +1145,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -79.6581, 0.486824, 1.21157)
 
 [node name="GoldCollectible7" parent="Collectibles" instance=ExtResource("54_x472u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80.6581, 0.486824, -0.788425)
+
+[node name="GoldCollectible14" parent="Collectibles" instance=ExtResource("54_x472u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -86.6581, 0.486824, 1.21157)
+
+[node name="GoldCollectible15" parent="Collectibles" instance=ExtResource("54_x472u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84.6581, 0.486824, 1.21157)
+
+[node name="GoldCollectible16" parent="Collectibles" instance=ExtResource("54_x472u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85.6581, 0.486824, -0.788425)
 
 [node name="GoldCollectible3" parent="Collectibles" instance=ExtResource("54_x472u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.9286, 0.48682, -20.9071)

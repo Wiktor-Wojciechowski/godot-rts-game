@@ -4,8 +4,8 @@
 
 [resource]
 script = ExtResource("1_ir5at")
-building_name = "PlayerHeadQuarters"
-health = 1
+building_name = "EnemyHeadQuarters"
+health = 1500
 production_cost = {
 "wood": 2
 }

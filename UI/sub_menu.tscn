@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://cf2jktu1qw66f"]
+[gd_scene load_steps=2 format=3 uid="uid://cf2jktu1qw66f"]
+
+[ext_resource type="Script" path="res://UI/sub_menu.gd" id="1_tqqsa"]
 
 [node name="SubMenu" type="Control"]
 z_index = 1
@@ -8,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_tqqsa")
 
 [node name="Panel" type="Panel" parent="."]
 z_index = 1
@@ -17,10 +20,26 @@ offset_top = 448.0
 offset_right = 864.0
 offset_bottom = 576.0
 
-[node name="Button" type="Button" parent="Panel"]
+[node name="NameLabel" type="Label" parent="Panel"]
 layout_mode = 0
-offset_left = 24.0
-offset_top = 16.0
-offset_right = 104.0
+offset_left = 10.0
+offset_top = 8.0
+offset_right = 124.0
+offset_bottom = 31.0
+text = "Building Name"
+
+[node name="HealthLabel" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 33.0
+offset_right = 124.0
 offset_bottom = 56.0
-text = "Unit"
+text = "Health"
+
+[node name="SellButton" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 361.0
+offset_top = 87.0
+offset_right = 439.0
+offset_bottom = 121.0
+text = "Sell"

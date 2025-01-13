@@ -47,7 +47,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_jfxj3")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5i0ai"]
-size = Vector3(6, 3, 10)
+size = Vector3(5.5, 3, 8.5)
 
 [sub_resource type="TorusMesh" id="TorusMesh_i5614"]
 inner_radius = 3.4
@@ -80,7 +80,7 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -2.23517e-08, 0, 4.6)
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.6, 0, 3.1)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65, 0.7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65, 0.9)
 shape = SubResource("BoxShape3D_5i0ai")
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_hjhcy")]

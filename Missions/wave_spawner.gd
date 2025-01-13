@@ -1,6 +1,6 @@
 extends Node3D
 
-var waves = [
+@export var waves = [
 	{
 		"spawn_timer": 60,
 		"enemies": [
@@ -53,18 +53,14 @@ func _ready() -> void:
 	if waves.size() > 0:
 		$WaveTimer.wait_time = waves[0].spawn_timer
 	$WaveTimer.start()
-	
-	print(next_wave_index)
 
 func _process(delta: float) -> void:
 	$TimeUntilNextWave.text = "Next Wave: " + str(round($WaveTimer.time_left))
-	
 
 func on_wave_timer_timeout():
 	spawn_wave(waves[next_wave_index])
 	
 func spawn_wave(wave):	
-	print("spawning wave")
 	var total_enemies_in_wave = 0
 	for enemies in wave.enemies:
 		total_enemies_in_wave += enemies.count
@@ -72,7 +68,7 @@ func spawn_wave(wave):
 	var new_objective = SurviveWaveObjective.new()
 	new_objective.game_manager = get_tree().current_scene.find_child("GameManager")
 	new_objective.enemies_to_defeat = total_enemies_in_wave
-	new_objective.objective_name = "Survive Wave " + str(next_wave_index)
+	new_objective.objective_name = "Survive Wave " + str(next_wave_index + 1)
 	new_objective.description = "Defeat " + str(total_enemies_in_wave) + " Enemies"
 	game_manager.add_new_objective(new_objective)
 	
@@ -91,7 +87,6 @@ func spawn_wave(wave):
 func on_wave_spawned():
 	next_wave_index += 1 
 	if next_wave_index < waves.size():
-		print("on wave spawned, index: " + str(next_wave_index) + " " + str(waves[next_wave_index].spawn_timer))
 		$WaveTimer.wait_time = waves[next_wave_index].spawn_timer
 		$WaveTimer.start() 
 	else:
