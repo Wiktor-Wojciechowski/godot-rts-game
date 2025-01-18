@@ -43,7 +43,7 @@ func _rotate_to_target(target: Node) -> void:
 	get_parent().look_at(target_pos, Vector3.UP)
 
 func _on_attack_range_body_entered(body: Node3D) -> void:
-		target_nodes.append(body)
+	target_nodes.append(body)
 
 func _on_attack_range_body_exited(body: Node3D) -> void:
 	if body in target_nodes:

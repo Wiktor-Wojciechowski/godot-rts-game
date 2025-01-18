@@ -50,7 +50,7 @@ signal enemy_hq_destroyed
 signal special_enemy_defeated
 signal wave_completed
 
-func _ready() -> void:
+func _ready() -> void:	
 	for objective in level_objectives:
 		objective.set_game_manager(self)
 		#add a label
@@ -157,9 +157,10 @@ func _on_enemy_building_destroyed(building):
 	check_objectives()
 		
 func update_objectives_menu() -> void:
-	objective_menu.clear_objectives()
-	for objective in level_objectives:
-		objective_menu.add_objective(objective)
+	if objective_menu:
+		objective_menu.clear_objectives()
+		for objective in level_objectives:
+			objective_menu.add_objective(objective)
 	
 func on_player_hq_destroyed(hq):
 	if can_lose_when_hq_destroyed:

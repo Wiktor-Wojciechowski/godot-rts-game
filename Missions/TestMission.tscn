@@ -44,7 +44,7 @@
 [ext_resource type="Resource" uid="uid://c2w1qy7j2d5vd" path="res://Resources/Buildings/Barracks.tres" id="35_mihj4"]
 [ext_resource type="Resource" uid="uid://cxmyt0uo23qmk" path="res://Resources/Buildings/GoldMine.tres" id="36_tam7k"]
 [ext_resource type="Resource" uid="uid://rm5qley6cfui" path="res://Resources/Buildings/LumberMill.tres" id="37_vsc4m"]
-[ext_resource type="Resource" uid="uid://c65x048huemuv" path="res://Resources/Buildings/Sentry_old.tres" id="38_qefd2"]
+[ext_resource type="Resource" uid="uid://dkqhc8a0b8m3f" path="res://Resources/Buildings/Sentry.tres" id="38_qefd2"]
 [ext_resource type="Resource" uid="uid://f075cutgkwc2" path="res://Resources/Buildings/StoneQuarry.tres" id="39_2shro"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_h2kvd"]
@@ -115,7 +115,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77.5078, 0, -68.7697)
 [node name="EnemyBarracks" parent="NavigationRegion3D/Structures" instance=ExtResource("7_l3csj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.1473, 0, -67.9088)
 created_enemy = ExtResource("30_5lwmv")
-team = 2
 
 [node name="Decorations" type="Node3D" parent="NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)

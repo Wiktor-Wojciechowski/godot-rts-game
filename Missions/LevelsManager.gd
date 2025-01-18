@@ -9,6 +9,15 @@ var available_levels: Array = [
 	"res://Missions/Campaign/Level5.tscn",
 ]
 
+var level_soundtracks: Array = [
+	"res://Assets/Audio/Music/6. Silverbrook.ogg",
+	"res://Assets/Audio/Music/3. Darkwood Path.ogg",
+	"res://Assets/Audio/Music/2. Winds of Valor.ogg",
+	"res://Assets/Audio/Music/5. Emberlight .ogg",
+	"res://Assets/Audio/Music/9. Sorrow’s Edge  .ogg",
+	"res://Assets/Audio/Music/10. Elven Dawn  .ogg"
+]
+
 var current_level_index = 0
 
 func _ready() -> void:
@@ -22,7 +31,9 @@ func load_level(level_index: int):
 	get_tree().change_scene_to_file(available_levels[level_index])
 	current_level_index = level_index
 	
-	
+	GlobalAudioStreamPlayer.stream = load(level_soundtracks[current_level_index])
+	GlobalAudioStreamPlayer.play()
+
 func load_next_level():
 	if can_load_next_level():
 		load_level(current_level_index + 1)
@@ -33,6 +44,8 @@ func load_next_level():
 func go_to_main_menu():
 	get_tree().change_scene_to_file("res://Missions/MainMenu.tscn")
 	current_level_index = 0
+	GlobalAudioStreamPlayer.stream = load(level_soundtracks[current_level_index])
+	GlobalAudioStreamPlayer.play()
 
 func can_load_next_level():
 	return not current_level_index + 1 >= available_levels.size()

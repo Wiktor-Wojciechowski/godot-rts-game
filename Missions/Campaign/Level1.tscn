@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://bijuusfv0anrl"]
+[gd_scene load_steps=61 format=3 uid="uid://bijuusfv0anrl"]
 
 [ext_resource type="PackedScene" uid="uid://ct8jhcy5gigkv" path="res://LevelTools/game_manager.tscn" id="1_qnc7g"]
 [ext_resource type="Script" path="res://Resources/Campaign/Objectives/objective.gd" id="2_jjc5a"]
@@ -50,7 +50,6 @@
 [ext_resource type="PackedScene" uid="uid://031h6ol66737" path="res://Enemies/skeleton_warrior.tscn" id="52_70psd"]
 [ext_resource type="PackedScene" uid="uid://lbpnbu4l4ifb" path="res://Enemies/skeleton_wizard.tscn" id="53_yms1k"]
 [ext_resource type="PackedScene" uid="uid://cay5vligoi0rt" path="res://Enemies/skeleton_minion.tscn" id="54_a2xdk"]
-[ext_resource type="AudioStream" uid="uid://5kcxmh3dkx1m" path="res://Assets/Audio/Music/3. Darkwood Path.ogg" id="55_dmnqw"]
 [ext_resource type="PackedScene" uid="uid://ceaf25tbab6wn" path="res://Components/special_enemy_component.tscn" id="55_q4at7"]
 [ext_resource type="PackedScene" uid="uid://rfhcl2tll6gu" path="res://Collectibles/wood_collectible.tscn" id="57_u6k41"]
 [ext_resource type="PackedScene" uid="uid://njiefdys0bu4" path="res://Collectibles/food_collectible.tscn" id="58_8l8ym"]
@@ -1272,11 +1271,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69.7891, 0.61354, -15.1683)
 
 [node name="FoodCollectible20" parent="Collectibles" instance=ExtResource("58_8l8ym")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69.2058, 0.48682, -11.6982)
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("55_dmnqw")
-autoplay = true
-bus = &"Music"
 
 [connection signal="mouse_entered" from="UI" to="UnitSelector" method="_on_ui_mouse_entered"]
 [connection signal="mouse_exited" from="UI" to="UnitSelector" method="_on_ui_mouse_exited"]

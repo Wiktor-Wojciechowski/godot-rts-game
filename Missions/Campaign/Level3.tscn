@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://bnf7sssd4gpi2"]
+[gd_scene load_steps=54 format=3 uid="uid://bnf7sssd4gpi2"]
 
 [ext_resource type="PackedScene" uid="uid://ct8jhcy5gigkv" path="res://LevelTools/game_manager.tscn" id="1_1gara"]
 [ext_resource type="PackedScene" uid="uid://o0mhgf0ea1ip" path="res://Structures/no_build_zone.tscn" id="2_tdkap"]
@@ -39,7 +39,6 @@
 [ext_resource type="Resource" uid="uid://n5hva5rnvwjy" path="res://Resources/Buildings/Farm.tres" id="43_erebg"]
 [ext_resource type="PackedScene" uid="uid://nvfer57ex412" path="res://Collectibles/gold_collectible.tscn" id="44_0wsm2"]
 [ext_resource type="Resource" uid="uid://cxmyt0uo23qmk" path="res://Resources/Buildings/GoldMine.tres" id="44_u54c3"]
-[ext_resource type="AudioStream" uid="uid://co5wpikrq82ak" path="res://Assets/Audio/Music/5. Emberlight .ogg" id="45_53gxk"]
 [ext_resource type="Resource" uid="uid://dkqhc8a0b8m3f" path="res://Resources/Buildings/Sentry.tres" id="45_cn7s0"]
 [ext_resource type="Resource" uid="uid://c2w1qy7j2d5vd" path="res://Resources/Buildings/Barracks.tres" id="46_2q5j1"]
 [ext_resource type="PackedScene" uid="uid://w1bfn33te562" path="res://LevelTools/resource_manager.tscn" id="47_y8iv8"]
@@ -923,11 +922,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -52)
 
 [node name="GoldCollectible30" parent="Collectibles" instance=ExtResource("44_0wsm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -49)
-
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("45_53gxk")
-autoplay = true
-bus = &"Music"
 
 [connection signal="mouse_entered" from="UI" to="UnitSelector" method="_on_ui_mouse_entered"]
 [connection signal="mouse_exited" from="UI" to="UnitSelector" method="_on_ui_mouse_exited"]

@@ -287,7 +287,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
 visible = false
 mesh = SubResource("PlaneMesh_bu6gg")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer3D" parent="."]
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("8_3s4ig")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
