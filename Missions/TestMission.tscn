@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://cpfjrb5kb522m"]
+[gd_scene load_steps=53 format=3 uid="uid://cpfjrb5kb522m"]
 
 [ext_resource type="PackedScene" uid="uid://b10u13jt02rgb" path="res://UI/resource_menu.tscn" id="1_i0ka2"]
 [ext_resource type="Texture2D" uid="uid://4rhknkiec0mx" path="res://Assets/Textures/rocky_terrain_02_diff_4k.jpg" id="1_i7mjr"]
@@ -46,6 +46,7 @@
 [ext_resource type="Resource" uid="uid://rm5qley6cfui" path="res://Resources/Buildings/LumberMill.tres" id="37_vsc4m"]
 [ext_resource type="Resource" uid="uid://dkqhc8a0b8m3f" path="res://Resources/Buildings/Sentry.tres" id="38_qefd2"]
 [ext_resource type="Resource" uid="uid://f075cutgkwc2" path="res://Resources/Buildings/StoneQuarry.tres" id="39_2shro"]
+[ext_resource type="PackedScene" uid="uid://q6s0s63o63mo" path="res://Units/zweihander.tscn" id="44_kud55"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_h2kvd"]
 vertices = PackedVector3Array(-99.5, 1, -2.5, -32.25, 1, -2.25, -32, 1, -4, -30, 1, -99.5, -99.5, 1, -99.5, -30, 1, -4, -25.75, 1, -4, -25.75, 1, -99.5, 74, 1, -62.75, 74, 1, -73.25, 73.75, 1, -99.5, -24, 1, -4, 74.5, 1, -62.5, 85, 1, -73.75, 85.25, 1, -72, 99.5, 1, -72.25, 74.25, 1, -73.75, 99.5, 1, -99.5, 75, 3.5, -72.75, 75, 3.5, -63.5, 84.25, 3.5, -63.5, 84.25, 3.5, -72.75, 75.25, 1, -72.5, 75.25, 1, -63.75, 76, 1, -63.75, 76, 1, -72.5, 77.25, 1, -72.5, 77.25, 1, -63.75, 78, 1, -63.75, 78, 1, -72.5, 79.25, 1, -72.5, 79.25, 1, -63.75, 80, 1, -63.75, 80, 1, -72.5, 81.25, 1, -72.5, 81.25, 1, -63.75, 82, 1, -63.75, 82, 1, -72.5, 83.25, 1, -72.5, 83.25, 1, -63.75, 84, 1, -63.75, 84, 1, -72.5, 85.25, 1, -64.25, 99.5, 1, -64, 85, 1, -62.5, 99.5, 1, -1.75, -23.5, 1, -3.75, -23.5, 1, -1.75, -31.25, 3, -3, -31.25, 3, 3, -24.5, 3, 3, -24.5, 3, -3, -31, 1, -2.75, -31, 1, 3, -24.75, 1, 3, -24.75, 1, -2.75, -99.5, 1, 2.75, -32.25, 1, 2.5, -23.5, 1, 2, 99.5, 1, 2, -23.75, 1, 4.25, -25.75, 1, 4.25, -25.75, 1, 10.75, -23.75, 1, 10.75, -23.5, 1, 13, 99.5, 1, 13, -32, 1, 10.75, -30, 1, 10.75, -30, 1, 4.25, -32, 1, 4.25, -32.25, 1, 12.5, -99.5, 1, 12.25, -31.25, 3, 11.75, -31.25, 3, 18.25, -24.5, 3, 18.25, -24.5, 3, 11.75, -31, 1, 12, -31, 1, 18.25, -24.75, 1, 18.25, -24.75, 1, 12, -99.5, 1, 18, -32.25, 1, 17.75, -23.5, 1, 17.25, 99.5, 1, 17.25, -23.75, 1, 19.5, -25.75, 1, 19.5, -25.75, 1, 99.5, 99.5, 1, 99.5, -32, 1, 19.5, -99.5, 1, 99.5, -30, 1, 99.5, -30, 1, 19.5)
@@ -76,6 +77,7 @@ reflected_light_source = 1
 [node name="TestMission" type="Node3D"]
 
 [node name="GameManager" parent="." instance=ExtResource("1_m3myb")]
+process_mode = 4
 
 [node name="EnemySpawner" parent="." instance=ExtResource("1_n5hro")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 0)
@@ -191,6 +193,13 @@ offset_bottom = -301.0
 text = "FPS:"
 script = ExtResource("9_hr0co")
 
+[node name="PopulationLabel" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = -571.0
+offset_top = -284.0
+offset_right = -531.0
+offset_bottom = -261.0
+
 [node name="BuildingPlacer" parent="." node_paths=PackedStringArray("camera", "nav_region") instance=ExtResource("3_y2stf")]
 buildings = Array[PackedScene]([ExtResource("5_vda2q"), ExtResource("6_tfr6s"), ExtResource("8_0dwld"), ExtResource("7_re1cj"), ExtResource("1_pnc6p"), ExtResource("10_4v3gb")])
 camera = NodePath("../camera_base/camera_socket/Camera3D")
@@ -223,250 +232,63 @@ resources = {
 [node name="Units" type="Node3D" parent="."]
 
 [node name="Archer" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.8583, 0, -17.7926)
 
 [node name="Archer2" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.8583, 0, -17.7926)
-
-[node name="Archer3" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.8583, 0, -17.7926)
-
-[node name="Archer4" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.8583, 0, -17.7926)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
 
 [node name="Archer5" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.8583, 0, -15.7926)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 0)
 
-[node name="Archer6" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.8583, 0, -15.7926)
+[node name="Archer3" parent="Units" instance=ExtResource("18_ftak6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, 0)
 
-[node name="Archer7" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.8583, 0, -15.7926)
-
-[node name="Archer8" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.8583, 0, -15.7926)
-
-[node name="Archer9" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.8583, 0, -13.7926)
-
-[node name="Archer10" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.8583, 0, -13.7926)
-
-[node name="Archer11" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.8583, 0, -13.7926)
-
-[node name="Archer12" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.8583, 0, -13.7926)
-
-[node name="Archer13" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.8583, 0, -11.7926)
-
-[node name="Archer14" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.8583, 0, -11.7926)
-
-[node name="Archer15" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.8583, 0, -11.7926)
-
-[node name="Archer16" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.8583, 0, -11.7926)
-
-[node name="Soldier" parent="Units" instance=ExtResource("20_bpjsi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 0, -13)
+[node name="Archer4" parent="Units" instance=ExtResource("18_ftak6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 0, 0)
 
 [node name="Wizard" parent="Units" instance=ExtResource("22_j51b6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, -21)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
 
 [node name="Wizard2" parent="Units" instance=ExtResource("22_j51b6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, -21)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 6)
 
 [node name="Wizard3" parent="Units" instance=ExtResource("22_j51b6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, -18)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 6)
 
 [node name="Wizard4" parent="Units" instance=ExtResource("22_j51b6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, -18)
-
-[node name="Archer17" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8583, 0, -17.7926)
-
-[node name="Archer18" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8583, 0, -17.7926)
-
-[node name="Archer19" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.8583, 0, -17.7926)
-
-[node name="Archer20" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.8583, 0, -17.7926)
-
-[node name="Archer21" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8583, 0, -15.7926)
-
-[node name="Archer22" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8583, 0, -15.7926)
-
-[node name="Archer23" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.8583, 0, -15.7926)
-
-[node name="Archer24" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.8583, 0, -15.7926)
-
-[node name="Archer25" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8583, 0, -13.7926)
-
-[node name="Archer26" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8583, 0, -13.7926)
-
-[node name="Archer27" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.8583, 0, -13.7926)
-
-[node name="Archer28" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.8583, 0, -13.7926)
-
-[node name="Archer29" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8583, 0, -11.7926)
-
-[node name="Archer30" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8583, 0, -11.7926)
-
-[node name="Archer31" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.8583, 0, -11.7926)
-
-[node name="Archer32" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.8583, 0, -11.7926)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 0, 6)
 
 [node name="Wizard5" parent="Units" instance=ExtResource("22_j51b6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -21)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 0, 6)
 
-[node name="Wizard6" parent="Units" instance=ExtResource("22_j51b6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -21)
-
-[node name="Wizard7" parent="Units" instance=ExtResource("22_j51b6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -18)
-
-[node name="Wizard8" parent="Units" instance=ExtResource("22_j51b6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -18)
-
-[node name="Archer33" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.8583, 0, 5.20736)
-
-[node name="Archer34" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.8583, 0, 5.20736)
-
-[node name="Archer35" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.8583, 0, 5.20736)
-
-[node name="Archer36" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.8583, 0, 5.20736)
-
-[node name="Archer37" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.8583, 0, 7.20736)
-
-[node name="Archer38" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.8583, 0, 7.20736)
-
-[node name="Archer39" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.8583, 0, 7.20736)
-
-[node name="Archer40" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.8583, 0, 7.20736)
-
-[node name="Archer41" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.8583, 0, 9.20736)
-
-[node name="Archer42" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.8583, 0, 9.20736)
-
-[node name="Archer43" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.8583, 0, 9.20736)
-
-[node name="Archer44" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.8583, 0, 9.20736)
-
-[node name="Archer45" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.8583, 0, 11.2074)
-
-[node name="Archer46" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.8583, 0, 11.2074)
-
-[node name="Archer47" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.8583, 0, 11.2074)
-
-[node name="Archer48" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.8583, 0, 11.2074)
+[node name="Soldier" parent="Units" instance=ExtResource("20_bpjsi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 0, 11)
 
 [node name="Soldier2" parent="Units" instance=ExtResource("20_bpjsi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 0, 10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 0, 11)
 
-[node name="Wizard9" parent="Units" instance=ExtResource("22_j51b6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 2)
+[node name="Soldier3" parent="Units" instance=ExtResource("20_bpjsi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 11)
 
-[node name="Wizard10" parent="Units" instance=ExtResource("22_j51b6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, 2)
+[node name="Soldier4" parent="Units" instance=ExtResource("20_bpjsi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 11)
 
-[node name="Wizard11" parent="Units" instance=ExtResource("22_j51b6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, 5)
+[node name="Soldier5" parent="Units" instance=ExtResource("20_bpjsi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11)
 
-[node name="Wizard12" parent="Units" instance=ExtResource("22_j51b6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 5)
+[node name="Zweihander" parent="Units" instance=ExtResource("44_kud55")]
+transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 0, 0, 16)
 
-[node name="Archer49" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8583, 0, 5.20736)
+[node name="Zweihander2" parent="Units" instance=ExtResource("44_kud55")]
+transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 7, 0, 16)
 
-[node name="Archer50" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8583, 0, 5.20736)
+[node name="Zweihander3" parent="Units" instance=ExtResource("44_kud55")]
+transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 13, 0, 16)
 
-[node name="Archer51" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.8583, 0, 5.20736)
+[node name="Zweihander4" parent="Units" instance=ExtResource("44_kud55")]
+transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 23, 0, 16)
 
-[node name="Archer52" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.8583, 0, 5.20736)
-
-[node name="Archer53" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8583, 0, 7.20736)
-
-[node name="Archer54" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8583, 0, 7.20736)
-
-[node name="Archer55" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.8583, 0, 7.20736)
-
-[node name="Archer56" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.8583, 0, 7.20736)
-
-[node name="Archer57" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8583, 0, 9.20736)
-
-[node name="Archer58" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8583, 0, 9.20736)
-
-[node name="Archer59" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.8583, 0, 9.20736)
-
-[node name="Archer60" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.8583, 0, 9.20736)
-
-[node name="Archer61" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8583, 0, 11.2074)
-
-[node name="Archer62" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8583, 0, 11.2074)
-
-[node name="Archer63" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.8583, 0, 11.2074)
-
-[node name="Archer64" parent="Units" instance=ExtResource("18_ftak6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.8583, 0, 11.2074)
-
-[node name="Wizard13" parent="Units" instance=ExtResource("22_j51b6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 2)
-
-[node name="Wizard14" parent="Units" instance=ExtResource("22_j51b6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
-
-[node name="Wizard15" parent="Units" instance=ExtResource("22_j51b6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 5)
-
-[node name="Wizard16" parent="Units" instance=ExtResource("22_j51b6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 5)
+[node name="Zweihander5" parent="Units" instance=ExtResource("44_kud55")]
+transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 33, 0, 16)
 
 [node name="Target" type="Marker3D" parent="."]
 

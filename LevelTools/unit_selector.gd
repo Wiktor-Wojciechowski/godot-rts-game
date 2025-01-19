@@ -41,22 +41,25 @@ func _input(event: InputEvent) -> void:
 		if not building_placer.placing:
 			if event is InputEventMouseButton:
 				if event.button_index == MOUSE_BUTTON_LEFT:
-					if event.pressed:
-						selection_start = get_viewport().get_mouse_position()
-						selection_end = selection_start
-						is_selecting = true
-						is_single_click = true  # Assume it's a single click initially
-						selection_rect_control.start_selection(selection_start)
+					if event.double_click:
+						select_units_by_type()
+						print("double")
 					else:
-						if is_selecting:
-							# Check if the mouse was dragged far enough to be considered a rectangle selection
-							if selection_start.distance_to(selection_end) > single_click_threshold:
-								select_units_in_rectangle()
-							else:
-								select_single_unit()  # Handle single unit selection
-							is_selecting = false
-							selection_rect_control.end_selection()
-
+						if event.pressed:
+							selection_start = get_viewport().get_mouse_position()
+							selection_end = selection_start
+							is_selecting = true
+							is_single_click = true  # Assume it's a single click initially
+							selection_rect_control.start_selection(selection_start)
+						else:
+							if is_selecting:
+								# Check if the mouse was dragged far enough to be considered a rectangle selection
+								if selection_start.distance_to(selection_end) > single_click_threshold:
+									select_units_in_rectangle()
+								else:
+									select_single_unit()  # Handle single unit selection
+								is_selecting = false
+								selection_rect_control.end_selection()
 			elif event is InputEventMouseMotion and is_selecting:
 				selection_end = get_viewport().get_mouse_position()
 				selection_rect_control.update_selection(selection_end)
@@ -148,5 +151,24 @@ func _on_ui_mouse_entered() -> void:
 func _on_ui_mouse_exited() -> void:
 	can_select = true
 
+func select_units_by_type():
+	var mouse_pos = get_viewport().get_mouse_position()
+	var ray_length = 10000
+	var from = camera.project_ray_origin(mouse_pos)
+	var to = camera.project_ray_normal(mouse_pos) * ray_length
+	var space = get_world_3d().direct_space_state
+	var ray_query = PhysicsRayQueryParameters3D.new()
+	ray_query.from = from
+	ray_query.to = to
+	var collision = space.intersect_ray(ray_query)
 
-	
+	# If a unit is clicked, toggle its selection
+	if collision.size() > 0 and collision.has("collider"):
+		var clicked_object = collision["collider"]
+		if clicked_object is Unit:
+			var unit_type = clicked_object.unit_name
+			print(unit_type)
+			for unit in unit_group:
+				print(unit.unit_name)
+				if unit.unit_name == unit_type:
+					select_unit(unit)

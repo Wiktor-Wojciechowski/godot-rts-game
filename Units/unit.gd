@@ -12,6 +12,8 @@ class_name Unit
 
 @export var unit_resource: UnitData = null
 
+var unit_name = "unit"
+
 var team = 1
 
 var current_target = null
@@ -20,6 +22,7 @@ var current_target = null
 
 func _ready() -> void:
 	if unit_resource:
+		unit_name = unit_resource.unit_name
 		attack_component.attack_damage = unit_resource.attack_damage
 		attack_component.attack_cooldown = unit_resource.attack_speed
 		attack_component.attack_range = unit_resource.attack_range
