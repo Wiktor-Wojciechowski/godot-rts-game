@@ -1,4 +1,3 @@
-# Camera3D.gd
 extends Node3D
 
 @export var camera: Camera3D
@@ -25,7 +24,6 @@ var is_single_click: bool = false
 var sub_menu = null
 
 func _ready() -> void:
-	# Ensure the Control node is set to ignore input for this to work
 	selection_rect_control.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 func _physics_process(_delta):
@@ -33,7 +31,6 @@ func _physics_process(_delta):
 	selected_units = get_tree().get_nodes_in_group("selected_units")
 	
 	if Input.is_action_just_pressed("mouse_right"):
-		#handle_right_click()
 		pass
 
 func _input(event: InputEvent) -> void:
@@ -49,7 +46,7 @@ func _input(event: InputEvent) -> void:
 							selection_start = get_viewport().get_mouse_position()
 							selection_end = selection_start
 							is_selecting = true
-							is_single_click = true  # Assume it's a single click initially
+							is_single_click = true
 							selection_rect_control.start_selection(selection_start)
 						else:
 							if is_selecting:
@@ -57,16 +54,15 @@ func _input(event: InputEvent) -> void:
 								if selection_start.distance_to(selection_end) > single_click_threshold:
 									select_units_in_rectangle()
 								else:
-									select_single_unit()  # Handle single unit selection
+									select_single_unit() 
 								is_selecting = false
 								selection_rect_control.end_selection()
 			elif event is InputEventMouseMotion and is_selecting:
 				selection_end = get_viewport().get_mouse_position()
 				selection_rect_control.update_selection(selection_end)
-				is_single_click = false  # If the mouse is moving, it's not a single click anymore
+				is_single_click = false
 
 func select_units_in_rectangle() -> void:
-	# Deselect all units initially
 	deselect_all_units()
 
 	# Convert 3D unit positions to 2D screen positions and check if they are within the rectangle
@@ -80,26 +76,16 @@ func select_units_in_rectangle() -> void:
 				select_unit(unit)
 
 func select_single_unit() -> void:
-	# Perform raycast to find unit under the mouse cursor
-	var mouse_pos = get_viewport().get_mouse_position()
-	var ray_length = 10000
-	var from = camera.project_ray_origin(mouse_pos)
-	var to = camera.project_ray_normal(mouse_pos) * ray_length
-	var space = get_world_3d().direct_space_state
-	var ray_query = PhysicsRayQueryParameters3D.new()
-	ray_query.from = from
-	ray_query.to = to
-	var collision = space.intersect_ray(ray_query)
+	var collision = cast_ray_from_mouse()
 
-	# If a unit is clicked, toggle its selection
 	if collision.size() > 0 and collision.has("collider"):
 		var clicked_object = collision["collider"]
 		if clicked_object is Unit:
 			var clicked_unit = clicked_object
 			if clicked_unit in unit_group:
-				deselect_all_units()  # Deselect all other units
+				deselect_all_units()
 				deselect_building()
-				select_unit(clicked_unit)  # Select the clicked unit
+				select_unit(clicked_unit)
 				
 		elif clicked_object is Building:
 			deselect_all_units()
@@ -110,21 +96,17 @@ func select_single_unit() -> void:
 			deselect_building()
 
 func select_unit(unit: CharacterBody3D) -> void:
-	# Custom logic for selecting a unit, e.g., changing its material, outline, etc.
 	if is_instance_valid(unit):
-		unit.selection.select()  # Assumes your unit script has a select() method
+		unit.selection.select()
 		unit.add_to_group("selected_units")
-	#selected_units.append(unit)
 
 func deselect_unit(unit: CharacterBody3D) -> void:
-	# Custom logic for deselecting a unit
 	if is_instance_valid(unit):
-		unit.selection.deselect()  # Assumes your unit script has a deselect() method
+		unit.selection.deselect()
 		unit.remove_from_group("selected_units")
-	#selected_units.erase(unit)
+
 
 func deselect_all_units() -> void:
-	# Deselect all currently selected units
 	for unit in selected_units:
 		if is_instance_valid(unit):
 			deselect_unit(unit)
@@ -152,6 +134,16 @@ func _on_ui_mouse_exited() -> void:
 	can_select = true
 
 func select_units_by_type():
+	var collision = cast_ray_from_mouse()
+	if collision.size() > 0 and collision.has("collider"):
+		var clicked_object = collision["collider"]
+		if clicked_object is Unit:
+			var unit_type = clicked_object.unit_name
+			for unit in unit_group:
+				if unit.unit_name == unit_type:
+					select_unit(unit)
+
+func cast_ray_from_mouse():
 	var mouse_pos = get_viewport().get_mouse_position()
 	var ray_length = 10000
 	var from = camera.project_ray_origin(mouse_pos)
@@ -161,14 +153,5 @@ func select_units_by_type():
 	ray_query.from = from
 	ray_query.to = to
 	var collision = space.intersect_ray(ray_query)
-
-	# If a unit is clicked, toggle its selection
-	if collision.size() > 0 and collision.has("collider"):
-		var clicked_object = collision["collider"]
-		if clicked_object is Unit:
-			var unit_type = clicked_object.unit_name
-			print(unit_type)
-			for unit in unit_group:
-				print(unit.unit_name)
-				if unit.unit_name == unit_type:
-					select_unit(unit)
+	return collision
+	
