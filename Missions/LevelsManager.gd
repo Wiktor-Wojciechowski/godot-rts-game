@@ -31,6 +31,7 @@ func load_level(level_index: int):
 	get_tree().change_scene_to_file(available_levels[level_index])
 	current_level_index = level_index
 	
+	GlobalAudioStreamPlayer.stop()
 	GlobalAudioStreamPlayer.stream = load(level_soundtracks[current_level_index])
 	GlobalAudioStreamPlayer.play()
 

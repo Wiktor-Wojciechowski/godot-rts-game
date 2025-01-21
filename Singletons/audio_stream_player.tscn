@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://bvpahp6rwn70h"]
 
-[ext_resource type="AudioStream" uid="uid://c0o70kbqk0fih" path="res://Assets/Audio/Music/6. Silverbrook.ogg" id="1_4r25r"]
+[ext_resource type="AudioStream" uid="uid://c0o70kbqk0fih" path="res://Assets/Audio/Music/6. Silverbrook.ogg" id="1_f6rm3"]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer"]
 process_mode = 3
-stream = ExtResource("1_4r25r")
+stream = ExtResource("1_f6rm3")
 autoplay = true
 bus = &"Music"

@@ -43,7 +43,7 @@ var is_level_failed = false
 
 var level_complete = false
 
-signal all_objectives_completed
+#signal all_objectives_completed
 signal level_failed
 signal population_changed
 signal enemy_hq_destroyed
@@ -83,11 +83,11 @@ func _ready() -> void:
 	wave_completed.connect(on_wave_completed)
 	
 func _process(delta: float) -> void:
-	number_of_units = units_node.get_children().size()
-	unit_number_label.text = str("Units: ",number_of_units)
-	number_of_enemies = enemies_node.get_children().size()
-	enemy_number_label.text = str("Enemies: ",number_of_enemies)
-	
+	#number_of_units = units_node.get_children().size()
+	#unit_number_label.text = str("Units: ",number_of_units)
+	#number_of_enemies = enemies_node.get_children().size()
+	#enemy_number_label.text = str("Enemies: ",number_of_enemies)
+	pass
 
 func check_objectives():
 	if is_level_failed:
@@ -100,7 +100,7 @@ func check_objectives():
 			
 	update_objectives_menu()
 	if objectives_completed == level_objectives.size():
-		emit_signal("all_objectives_completed")
+		#emit_signal("all_objectives_completed")
 		level_complete = true
 		get_parent().get_node("UI").get_node("LevelCompleteScreen").show()
 

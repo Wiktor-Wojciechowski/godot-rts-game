@@ -43,7 +43,8 @@ func _rotate_to_target(target: Node) -> void:
 	get_parent().look_at(target_pos, Vector3.UP)
 
 func _on_attack_range_body_entered(body: Node3D) -> void:
-	target_nodes.append(body)
+	if body is Unit or body is Building or body is Enemy:
+		target_nodes.append(body)
 
 func _on_attack_range_body_exited(body: Node3D) -> void:
 	if body in target_nodes:
@@ -76,6 +77,7 @@ func _shoot(current_target):
 
 func _melee_attack(current_target):
 	can_attack = false
+	print(current_target)
 	if current_target.health_component:
 		current_target.health_component.take_damage(attack_damage)
 	attack_timer = attack_cooldown

@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://c0o5ysay3lhl8"]
-
-[ext_resource type="Script" path="res://LevelTools/fog_of_war.gd" id="1_4svpm"]
-
-[node name="FogOfWar" type="Node3D"]
-script = ExtResource("1_4svpm")
