@@ -147,7 +147,7 @@ func _on_enemy_death(enemy: Enemy) -> void:
 	check_objectives()
 	
 func _on_unit_death(unit: Unit):
-	number_of_units -= 1
+	#number_of_units -= 1
 	units_lost += 1
 	decrease_current_population(1)
 	check_objectives()

@@ -3,7 +3,7 @@ extends Node3D
 @export var camera: Camera3D
 @export var ui: Control
 
-@onready var selection_rect_control := $Control  # Reference to the Control node for drawing
+@onready var selection_rect_control := $Selector2D # Reference to the Control node for drawing
 
 @onready var building_placer = get_parent().get_node("BuildingPlacer")
 

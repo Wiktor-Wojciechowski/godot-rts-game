@@ -16,13 +16,6 @@ func _ready() -> void:
 	production_queue.producible_units = producible_units
 	production_queue.hide()
 	
-	#selection.selected.connect(on_selected)
-	#selection.deselected.connect(on_deselected)
-	
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
 func on_selected():
 	$ProductionQueue.show()

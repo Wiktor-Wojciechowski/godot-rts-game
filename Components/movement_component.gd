@@ -10,9 +10,6 @@ var moving: bool = false
 
 @export var stop_distance = 5.0
 
-func _ready() -> void:
-	pass
-
 func _process(_delta: float) -> void:
 	if moving:
 		var destination = nav_agent.get_next_path_position()

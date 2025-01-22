@@ -15,11 +15,6 @@ signal death
 func _ready() -> void:
 	health = max_health
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
-
 func take_damage(damage):
 	health -= damage
 	health_changed.emit()

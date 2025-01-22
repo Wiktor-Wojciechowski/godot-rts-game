@@ -108,8 +108,6 @@ func cancel_placement():
 	current_building_ghost = null
 	current_building_index = -1
 
-# Check whether the ghost building is valid to place
-
 func is_placement_valid():
 	#check collision with buildings
 	var space_state = get_world_3d().direct_space_state
