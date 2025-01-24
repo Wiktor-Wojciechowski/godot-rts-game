@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c4bm44jtlde3s"]
+[gd_scene load_steps=3 format=3 uid="uid://c4bm44jtlde3s"]
 
 [ext_resource type="Script" path="res://UI/barracks_menu.gd" id="1_ck0pr"]
+[ext_resource type="PackedScene" uid="uid://cf2jktu1qw66f" path="res://UI/sub_menu.tscn" id="2_defrh"]
 
 [node name="BarracksMenu" type="Control"]
 layout_mode = 3
@@ -14,12 +15,19 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_ck0pr")
 
+[node name="SubMenu" parent="." instance=ExtResource("2_defrh")]
+layout_mode = 1
+offset_left = -640.0
+offset_top = -489.0
+offset_right = -640.0
+offset_bottom = -489.0
+
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
-offset_left = -240.0
-offset_top = 60.0
-offset_right = 240.0
-offset_bottom = 252.0
+offset_left = -257.0
+offset_top = 97.0
+offset_right = 257.0
+offset_bottom = 289.0
 mouse_filter = 1
 
 [node name="UnitButtons" type="HBoxContainer" parent="."]
@@ -30,9 +38,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -222.0
-offset_top = 64.0
+offset_top = 101.0
 offset_right = 222.0
-offset_bottom = 144.0
+offset_bottom = 181.0
 grow_horizontal = 2
 grow_vertical = 0
 alignment = 1

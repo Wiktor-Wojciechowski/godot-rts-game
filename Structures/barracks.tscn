@@ -12,7 +12,7 @@
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_n2of3"]
 material = SubResource("StandardMaterial3D_sb5g7")
-size = Vector2(5, 5)
+size = Vector2(5, 5.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_plqkb"]
 resource_name = "hexagons_medieval"
@@ -67,7 +67,7 @@ building_resource = ExtResource("2_ud52l")
 size = 4
 
 [node name="WrongPlacementIndicator" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0.25)
 visible = false
 mesh = SubResource("PlaneMesh_n2of3")
 

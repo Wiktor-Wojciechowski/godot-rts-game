@@ -773,10 +773,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.8692, 0, 56.2305)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.1308, 0, -35.7695)
 
 [node name="SkeletonWizard4" parent="Enemies" instance=ExtResource("53_yms1k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.8692, 0, -27.7695)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.8692, 0, -27.7695)
 
 [node name="SkeletonWizard5" parent="Enemies" instance=ExtResource("53_yms1k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.8692, 0, 14.2305)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.8692, 0, -24.7695)
 
 [node name="SkeletonMinion" parent="Enemies" instance=ExtResource("54_a2xdk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.7286, 0, 2.6568)
