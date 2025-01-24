@@ -1,36 +1,46 @@
-[gd_scene load_steps=3 format=3 uid="uid://c4bm44jtlde3s"]
+[gd_scene load_steps=2 format=3 uid="uid://c4bm44jtlde3s"]
 
 [ext_resource type="Script" path="res://UI/barracks_menu.gd" id="1_ck0pr"]
-[ext_resource type="PackedScene" uid="uid://cf2jktu1qw66f" path="res://UI/sub_menu.tscn" id="2_defrh"]
 
 [node name="BarracksMenu" type="Control"]
 layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_left = 0.283
+anchor_top = 0.653
+anchor_right = 0.717
+anchor_bottom = 0.946
+offset_left = -17.016
+offset_top = -14.144
+offset_right = 6.01599
+offset_bottom = 5.992
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_ck0pr")
 
-[node name="SubMenu" parent="." instance=ExtResource("2_defrh")]
-layout_mode = 1
-offset_left = -640.0
-offset_top = -489.0
-offset_right = -640.0
-offset_bottom = -489.0
-
 [node name="Panel" type="Panel" parent="."]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 offset_left = -257.0
-offset_top = 97.0
+offset_top = -96.0
 offset_right = 257.0
-offset_bottom = 289.0
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 1
 
-[node name="UnitButtons" type="HBoxContainer" parent="."]
+[node name="SellButton" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 429.0
+offset_top = 151.0
+offset_right = 507.0
+offset_bottom = 185.0
+text = "Sell"
+
+[node name="UnitButtons" type="HBoxContainer" parent="Panel"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -38,57 +48,60 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -222.0
-offset_top = 101.0
+offset_top = -188.0
 offset_right = 222.0
-offset_bottom = 181.0
+offset_bottom = -108.0
 grow_horizontal = 2
 grow_vertical = 0
 alignment = 1
 
-[node name="Unit0" type="Button" parent="UnitButtons"]
+[node name="Unit0" type="Button" parent="Panel/UnitButtons"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 mouse_filter = 1
 text = "Archer"
 
-[node name="ProductionCost" type="RichTextLabel" parent="UnitButtons/Unit0"]
+[node name="ProductionCost" type="RichTextLabel" parent="Panel/UnitButtons/Unit0"]
 layout_mode = 0
 offset_top = 81.0
 offset_right = 80.0
 offset_bottom = 185.0
 
-[node name="Unit1" type="Button" parent="UnitButtons"]
+[node name="Unit1" type="Button" parent="Panel/UnitButtons"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 mouse_filter = 1
 text = "Knight"
 
-[node name="ProductionCost" type="RichTextLabel" parent="UnitButtons/Unit1"]
+[node name="ProductionCost" type="RichTextLabel" parent="Panel/UnitButtons/Unit1"]
 layout_mode = 0
 offset_top = 81.0
 offset_right = 80.0
 offset_bottom = 185.0
 
-[node name="Unit2" type="Button" parent="UnitButtons"]
+[node name="Unit2" type="Button" parent="Panel/UnitButtons"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 mouse_filter = 1
 text = "Wizard"
 
-[node name="ProductionCost" type="RichTextLabel" parent="UnitButtons/Unit2"]
+[node name="ProductionCost" type="RichTextLabel" parent="Panel/UnitButtons/Unit2"]
 layout_mode = 0
 offset_top = 81.0
 offset_right = 80.0
 offset_bottom = 185.0
 
-[node name="Unit3" type="Button" parent="UnitButtons"]
+[node name="Unit3" type="Button" parent="Panel/UnitButtons"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 mouse_filter = 1
 text = "Zweihander"
 
-[node name="ProductionCost" type="RichTextLabel" parent="UnitButtons/Unit3"]
+[node name="ProductionCost" type="RichTextLabel" parent="Panel/UnitButtons/Unit3"]
 layout_mode = 0
 offset_top = 81.0
 offset_right = 80.0
 offset_bottom = 185.0
+
+[connection signal="mouse_entered" from="Panel" to="." method="_on_panel_mouse_entered"]
+[connection signal="mouse_exited" from="Panel" to="." method="_on_panel_mouse_exited"]

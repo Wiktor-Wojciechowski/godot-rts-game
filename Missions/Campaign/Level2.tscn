@@ -90,6 +90,73 @@ size = Vector3(92.8292, 1, 58.4354)
 
 [node name="Level2" type="Node3D"]
 
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("18_c1t0m")
+
+[node name="BuildingMenu" parent="UI" node_paths=PackedStringArray("building_placer") instance=ExtResource("19_cs41j")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_right = 0.0
+offset_left = -572.0
+offset_top = 160.0
+offset_right = -572.0
+offset_bottom = 160.0
+grow_horizontal = 1
+grow_vertical = 0
+building_placer = NodePath("../../BuildingPlacer")
+
+[node name="ResourceMenu" parent="UI" node_paths=PackedStringArray("resource_manager") instance=ExtResource("20_7n583")]
+offset_left = -576.0
+offset_top = -324.0
+offset_right = -576.0
+offset_bottom = -324.0
+resource_manager = NodePath("../../ResourceManager")
+
+[node name="FPS" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = -576.0
+offset_top = -324.0
+offset_right = -536.0
+offset_bottom = -301.0
+text = "FPS:"
+script = ExtResource("21_3lkvk")
+
+[node name="ObjectiveMenu" parent="UI" instance=ExtResource("22_6ehmh")]
+layout_mode = 1
+offset_left = 257.0
+offset_top = -288.0
+offset_right = 257.0
+offset_bottom = -288.0
+
+[node name="LevelCompleteScreen" parent="UI" instance=ExtResource("23_x6j5n")]
+visible = false
+layout_mode = 1
+
+[node name="PauseMenu" parent="UI" instance=ExtResource("23_6tqhn")]
+process_mode = 3
+visible = false
+layout_mode = 1
+
+[node name="PopulationLabel" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = -573.0
+offset_top = -265.0
+offset_right = -480.0
+offset_bottom = -242.0
+text = "Population: "
+
+[node name="StoneQuarry" parent="UI" instance=ExtResource("26_3woat")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.2595, 0, 86.8092)
+
 [node name="GameManager" parent="." instance=ExtResource("1_u66bg")]
 level_objectives = Array[ExtResource("2_vo71y")]([ExtResource("3_y6km5")])
 max_population = 50
@@ -750,73 +817,6 @@ environment = SubResource("Environment_icxno")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 45, 0)
 shadow_opacity = 0.65
-
-[node name="UI" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("18_c1t0m")
-
-[node name="BuildingMenu" parent="UI" node_paths=PackedStringArray("building_placer") instance=ExtResource("19_cs41j")]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_right = 0.0
-offset_left = -572.0
-offset_top = 160.0
-offset_right = -572.0
-offset_bottom = 160.0
-grow_horizontal = 1
-grow_vertical = 0
-building_placer = NodePath("../../BuildingPlacer")
-
-[node name="ResourceMenu" parent="UI" node_paths=PackedStringArray("resource_manager") instance=ExtResource("20_7n583")]
-offset_left = -576.0
-offset_top = -324.0
-offset_right = -576.0
-offset_bottom = -324.0
-resource_manager = NodePath("../../ResourceManager")
-
-[node name="FPS" type="Label" parent="UI"]
-layout_mode = 0
-offset_left = -576.0
-offset_top = -324.0
-offset_right = -536.0
-offset_bottom = -301.0
-text = "FPS:"
-script = ExtResource("21_3lkvk")
-
-[node name="ObjectiveMenu" parent="UI" instance=ExtResource("22_6ehmh")]
-layout_mode = 1
-offset_left = 257.0
-offset_top = -288.0
-offset_right = 257.0
-offset_bottom = -288.0
-
-[node name="LevelCompleteScreen" parent="UI" instance=ExtResource("23_x6j5n")]
-visible = false
-layout_mode = 1
-
-[node name="PauseMenu" parent="UI" instance=ExtResource("23_6tqhn")]
-process_mode = 3
-visible = false
-layout_mode = 1
-
-[node name="PopulationLabel" type="Label" parent="UI"]
-layout_mode = 0
-offset_left = -573.0
-offset_top = -265.0
-offset_right = -480.0
-offset_bottom = -242.0
-text = "Population: "
-
-[node name="StoneQuarry" parent="UI" instance=ExtResource("26_3woat")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.2595, 0, 86.8092)
 
 [node name="BuildingPlacer" parent="." node_paths=PackedStringArray("camera", "nav_region") instance=ExtResource("24_7thtw")]
 buildings = Array[PackedScene]([ExtResource("25_0w1ms"), ExtResource("26_3woat"), ExtResource("27_ipixl"), ExtResource("28_qxkqd"), ExtResource("29_5qm7p"), ExtResource("30_nqfyh")])

@@ -22,6 +22,7 @@ var single_click_threshold := 5  # Threshold to distinguish click vs drag
 var is_single_click: bool = false
 
 var sub_menu = null
+var mouse_on_ui: bool
 
 func _ready() -> void:
 	selection_rect_control.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -76,10 +77,14 @@ func select_units_in_rectangle() -> void:
 				select_unit(unit)
 
 func select_single_unit() -> void:
+	if mouse_on_ui:
+		return
+		
 	var collision = cast_ray_from_mouse()
 
 	if collision.size() > 0 and collision.has("collider"):
 		var clicked_object = collision["collider"]
+		print(clicked_object)
 		if clicked_object is Unit:
 			var clicked_unit = clicked_object
 			if clicked_unit in unit_group:
@@ -113,24 +118,26 @@ func deselect_all_units() -> void:
 
 func select_building(building):
 	selected_building = building
-	if selected_building.menu:
-		sub_menu = selected_building.menu.instantiate()
-		ui.add_child(sub_menu)
+	#if selected_building.menu:
+		#sub_menu = selected_building.menu.instantiate()
+		#ui.add_child(sub_menu)
 	building.selection.select()
 	
 func deselect_building():
 	if selected_building and is_instance_valid(selected_building):
-		if selected_building.menu:
-			ui.remove_child(sub_menu)
-			sub_menu.queue_free()
+		#if selected_building.menu:
+			#ui.remove_child(sub_menu)
+			#sub_menu.queue_free()
 		selected_building.selection.deselect()
 		selected_building = null
 
 func _on_ui_mouse_entered() -> void:
+	mouse_on_ui = true
 	if not is_selecting:
 		can_select = false
 
 func _on_ui_mouse_exited() -> void:
+	mouse_on_ui = false
 	can_select = true
 
 func select_units_by_type():

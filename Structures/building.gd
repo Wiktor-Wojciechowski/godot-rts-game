@@ -48,5 +48,6 @@ func on_deselected():
 	sub_menu.hide()
 
 func on_sell_button_pressed():
+	print("selling")
 	building_destroyed.emit(self)
 	queue_free()

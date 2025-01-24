@@ -9,7 +9,7 @@ var unit_buttons = []
 
 func _ready():
 	# Connect each button's signal dynamically, using Callable to pass the index
-	for child in $UnitButtons.get_children():
+	for child in $Panel/UnitButtons.get_children():
 		if child is Button:
 			unit_buttons.append(child)
 	
@@ -72,3 +72,11 @@ func produce_unit(index):
 			unit_resource.unit_name, 
 			unit_resource.production_time,
 		)
+
+func _on_panel_mouse_entered() -> void:
+	print("sub entered")
+	unit_selector.mouse_on_ui = true
+
+func _on_panel_mouse_exited() -> void:
+	print("sub exited")
+	unit_selector.mouse_on_ui = false

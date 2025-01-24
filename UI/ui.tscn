@@ -19,7 +19,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_12aex")
 
-[node name="BuildingMenu" parent="." node_paths=PackedStringArray("building_placer") instance=ExtResource("2_axoy2")]
+[node name="BuildingMenu" parent="." instance=ExtResource("2_axoy2")]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -30,14 +30,12 @@ offset_right = -572.0
 offset_bottom = 160.0
 grow_horizontal = 1
 grow_vertical = 0
-building_placer = NodePath("")
 
-[node name="ResourceMenu" parent="." node_paths=PackedStringArray("resource_manager") instance=ExtResource("3_jw866")]
+[node name="ResourceMenu" parent="." instance=ExtResource("3_jw866")]
 offset_left = -576.0
 offset_top = -324.0
 offset_right = -576.0
 offset_bottom = -324.0
-resource_manager = NodePath("")
 
 [node name="FPS" type="Label" parent="."]
 layout_mode = 0
@@ -49,6 +47,7 @@ text = "FPS:"
 script = ExtResource("4_o4c36")
 
 [node name="PopulationLabel" type="Label" parent="."]
+layout_mode = 0
 offset_left = -1151.0
 offset_top = -586.0
 offset_right = -1111.0
