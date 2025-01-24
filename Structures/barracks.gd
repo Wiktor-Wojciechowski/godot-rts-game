@@ -20,6 +20,5 @@ func on_selected():
 	$ProductionQueue.show()
 
 func on_deselected():
-	print("ahahaha")
 	sub_menu.hide()
 	$ProductionQueue.hide()

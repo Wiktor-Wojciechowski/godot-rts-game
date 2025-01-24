@@ -21,7 +21,6 @@ var selected_building: Building = null
 var single_click_threshold := 5  # Threshold to distinguish click vs drag
 var is_single_click: bool = false
 
-var sub_menu = null
 var mouse_on_ui: bool
 
 func _ready() -> void:
@@ -118,16 +117,10 @@ func deselect_all_units() -> void:
 
 func select_building(building):
 	selected_building = building
-	#if selected_building.menu:
-		#sub_menu = selected_building.menu.instantiate()
-		#ui.add_child(sub_menu)
 	building.selection.select()
 	
 func deselect_building():
 	if selected_building and is_instance_valid(selected_building):
-		#if selected_building.menu:
-			#ui.remove_child(sub_menu)
-			#sub_menu.queue_free()
 		selected_building.selection.deselect()
 		selected_building = null
 
