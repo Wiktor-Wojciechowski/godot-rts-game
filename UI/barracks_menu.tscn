@@ -66,6 +66,7 @@ layout_mode = 0
 offset_top = 81.0
 offset_right = 80.0
 offset_bottom = 185.0
+mouse_filter = 1
 
 [node name="Unit1" type="Button" parent="Panel/UnitButtons"]
 custom_minimum_size = Vector2(80, 80)
@@ -78,6 +79,7 @@ layout_mode = 0
 offset_top = 81.0
 offset_right = 80.0
 offset_bottom = 185.0
+mouse_filter = 1
 
 [node name="Unit2" type="Button" parent="Panel/UnitButtons"]
 custom_minimum_size = Vector2(80, 80)
@@ -90,6 +92,7 @@ layout_mode = 0
 offset_top = 81.0
 offset_right = 80.0
 offset_bottom = 185.0
+mouse_filter = 1
 
 [node name="Unit3" type="Button" parent="Panel/UnitButtons"]
 custom_minimum_size = Vector2(80, 80)
@@ -102,6 +105,7 @@ layout_mode = 0
 offset_top = 81.0
 offset_right = 80.0
 offset_bottom = 185.0
+mouse_filter = 1
 
 [connection signal="mouse_entered" from="Panel" to="." method="_on_panel_mouse_entered"]
 [connection signal="mouse_exited" from="Panel" to="." method="_on_panel_mouse_exited"]
