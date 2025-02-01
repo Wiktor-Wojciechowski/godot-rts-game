@@ -17,6 +17,8 @@ class_name AttackComponent
 @onready var structures = get_tree().current_scene.find_child("Structures")
 
 var can_attack = true
+signal target_added
+signal target_removed
 
 # Cache for target nodes (enemies)
 var target_nodes: Array = []
@@ -45,10 +47,13 @@ func _rotate_to_target(target: Node) -> void:
 func _on_attack_range_body_entered(body: Node3D) -> void:
 	if body is Unit or body is Building or body is Enemy:
 		target_nodes.append(body)
+		target_added.emit()
+		emit_signal("target_added")
 
 func _on_attack_range_body_exited(body: Node3D) -> void:
 	if body in target_nodes:
 		target_nodes.erase(body)
+		target_removed.emit()
 
 func _shoot(current_target):
 	can_attack = false
@@ -77,7 +82,6 @@ func _shoot(current_target):
 
 func _melee_attack(current_target):
 	can_attack = false
-	print(current_target)
 	if current_target.health_component:
 		current_target.health_component.take_damage(attack_damage)
 	attack_timer = attack_cooldown
@@ -97,15 +101,19 @@ func _find_closest_enemy() -> Node3D:
 	return closest_enemy
 	
 func _find_closest_building():
-	var player_buildings = structures.get_children()
+	#for enemy to get player buildings
+	var buildings = structures.get_children()
 
 	var closest_building = null
 	var closest_distance = INF
-	if not player_buildings.is_empty():
-		for building in player_buildings:
+	if not buildings.is_empty():
+		for building in buildings:
 			if building.team != attacker.team:
 				var distance = global_position.distance_to(building.global_position)
 				if distance < closest_distance:
 					closest_distance = distance
 					closest_building = building
+	print(attacker, " found closest", closest_building)
+	print(attacker.team)
+	print(closest_building.team)
 	return closest_building

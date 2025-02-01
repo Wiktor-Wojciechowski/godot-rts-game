@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Structures/sentry.gd" id="1_lg8h6"]
 [ext_resource type="PackedScene" uid="uid://coxg58ejh2vj5" path="res://Projectiles/arrow.tscn" id="2_ctssq"]
-[ext_resource type="Resource" uid="uid://dkqhc8a0b8m3f" path="res://Resources/Buildings/Sentry.tres" id="3_p3plt"]
+[ext_resource type="Resource" uid="uid://dl6c80uoi7kq0" path="res://Resources/Buildings/EnemySentry.tres" id="3_ekqiq"]
 [ext_resource type="PackedScene" uid="uid://du0opqlxswb3l" path="res://Components/health_component.tscn" id="4_swyle"]
 [ext_resource type="PackedScene" uid="uid://x10cogs6d5ud" path="res://Components/health_bar.tscn" id="5_36qvn"]
 [ext_resource type="Texture2D" uid="uid://cmc7y1vq0h2lf" path="res://Assets/BuildingModels/hexagons_medieval.png" id="6_eb4q0"]
@@ -214,7 +214,7 @@ detection_range = 6.0
 rotation_speed = 20.0
 bullet_scene = ExtResource("2_ctssq")
 bullet_damage = 15
-building_resource = ExtResource("3_p3plt")
+building_resource = ExtResource("3_ekqiq")
 team = 2
 
 [node name="HealthComponent" parent="." instance=ExtResource("4_swyle")]

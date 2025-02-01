@@ -1,8 +1,9 @@
-[gd_scene load_steps=56 format=3 uid="uid://c82xax31p4gao"]
+[gd_scene load_steps=59 format=3 uid="uid://c82xax31p4gao"]
 
 [ext_resource type="PackedScene" uid="uid://ct8jhcy5gigkv" path="res://LevelTools/game_manager.tscn" id="1_u66bg"]
 [ext_resource type="Script" path="res://Resources/Campaign/Objectives/objective.gd" id="2_vo71y"]
 [ext_resource type="Resource" uid="uid://b807tacdf3oia" path="res://Resources/Campaign/Level2/Objectives/destroy_enemy_hq.tres" id="3_y6km5"]
+[ext_resource type="PackedScene" uid="uid://dt6mckvyyi1st" path="res://UI/level_failed_screen.tscn" id="6_u30p0"]
 [ext_resource type="Texture2D" uid="uid://4rhknkiec0mx" path="res://Assets/Textures/rocky_terrain_02_diff_4k.jpg" id="8_pqycf"]
 [ext_resource type="PackedScene" uid="uid://bywn6s5aqo81n" path="res://Structures/player_headquarters.tscn" id="10_m4gxm"]
 [ext_resource type="PackedScene" uid="uid://da2vg2u2bkway" path="res://Decorations/trees_a_large.tscn" id="13_wbct2"]
@@ -10,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://ci8a4isd6wg2o" path="res://Decorations/rock_single_e.tscn" id="15_4ccam"]
 [ext_resource type="PackedScene" uid="uid://d1uif02tuvhoh" path="res://Decorations/mountain_a.tscn" id="16_0jhj2"]
 [ext_resource type="Script" path="res://Camera/camera_base.gd" id="17_8etvm"]
-[ext_resource type="Script" path="res://UI/ui.gd" id="18_c1t0m"]
 [ext_resource type="PackedScene" uid="uid://cf0m7jmb6c2i7" path="res://UI/building_menu.tscn" id="19_cs41j"]
 [ext_resource type="PackedScene" uid="uid://b10u13jt02rgb" path="res://UI/resource_menu.tscn" id="20_7n583"]
 [ext_resource type="Script" path="res://Missions/label.gd" id="21_3lkvk"]
@@ -42,10 +42,26 @@
 [ext_resource type="PackedScene" uid="uid://o0mhgf0ea1ip" path="res://Structures/no_build_zone.tscn" id="45_hcp78"]
 [ext_resource type="Resource" uid="uid://dkqhc8a0b8m3f" path="res://Resources/Buildings/Sentry.tres" id="45_qot8k"]
 [ext_resource type="Resource" uid="uid://c2w1qy7j2d5vd" path="res://Resources/Buildings/Barracks.tres" id="46_7e3mo"]
+[ext_resource type="PackedScene" uid="uid://gjty2bfn3vys" path="res://Enemies/skeleton_rogue.tscn" id="46_fgpcm"]
 [ext_resource type="PackedScene" uid="uid://w1bfn33te562" path="res://LevelTools/resource_manager.tscn" id="47_5vo7l"]
 [ext_resource type="PackedScene" uid="uid://cg8oqstlgnx08" path="res://Structures/enemy_sentry.tscn" id="47_r1vm8"]
+[ext_resource type="PackedScene" uid="uid://nvfer57ex412" path="res://Collectibles/gold_collectible.tscn" id="48_nhyej"]
 [ext_resource type="PackedScene" uid="uid://dl2r80c463aul" path="res://Structures/enemy_barracks.tscn" id="49_usu1i"]
 [ext_resource type="PackedScene" uid="uid://cay5vligoi0rt" path="res://Enemies/skeleton_minion.tscn" id="50_md50w"]
+
+[sub_resource type="GDScript" id="GDScript_v2eyb"]
+script/source = "extends Control
+
+@onready var pause_menu = $PauseMenu
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_eqeoe"]
 geometry_parsed_geometry_type = 1
@@ -99,7 +115,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("18_c1t0m")
+script = SubResource("GDScript_v2eyb")
 
 [node name="BuildingMenu" parent="UI" node_paths=PackedStringArray("building_placer") instance=ExtResource("19_cs41j")]
 layout_mode = 1
@@ -138,6 +154,10 @@ offset_right = 257.0
 offset_bottom = -288.0
 
 [node name="LevelCompleteScreen" parent="UI" instance=ExtResource("23_x6j5n")]
+visible = false
+layout_mode = 1
+
+[node name="LevelFailedScreen" parent="UI" instance=ExtResource("6_u30p0")]
 visible = false
 layout_mode = 1
 
@@ -183,10 +203,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.5889, 7.62939e-06, -77.33
 [node name="EnemySentry" parent="NavigationRegion3D/Structures" instance=ExtResource("47_r1vm8")]
 transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 3.63109, 0, 11.6365)
 
+[node name="EnemySentry6" parent="NavigationRegion3D/Structures" instance=ExtResource("47_r1vm8")]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, -60.3689, 0, 26.6365)
+
+[node name="EnemySentry7" parent="NavigationRegion3D/Structures" instance=ExtResource("47_r1vm8")]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, -60.3689, 0, 38.6365)
+
+[node name="EnemySentry8" parent="NavigationRegion3D/Structures" instance=ExtResource("47_r1vm8")]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, -31.3689, 0, 67.6365)
+
+[node name="EnemySentry9" parent="NavigationRegion3D/Structures" instance=ExtResource("47_r1vm8")]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, -43.3689, 0, 67.6365)
+
 [node name="EnemyBarracks" parent="NavigationRegion3D/Structures" instance=ExtResource("49_usu1i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.0516, 0, -64.394)
 created_enemy = ExtResource("50_md50w")
-spawn_interval = 12
+spawn_interval = 5
+group_size = 3
+
+[node name="EnemyBarracks2" parent="NavigationRegion3D/Structures" instance=ExtResource("49_usu1i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.0516, 0, -64.394)
+created_enemy = ExtResource("50_md50w")
+spawn_interval = 16
 
 [node name="EnemySentry2" parent="NavigationRegion3D/Structures" instance=ExtResource("47_r1vm8")]
 transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, -49.6038, 1, -50.166)
@@ -198,7 +236,7 @@ transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, -11.0522, 1, -64.695
 transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, -38.1837, 1, -72.7815)
 
 [node name="EnemySentry5" parent="NavigationRegion3D/Structures" instance=ExtResource("47_r1vm8")]
-transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, -46.3534, 1, -66.6464)
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, -43.3534, 1, -63.6464)
 
 [node name="Barracks" parent="NavigationRegion3D/Structures" instance=ExtResource("30_nqfyh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.3372, 0, 73.4688)
@@ -815,7 +853,7 @@ fov = 90.0
 environment = SubResource("Environment_icxno")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
-transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 45, 0)
+transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 185, 0)
 shadow_opacity = 0.65
 
 [node name="BuildingPlacer" parent="." node_paths=PackedStringArray("camera", "nav_region") instance=ExtResource("24_7thtw")]
@@ -853,6 +891,30 @@ resources = {
 
 [node name="Enemies" type="Node3D" parent="."]
 
+[node name="SkeletonRogue" parent="Enemies" instance=ExtResource("46_fgpcm")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.775972, 0, 12.4467)
+
+[node name="SkeletonRogue2" parent="Enemies" instance=ExtResource("46_fgpcm")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.22403, 0, 12.4467)
+
+[node name="SkeletonRogue3" parent="Enemies" instance=ExtResource("46_fgpcm")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.22403, 0, 15.4467)
+
+[node name="SkeletonRogue4" parent="Enemies" instance=ExtResource("46_fgpcm")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.22403, 0, 15.4467)
+
+[node name="SkeletonRogue5" parent="Enemies" instance=ExtResource("46_fgpcm")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.775972, 0, 15.4467)
+
+[node name="SkeletonRogue6" parent="Enemies" instance=ExtResource("46_fgpcm")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -55.776, 0, 31.4467)
+
+[node name="SkeletonRogue7" parent="Enemies" instance=ExtResource("46_fgpcm")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -55.776, 0, 35.4467)
+
+[node name="SkeletonRogue8" parent="Enemies" instance=ExtResource("46_fgpcm")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -55.776, 0, 39.4467)
+
 [node name="NoBuildZone" parent="." instance=ExtResource("45_hcp78")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80.0225, 0.5, -69.0953)
 
@@ -860,11 +922,86 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80.0225, 0.5, -69.0953)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.6783, 0, -1.78229)
 shape = SubResource("BoxShape3D_2jbht")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.1, 10.6, -73)
-visible = false
-light_energy = 5.202
-omni_range = 9.0
+[node name="GoldCollectible" parent="." instance=ExtResource("48_nhyej")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.4735, 0, -76.6227)
+
+[node name="GoldCollectible2" parent="." instance=ExtResource("48_nhyej")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69.4735, 0, -76.6227)
+
+[node name="GoldCollectible3" parent="." instance=ExtResource("48_nhyej")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.4735, 0, -76.6227)
+
+[node name="GoldCollectible4" parent="." instance=ExtResource("48_nhyej")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.4735, 0, -78.6227)
+
+[node name="GoldCollectible5" parent="." instance=ExtResource("48_nhyej")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69.4735, 0, -78.6227)
+
+[node name="GoldCollectible6" parent="." instance=ExtResource("48_nhyej")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.4735, 0, -78.6227)
+
+[node name="GoldCollectible7" parent="." instance=ExtResource("48_nhyej")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.4735, 0, -80.6227)
+
+[node name="GoldCollectible8" parent="." instance=ExtResource("48_nhyej")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69.4735, 0, -80.6227)
+
+[node name="GoldCollectible9" parent="." instance=ExtResource("48_nhyej")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.4735, 0, -80.6227)
+
+[node name="GoldCollectible10" parent="." instance=ExtResource("48_nhyej")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.5265, 0, 84.3773)
+
+[node name="GoldCollectible11" parent="." instance=ExtResource("48_nhyej")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.5265, 0, 84.3773)
+
+[node name="GoldCollectible12" parent="." instance=ExtResource("48_nhyej")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.5265, 0, 84.3773)
+
+[node name="GoldCollectible13" parent="." instance=ExtResource("48_nhyej")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.5265, 0, 82.3773)
+
+[node name="GoldCollectible14" parent="." instance=ExtResource("48_nhyej")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.5265, 0, 82.3773)
+
+[node name="GoldCollectible15" parent="." instance=ExtResource("48_nhyej")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.5265, 0, 82.3773)
+
+[node name="GoldCollectible16" parent="." instance=ExtResource("48_nhyej")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.5265, 0, 80.3773)
+
+[node name="GoldCollectible17" parent="." instance=ExtResource("48_nhyej")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.5265, 0, 80.3773)
+
+[node name="GoldCollectible18" parent="." instance=ExtResource("48_nhyej")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.5265, 0, 80.3773)
+
+[node name="GoldCollectible19" parent="." instance=ExtResource("48_nhyej")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.5265, 0, 38.3773)
+
+[node name="GoldCollectible20" parent="." instance=ExtResource("48_nhyej")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.5265, 0, 38.3773)
+
+[node name="GoldCollectible21" parent="." instance=ExtResource("48_nhyej")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68.5265, 0, 38.3773)
+
+[node name="GoldCollectible22" parent="." instance=ExtResource("48_nhyej")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.5265, 0, 36.3773)
+
+[node name="GoldCollectible23" parent="." instance=ExtResource("48_nhyej")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.5265, 0, 36.3773)
+
+[node name="GoldCollectible24" parent="." instance=ExtResource("48_nhyej")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68.5265, 0, 36.3773)
+
+[node name="GoldCollectible25" parent="." instance=ExtResource("48_nhyej")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.5265, 0, 34.3773)
+
+[node name="GoldCollectible26" parent="." instance=ExtResource("48_nhyej")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.5265, 0, 34.3773)
+
+[node name="GoldCollectible27" parent="." instance=ExtResource("48_nhyej")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68.5265, 0, 34.3773)
 
 [connection signal="mouse_entered" from="UI" to="UnitSelector" method="_on_ui_mouse_entered"]
 [connection signal="mouse_exited" from="UI" to="UnitSelector" method="_on_ui_mouse_exited"]

@@ -1,12 +1,26 @@
-[gd_scene load_steps=8 format=3 uid="uid://blua4eqh863s7"]
+[gd_scene load_steps=9 format=3 uid="uid://blua4eqh863s7"]
 
-[ext_resource type="Script" path="res://UI/ui.gd" id="1_12aex"]
 [ext_resource type="PackedScene" uid="uid://cf0m7jmb6c2i7" path="res://UI/building_menu.tscn" id="2_axoy2"]
 [ext_resource type="PackedScene" uid="uid://b10u13jt02rgb" path="res://UI/resource_menu.tscn" id="3_jw866"]
 [ext_resource type="Script" path="res://Missions/label.gd" id="4_o4c36"]
 [ext_resource type="PackedScene" uid="uid://cl5oqbks0vl5u" path="res://UI/objective_menu.tscn" id="5_7vlk5"]
+[ext_resource type="PackedScene" uid="uid://dt6mckvyyi1st" path="res://UI/level_failed_screen.tscn" id="6_fe3y8"]
 [ext_resource type="PackedScene" uid="uid://c60lsqoqtqf6w" path="res://UI/level_complete_screen.tscn" id="6_ol2rw"]
 [ext_resource type="PackedScene" uid="uid://cq5cy87nbcsva" path="res://UI/pause_menu.tscn" id="7_0y26u"]
+
+[sub_resource type="GDScript" id="GDScript_v2eyb"]
+script/source = "extends Control
+
+@onready var pause_menu = $PauseMenu
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -17,7 +31,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_12aex")
+script = SubResource("GDScript_v2eyb")
 
 [node name="BuildingMenu" parent="." instance=ExtResource("2_axoy2")]
 layout_mode = 1
@@ -60,11 +74,17 @@ offset_top = -288.0
 offset_right = 257.0
 offset_bottom = -288.0
 
+[node name="LevelFailedScreen" parent="." instance=ExtResource("6_fe3y8")]
+visible = false
+z_index = 10
+layout_mode = 1
+
 [node name="LevelCompleteScreen" parent="." instance=ExtResource("6_ol2rw")]
 visible = false
+z_index = 10
 layout_mode = 1
 
 [node name="PauseMenu" parent="." instance=ExtResource("7_0y26u")]
 process_mode = 3
-visible = false
+z_index = 4096
 layout_mode = 1

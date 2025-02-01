@@ -5,20 +5,33 @@
 [node name="SubMenu" type="Control"]
 z_index = 1
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -236.0
+offset_top = 46.0
+offset_right = 213.0
+offset_bottom = 173.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_tqqsa")
 
 [node name="Panel" type="Panel" parent="."]
 z_index = 1
-layout_mode = 0
-offset_left = 416.0
-offset_top = 448.0
-offset_right = 864.0
-offset_bottom = 576.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -224.0
+offset_top = -64.0
+offset_right = 224.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="NameLabel" type="Label" parent="Panel"]
 layout_mode = 0

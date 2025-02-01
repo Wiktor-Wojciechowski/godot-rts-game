@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SentryData" load_steps=2 format=3 uid="uid://dl6c80uoi7kq0"]
+
+[ext_resource type="Script" path="res://Resources/Buildings/SentryData.gd" id="1_les6a"]
+
+[resource]
+script = ExtResource("1_les6a")
+detection_range = 15.0
+bullet_damage = 20.0
+building_name = "Enemy Sentry"
+health = 250
+production_cost = {
+"gold": 50,
+"stone": 50,
+"wood": 50
+}
+size = 1

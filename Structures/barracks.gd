@@ -16,6 +16,7 @@ func _ready() -> void:
 	production_queue.hide()
 
 func on_selected():
+	sub_menu.check_buttons_available()
 	sub_menu.show()
 	$ProductionQueue.show()
 

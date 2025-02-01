@@ -1,11 +1,11 @@
-[gd_scene load_steps=16 format=4 uid="uid://dl2r80c463aul"]
+[gd_scene load_steps=17 format=4 uid="uid://dl2r80c463aul"]
 
 [ext_resource type="Script" path="res://Structures/enemy_barracks.gd" id="1_dlpip"]
 [ext_resource type="Resource" uid="uid://cmvprvg7pl0fh" path="res://Resources/Buildings/EnemyBarracks.tres" id="2_7d7io"]
 [ext_resource type="Texture2D" uid="uid://djaugv32wvvfu" path="res://Assets/BuildingModels/halloweenbits_texture.png" id="2_p4iua"]
-[ext_resource type="PackedScene" uid="uid://cyybrg631gniq" path="res://Components/selection.tscn" id="2_rl74u"]
 [ext_resource type="PackedScene" uid="uid://x10cogs6d5ud" path="res://Components/health_bar.tscn" id="3_pmfme"]
 [ext_resource type="PackedScene" uid="uid://du0opqlxswb3l" path="res://Components/health_component.tscn" id="4_5b40f"]
+[ext_resource type="Script" path="res://Components/selection.gd" id="4_mymt4"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_xqjr4"]
 
@@ -97,6 +97,10 @@ _data = {
 }
 point_count = 5
 
+[sub_resource type="TorusMesh" id="TorusMesh_8nogd"]
+inner_radius = 3.0
+outer_radius = 3.2
+
 [node name="EnemyBarracks" type="StaticBody3D" groups=["enemies"]]
 collision_layer = 4
 collision_mask = 4
@@ -153,7 +157,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 shape = SubResource("BoxShape3D_g8kaq")
 
 [node name="SpawnPoint" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
 
 [node name="SpawnPath" type="Path3D" parent="."]
 curve = SubResource("Curve3D_m5ps4")
@@ -164,7 +168,11 @@ transform = Transform3D(0.999964, -9.10723e-09, -7.60332e-05, 0, 0.999995, -0.00
 [node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 0.5
 
-[node name="Selection" parent="." instance=ExtResource("2_rl74u")]
+[node name="Selection" type="Node3D" parent="."]
+script = ExtResource("4_mymt4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Selection"]
+mesh = SubResource("TorusMesh_8nogd")
 
 [node name="HealthBar" parent="." instance=ExtResource("3_pmfme")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 0)

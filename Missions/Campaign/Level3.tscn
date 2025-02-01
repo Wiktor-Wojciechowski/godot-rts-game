@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://68ue10cffaua" path="res://Decorations/trees_b_large.tscn" id="14_i2er0"]
 [ext_resource type="PackedScene" uid="uid://d1uif02tuvhoh" path="res://Decorations/mountain_a.tscn" id="16_ayni5"]
 [ext_resource type="Script" path="res://Camera/camera_base.gd" id="17_la7a5"]
-[ext_resource type="Script" path="res://UI/ui.gd" id="18_6v6qf"]
 [ext_resource type="PackedScene" uid="uid://cf0m7jmb6c2i7" path="res://UI/building_menu.tscn" id="19_6lmsr"]
 [ext_resource type="PackedScene" uid="uid://b10u13jt02rgb" path="res://UI/resource_menu.tscn" id="20_vkm5s"]
 [ext_resource type="Script" path="res://Missions/label.gd" id="21_xcrxc"]
@@ -44,6 +43,20 @@
 [ext_resource type="PackedScene" uid="uid://w1bfn33te562" path="res://LevelTools/resource_manager.tscn" id="47_y8iv8"]
 [ext_resource type="Script" path="res://Missions/wave_spawner.gd" id="56_0bwk8"]
 [ext_resource type="PackedScene" uid="uid://bywn6s5aqo81n" path="res://Structures/player_headquarters.tscn" id="57_kioqd"]
+
+[sub_resource type="GDScript" id="GDScript_v2eyb"]
+script/source = "extends Control
+
+@onready var pause_menu = $PauseMenu
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_eqeoe"]
 geometry_parsed_geometry_type = 1
@@ -88,6 +101,73 @@ ambient_light_energy = 5.15
 reflected_light_source = 1
 
 [node name="Level3" type="Node3D"]
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_v2eyb")
+
+[node name="BuildingMenu" parent="UI" node_paths=PackedStringArray("building_placer") instance=ExtResource("19_6lmsr")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_right = 0.0
+offset_left = -572.0
+offset_top = 160.0
+offset_right = -572.0
+offset_bottom = 160.0
+grow_horizontal = 1
+grow_vertical = 0
+building_placer = NodePath("../../BuildingPlacer")
+
+[node name="ResourceMenu" parent="UI" node_paths=PackedStringArray("resource_manager") instance=ExtResource("20_vkm5s")]
+offset_left = -576.0
+offset_top = -324.0
+offset_right = -576.0
+offset_bottom = -324.0
+resource_manager = NodePath("../../ResourceManager")
+
+[node name="FPS" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = -576.0
+offset_top = -324.0
+offset_right = -536.0
+offset_bottom = -301.0
+text = "FPS:"
+script = ExtResource("21_xcrxc")
+
+[node name="PopulationLabel" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = -575.0
+offset_top = -262.0
+offset_right = -535.0
+offset_bottom = -239.0
+
+[node name="ObjectiveMenu" parent="UI" instance=ExtResource("22_eg8dx")]
+layout_mode = 1
+offset_left = 257.0
+offset_top = -288.0
+offset_right = 257.0
+offset_bottom = -288.0
+
+[node name="PauseMenu" parent="UI" instance=ExtResource("23_mru64")]
+process_mode = 3
+visible = false
+layout_mode = 1
+
+[node name="LevelCompleteScreen" parent="UI" instance=ExtResource("24_cv7xo")]
+visible = false
+layout_mode = 1
+
+[node name="LevelFailedScreen" parent="UI" instance=ExtResource("25_56rdh")]
+visible = false
+layout_mode = 1
 
 [node name="GameManager" parent="." instance=ExtResource("1_1gara")]
 level_objectives = Array[ExtResource("2_ujfcp")]([ExtResource("3_m10rc")])
@@ -746,73 +826,6 @@ environment = SubResource("Environment_icxno")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 45, 0)
 shadow_opacity = 0.65
-
-[node name="UI" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("18_6v6qf")
-
-[node name="BuildingMenu" parent="UI" node_paths=PackedStringArray("building_placer") instance=ExtResource("19_6lmsr")]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_right = 0.0
-offset_left = -572.0
-offset_top = 160.0
-offset_right = -572.0
-offset_bottom = 160.0
-grow_horizontal = 1
-grow_vertical = 0
-building_placer = NodePath("../../BuildingPlacer")
-
-[node name="ResourceMenu" parent="UI" node_paths=PackedStringArray("resource_manager") instance=ExtResource("20_vkm5s")]
-offset_left = -576.0
-offset_top = -324.0
-offset_right = -576.0
-offset_bottom = -324.0
-resource_manager = NodePath("../../ResourceManager")
-
-[node name="FPS" type="Label" parent="UI"]
-layout_mode = 0
-offset_left = -576.0
-offset_top = -324.0
-offset_right = -536.0
-offset_bottom = -301.0
-text = "FPS:"
-script = ExtResource("21_xcrxc")
-
-[node name="PopulationLabel" type="Label" parent="UI"]
-layout_mode = 0
-offset_left = -575.0
-offset_top = -262.0
-offset_right = -535.0
-offset_bottom = -239.0
-
-[node name="ObjectiveMenu" parent="UI" instance=ExtResource("22_eg8dx")]
-layout_mode = 1
-offset_left = 257.0
-offset_top = -288.0
-offset_right = 257.0
-offset_bottom = -288.0
-
-[node name="PauseMenu" parent="UI" instance=ExtResource("23_mru64")]
-process_mode = 3
-visible = false
-layout_mode = 1
-
-[node name="LevelCompleteScreen" parent="UI" instance=ExtResource("24_cv7xo")]
-visible = false
-layout_mode = 1
-
-[node name="LevelFailedScreen" parent="UI" instance=ExtResource("25_56rdh")]
-visible = false
-layout_mode = 1
 
 [node name="BuildingPlacer" parent="." node_paths=PackedStringArray("camera", "nav_region") instance=ExtResource("26_3lj36")]
 buildings = Array[PackedScene]([ExtResource("27_5u4oa"), ExtResource("28_63xm4"), ExtResource("29_x8g2f"), ExtResource("30_dagxu"), ExtResource("7_8v3uv"), ExtResource("8_gp2mp")])

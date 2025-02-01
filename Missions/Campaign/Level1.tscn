@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://ci8a4isd6wg2o" path="res://Decorations/rock_single_e.tscn" id="15_oppyv"]
 [ext_resource type="PackedScene" uid="uid://d1uif02tuvhoh" path="res://Decorations/mountain_a.tscn" id="16_pb78t"]
 [ext_resource type="Script" path="res://Camera/camera_base.gd" id="17_kc8ti"]
-[ext_resource type="Script" path="res://UI/ui.gd" id="18_bn320"]
 [ext_resource type="PackedScene" uid="uid://cf0m7jmb6c2i7" path="res://UI/building_menu.tscn" id="19_20vo2"]
 [ext_resource type="PackedScene" uid="uid://b10u13jt02rgb" path="res://UI/resource_menu.tscn" id="20_dgcsr"]
 [ext_resource type="Script" path="res://Missions/label.gd" id="21_62fe1"]
@@ -52,6 +51,20 @@
 [ext_resource type="PackedScene" uid="uid://njiefdys0bu4" path="res://Collectibles/food_collectible.tscn" id="58_8l8ym"]
 [ext_resource type="PackedScene" uid="uid://nvfer57ex412" path="res://Collectibles/gold_collectible.tscn" id="59_75r8b"]
 
+[sub_resource type="GDScript" id="GDScript_v2eyb"]
+script/source = "extends Control
+
+@onready var pause_menu = $PauseMenu
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
 [sub_resource type="NavigationMesh" id="NavigationMesh_eqeoe"]
 geometry_parsed_geometry_type = 1
 geometry_collision_mask = 21
@@ -81,6 +94,82 @@ ambient_light_energy = 5.15
 reflected_light_source = 1
 
 [node name="Level1" type="Node3D"]
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_v2eyb")
+
+[node name="BuildingMenu" parent="UI" node_paths=PackedStringArray("building_placer") instance=ExtResource("19_20vo2")]
+visible = false
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_right = 0.0
+offset_left = -572.0
+offset_top = 160.0
+offset_right = -572.0
+offset_bottom = 160.0
+grow_horizontal = 1
+grow_vertical = 0
+building_placer = NodePath("../../BuildingPlacer")
+
+[node name="ResourceMenu" parent="UI" node_paths=PackedStringArray("resource_manager") instance=ExtResource("20_dgcsr")]
+offset_left = -576.0
+offset_top = -324.0
+offset_right = -576.0
+offset_bottom = -324.0
+resource_manager = NodePath("../../ResourceManager")
+
+[node name="FPS" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = -576.0
+offset_top = -324.0
+offset_right = -536.0
+offset_bottom = -301.0
+text = "FPS:"
+script = ExtResource("21_62fe1")
+
+[node name="PopulationLabel" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = -575.0
+offset_top = -262.0
+offset_right = -535.0
+offset_bottom = -239.0
+
+[node name="ObjectiveMenu" parent="UI" instance=ExtResource("22_qelpj")]
+layout_mode = 1
+offset_left = 257.0
+offset_top = -288.0
+offset_right = 257.0
+offset_bottom = -288.0
+
+[node name="PauseMenu" parent="UI" instance=ExtResource("23_3ib30")]
+process_mode = 3
+visible = false
+layout_mode = 1
+
+[node name="LevelCompleteScreen" parent="UI" instance=ExtResource("23_6i80i")]
+visible = false
+layout_mode = 1
+
+[node name="LevelFailedScreen" parent="UI" instance=ExtResource("26_pslox")]
+visible = false
+layout_mode = 1
+
+[node name="ImportantLabel" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 291.0
+offset_top = -307.0
+offset_right = 557.0
+offset_bottom = -276.0
+text = "Do not let your population reach 0"
 
 [node name="GameManager" parent="." instance=ExtResource("1_qnc7g")]
 level_objectives = Array[ExtResource("2_jjc5a")]([ExtResource("3_xbomk")])
@@ -550,82 +639,6 @@ environment = SubResource("Environment_icxno")
 transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 45, 0)
 shadow_opacity = 0.65
 
-[node name="UI" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("18_bn320")
-
-[node name="BuildingMenu" parent="UI" node_paths=PackedStringArray("building_placer") instance=ExtResource("19_20vo2")]
-visible = false
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_right = 0.0
-offset_left = -572.0
-offset_top = 160.0
-offset_right = -572.0
-offset_bottom = 160.0
-grow_horizontal = 1
-grow_vertical = 0
-building_placer = NodePath("../../BuildingPlacer")
-
-[node name="ResourceMenu" parent="UI" node_paths=PackedStringArray("resource_manager") instance=ExtResource("20_dgcsr")]
-offset_left = -576.0
-offset_top = -324.0
-offset_right = -576.0
-offset_bottom = -324.0
-resource_manager = NodePath("../../ResourceManager")
-
-[node name="FPS" type="Label" parent="UI"]
-layout_mode = 0
-offset_left = -576.0
-offset_top = -324.0
-offset_right = -536.0
-offset_bottom = -301.0
-text = "FPS:"
-script = ExtResource("21_62fe1")
-
-[node name="PopulationLabel" type="Label" parent="UI"]
-layout_mode = 0
-offset_left = -575.0
-offset_top = -262.0
-offset_right = -535.0
-offset_bottom = -239.0
-
-[node name="ObjectiveMenu" parent="UI" instance=ExtResource("22_qelpj")]
-layout_mode = 1
-offset_left = 257.0
-offset_top = -288.0
-offset_right = 257.0
-offset_bottom = -288.0
-
-[node name="PauseMenu" parent="UI" instance=ExtResource("23_3ib30")]
-process_mode = 3
-visible = false
-layout_mode = 1
-
-[node name="LevelCompleteScreen" parent="UI" instance=ExtResource("23_6i80i")]
-visible = false
-layout_mode = 1
-
-[node name="LevelFailedScreen" parent="UI" instance=ExtResource("26_pslox")]
-visible = false
-layout_mode = 1
-
-[node name="ImportantLabel" type="Label" parent="UI"]
-layout_mode = 0
-offset_left = 291.0
-offset_top = -307.0
-offset_right = 557.0
-offset_bottom = -276.0
-text = "Do not let your population reach 0"
-
 [node name="BuildingPlacer" parent="." node_paths=PackedStringArray("camera", "nav_region") instance=ExtResource("24_50qe6")]
 buildings = Array[PackedScene]([ExtResource("25_n1mh3"), ExtResource("26_gb0gp"), ExtResource("27_tr4r0"), ExtResource("28_go38i"), ExtResource("29_1vh34"), ExtResource("30_jntdt")])
 camera = NodePath("../camera_base/camera_socket/Camera3D")
@@ -686,147 +699,175 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.05539, 0.48682, 35.1089)
 [node name="Enemies" type="Node3D" parent="."]
 
 [node name="SkeletonRogue" parent="Enemies" instance=ExtResource("51_j871a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.3712, 0, -1.3792)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 36.4617, 0, -6.27309)
 
 [node name="SkeletonRogue2" parent="Enemies" instance=ExtResource("51_j871a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.3712, 0, -3.3792)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 38.4617, 0, -6.27309)
 
 [node name="SkeletonRogue3" parent="Enemies" instance=ExtResource("51_j871a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.3712, 0, -5.61138)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 25.9568, 0, 0.0143048)
 
 [node name="SkeletonRogue4" parent="Enemies" instance=ExtResource("51_j871a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.3712, 0, -1.3792)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 30.189, 0, 0.0143045)
 
 [node name="SkeletonRogue5" parent="Enemies" instance=ExtResource("51_j871a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.3712, 0, -34.3792)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 40.3712, 0, -36.3792)
 
 [node name="SkeletonRogue6" parent="Enemies" instance=ExtResource("51_j871a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.3712, 0, -36.3792)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 40.3712, 0, -34.3792)
 
 [node name="SkeletonRogue7" parent="Enemies" instance=ExtResource("51_j871a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.3712, 0, -36.3792)
+transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, 38.3712, 0, -38.3792)
 
 [node name="SkeletonRogue8" parent="Enemies" instance=ExtResource("51_j871a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.3712, 0, -34.3792)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 37.3712, 0, -34.3792)
 
 [node name="SkeletonWarrior" parent="Enemies" instance=ExtResource("52_70psd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.3556, 0, -4.83558)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 39.9181, 0, -2.2887)
+enemy_resource = null
 
 [node name="SkeletonWarrior2" parent="Enemies" instance=ExtResource("52_70psd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.3556, 0, -1.5296)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 36.6121, 0, -4.2887)
+enemy_resource = null
 
 [node name="SkeletonWarrior3" parent="Enemies" instance=ExtResource("52_70psd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.3556, 0, -28.5296)
+transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 41.3556, 0, -28.5296)
+enemy_resource = null
 
 [node name="SkeletonWarrior5" parent="Enemies" instance=ExtResource("52_70psd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.3556, 0, 49.4704)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 43.3556, 0, 49.4704)
+enemy_resource = null
 
 [node name="SkeletonWarrior6" parent="Enemies" instance=ExtResource("52_70psd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.3556, 0, 51.4704)
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 40.3556, 0, 50.4704)
+enemy_resource = null
 
 [node name="SkeletonWarrior7" parent="Enemies" instance=ExtResource("52_70psd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.3556, 0, 53.4704)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 42.3556, 0, 53.4704)
+enemy_resource = null
 
 [node name="SkeletonWarrior8" parent="Enemies" instance=ExtResource("52_70psd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.3556, 0, 55.4704)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.3556, 0, 55.4704)
+enemy_resource = null
 
 [node name="SkeletonWarrior9" parent="Enemies" instance=ExtResource("52_70psd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.3556, 0, 51.4704)
+transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 37.3556, 0, 47.4704)
+enemy_resource = null
 
 [node name="SkeletonWarrior10" parent="Enemies" instance=ExtResource("52_70psd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.3556, 0, 53.4704)
+transform = Transform3D(-0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, 37.3556, 0, 53.4704)
+enemy_resource = null
 
 [node name="SkeletonWarrior11" parent="Enemies" instance=ExtResource("52_70psd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.3556, 0, 55.4704)
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 37.3556, 0, 55.4704)
+enemy_resource = null
 
 [node name="SkeletonWarrior12" parent="Enemies" instance=ExtResource("52_70psd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.3556, 0, 57.4704)
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 36.3556, 0, 57.4704)
+enemy_resource = null
 
 [node name="SkeletonWarrior4" parent="Enemies" instance=ExtResource("52_70psd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.3556, 0, -28.5296)
+transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, 38.3556, 0, -28.5296)
+enemy_resource = null
 
 [node name="SkeletonWizard" parent="Enemies" instance=ExtResource("53_yms1k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.7347, 0, -1.7695)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 45.9327, 0, 0.428548)
 
 [node name="SkeletonWizard2" parent="Enemies" instance=ExtResource("53_yms1k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.1308, 0, -1.7695)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 45.9327, 0, -3.96755)
 
 [node name="SkeletonWizard6" parent="Enemies" instance=ExtResource("53_yms1k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61.2653, 0, 50.2305)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -54.0672, 0, 51.0324)
 
 [node name="SkeletonWizard7" parent="Enemies" instance=ExtResource("53_yms1k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.8692, 0, 50.2305)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -54.0672, 0, 55.4285)
 
 [node name="SkeletonWizard8" parent="Enemies" instance=ExtResource("53_yms1k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61.2653, 0, 53.2305)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -57.0672, 0, 51.0324)
 
 [node name="SkeletonWizard9" parent="Enemies" instance=ExtResource("53_yms1k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.8692, 0, 53.2305)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -57.0672, 0, 55.4285)
 
 [node name="SkeletonWizard10" parent="Enemies" instance=ExtResource("53_yms1k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61.2653, 0, 56.2305)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -60.0672, 0, 51.0324)
 
 [node name="SkeletonWizard11" parent="Enemies" instance=ExtResource("53_yms1k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.8692, 0, 56.2305)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -60.0672, 0, 55.4285)
 
 [node name="SkeletonWizard3" parent="Enemies" instance=ExtResource("53_yms1k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.1308, 0, -35.7695)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 47.1308, 0, -35.7695)
 
 [node name="SkeletonWizard4" parent="Enemies" instance=ExtResource("53_yms1k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.8692, 0, -27.7695)
+transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, -27.8692, 0, -27.7695)
 
 [node name="SkeletonWizard5" parent="Enemies" instance=ExtResource("53_yms1k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.8692, 0, -24.7695)
+transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, -24.8692, 0, -24.7695)
 
 [node name="SkeletonMinion" parent="Enemies" instance=ExtResource("54_a2xdk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.7286, 0, 2.6568)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 34.225, 0, 0.656905)
+enemy_resource = null
 
 [node name="SkeletonMinion2" parent="Enemies" instance=ExtResource("54_a2xdk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.7286, 0, 0.614873)
+transform = Transform3D(-1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, -1, 30.6647, 0, 3.80523)
+enemy_resource = null
 
 [node name="SkeletonMinion3" parent="Enemies" instance=ExtResource("54_a2xdk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.7286, 0, 2.6568)
+transform = Transform3D(-1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, -1, 32.6647, 0, 1.7633)
+enemy_resource = null
 
 [node name="SpecialEnemyComponent" parent="Enemies/SkeletonMinion3" instance=ExtResource("55_q4at7")]
 
 [node name="SkeletonMinion4" parent="Enemies" instance=ExtResource("54_a2xdk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.7286, 0, 7.01791)
+transform = Transform3D(-1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, -1, 32.6647, 0, -2.59781)
+enemy_resource = null
 
 [node name="SkeletonMinion13" parent="Enemies" instance=ExtResource("54_a2xdk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.2714, 0, 52.0179)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -46.2714, 0, 52.0179)
+enemy_resource = null
 
 [node name="SkeletonMinion14" parent="Enemies" instance=ExtResource("54_a2xdk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.2714, 0, 55.0179)
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -42.2714, 0, 55.0179)
+enemy_resource = null
 
 [node name="SkeletonMinion15" parent="Enemies" instance=ExtResource("54_a2xdk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.2714, 0, 55.0179)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.2714, 0, 55.0179)
+enemy_resource = null
 
 [node name="SkeletonMinion16" parent="Enemies" instance=ExtResource("54_a2xdk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.2714, 0, 59.0179)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -48.2714, 0, 59.0179)
+enemy_resource = null
 
 [node name="SkeletonMinion5" parent="Enemies" instance=ExtResource("54_a2xdk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.7286, 0, 4.6568)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 36.225, 0, 2.65691)
+enemy_resource = null
 
 [node name="SkeletonMinion6" parent="Enemies" instance=ExtResource("54_a2xdk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.4292, 0, 4.6568)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 36.225, 0, -0.0436944)
+enemy_resource = null
 
 [node name="SkeletonMinion7" parent="Enemies" instance=ExtResource("54_a2xdk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.2714, 0, -30.3432)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -24.2714, 0, -28.3432)
+enemy_resource = null
 
 [node name="SkeletonMinion8" parent="Enemies" instance=ExtResource("54_a2xdk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.2714, 0, -30.3432)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -22.2714, 0, -28.3432)
+enemy_resource = null
 
 [node name="SkeletonMinion9" parent="Enemies" instance=ExtResource("54_a2xdk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.2714, 0, -30.3432)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -20.2714, 0, -28.3432)
+enemy_resource = null
 
 [node name="SkeletonMinion10" parent="Enemies" instance=ExtResource("54_a2xdk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.2714, 0, -28.3432)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -20.2714, 0, -30.3432)
+enemy_resource = null
 
 [node name="SkeletonMinion11" parent="Enemies" instance=ExtResource("54_a2xdk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.2714, 0, -28.3432)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -22.2714, 0, -30.3432)
+enemy_resource = null
 
 [node name="SkeletonMinion12" parent="Enemies" instance=ExtResource("54_a2xdk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.2714, 0, -28.3432)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -24.2714, 0, -30.3432)
+enemy_resource = null
 
 [node name="Collectibles" type="Node3D" parent="."]
 

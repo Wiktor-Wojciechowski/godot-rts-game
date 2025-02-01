@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://cpfjrb5kb522m"]
+[gd_scene load_steps=52 format=3 uid="uid://cpfjrb5kb522m"]
 
 [ext_resource type="PackedScene" uid="uid://b10u13jt02rgb" path="res://UI/resource_menu.tscn" id="1_i0ka2"]
 [ext_resource type="Texture2D" uid="uid://4rhknkiec0mx" path="res://Assets/Textures/rocky_terrain_02_diff_4k.jpg" id="1_i7mjr"]
@@ -13,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://dajrpt5sfcpi6" path="res://LevelTools/unit_selector.tscn" id="5_uwunu"]
 [ext_resource type="PackedScene" uid="uid://wr5eh3cwk62k" path="res://Structures/lumber_mill.tscn" id="5_vda2q"]
 [ext_resource type="PackedScene" uid="uid://dsjd6d5ootf2m" path="res://Structures/stone_quarry.tscn" id="6_tfr6s"]
-[ext_resource type="Script" path="res://UI/ui.gd" id="7_220hx"]
 [ext_resource type="PackedScene" uid="uid://d3sq3lepemaua" path="res://Decorations/hills_b.tscn" id="7_knrhn"]
 [ext_resource type="PackedScene" uid="uid://dl2r80c463aul" path="res://Structures/enemy_barracks.tscn" id="7_l3csj"]
 [ext_resource type="PackedScene" uid="uid://b233ni6xfoe04" path="res://Decorations/hills_a.tscn" id="7_nthdv"]
@@ -162,7 +161,6 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("7_220hx")
 
 [node name="BuildingMenu" parent="UI" node_paths=PackedStringArray("building_placer") instance=ExtResource("2_h3d2a")]
 layout_mode = 1
@@ -299,12 +297,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.0685, 0, -58.3792)
 
 [node name="SkeletonWarrior" parent="Enemies" instance=ExtResource("32_cta1p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83.0529, 0, -58.5296)
+enemy_resource = null
 
 [node name="SkeletonWizard" parent="Enemies" instance=ExtResource("33_mx2ki")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.8281, 0, -58.7695)
 
 [node name="SkeletonMinion" parent="Enemies" instance=ExtResource("30_5lwmv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75.4259, 0, -57.3432)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.4259, 0, -2.3432)
+enemy_resource = null
 
 [connection signal="mouse_entered" from="UI" to="UnitSelector" method="_on_ui_mouse_entered"]
 [connection signal="mouse_exited" from="UI" to="UnitSelector" method="_on_ui_mouse_exited"]
