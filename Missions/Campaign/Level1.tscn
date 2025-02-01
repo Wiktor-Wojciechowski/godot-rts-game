@@ -42,11 +42,11 @@
 [ext_resource type="Resource" uid="uid://c2w1qy7j2d5vd" path="res://Resources/Buildings/Barracks.tres" id="46_0aces"]
 [ext_resource type="PackedScene" uid="uid://w1bfn33te562" path="res://LevelTools/resource_manager.tscn" id="47_upqmp"]
 [ext_resource type="PackedScene" uid="uid://d0bgsfrstf7a" path="res://Units/archer.tscn" id="51_2q6u6"]
+[ext_resource type="PackedScene" uid="uid://btftsfp0vmsbj" path="res://Collectibles/upgrade_collectible.tscn" id="51_giwbg"]
 [ext_resource type="PackedScene" uid="uid://gjty2bfn3vys" path="res://Enemies/skeleton_rogue.tscn" id="51_j871a"]
 [ext_resource type="PackedScene" uid="uid://031h6ol66737" path="res://Enemies/skeleton_warrior.tscn" id="52_70psd"]
 [ext_resource type="PackedScene" uid="uid://lbpnbu4l4ifb" path="res://Enemies/skeleton_wizard.tscn" id="53_yms1k"]
 [ext_resource type="PackedScene" uid="uid://cay5vligoi0rt" path="res://Enemies/skeleton_minion.tscn" id="54_a2xdk"]
-[ext_resource type="PackedScene" uid="uid://ceaf25tbab6wn" path="res://Components/special_enemy_component.tscn" id="55_q4at7"]
 [ext_resource type="PackedScene" uid="uid://rfhcl2tll6gu" path="res://Collectibles/wood_collectible.tscn" id="57_u6k41"]
 [ext_resource type="PackedScene" uid="uid://njiefdys0bu4" path="res://Collectibles/food_collectible.tscn" id="58_8l8ym"]
 [ext_resource type="PackedScene" uid="uid://nvfer57ex412" path="res://Collectibles/gold_collectible.tscn" id="59_75r8b"]
@@ -92,6 +92,7 @@ ambient_light_color = Color(0.60662, 0.26091, 0, 1)
 ambient_light_sky_contribution = 0.95
 ambient_light_energy = 5.15
 reflected_light_source = 1
+glow_enabled = true
 
 [node name="Level1" type="Node3D"]
 
@@ -724,51 +725,39 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 37.371
 
 [node name="SkeletonWarrior" parent="Enemies" instance=ExtResource("52_70psd")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 39.9181, 0, -2.2887)
-enemy_resource = null
 
 [node name="SkeletonWarrior2" parent="Enemies" instance=ExtResource("52_70psd")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 36.6121, 0, -4.2887)
-enemy_resource = null
 
 [node name="SkeletonWarrior3" parent="Enemies" instance=ExtResource("52_70psd")]
 transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 41.3556, 0, -28.5296)
-enemy_resource = null
 
 [node name="SkeletonWarrior5" parent="Enemies" instance=ExtResource("52_70psd")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 43.3556, 0, 49.4704)
-enemy_resource = null
 
 [node name="SkeletonWarrior6" parent="Enemies" instance=ExtResource("52_70psd")]
 transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 40.3556, 0, 50.4704)
-enemy_resource = null
 
 [node name="SkeletonWarrior7" parent="Enemies" instance=ExtResource("52_70psd")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 42.3556, 0, 53.4704)
-enemy_resource = null
 
 [node name="SkeletonWarrior8" parent="Enemies" instance=ExtResource("52_70psd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.3556, 0, 55.4704)
-enemy_resource = null
 
 [node name="SkeletonWarrior9" parent="Enemies" instance=ExtResource("52_70psd")]
 transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 37.3556, 0, 47.4704)
-enemy_resource = null
 
 [node name="SkeletonWarrior10" parent="Enemies" instance=ExtResource("52_70psd")]
 transform = Transform3D(-0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, 37.3556, 0, 53.4704)
-enemy_resource = null
 
 [node name="SkeletonWarrior11" parent="Enemies" instance=ExtResource("52_70psd")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 37.3556, 0, 55.4704)
-enemy_resource = null
 
 [node name="SkeletonWarrior12" parent="Enemies" instance=ExtResource("52_70psd")]
 transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 36.3556, 0, 57.4704)
-enemy_resource = null
 
 [node name="SkeletonWarrior4" parent="Enemies" instance=ExtResource("52_70psd")]
 transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, 38.3556, 0, -28.5296)
-enemy_resource = null
 
 [node name="SkeletonWizard" parent="Enemies" instance=ExtResource("53_yms1k")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 45.9327, 0, 0.428548)
@@ -805,69 +794,51 @@ transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926
 
 [node name="SkeletonMinion" parent="Enemies" instance=ExtResource("54_a2xdk")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 34.225, 0, 0.656905)
-enemy_resource = null
 
 [node name="SkeletonMinion2" parent="Enemies" instance=ExtResource("54_a2xdk")]
 transform = Transform3D(-1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, -1, 30.6647, 0, 3.80523)
-enemy_resource = null
 
 [node name="SkeletonMinion3" parent="Enemies" instance=ExtResource("54_a2xdk")]
 transform = Transform3D(-1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, -1, 32.6647, 0, 1.7633)
-enemy_resource = null
-
-[node name="SpecialEnemyComponent" parent="Enemies/SkeletonMinion3" instance=ExtResource("55_q4at7")]
 
 [node name="SkeletonMinion4" parent="Enemies" instance=ExtResource("54_a2xdk")]
 transform = Transform3D(-1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, -1, 32.6647, 0, -2.59781)
-enemy_resource = null
 
 [node name="SkeletonMinion13" parent="Enemies" instance=ExtResource("54_a2xdk")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -46.2714, 0, 52.0179)
-enemy_resource = null
 
 [node name="SkeletonMinion14" parent="Enemies" instance=ExtResource("54_a2xdk")]
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -42.2714, 0, 55.0179)
-enemy_resource = null
 
 [node name="SkeletonMinion15" parent="Enemies" instance=ExtResource("54_a2xdk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.2714, 0, 55.0179)
-enemy_resource = null
 
 [node name="SkeletonMinion16" parent="Enemies" instance=ExtResource("54_a2xdk")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -48.2714, 0, 59.0179)
-enemy_resource = null
 
 [node name="SkeletonMinion5" parent="Enemies" instance=ExtResource("54_a2xdk")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 36.225, 0, 2.65691)
-enemy_resource = null
 
 [node name="SkeletonMinion6" parent="Enemies" instance=ExtResource("54_a2xdk")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 36.225, 0, -0.0436944)
-enemy_resource = null
 
 [node name="SkeletonMinion7" parent="Enemies" instance=ExtResource("54_a2xdk")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -24.2714, 0, -28.3432)
-enemy_resource = null
 
 [node name="SkeletonMinion8" parent="Enemies" instance=ExtResource("54_a2xdk")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -22.2714, 0, -28.3432)
-enemy_resource = null
 
 [node name="SkeletonMinion9" parent="Enemies" instance=ExtResource("54_a2xdk")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -20.2714, 0, -28.3432)
-enemy_resource = null
 
 [node name="SkeletonMinion10" parent="Enemies" instance=ExtResource("54_a2xdk")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -20.2714, 0, -30.3432)
-enemy_resource = null
 
 [node name="SkeletonMinion11" parent="Enemies" instance=ExtResource("54_a2xdk")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -22.2714, 0, -30.3432)
-enemy_resource = null
 
 [node name="SkeletonMinion12" parent="Enemies" instance=ExtResource("54_a2xdk")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -24.2714, 0, -30.3432)
-enemy_resource = null
 
 [node name="Collectibles" type="Node3D" parent="."]
 
@@ -1032,6 +1003,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.8367, 0.48682, -9.1579)
 
 [node name="FoodCollectible19" parent="Collectibles" instance=ExtResource("58_8l8ym")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.7891, 0.61354, -15.1683)
+
+[node name="UpgradeCollectible" parent="Collectibles" instance=ExtResource("51_giwbg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.59969, 1.58682, 24.6366)
 
 [node name="FoodCollectible20" parent="Collectibles" instance=ExtResource("58_8l8ym")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.2058, 0.48682, -11.6982)

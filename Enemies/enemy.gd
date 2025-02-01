@@ -30,30 +30,20 @@ func _ready() -> void:
 		health_component.max_health = enemy_resource.health
 		health_component.health = enemy_resource.health
 		
-	attack_component.target_added.connect(_on_attack_component_target_added)
-	attack_component.target_removed.connect(_on_attack_component_target_removed)
-	enemy_behavior()
+	print(name, "health: ", health_component.max_health)
 	
 func _process(delta: float) -> void:
-	if(current_target):
-		movement_component.follow_target(current_target)
-		# Check if in range and attack conditions are met
-		if can_attack_target(current_target):
-			print("attacking ", current_target)
-			attack(current_target)
+	enemy_behavior()
 
 func enemy_behavior():
-	enemies_in_range = []
-	for building in attack_component.target_nodes:
-		if building.team != team:
-			enemies_in_range.append(building)
+	enemies_in_range = attack_component.target_nodes
 	
 	if not enemies_in_range.is_empty():
 		var closest_enemy = attack_component._find_closest_enemy()
 		if closest_enemy:
 			current_target = closest_enemy
 	else:
-		if closest_building == null and seeks_out_buildings:
+		if not closest_building and seeks_out_buildings:
 			closest_building = attack_component._find_closest_building()
 		else:
 			current_target = closest_building
@@ -63,10 +53,12 @@ func enemy_behavior():
 			current_target = null
 			return
 		
+		movement_component.follow_target(current_target)
+		# Check if in range and attack conditions are met
+		if can_attack_target(current_target):
+			attack(current_target)
 
 func can_attack_target(target) -> bool:
-	if not is_instance_valid(target):
-		return false
 	if target is Bullet:
 		return false
 	if target:
@@ -79,13 +71,3 @@ func can_attack_target(target) -> bool:
 func attack(target):
 	attack_component._rotate_to_target(target)
 	attack_component._shoot(target)
-
-
-func _on_attack_component_target_added() -> void:
-	enemy_behavior()
-	pass # Replace with function body.
-
-
-func _on_attack_component_target_removed() -> void:
-	enemy_behavior()
-	pass # Replace with function body.

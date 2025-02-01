@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="CollectibleData" load_steps=2 format=3 uid="uid://ce55fj8m03l0"]
+
+[ext_resource type="Script" path="res://Resources/Collectibles/CollectibleData.gd" id="1_0g0xg"]
+
+[resource]
+script = ExtResource("1_0g0xg")
+collectible_name = "Upgrade"
+collected_amount = 50

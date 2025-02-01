@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://cmthmnm5plomi"]
 
 [ext_resource type="Script" path="res://Components/health_component.gd" id="1_iltdi"]
-[ext_resource type="Script" path="res://Enemies/enemy2.gd" id="1_voik8"]
+[ext_resource type="Script" path="res://Enemies/enemy.gd" id="1_xd6pn"]
 [ext_resource type="PackedScene" uid="uid://x10cogs6d5ud" path="res://Components/health_bar.tscn" id="2_1jf8o"]
 [ext_resource type="PackedScene" uid="uid://dddblpsohwys0" path="res://Components/attack_component.tscn" id="2_4v74i"]
 [ext_resource type="PackedScene" uid="uid://c15ykdiutqykk" path="res://Components/movement_component.tscn" id="2_17itj"]
@@ -13,7 +13,7 @@
 [node name="Enemy" type="CharacterBody3D" groups=["enemies"]]
 collision_layer = 8
 collision_mask = 6
-script = ExtResource("1_voik8")
+script = ExtResource("1_xd6pn")
 
 [node name="MovementComponent" parent="." instance=ExtResource("2_17itj")]
 speed = 5

@@ -1,7 +1,5 @@
 extends Enemy
 
-class_name SkeletonWarrior
-
 func attack(target):
 	attack_component._rotate_to_target(target)
 	attack_component._melee_attack(target)
