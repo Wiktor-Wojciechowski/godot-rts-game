@@ -15,3 +15,4 @@ production_cost = {
 "food": 30,
 "gold": 20
 }
+size = 1.0

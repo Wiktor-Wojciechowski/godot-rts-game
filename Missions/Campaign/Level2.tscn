@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://c82xax31p4gao"]
+[gd_scene load_steps=60 format=3 uid="uid://c82xax31p4gao"]
 
 [ext_resource type="PackedScene" uid="uid://ct8jhcy5gigkv" path="res://LevelTools/game_manager.tscn" id="1_u66bg"]
 [ext_resource type="Script" path="res://Resources/Campaign/Objectives/objective.gd" id="2_vo71y"]
@@ -46,6 +46,7 @@
 [ext_resource type="PackedScene" uid="uid://w1bfn33te562" path="res://LevelTools/resource_manager.tscn" id="47_5vo7l"]
 [ext_resource type="PackedScene" uid="uid://cg8oqstlgnx08" path="res://Structures/enemy_sentry.tscn" id="47_r1vm8"]
 [ext_resource type="PackedScene" uid="uid://nvfer57ex412" path="res://Collectibles/gold_collectible.tscn" id="48_nhyej"]
+[ext_resource type="PackedScene" uid="uid://btftsfp0vmsbj" path="res://Collectibles/upgrade_collectible.tscn" id="49_s6dm0"]
 [ext_resource type="PackedScene" uid="uid://dl2r80c463aul" path="res://Structures/enemy_barracks.tscn" id="49_usu1i"]
 [ext_resource type="PackedScene" uid="uid://cay5vligoi0rt" path="res://Enemies/skeleton_minion.tscn" id="50_md50w"]
 
@@ -922,85 +923,111 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80.0225, 0.5, -69.0953)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.6783, 0, -1.78229)
 shape = SubResource("BoxShape3D_2jbht")
 
-[node name="GoldCollectible" parent="." instance=ExtResource("48_nhyej")]
+[node name="Collectibles" type="Node3D" parent="."]
+
+[node name="GoldCollectible" parent="Collectibles" instance=ExtResource("48_nhyej")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.4735, 0, -76.6227)
 
-[node name="GoldCollectible2" parent="." instance=ExtResource("48_nhyej")]
+[node name="GoldCollectible2" parent="Collectibles" instance=ExtResource("48_nhyej")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69.4735, 0, -76.6227)
 
-[node name="GoldCollectible3" parent="." instance=ExtResource("48_nhyej")]
+[node name="GoldCollectible3" parent="Collectibles" instance=ExtResource("48_nhyej")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.4735, 0, -76.6227)
 
-[node name="GoldCollectible4" parent="." instance=ExtResource("48_nhyej")]
+[node name="GoldCollectible4" parent="Collectibles" instance=ExtResource("48_nhyej")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.4735, 0, -78.6227)
 
-[node name="GoldCollectible5" parent="." instance=ExtResource("48_nhyej")]
+[node name="GoldCollectible5" parent="Collectibles" instance=ExtResource("48_nhyej")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69.4735, 0, -78.6227)
 
-[node name="GoldCollectible6" parent="." instance=ExtResource("48_nhyej")]
+[node name="GoldCollectible6" parent="Collectibles" instance=ExtResource("48_nhyej")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.4735, 0, -78.6227)
 
-[node name="GoldCollectible7" parent="." instance=ExtResource("48_nhyej")]
+[node name="GoldCollectible7" parent="Collectibles" instance=ExtResource("48_nhyej")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.4735, 0, -80.6227)
 
-[node name="GoldCollectible8" parent="." instance=ExtResource("48_nhyej")]
+[node name="GoldCollectible8" parent="Collectibles" instance=ExtResource("48_nhyej")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69.4735, 0, -80.6227)
 
-[node name="GoldCollectible9" parent="." instance=ExtResource("48_nhyej")]
+[node name="GoldCollectible9" parent="Collectibles" instance=ExtResource("48_nhyej")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.4735, 0, -80.6227)
 
-[node name="GoldCollectible10" parent="." instance=ExtResource("48_nhyej")]
+[node name="GoldCollectible10" parent="Collectibles" instance=ExtResource("48_nhyej")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.5265, 0, 84.3773)
 
-[node name="GoldCollectible11" parent="." instance=ExtResource("48_nhyej")]
+[node name="GoldCollectible11" parent="Collectibles" instance=ExtResource("48_nhyej")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.5265, 0, 84.3773)
 
-[node name="GoldCollectible12" parent="." instance=ExtResource("48_nhyej")]
+[node name="GoldCollectible12" parent="Collectibles" instance=ExtResource("48_nhyej")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.5265, 0, 84.3773)
 
-[node name="GoldCollectible13" parent="." instance=ExtResource("48_nhyej")]
+[node name="GoldCollectible13" parent="Collectibles" instance=ExtResource("48_nhyej")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.5265, 0, 82.3773)
 
-[node name="GoldCollectible14" parent="." instance=ExtResource("48_nhyej")]
+[node name="GoldCollectible14" parent="Collectibles" instance=ExtResource("48_nhyej")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.5265, 0, 82.3773)
 
-[node name="GoldCollectible15" parent="." instance=ExtResource("48_nhyej")]
+[node name="GoldCollectible15" parent="Collectibles" instance=ExtResource("48_nhyej")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.5265, 0, 82.3773)
 
-[node name="GoldCollectible16" parent="." instance=ExtResource("48_nhyej")]
+[node name="GoldCollectible16" parent="Collectibles" instance=ExtResource("48_nhyej")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.5265, 0, 80.3773)
 
-[node name="GoldCollectible17" parent="." instance=ExtResource("48_nhyej")]
+[node name="GoldCollectible17" parent="Collectibles" instance=ExtResource("48_nhyej")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.5265, 0, 80.3773)
 
-[node name="GoldCollectible18" parent="." instance=ExtResource("48_nhyej")]
+[node name="GoldCollectible18" parent="Collectibles" instance=ExtResource("48_nhyej")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.5265, 0, 80.3773)
 
-[node name="GoldCollectible19" parent="." instance=ExtResource("48_nhyej")]
+[node name="GoldCollectible19" parent="Collectibles" instance=ExtResource("48_nhyej")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.5265, 0, 38.3773)
 
-[node name="GoldCollectible20" parent="." instance=ExtResource("48_nhyej")]
+[node name="GoldCollectible20" parent="Collectibles" instance=ExtResource("48_nhyej")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.5265, 0, 38.3773)
 
-[node name="GoldCollectible21" parent="." instance=ExtResource("48_nhyej")]
+[node name="GoldCollectible21" parent="Collectibles" instance=ExtResource("48_nhyej")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68.5265, 0, 38.3773)
 
-[node name="GoldCollectible22" parent="." instance=ExtResource("48_nhyej")]
+[node name="GoldCollectible22" parent="Collectibles" instance=ExtResource("48_nhyej")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.5265, 0, 36.3773)
 
-[node name="GoldCollectible23" parent="." instance=ExtResource("48_nhyej")]
+[node name="GoldCollectible23" parent="Collectibles" instance=ExtResource("48_nhyej")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.5265, 0, 36.3773)
 
-[node name="GoldCollectible24" parent="." instance=ExtResource("48_nhyej")]
+[node name="GoldCollectible24" parent="Collectibles" instance=ExtResource("48_nhyej")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68.5265, 0, 36.3773)
 
-[node name="GoldCollectible25" parent="." instance=ExtResource("48_nhyej")]
+[node name="GoldCollectible25" parent="Collectibles" instance=ExtResource("48_nhyej")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.5265, 0, 34.3773)
 
-[node name="GoldCollectible26" parent="." instance=ExtResource("48_nhyej")]
+[node name="GoldCollectible26" parent="Collectibles" instance=ExtResource("48_nhyej")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.5265, 0, 34.3773)
 
-[node name="GoldCollectible27" parent="." instance=ExtResource("48_nhyej")]
+[node name="UpgradeCollectible" parent="Collectibles" instance=ExtResource("49_s6dm0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.9396, 0.5, 27.3787)
+
+[node name="UpgradeCollectible2" parent="Collectibles" instance=ExtResource("49_s6dm0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.060379, 0.5, 5.37866)
+
+[node name="UpgradeCollectible3" parent="Collectibles" instance=ExtResource("49_s6dm0")]
+transform = Transform3D(-0.865702, -0.500559, 0, 0.500559, -0.865702, 0, 0, 0, 1, 76.0604, 0.5, -6.62134)
+
+[node name="UpgradeCollectible7" parent="Collectibles" instance=ExtResource("49_s6dm0")]
+transform = Transform3D(-0.865702, -0.500559, 0, 0.500559, -0.865702, 0, 0, 0, 1, 59.0604, 0.5, -86.6213)
+
+[node name="UpgradeCollectible8" parent="Collectibles" instance=ExtResource("49_s6dm0")]
+transform = Transform3D(-0.865702, -0.500559, 0, 0.500559, -0.865702, 0, 0, 0, 1, 66.0604, 0.5, -86.6213)
+
+[node name="UpgradeCollectible4" parent="Collectibles" instance=ExtResource("49_s6dm0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.9396, 0.5, 83.3787)
+
+[node name="UpgradeCollectible5" parent="Collectibles" instance=ExtResource("49_s6dm0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.9396, 0.5, 83.3787)
+
+[node name="UpgradeCollectible6" parent="Collectibles" instance=ExtResource("49_s6dm0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.9396, 0.5, 78.3787)
+
+[node name="GoldCollectible27" parent="Collectibles" instance=ExtResource("48_nhyej")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68.5265, 0, 34.3773)
 
 [connection signal="mouse_entered" from="UI" to="UnitSelector" method="_on_ui_mouse_entered"]

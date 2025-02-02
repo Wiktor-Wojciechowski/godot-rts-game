@@ -10,3 +10,4 @@ attack_damage = 8.0
 attack_speed = 0.8
 attack_range = 6.0
 movement_speed = 5.0
+size = 1.0

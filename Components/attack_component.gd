@@ -113,7 +113,4 @@ func _find_closest_building():
 				if distance < closest_distance:
 					closest_distance = distance
 					closest_building = building
-	print(attacker, " found closest", closest_building)
-	print(attacker.team)
-	print(closest_building.team)
 	return closest_building

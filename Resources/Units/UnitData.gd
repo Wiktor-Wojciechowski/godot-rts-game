@@ -11,3 +11,4 @@ class_name UnitData
 @export var attack_range: float
 @export var movement_speed: float
 @export var production_cost: Dictionary
+@export var size: float

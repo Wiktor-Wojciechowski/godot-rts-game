@@ -8,3 +8,4 @@ class_name EnemyData
 @export var attack_speed: float
 @export var attack_range: float
 @export var movement_speed: float
+@export var size: float

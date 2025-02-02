@@ -519,9 +519,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.3396, 0.5, -21.8314)
 [node name="rock_single_E4" parent="NavigationRegion3D/Decorations" instance=ExtResource("15_oppyv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.3396, 0.5, 43.1686)
 
-[node name="rock_single_E5" parent="NavigationRegion3D/Decorations" instance=ExtResource("15_oppyv")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 86.3396, 0.5, 43.1686)
-
 [node name="rock_single_E8" parent="NavigationRegion3D/Decorations" instance=ExtResource("15_oppyv")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -39.6604, 0.5, 18.1686)
 
@@ -1005,7 +1002,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.8367, 0.48682, -9.1579)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.7891, 0.61354, -15.1683)
 
 [node name="UpgradeCollectible" parent="Collectibles" instance=ExtResource("51_giwbg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.59969, 1.58682, 24.6366)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67.5997, 1.58682, 50.6366)
+
+[node name="UpgradeCollectible2" parent="Collectibles" instance=ExtResource("51_giwbg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.4003, 1.58682, 61.6366)
+
+[node name="UpgradeCollectible3" parent="Collectibles" instance=ExtResource("51_giwbg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.4003, 1.58682, -31.3634)
 
 [node name="FoodCollectible20" parent="Collectibles" instance=ExtResource("58_8l8ym")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.2058, 0.48682, -11.6982)

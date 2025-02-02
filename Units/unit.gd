@@ -30,6 +30,7 @@ func _ready() -> void:
 		movement_component.stop_distance = unit_resource.attack_range - 0.5
 		health_component.max_health = unit_resource.health
 		health_component.health = unit_resource.health
+		size = unit_resource.size
 
 func _process(delta):
 	unit_behavior()
