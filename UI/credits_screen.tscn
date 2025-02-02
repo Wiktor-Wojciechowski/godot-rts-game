@@ -1,0 +1,78 @@
+[gd_scene load_steps=2 format=3 uid="uid://clyfmcqjwabky"]
+
+[ext_resource type="Script" path="res://UI/credits_screen.gd" id="1_p670b"]
+
+[node name="CreditsScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_p670b")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -296.0
+offset_top = -215.0
+offset_right = 296.0
+offset_bottom = 215.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -27.5
+offset_top = 14.0
+offset_right = 27.5
+offset_bottom = 37.0
+grow_horizontal = 2
+text = "Credits"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 51.0
+offset_right = 561.0
+offset_bottom = 380.0
+text = "Unit Models by zsky2000
+https://zsky2000.itch.io/animated-units
+
+Enemy Models by Kay Lousberg
+https://kaylousberg.itch.io/kaykit-skeletons
+
+Decorations by Kay Lousberg
+https://kaylousberg.itch.io/kaykit-medieval-hexagon
+
+Building Models by Kay Lousberg, zsky2000
+https://kaylousberg.itch.io/kaykit-medieval-hexagon
+https://zsky2000.itch.io/rts-3d-buildings-pack
+
+Music by alkakrab
+https://alkakrab.itch.io/free-fantasy-medieval-ambient-music-pack
+
+Sound effects taken from Pixabay
+https://pixabay.com/sound-effects/
+"
+
+[node name="BackButton" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -44.0
+offset_right = 65.0
+offset_bottom = -13.0
+grow_vertical = 0
+text = "Back"
+
+[connection signal="pressed" from="Panel/BackButton" to="." method="_on_back_button_pressed"]

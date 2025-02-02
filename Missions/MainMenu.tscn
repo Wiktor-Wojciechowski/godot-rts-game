@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://d2lppingadft4"]
+[gd_scene load_steps=5 format=3 uid="uid://d2lppingadft4"]
 
 [ext_resource type="Script" path="res://Missions/main_menu.gd" id="1_qjfdi"]
 [ext_resource type="PackedScene" uid="uid://dnsnlumcy7yvd" path="res://UI/options_menu.tscn" id="2_aufbw"]
 [ext_resource type="PackedScene" uid="uid://bwj8dvh4oj5ta" path="res://UI/campaign_menu.tscn" id="3_6drsn"]
+[ext_resource type="PackedScene" uid="uid://clyfmcqjwabky" path="res://UI/credits_screen.tscn" id="4_pk7wi"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -45,9 +46,9 @@ vertical_alignment = 1
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
 layout_mode = 0
 offset_left = 41.0
-offset_top = 187.0
+offset_top = 150.0
 offset_right = 397.0
-offset_bottom = 383.0
+offset_bottom = 424.0
 
 [node name="CampaignButton" type="Button" parent="Panel/VBoxContainer"]
 custom_minimum_size = Vector2(200, 40)
@@ -69,6 +70,16 @@ custom_minimum_size = Vector2(40, 30)
 layout_mode = 2
 color = Color(1, 1, 1, 0)
 
+[node name="Credits" type="Button" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+text = "Credits"
+
+[node name="Margin3" type="ColorRect" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(40, 30)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
 [node name="QuitGameButton" type="Button" parent="Panel/VBoxContainer"]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
@@ -79,5 +90,9 @@ visible = false
 layout_mode = 1
 
 [node name="CampaignMenu" parent="." instance=ExtResource("3_6drsn")]
+visible = false
+layout_mode = 1
+
+[node name="CreditsScreen" parent="." instance=ExtResource("4_pk7wi")]
 visible = false
 layout_mode = 1
