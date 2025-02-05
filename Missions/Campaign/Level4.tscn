@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://bm8ffkmv8adn7"]
+[gd_scene load_steps=63 format=3 uid="uid://bm8ffkmv8adn7"]
 
 [ext_resource type="PackedScene" uid="uid://ct8jhcy5gigkv" path="res://LevelTools/game_manager.tscn" id="1_0iksh"]
 [ext_resource type="Script" path="res://Resources/Campaign/Objectives/objective.gd" id="2_h6ksq"]
@@ -49,6 +49,7 @@
 [ext_resource type="PackedScene" uid="uid://gjty2bfn3vys" path="res://Enemies/skeleton_rogue.tscn" id="50_pehjv"]
 [ext_resource type="PackedScene" uid="uid://031h6ol66737" path="res://Enemies/skeleton_warrior.tscn" id="51_47tji"]
 [ext_resource type="PackedScene" uid="uid://lbpnbu4l4ifb" path="res://Enemies/skeleton_wizard.tscn" id="52_vvhwk"]
+[ext_resource type="PackedScene" uid="uid://btftsfp0vmsbj" path="res://Collectibles/upgrade_collectible.tscn" id="52_wpd3x"]
 [ext_resource type="PackedScene" uid="uid://nvfer57ex412" path="res://Collectibles/gold_collectible.tscn" id="54_x472u"]
 [ext_resource type="PackedScene" uid="uid://njiefdys0bu4" path="res://Collectibles/food_collectible.tscn" id="56_0x5s4"]
 [ext_resource type="PackedScene" uid="uid://rfhcl2tll6gu" path="res://Collectibles/wood_collectible.tscn" id="56_yrr48"]
@@ -105,6 +106,7 @@ ambient_light_color = Color(0.60662, 0.26091, 0, 1)
 ambient_light_sky_contribution = 0.95
 ambient_light_energy = 5.15
 reflected_light_source = 1
+glow_enabled = true
 
 [node name="Level4" type="Node3D"]
 
@@ -1050,6 +1052,30 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 21.915
 
 [node name="WoodCollectible28" parent="Collectibles" instance=ExtResource("56_yrr48")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 18.9155, 0.48682, -26.1425)
+
+[node name="UpgradeCollectible2" parent="Collectibles" instance=ExtResource("52_wpd3x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57, 1.5, 57)
+
+[node name="UpgradeCollectible3" parent="Collectibles" instance=ExtResource("52_wpd3x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 1.5, 45)
+
+[node name="UpgradeCollectible4" parent="Collectibles" instance=ExtResource("52_wpd3x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 1.5, 57)
+
+[node name="UpgradeCollectible5" parent="Collectibles" instance=ExtResource("52_wpd3x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 1.5, -18)
+
+[node name="UpgradeCollectible6" parent="Collectibles" instance=ExtResource("52_wpd3x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47, 1.5, -18)
+
+[node name="UpgradeCollectible7" parent="Collectibles" instance=ExtResource("52_wpd3x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59, 1.5, -16)
+
+[node name="UpgradeCollectible9" parent="Collectibles" instance=ExtResource("52_wpd3x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 1.5, -40)
+
+[node name="UpgradeCollectible8" parent="Collectibles" instance=ExtResource("52_wpd3x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52, 1.5, 6)
 
 [node name="SkeletonMinion" parent="." instance=ExtResource("49_begit")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 41.6138, -0.0131798, -9.2711)
